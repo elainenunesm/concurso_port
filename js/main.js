@@ -482,6 +482,8 @@ function updateFolderBadge() {
     headerIndicator.onclick = () => showSetupScreen();
     headerIndicator.title = 'Pasta conectada — clique para alterar';
   }
+  const btnText = document.getElementById('btnSaveText');
+  if (btnText) btnText.textContent = 'Salvar agora';
 }
 
 function showToast(msg, type = 'info') {
@@ -536,7 +538,41 @@ function showSetupScreen() {
       } catch (e) { /* usuário cancelou o seletor */ }
     });
   }
-  document.getElementById('skipSetupBtn').addEventListener('click', dismiss);
+  document.getElementById('skipSetupBtn').addEventListener('click', () => {
+    idbSet('setupSeen', true).catch(() => {});
+    dismiss();
+  });
+}
+
+// ── BANNER PARA RECONECTAR PASTA ────────────────────────────
+function showReconnectBanner(handle) {
+  const banner = document.createElement('div');
+  banner.id = 'reconnectBanner';
+  banner.className = 'reconnect-banner';
+  banner.innerHTML = `
+    <i class="fa-solid fa-folder"></i>
+    Pasta <strong>${handle.name}</strong> precisa de permissão para carregar seu progresso.
+    <button type="button" id="btnReconnect">Reconectar</button>
+    <button type="button" id="btnDismissBanner" class="btn-dismiss-banner" title="Fechar">✕</button>`;
+  document.body.prepend(banner);
+  requestAnimationFrame(() => banner.classList.add('banner-visible'));
+
+  document.getElementById('btnReconnect').addEventListener('click', async () => {
+    try {
+      const perm = await handle.requestPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        state.dirHandle = handle;
+        await loadProgress();
+        updateFolderBadge();
+        updateStats();
+        render();
+        banner.remove();
+        showToast('<i class="fa-solid fa-check"></i> Pasta reconectada! Progresso carregado.', 'success');
+      }
+    } catch (e) { /* usuário negou */ }
+  });
+
+  document.getElementById('btnDismissBanner').addEventListener('click', () => banner.remove());
 }
 
 // ── INICIALIZAÇÃO ─────────────────────────────────────────────
@@ -553,26 +589,41 @@ async function init() {
         render();
         return;
       }
-      // Handle existe mas permissão foi revogada — avisa sem bloquear
+      // Permissão precisa ser re-solicitada — mostra banner não-bloqueante
       updateFolderBadge();
       updateStats();
       render();
-      setTimeout(showUnsavedWarning, 800);
+      setTimeout(() => showReconnectBanner(handle), 400);
       return;
     }
-  } catch (e) { /* IDB indisponível ou handle expirado */ }
+    // Sem handle — verifica se usuário já dispensou a tela antes
+    const seen = await idbGet('setupSeen');
+    if (seen) {
+      updateFolderBadge();
+      updateStats();
+      render();
+      return;
+    }
+  } catch (e) { /* IDB indisponível */ }
 
+  // Primeira visita
   updateFolderBadge();
   showSetupScreen();
   updateStats();
   render();
 }
 
-function showUnsavedWarning() {
-  showToast('<i class="fa-solid fa-triangle-exclamation"></i> Progresso não está sendo salvo — clique em <strong>Salvar progresso</strong> no canto superior direito.', 'warning');
-}
-
 const $ = id => document.getElementById(id);
+
+// ── BOTÃO DE SALVAR (SIDEBAR) ────────────────────────────────
+document.getElementById('btnSaveSidebar').addEventListener('click', async () => {
+  if (state.dirHandle) {
+    await saveProgress();
+    showToast('<i class="fa-solid fa-check"></i> Progresso salvo!', 'success');
+  } else {
+    showSetupScreen();
+  }
+});
 
 // ── ÍCONES ───────────────────────────────────────────────────
 const icons = {
