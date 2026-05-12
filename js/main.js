@@ -417,14 +417,28 @@ function renderIntro() {
       <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Primeira Etapa</div>
       <h2>Você irá responder as questões que é a primeira etapa para conseguir analisar textos</h2>
       <div class="lesson-body">
-        <p>Verbo é a palavra que indica ação. Toda vez que olhar um texto é a primeira coisa que precisa identificar.</p>
-        <p>Observe que a palavra faz o texto se mexer. A palavra <em>correr</em>, por exemplo — você imagina alguém se mexendo.</p>
-        <p>Também indica estado ou mudança de estado: <em>eu sou</em> ou <em>eu estou</em>, ou <em>estava</em>. Os textos indicam que inicialmente uma pessoa estava de uma forma e houve mudança (ser, estar).</p>
-        <p>Pode indicar também fenômeno da natureza (chover, amanhecer).</p>
-        <p>Os verbos têm terminação em <strong>ar, er, ir</strong> e <strong>pôr</strong> — que antes se chamava <em>poer</em>.</p>
-        <p class="lesson-examples">Exemplos: correr, ser, chover, nascer, parecer.</p>
-        <p>Então se tiver dúvida, tente conjugar no infinitivo (<strong>ar, er, ir</strong> ou <strong>pôr</strong>).</p>
-        <p class="lesson-examples">Exemplo: <em>Amanheceu</em> ➜ colocar no infinitivo: <em>amanhecer</em>, terminação <strong>-er</strong>.</p>
+        <h3 class="lesson-title">Lição de Verbo</h3>
+        <p>Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno</strong> da natureza. Ao ler um texto, uma das primeiras coisas que devemos identificar é o verbo, porque ele dá movimento e sentido à frase.</p>
+        <p>Por exemplo, na palavra <em>correr</em>, imaginamos alguém em movimento, saindo de um ponto e se deslocando rapidamente. Isso mostra a ideia de ação.</p>
+        <p>Além da ação, o verbo também pode indicar estado ou mudança de estado. Quando dizemos <em>eu sou</em>, <em>eu estou</em> ou <em>eu estava</em>, estamos mostrando como alguém se encontra em determinado momento. No caso de <em>estava</em>, percebemos ainda uma mudança: a pessoa estava de um jeito e depois pode ter passado a outro estado. Alguns verbos que indicam estado são <em>ser</em> e <em>estar</em>.</p>
+        <p>Os verbos também podem indicar fenômenos da natureza, como em <em>chover</em> e <em>amanhecer</em>.</p>
+        <p>Em geral, os verbos terminam em <strong>-ar</strong>, <strong>-er</strong> e <strong>-ir</strong>. Existe também o verbo <strong>pôr</strong>, que antigamente era escrito como <em>poer</em>.</p>
+        <p><strong>Exemplos de verbos:</strong></p>
+        <p class="lesson-examples">correr · ser · chover · nascer · parecer · cantar · chorar · morrer</p>
+        <p>Quando houver dúvida se uma palavra é verbo, tente colocá-la no infinitivo, ou seja, na forma terminada em <strong>-ar</strong>, <strong>-er</strong>, <strong>-ir</strong> ou <strong>pôr</strong>.</p>
+        <p><strong>Exemplos:</strong></p>
+        <p class="lesson-examples">
+          <em>cantei</em> ➜ infinitivo: <em>cantar</em> → termina em <strong>-ar</strong> → verbo da 1ª conjugação.<br>
+          <em>amanheceu</em> ➜ infinitivo: <em>amanhecer</em> → termina em <strong>-er</strong> → verbo da 2ª conjugação.<br>
+          <em>sentiu</em> ➜ infinitivo: <em>sentir</em> → termina em <strong>-ir</strong> → verbo da 3ª conjugação.
+        </p>
+        <p><strong>Resumo:</strong> Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno da natureza</strong>. Normalmente termina em <strong>-ar</strong>, <strong>-er</strong>, <strong>-ir</strong> ou, no caso do verbo <strong>pôr</strong>, em uma forma irregular.</p>
+        <p>Para identificar um verbo, tente colocá-lo no infinitivo. Assim, você descobrirá a sua conjugação:</p>
+        <p class="lesson-examples">
+          verbos terminados em <strong>-ar</strong> → 1ª conjugação;<br>
+          verbos terminados em <strong>-er</strong> → 2ª conjugação;<br>
+          verbos terminados em <strong>-ir</strong> → 3ª conjugação.
+        </p>
       </div>
       <button type="button" class="btn-start" id="startBtn">
         Começar questões ${icons.right}

@@ -650,6 +650,13 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     margin-bottom: 32px;
 }
 
+.lesson-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-main);
+    margin-bottom: 16px;
+}
+
 .lesson-body p {
     font-size: 15px;
     line-height: 1.75;
