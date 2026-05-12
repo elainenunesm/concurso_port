@@ -458,18 +458,39 @@ async function loadProgress() {
 
 // ── BADGE DE PASTA ───────────────────────────────────────────
 function updateFolderBadge() {
-  let badge = document.getElementById('folderBadge');
+  const headerIndicator = document.getElementById('headerFolderIndicator');
+  const headerName      = document.getElementById('headerFolderName');
+  const headerIcon      = document.getElementById('headerFolderIcon');
+
   if (!state.dirHandle) {
-    if (badge) badge.remove();
+    if (headerName) headerName.textContent = 'Salvar progresso';
+    if (headerIcon) headerIcon.className = 'fa-solid fa-floppy-disk';
+    if (headerIndicator) {
+      headerIndicator.classList.remove('connected');
+      headerIndicator.classList.add('unsaved');
+      headerIndicator.onclick = () => showSetupScreen();
+      headerIndicator.title = 'Clique para conectar uma pasta e salvar seu progresso';
+    }
     return;
   }
-  if (!badge) {
-    badge = document.createElement('div');
-    badge.id = 'folderBadge';
-    badge.className = 'folder-badge';
-    document.querySelector('.sidebar-footer-tip').before(badge);
+
+  if (headerName) headerName.textContent = state.dirHandle.name;
+  if (headerIcon) headerIcon.className = 'fa-solid fa-folder-open';
+  if (headerIndicator) {
+    headerIndicator.classList.remove('unsaved');
+    headerIndicator.classList.add('connected');
+    headerIndicator.onclick = () => showSetupScreen();
+    headerIndicator.title = 'Pasta conectada — clique para alterar';
   }
-  badge.innerHTML = `<i class="fa-solid fa-folder-open"></i> <span>${state.dirHandle.name}</span>`;
+}
+
+function showToast(msg, type = 'info') {
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.innerHTML = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('toast-visible'));
+  setTimeout(() => { t.classList.remove('toast-visible'); setTimeout(() => t.remove(), 350); }, 4000);
 }
 
 // ── TELA DE CONFIGURAÇÃO DE PASTA ───────────────────────────
@@ -532,12 +553,23 @@ async function init() {
         render();
         return;
       }
+      // Handle existe mas permissão foi revogada — avisa sem bloquear
+      updateFolderBadge();
+      updateStats();
+      render();
+      setTimeout(showUnsavedWarning, 800);
+      return;
     }
   } catch (e) { /* IDB indisponível ou handle expirado */ }
 
+  updateFolderBadge();
   showSetupScreen();
   updateStats();
   render();
+}
+
+function showUnsavedWarning() {
+  showToast('<i class="fa-solid fa-triangle-exclamation"></i> Progresso não está sendo salvo — clique em <strong>Salvar progresso</strong> no canto superior direito.', 'warning');
 }
 
 const $ = id => document.getElementById(id);

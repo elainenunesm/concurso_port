@@ -105,11 +105,34 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .stat-text span { display: block; font-size: 12px; color: var(--text-gray); }
 .stat-text strong { display: block; font-size: 14px; font-weight: 600; }
 
-.user-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-.avatar { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.user-profile span { font-size: 14px; font-weight: 600; }
-.user-profile i { font-size: 12px; color: var(--text-gray); }
+.folder-indicator {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--primary-light); border: 1px solid #ddd6fe;
+    border-radius: 10px; padding: 7px 14px;
+    font-size: 13px; font-weight: 500; color: var(--primary-main);
+    cursor: pointer; max-width: 180px; transition: background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+}
+.folder-indicator:hover { background: #ede9fe; }
+.folder-indicator span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.folder-indicator.connected i { color: var(--success-dark); }
+.folder-indicator.unsaved {
+    background: #fff7ed; border-color: #fed7aa; color: #c2410c;
+}
+.folder-indicator.unsaved:hover { background: #ffedd5; }
+
+/* ── TOAST ────────────────────────────────────────────────── */
+.toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: #1f2937; color: #fff; border-radius: 12px;
+    padding: 12px 20px; font-size: 14px; z-index: 2000;
+    max-width: 420px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    opacity: 0; transition: opacity .3s ease, transform .3s ease;
+    pointer-events: none;
+}
+.toast-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast-warning { background: #92400e; }
+.toast strong { color: #fde68a; }
 
 /* =========================================
    MAIN LAYOUT GRID
@@ -949,8 +972,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 @media (max-width: 480px) {
     .top-navbar { padding: 10px 14px; }
     .logo-area h1 { font-size: 15px; }
-    .user-profile span,
-    .user-profile i { display: none; }
+    .folder-indicator span { max-width: 90px; font-size: 12px; }
 
     .center-header { padding: 14px 16px; }
     .header-icon-large { width: 48px; height: 48px; font-size: 20px; border-radius: 12px; }
