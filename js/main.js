@@ -382,13 +382,14 @@ const questions = [
 // activeSet: índices das questões da rodada atual
 // results: array indexado pelo índice original da questão
 const state = {
-  phase:      'intro',
-  current:    0,
-  activeSet:  questions.map((_, i) => i),
-  results:    new Array(questions.length).fill(null),
-  points:     180,
-  dirHandle:  null,
-  folderName: null,
+  phase:       'intro',
+  current:     0,
+  activeSet:   questions.map((_, i) => i),
+  results:     new Array(questions.length).fill(null),
+  points:      180,
+  dirHandle:   null,
+  folderName:  null,
+  allowReload: false,
 };
 
 // ── INDEXEDDB (persiste o handle da pasta entre sessões) ─────
@@ -548,6 +549,7 @@ function showSetupScreen() {
         await idbSet('dirHandle', handle);
         await idbSet('folderName', handle.name);
         await loadProgress();
+        await saveProgress();
         dismiss();
       } catch (e) { /* usuário cancelou o seletor */ }
     });
@@ -647,6 +649,54 @@ async function init() {
 }
 
 const $ = id => document.getElementById(id);
+
+// ── AVISO DE SAÍDA SEM SALVAR ────────────────────────────────
+function showUnsavedReloadWarning(onProceed) {
+  if (document.getElementById('unsavedWarningOverlay')) return;
+  const overlay = document.createElement('div');
+  overlay.id        = 'unsavedWarningOverlay';
+  overlay.className = 'setup-overlay';
+  overlay.innerHTML = `
+    <div class="setup-card">
+      <div class="setup-icon setup-icon-warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h2>Progresso não salvo</h2>
+      <p>Nenhuma pasta está conectada. Se sair agora, perderá o progresso desta sessão.</p>
+      <button type="button" class="btn-setup" id="btnSaveNow">
+        <i class="fa-solid fa-floppy-disk"></i> Salvar progresso
+      </button>
+      <button type="button" class="btn-setup-skip" id="btnLeaveAnyway">Sair sem salvar</button>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  document.getElementById('btnSaveNow').addEventListener('click', () => {
+    overlay.remove();
+    showSetupScreen();
+  });
+
+  document.getElementById('btnLeaveAnyway').addEventListener('click', async () => {
+    await idbSet('setupSeen', false).catch(() => {});
+    state.allowReload = true;
+    onProceed();
+  });
+}
+
+// Intercepta F5 / Ctrl+R / Cmd+R quando não há pasta conectada
+window.addEventListener('keydown', e => {
+  if (state.dirHandle || state.allowReload) return;
+  const isRefresh = e.key === 'F5' || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'r');
+  if (isRefresh) {
+    e.preventDefault();
+    showUnsavedReloadWarning(() => location.reload());
+  }
+}, true);
+
+// Fallback para o botão de atualizar do browser
+window.addEventListener('beforeunload', e => {
+  if (!state.dirHandle && !state.allowReload) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
 
 // ── BOTÃO DE SALVAR (SIDEBAR) ────────────────────────────────
 document.getElementById('btnSaveSidebar').addEventListener('click', async () => {

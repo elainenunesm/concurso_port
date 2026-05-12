@@ -1105,6 +1105,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     font-size: 28px;
     color: #fff;
 }
+.setup-icon-warn {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+}
 
 .setup-card h2 {
     font-size: 22px;
