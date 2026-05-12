@@ -76,12 +76,17 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 
 .logo-area { display: flex; align-items: center; gap: 12px; width: 260px; }
-.logo-icon { font-size: 28px; color: var(--primary-main); position: relative; }
-.logo-icon i { color: #f43f5e; } /* Detalhe do livro */
-.logo-icon::after {
-    content: "\f02d"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-    position: absolute; left: 0; color: var(--primary-main); clip-path: inset(0 0 0 50%);
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-hover));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
+.logo-icon i { color: #fff; font-size: 20px; }
 .logo-area h1 { font-size: 18px; font-weight: 700; line-height: 1.2; color: #1e1b4b; }
 
 .header-center { display: flex; flex-direction: column; width: 300px; }
