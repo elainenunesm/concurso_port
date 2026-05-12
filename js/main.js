@@ -420,6 +420,14 @@ async function idbSet(key, value) {
     req.onerror   = e => rej(e.target.error);
   });
 }
+async function idbDelete(key) {
+  const db = await openIDB();
+  return new Promise((res, rej) => {
+    const req = db.transaction(IDB_STORE, 'readwrite').objectStore(IDB_STORE).delete(key);
+    req.onsuccess = () => res();
+    req.onerror   = e => rej(e.target.error);
+  });
+}
 
 // ── SALVAR / CARREGAR PROGRESSO ──────────────────────────────
 async function saveProgress() {
@@ -555,7 +563,6 @@ function showSetupScreen() {
     });
   }
   document.getElementById('skipSetupBtn').addEventListener('click', () => {
-    idbSet('setupSeen', true).catch(() => {});
     dismiss();
   });
 }
@@ -597,8 +604,15 @@ function showReconnectScreen(handle) {
     } catch (e) { /* usuário negou */ }
   });
 
-  document.getElementById('btnSkipReconnect').addEventListener('click', () => {
+  document.getElementById('btnSkipReconnect').addEventListener('click', async () => {
+    try {
+      await idbDelete('dirHandle');
+      await idbDelete('folderName');
+    } catch (e) {}
+    state.dirHandle  = null;
+    state.folderName = null;
     overlay.remove();
+    showSetupScreen();
     updateFolderBadge();
     updateStats();
     render();
@@ -607,7 +621,6 @@ function showReconnectScreen(handle) {
 
 // ── INICIALIZAÇÃO ─────────────────────────────────────────────
 async function init() {
-  // Carrega nome da pasta guardado para exibir mesmo sem permissão ativa
   try { state.folderName = await idbGet('folderName') || null; } catch (e) {}
 
   try {
@@ -615,7 +628,6 @@ async function init() {
     if (handle) {
       const perm = await handle.queryPermission({ mode: 'readwrite' });
       if (perm === 'granted') {
-        // Permissão ativa — carrega progresso direto
         state.dirHandle  = handle;
         state.folderName = handle.name;
         await loadProgress();
@@ -631,17 +643,9 @@ async function init() {
       render();
       return;
     }
-    // Sem pasta — verifica se usuário já dispensou a tela antes
-    const seen = await idbGet('setupSeen');
-    if (seen) {
-      updateFolderBadge();
-      updateStats();
-      render();
-      return;
-    }
   } catch (e) { /* IDB indisponível */ }
 
-  // Primeira visita
+  // Sem pasta salva — sempre exibe tela de seleção
   updateFolderBadge();
   showSetupScreen();
   updateStats();
@@ -659,8 +663,8 @@ function showUnsavedReloadWarning(onProceed) {
   overlay.innerHTML = `
     <div class="setup-card">
       <div class="setup-icon setup-icon-warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
-      <h2>Progresso não salvo</h2>
-      <p>Nenhuma pasta está conectada. Se sair agora, perderá o progresso desta sessão.</p>
+      <h2>Tem certeza que deseja sair?</h2>
+      <p>O progresso desta sessão não está salvo. Se sair agora, perderá tudo que respondeu.</p>
       <button type="button" class="btn-setup" id="btnSaveNow">
         <i class="fa-solid fa-floppy-disk"></i> Salvar progresso
       </button>
@@ -674,7 +678,13 @@ function showUnsavedReloadWarning(onProceed) {
   });
 
   document.getElementById('btnLeaveAnyway').addEventListener('click', async () => {
-    await idbSet('setupSeen', false).catch(() => {});
+    // Limpa a pasta do IDB para que a tela de seleção apareça no próximo carregamento
+    try {
+      await idbDelete('dirHandle');
+      await idbDelete('folderName');
+    } catch (e) {}
+    state.dirHandle   = null;
+    state.folderName  = null;
     state.allowReload = true;
     onProceed();
   });
