@@ -18,7 +18,7 @@
             <h1>Exercitar<br>Português</h1>
         </div>
 
-        <div class="header-center">
+        <div class="header-center" id="headerCenter" style="display:none">
             <span>Progresso <span class="percent" id="headerPercent">0%</span></span>
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="headerProgressFill" style="width:0%"></div>
@@ -27,13 +27,6 @@
         </div>
 
         <div class="header-right">
-            <div class="stat-item">
-                <i class="fa-solid fa-fire stat-icon flame"></i>
-                <div class="stat-text">
-                    <span>Sequência</span>
-                    <strong>3 dias</strong>
-                </div>
-            </div>
             <div class="stat-item">
                 <i class="fa-solid fa-star stat-icon star"></i>
                 <div class="stat-text">
@@ -197,6 +190,10 @@
                     <div class="stat-row">
                         <div class="stat-label"><i class="fa-solid fa-circle"></i> Em branco</div>
                         <div class="stat-value" id="statEmBranco">21</div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><i class="fa-solid fa-fire" style="color:var(--warning-orange)"></i> Sequência</div>
+                        <div class="stat-value">3 dias</div>
                     </div>
                 </div>
 

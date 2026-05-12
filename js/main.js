@@ -732,6 +732,8 @@ const PUNCT = new Set(['.', ',', '!', '?', ';', ':']);
 
 // ── DISPATCHER ───────────────────────────────────────────────
 function render() {
+  const hc = $('headerCenter');
+  if (hc) hc.style.display = state.phase === 'intro' ? 'none' : '';
   if (state.phase === 'intro')   { renderIntro();   return; }
   if (state.phase === 'results') { renderResults(); return; }
   renderQuestion();
