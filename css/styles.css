@@ -706,7 +706,6 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .lg-key {
     color: var(--text-dark);
     font-weight: 500;
-    white-space: nowrap;
 }
 
 .lg-arrow {
@@ -928,6 +927,8 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-title { font-size: 17px; }
     .lesson-body { padding: 18px 20px; }
     .lesson-body p { font-size: 14px; }
+    .lesson-table { font-size: 14px; }
+    .lesson-grid { font-size: 14px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
 
     /* Resultados */
@@ -975,7 +976,8 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-title { font-size: 16px; margin-bottom: 12px; }
     .lesson-body { padding: 14px 16px; }
     .lesson-body p { font-size: 13px; line-height: 1.65; }
-    .lesson-grid { font-size: 13px; grid-template-columns: 1fr 20px auto; }
+    .lesson-table { font-size: 13px; }
+    .lesson-grid { font-size: 13px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
 
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
