@@ -382,12 +382,13 @@ const questions = [
 // activeSet: índices das questões da rodada atual
 // results: array indexado pelo índice original da questão
 const state = {
-  phase:     'intro',
-  current:   0,
-  activeSet: questions.map((_, i) => i),
-  results:   new Array(questions.length).fill(null),
-  points:    180,
-  dirHandle: null,
+  phase:      'intro',
+  current:    0,
+  activeSet:  questions.map((_, i) => i),
+  results:    new Array(questions.length).fill(null),
+  points:     180,
+  dirHandle:  null,
+  folderName: null,
 };
 
 // ── INDEXEDDB (persiste o handle da pasta entre sessões) ─────
@@ -457,33 +458,44 @@ async function loadProgress() {
 }
 
 // ── BADGE DE PASTA ───────────────────────────────────────────
+// state.folderName: nome guardado mesmo sem permissão ativa
 function updateFolderBadge() {
   const headerIndicator = document.getElementById('headerFolderIndicator');
   const headerName      = document.getElementById('headerFolderName');
   const headerIcon      = document.getElementById('headerFolderIcon');
+  const btnText         = document.getElementById('btnSaveText');
 
-  if (!state.dirHandle) {
+  if (state.dirHandle) {
+    // Pasta ativa e com permissão
+    if (headerName) headerName.textContent = state.dirHandle.name;
+    if (headerIcon) headerIcon.className = 'fa-solid fa-folder-open';
+    if (headerIndicator) {
+      headerIndicator.className = 'folder-indicator connected';
+      headerIndicator.onclick = () => showSetupScreen();
+      headerIndicator.title = 'Pasta conectada — clique para alterar';
+    }
+    if (btnText) btnText.textContent = 'Salvar agora';
+  } else if (state.folderName) {
+    // Pasta conhecida mas precisa reconectar
+    if (headerName) headerName.textContent = state.folderName;
+    if (headerIcon) headerIcon.className = 'fa-solid fa-folder';
+    if (headerIndicator) {
+      headerIndicator.className = 'folder-indicator needs-reconnect';
+      headerIndicator.onclick = () => showSetupScreen();
+      headerIndicator.title = 'Clique para reconectar a pasta';
+    }
+    if (btnText) btnText.textContent = 'Reconectar pasta';
+  } else {
+    // Nenhuma pasta
     if (headerName) headerName.textContent = 'Salvar progresso';
     if (headerIcon) headerIcon.className = 'fa-solid fa-floppy-disk';
     if (headerIndicator) {
-      headerIndicator.classList.remove('connected');
-      headerIndicator.classList.add('unsaved');
+      headerIndicator.className = 'folder-indicator unsaved';
       headerIndicator.onclick = () => showSetupScreen();
       headerIndicator.title = 'Clique para conectar uma pasta e salvar seu progresso';
     }
-    return;
+    if (btnText) btnText.textContent = 'Salvar progresso';
   }
-
-  if (headerName) headerName.textContent = state.dirHandle.name;
-  if (headerIcon) headerIcon.className = 'fa-solid fa-folder-open';
-  if (headerIndicator) {
-    headerIndicator.classList.remove('unsaved');
-    headerIndicator.classList.add('connected');
-    headerIndicator.onclick = () => showSetupScreen();
-    headerIndicator.title = 'Pasta conectada — clique para alterar';
-  }
-  const btnText = document.getElementById('btnSaveText');
-  if (btnText) btnText.textContent = 'Salvar agora';
 }
 
 function showToast(msg, type = 'info') {
@@ -531,8 +543,10 @@ function showSetupScreen() {
     document.getElementById('selectFolderBtn').addEventListener('click', async () => {
       try {
         const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
-        state.dirHandle = handle;
+        state.dirHandle  = handle;
+        state.folderName = handle.name;
         await idbSet('dirHandle', handle);
+        await idbSet('folderName', handle.name);
         await loadProgress();
         dismiss();
       } catch (e) { /* usuário cancelou o seletor */ }
@@ -544,59 +558,78 @@ function showSetupScreen() {
   });
 }
 
-// ── BANNER PARA RECONECTAR PASTA ────────────────────────────
-function showReconnectBanner(handle) {
-  const banner = document.createElement('div');
-  banner.id = 'reconnectBanner';
-  banner.className = 'reconnect-banner';
-  banner.innerHTML = `
-    <i class="fa-solid fa-folder"></i>
-    Pasta <strong>${handle.name}</strong> precisa de permissão para carregar seu progresso.
-    <button type="button" id="btnReconnect">Reconectar</button>
-    <button type="button" id="btnDismissBanner" class="btn-dismiss-banner" title="Fechar">✕</button>`;
-  document.body.prepend(banner);
-  requestAnimationFrame(() => banner.classList.add('banner-visible'));
+// ── TELA DE RECONEXÃO ────────────────────────────────────────
+function showReconnectScreen(handle) {
+  const overlay = document.createElement('div');
+  overlay.id        = 'reconnectOverlay';
+  overlay.className = 'setup-overlay';
+  overlay.innerHTML = `
+    <div class="setup-card">
+      <div class="setup-icon"><i class="fa-solid fa-rotate-right"></i></div>
+      <h2>Continuar de onde parou</h2>
+      <p>Você tem progresso salvo na pasta <strong>${handle.name}</strong>.<br>
+         Clique em <strong>Continuar</strong> para recarregar seu progresso.</p>
+      <div class="setup-info">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>O navegador precisa de permissão para acessar a pasta novamente.</span>
+      </div>
+      <button type="button" class="btn-setup" id="btnReconnect">
+        <i class="fa-solid fa-folder-open"></i> Continuar
+      </button>
+      <button type="button" class="btn-setup-skip" id="btnSkipReconnect">Começar do zero</button>
+    </div>`;
+  document.body.appendChild(overlay);
 
   document.getElementById('btnReconnect').addEventListener('click', async () => {
     try {
       const perm = await handle.requestPermission({ mode: 'readwrite' });
       if (perm === 'granted') {
-        state.dirHandle = handle;
+        state.dirHandle  = handle;
+        state.folderName = handle.name;
         await loadProgress();
+        overlay.remove();
         updateFolderBadge();
         updateStats();
         render();
-        banner.remove();
-        showToast('<i class="fa-solid fa-check"></i> Pasta reconectada! Progresso carregado.', 'success');
       }
     } catch (e) { /* usuário negou */ }
   });
 
-  document.getElementById('btnDismissBanner').addEventListener('click', () => banner.remove());
+  document.getElementById('btnSkipReconnect').addEventListener('click', () => {
+    overlay.remove();
+    updateFolderBadge();
+    updateStats();
+    render();
+  });
 }
 
 // ── INICIALIZAÇÃO ─────────────────────────────────────────────
 async function init() {
+  // Carrega nome da pasta guardado para exibir mesmo sem permissão ativa
+  try { state.folderName = await idbGet('folderName') || null; } catch (e) {}
+
   try {
     const handle = await idbGet('dirHandle');
     if (handle) {
       const perm = await handle.queryPermission({ mode: 'readwrite' });
       if (perm === 'granted') {
-        state.dirHandle = handle;
+        // Permissão ativa — carrega progresso direto
+        state.dirHandle  = handle;
+        state.folderName = handle.name;
         await loadProgress();
         updateFolderBadge();
         updateStats();
         render();
         return;
       }
-      // Permissão precisa ser re-solicitada — mostra banner não-bloqueante
+      // Permissão precisa de gesto do usuário — tela de reconexão
       updateFolderBadge();
+      showReconnectScreen(handle);
       updateStats();
       render();
-      setTimeout(() => showReconnectBanner(handle), 400);
       return;
     }
-    // Sem handle — verifica se usuário já dispensou a tela antes
+    // Sem pasta — verifica se usuário já dispensou a tela antes
     const seen = await idbGet('setupSeen');
     if (seen) {
       updateFolderBadge();

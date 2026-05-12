@@ -120,6 +120,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
     background: #fff7ed; border-color: #fed7aa; color: #c2410c;
 }
 .folder-indicator.unsaved:hover { background: #ffedd5; }
+.folder-indicator.needs-reconnect {
+    background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8;
+}
+.folder-indicator.needs-reconnect:hover { background: #dbeafe; }
 
 /* ── TOAST ────────────────────────────────────────────────── */
 .toast {
