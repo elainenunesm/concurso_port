@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercitar Português - Conteúdos</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header class="top-navbar">
+        <div class="logo-area">
+            <div class="logo-icon"></div>
+            <h1>Exercitar<br>Português</h1>
+        </div>
+
+        <div class="header-center">
+            <span>Progresso <span class="percent" id="headerPercent">0%</span></span>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="headerProgressFill" style="width:0%"></div>
+            </div>
+            <div class="sub-text" id="headerSubtext">0 de 21 questões respondidas</div>
+        </div>
+
+        <div class="header-right">
+            <div class="stat-item">
+                <i class="fa-solid fa-fire stat-icon flame"></i>
+                <div class="stat-text">
+                    <span>Sequência</span>
+                    <strong>3 dias</strong>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-star stat-icon star"></i>
+                <div class="stat-text">
+                    <span>Pontos</span>
+                    <strong id="headerPontos">180</strong>
+                </div>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=Ana&background=fbcfe8&color=be185d&rounded=true" alt="Ana">
+                </div>
+                <span>Ana</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="main-container">
+
+        <!-- SIDEBAR ESQUERDA -->
+        <aside class="left-sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-xmark"></i> Conteúdos
+            </div>
+
+            <div class="modules-list">
+                <div class="module-card active">
+                    <div class="module-icon bg-purple">Aa</div>
+                    <div class="module-content">
+                        <h3 class="module-title">1. Classificação de Palavras</h3>
+                        <p class="module-desc">Aprenda e pratique as classes de palavras.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill" id="moduleProgressFill" style="width:0%"></div></div>
+                            <span id="moduleProgressText">0%</span>
+                        </div>
+                    </div>
+                    <div class="status-icon check" id="moduleStatusIcon" style="display:none">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-icon bg-blue"><i class="fa-solid fa-diagram-project"></i></div>
+                    <div class="module-content">
+                        <h3 class="module-title">2. Análise Sintática</h3>
+                        <p class="module-desc">Aprenda a identificar os termos da oração e suas funções.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill" style="width:0%"></div></div>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-icon bg-orange">,</div>
+                    <div class="module-content">
+                        <h3 class="module-title">3. Pontuação</h3>
+                        <p class="module-desc">Entenda as regras de pontuação e como aplicá-las.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill" style="width:0%"></div></div>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-icon bg-green"><i class="fa-solid fa-align-left"></i></div>
+                    <div class="module-content">
+                        <h3 class="module-title">4. Interpretação de Texto</h3>
+                        <p class="module-desc">Desenvolva a compreensão e interpretação de textos.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill" style="width:0%"></div></div>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                </div>
+
+                <div class="module-card locked">
+                    <div class="module-icon bg-pink"><i class="fa-solid fa-award"></i></div>
+                    <div class="module-content">
+                        <h3 class="module-title">5. Ortografia</h3>
+                        <p class="module-desc">Reforce as regras ortográficas e evite erros.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill" style="width:0%"></div></div>
+                            <span>0%</span>
+                        </div>
+                    </div>
+                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer-tip">
+                <i class="fa-solid fa-trophy"></i>
+                <p>Complete os módulos na ordem para desbloquear os próximos!</p>
+            </div>
+        </aside>
+
+        <!-- PAINEL CENTRAL -->
+        <section class="center-panel">
+            <div class="center-header">
+                <div class="header-title-area">
+                    <div class="header-icon-large">Aa</div>
+                    <div class="header-texts">
+                        <h2>1. Classificação de Palavras</h2>
+                        <p>Aprenda as classes de palavras e como identificá-las em diferentes contextos.</p>
+                    </div>
+                </div>
+                <div class="header-status-badge">
+                    <div class="badge in-progress" id="moduleBadge">Em andamento <i class="fa-solid fa-circle-half-stroke"></i></div>
+                    <span id="moduleProgress">0 de 21 questões</span>
+                </div>
+            </div>
+
+            <!-- Quiz renderizado por JS -->
+            <div class="topics-container" id="quizContainer"></div>
+        </section>
+
+        <!-- PAINEL DIREITO -->
+        <aside class="right-sidebar">
+
+            <div class="card-widget">
+                <h3>Seu desempenho geral</h3>
+
+                <div class="chart-wrapper">
+                    <div class="donut-chart" id="donutChart" style="background:conic-gradient(var(--success-green) 0%, var(--divider-color) 0)">
+                        <div class="donut-inner">
+                            <strong id="donutValue">0%</strong>
+                            <span>de acerto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-list">
+                    <div class="stat-row">
+                        <div class="stat-label"><i class="fa-solid fa-check-circle"></i> Acertos</div>
+                        <div class="stat-value" id="statAcertos">0</div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><i class="fa-solid fa-times-circle"></i> Erros</div>
+                        <div class="stat-value" id="statErros">0</div>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-label"><i class="fa-solid fa-circle"></i> Em branco</div>
+                        <div class="stat-value" id="statEmBranco">21</div>
+                    </div>
+                </div>
+
+                <button class="btn-outline btn-full"><i class="fa-solid fa-chart-column"></i> Ver desempenho detalhado</button>
+            </div>
+
+            <div class="card-widget">
+                <h3 class="left-align">Como funciona?</h3>
+
+                <div class="how-it-works-list">
+                    <div class="step-item">
+                        <div class="step-icon purple"><i class="fa-solid fa-book-open"></i></div>
+                        <div class="step-text">
+                            <h4>1. Leia a questão</h4>
+                            <p>Leia com atenção antes de escolher.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon blue"><i class="fa-solid fa-pen"></i></div>
+                        <div class="step-text">
+                            <h4>2. Escolha a resposta</h4>
+                            <p>Clique na alternativa que considerar correta.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon orange"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="step-text">
+                            <h4>3. Avance</h4>
+                            <p>Conclua todas as questões para completar o módulo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <i class="fa-regular fa-star"></i>
+                    <p>Responda todas as questões para desbloquear o próximo módulo!</p>
+                </div>
+            </div>
+
+        </aside>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
