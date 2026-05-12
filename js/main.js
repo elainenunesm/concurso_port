@@ -731,9 +731,15 @@ const icons = {
 const PUNCT = new Set(['.', ',', '!', '?', ';', ':']);
 
 // ── DISPATCHER ───────────────────────────────────────────────
+function updateHeaderH() {
+  const navbar = document.querySelector('.top-navbar');
+  if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
+}
+
 function render() {
   const hc = $('headerCenter');
   if (hc) hc.style.display = state.phase === 'intro' ? 'none' : '';
+  updateHeaderH();
   if (state.phase === 'intro')   { renderIntro();   return; }
   if (state.phase === 'results') { renderResults(); return; }
   renderQuestion();
@@ -1048,12 +1054,40 @@ function updateStats() {
   }
 }
 
-// Mobile accordion toggles
-document.getElementById('leftSidebarToggle').addEventListener('click', () => {
-  document.getElementById('leftSidebar').classList.toggle('open');
-});
-document.getElementById('rightSidebarToggle').addEventListener('click', () => {
-  document.getElementById('rightSidebar').classList.toggle('open');
-});
+// Mobile nav panel toggles
+(function () {
+  const backdrop = document.getElementById('mobilePanelBackdrop');
+
+  function closePanels() {
+    document.getElementById('leftSidebar').classList.remove('open');
+    document.getElementById('rightSidebar').classList.remove('open');
+    document.getElementById('btnMobileConteudos').classList.remove('active');
+    document.getElementById('btnMobileDesempenho').classList.remove('active');
+    if (backdrop) backdrop.classList.remove('active');
+  }
+
+  function togglePanel(sidebarId, btnId) {
+    const isOpen = document.getElementById(sidebarId).classList.contains('open');
+    closePanels();
+    if (!isOpen) {
+      updateHeaderH();
+      document.getElementById(sidebarId).classList.add('open');
+      document.getElementById(btnId).classList.add('active');
+      if (backdrop) backdrop.classList.add('active');
+    }
+  }
+
+  document.getElementById('btnMobileConteudos').addEventListener('click', () => {
+    togglePanel('leftSidebar', 'btnMobileConteudos');
+  });
+  document.getElementById('btnMobileDesempenho').addEventListener('click', () => {
+    togglePanel('rightSidebar', 'btnMobileDesempenho');
+  });
+
+  if (backdrop) backdrop.addEventListener('click', closePanels);
+})();
+
+window.addEventListener('resize', updateHeaderH);
+updateHeaderH();
 
 init();

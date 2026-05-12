@@ -240,6 +240,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* Accordion mobile — invisível no desktop */
 .mobile-accordion-header { display: none; }
 .mobile-accordion-body   { display: contents; }
+/* Botões nav mobile e backdrop — invisíveis no desktop */
+.mobile-nav-buttons    { display: none; }
+.mobile-panel-backdrop { display: none; }
 
 /* =========================================
    PAINEL CENTRAL (Conteúdo do Módulo)
@@ -954,82 +957,81 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .center-panel { order: 1; }
     .sidebar-header { display: none; }
 
-    /* Sidebars como acordeões recolhíveis */
-    .right-sidebar {
+    /* Botões de nav no header */
+    .mobile-nav-buttons {
         display: flex;
-        flex-direction: column;
-        order: 2;
-        position: static;
-        max-height: none;
-        overflow-y: visible;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        background: var(--bg-surface);
-        box-shadow: var(--shadow-sm);
+        gap: 8px;
+        width: 100%;
+        order: 5;
     }
-
-    .left-sidebar {
-        display: flex;
-        flex-direction: column;
-        order: 3;
-        position: static;
-        max-height: none;
-        overflow-y: visible;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        background: var(--bg-surface);
-        box-shadow: var(--shadow-sm);
-    }
-
-    /* Botão toggle do acordeão */
-    .mobile-accordion-header {
+    .mobile-nav-btn {
+        flex: 1;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 14px 16px;
-        font-size: 14px;
+        justify-content: center;
+        gap: 7px;
+        padding: 10px 14px;
+        background: var(--primary-light);
+        border: 1px solid #ddd6fe;
+        border-radius: 10px;
+        font-size: 13px;
         font-weight: 600;
-        color: var(--text-dark);
-        width: 100%;
-        background: none;
-        border: none;
+        color: var(--primary-main);
         cursor: pointer;
         font-family: inherit;
-        text-align: left;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
-    .mobile-accordion-header span {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+    .mobile-nav-btn.active {
+        background: var(--primary-main);
+        color: #fff;
+        border-color: var(--primary-main);
     }
-    .mobile-accordion-header span i { color: var(--primary-main); }
-
-    .mobile-chevron {
-        color: var(--text-light);
-        font-size: 12px;
+    .mobile-nav-chevron {
+        font-size: 11px;
         transition: transform 0.2s ease;
         flex-shrink: 0;
     }
-    .left-sidebar.open .mobile-chevron,
-    .right-sidebar.open .mobile-chevron { transform: rotate(180deg); }
+    .mobile-nav-btn.active .mobile-nav-chevron { transform: rotate(180deg); }
 
-    /* Corpo recolhível */
-    .mobile-accordion-body { display: none; }
+    /* Sidebars como gavetas laterais deslizantes */
+    .left-sidebar,
+    .right-sidebar {
+        display: flex;
+        position: fixed;
+        top: var(--header-h, 72px);
+        height: calc(100vh - var(--header-h, 72px));
+        width: 85%;
+        max-width: 320px;
+        z-index: 300;
+        background: var(--bg-surface);
+        overflow-y: auto;
+        flex-direction: column;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+    .left-sidebar {
+        left: 0;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.16);
+    }
+    .right-sidebar {
+        right: 0;
+        transform: translateX(100%);
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.16);
+    }
+    .left-sidebar.open  { transform: translateX(0); }
+    .right-sidebar.open { transform: translateX(0); }
 
-    .left-sidebar.open .mobile-accordion-body {
+    /* Conteúdo dos painéis */
+    .mobile-accordion-body {
         display: flex;
         flex-direction: column;
-        padding: 0 0 8px;
-        border-top: 1px solid var(--border-color);
+    }
+    .left-sidebar .mobile-accordion-body {
+        padding: 8px 12px 12px;
     }
 
-    .right-sidebar.open .mobile-accordion-body {
-        display: flex;
-        flex-direction: column;
-        border-top: 1px solid var(--border-color);
-    }
-
-    /* Remove borda própria dos widgets dentro do acordeão */
+    /* Remove borda própria dos widgets dentro do painel direito */
     .right-sidebar .card-widget {
         border: none;
         box-shadow: none;
@@ -1039,6 +1041,17 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .right-sidebar .card-widget + .card-widget {
         border-top: 1px solid var(--border-color);
     }
+
+    /* Fundo escurecido para fechar o painel */
+    .mobile-panel-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 299;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+    .mobile-panel-backdrop.active { display: block; }
 
     /* Header do painel central */
     .center-header {

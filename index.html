@@ -18,6 +18,19 @@
             <h1>Exercitar<br>Português</h1>
         </div>
 
+        <div class="mobile-nav-buttons">
+            <button type="button" class="mobile-nav-btn" id="btnMobileConteudos">
+                <i class="fa-solid fa-list-ul"></i>
+                <span>Conteúdos</span>
+                <i class="fa-solid fa-chevron-down mobile-nav-chevron"></i>
+            </button>
+            <button type="button" class="mobile-nav-btn" id="btnMobileDesempenho">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Desempenho</span>
+                <i class="fa-solid fa-chevron-down mobile-nav-chevron"></i>
+            </button>
+        </div>
+
         <div class="header-center" id="headerCenter" style="display:none">
             <span>Progresso <span class="percent" id="headerPercent">0%</span></span>
             <div class="progress-bar-bg">
@@ -49,11 +62,6 @@
             <div class="sidebar-header">
                 <i class="fa-solid fa-xmark"></i> Conteúdos
             </div>
-            <button type="button" class="mobile-accordion-header" id="leftSidebarToggle">
-                <span><i class="fa-solid fa-list-ul"></i> Conteúdos</span>
-                <i class="fa-solid fa-chevron-down mobile-chevron"></i>
-            </button>
-
             <div class="mobile-accordion-body">
             <div class="modules-list">
                 <div class="module-card active">
@@ -160,11 +168,6 @@
 
         <!-- PAINEL DIREITO -->
         <aside class="right-sidebar" id="rightSidebar">
-            <button type="button" class="mobile-accordion-header" id="rightSidebarToggle">
-                <span><i class="fa-solid fa-chart-column"></i> Desempenho atual</span>
-                <i class="fa-solid fa-chevron-down mobile-chevron"></i>
-            </button>
-
             <div class="mobile-accordion-body">
             <div class="card-widget">
                 <h3>Seu desempenho geral</h3>
@@ -237,6 +240,7 @@
         </aside>
     </main>
 
+    <div id="mobilePanelBackdrop" class="mobile-panel-backdrop"></div>
     <script src="js/main.js"></script>
 </body>
 </html>
