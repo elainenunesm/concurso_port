@@ -1046,4 +1046,12 @@ function updateStats() {
   }
 }
 
+// Mobile accordion toggles
+document.getElementById('leftSidebarToggle').addEventListener('click', () => {
+  document.getElementById('leftSidebar').classList.toggle('open');
+});
+document.getElementById('rightSidebarToggle').addEventListener('click', () => {
+  document.getElementById('rightSidebar').classList.toggle('open');
+});
+
 init();

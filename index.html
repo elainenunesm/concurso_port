@@ -52,11 +52,16 @@
     <main class="main-container">
 
         <!-- SIDEBAR ESQUERDA -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar" id="leftSidebar">
             <div class="sidebar-header">
                 <i class="fa-solid fa-xmark"></i> Conteúdos
             </div>
+            <button type="button" class="mobile-accordion-header" id="leftSidebarToggle">
+                <span><i class="fa-solid fa-list-ul"></i> Conteúdos</span>
+                <i class="fa-solid fa-chevron-down mobile-chevron"></i>
+            </button>
 
+            <div class="mobile-accordion-body">
             <div class="modules-list">
                 <div class="module-card active">
                     <div class="module-icon bg-purple">Aa</div>
@@ -137,6 +142,7 @@
                 <i class="fa-solid fa-trophy"></i>
                 <p>Complete os módulos na ordem para desbloquear os próximos!</p>
             </div>
+            </div><!-- /mobile-accordion-body -->
         </aside>
 
         <!-- PAINEL CENTRAL -->
@@ -160,8 +166,13 @@
         </section>
 
         <!-- PAINEL DIREITO -->
-        <aside class="right-sidebar">
+        <aside class="right-sidebar" id="rightSidebar">
+            <button type="button" class="mobile-accordion-header" id="rightSidebarToggle">
+                <span><i class="fa-solid fa-chart-column"></i> Desempenho atual</span>
+                <i class="fa-solid fa-chevron-down mobile-chevron"></i>
+            </button>
 
+            <div class="mobile-accordion-body">
             <div class="card-widget">
                 <h3>Seu desempenho geral</h3>
 
@@ -225,6 +236,7 @@
                 </div>
             </div>
 
+            </div><!-- /mobile-accordion-body -->
         </aside>
     </main>
 
