@@ -461,7 +461,7 @@ async function loadProgress() {
         state.current = data.current ?? 0;
         if (Array.isArray(data.activeSet)) state.activeSet = data.activeSet;
       }
-      const el = $('headerPontos'); if (el) el.textContent = state.points;
+      const el = $('statPontos'); if (el) el.textContent = state.points;
     }
   } catch (e) { /* sem progresso salvo, começa do zero */ }
 }
@@ -796,7 +796,7 @@ function startQuiz() {
   state.activeSet = questions.map((_, i) => i);
   state.results   = new Array(questions.length).fill(null);
   state.points    = 180;
-  const el = $('headerPontos'); if (el) el.textContent = state.points;
+  const el = $('statPontos'); if (el) el.textContent = state.points;
   updateStats();
   render();
   saveProgress();
@@ -995,7 +995,7 @@ function selectAnswer(idx) {
   if (state.results[qIdx] !== null) return;
   const correct = questions[qIdx].answers[idx].correct;
   state.results[qIdx] = { selected: idx, correct };
-  if (correct) { state.points += 10; const el = $('headerPontos'); if (el) el.textContent = state.points; }
+  if (correct) { state.points += 10; const el = $('statPontos'); if (el) el.textContent = state.points; }
   updateStats();
   renderQuestion();
   saveProgress();
@@ -1007,7 +1007,7 @@ function selectWordAnswer(wordIdx) {
   if (state.results[qIdx] !== null) return;
   const correct = wordIdx === questions[qIdx].correctIndex;
   state.results[qIdx] = { selected: wordIdx, correct };
-  if (correct) { state.points += 10; const el = $('headerPontos'); if (el) el.textContent = state.points; }
+  if (correct) { state.points += 10; const el = $('statPontos'); if (el) el.textContent = state.points; }
   updateStats();
   renderQuestion();
   saveProgress();
