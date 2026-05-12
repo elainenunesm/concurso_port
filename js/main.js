@@ -387,7 +387,158 @@ const state = {
   activeSet: questions.map((_, i) => i),
   results:   new Array(questions.length).fill(null),
   points:    180,
+  dirHandle: null,
 };
+
+// ── INDEXEDDB (persiste o handle da pasta entre sessões) ─────
+const IDB_NAME  = 'exercitar-portugues';
+const IDB_STORE = 'config';
+
+function openIDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open(IDB_NAME, 1);
+    req.onupgradeneeded = e => e.target.result.createObjectStore(IDB_STORE);
+    req.onsuccess = e => res(e.target.result);
+    req.onerror   = e => rej(e.target.error);
+  });
+}
+async function idbGet(key) {
+  const db = await openIDB();
+  return new Promise((res, rej) => {
+    const req = db.transaction(IDB_STORE, 'readonly').objectStore(IDB_STORE).get(key);
+    req.onsuccess = () => res(req.result);
+    req.onerror   = e => rej(e.target.error);
+  });
+}
+async function idbSet(key, value) {
+  const db = await openIDB();
+  return new Promise((res, rej) => {
+    const req = db.transaction(IDB_STORE, 'readwrite').objectStore(IDB_STORE).put(value, key);
+    req.onsuccess = () => res();
+    req.onerror   = e => rej(e.target.error);
+  });
+}
+
+// ── SALVAR / CARREGAR PROGRESSO ──────────────────────────────
+async function saveProgress() {
+  if (!state.dirHandle) return;
+  try {
+    const data = {
+      phase:     state.phase,
+      current:   state.current,
+      activeSet: state.activeSet,
+      results:   state.results,
+      points:    state.points,
+      savedAt:   new Date().toISOString(),
+    };
+    const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
+    const wr = await fh.createWritable();
+    await wr.write(JSON.stringify(data, null, 2));
+    await wr.close();
+  } catch (e) { console.warn('Erro ao salvar progresso:', e); }
+}
+async function loadProgress() {
+  if (!state.dirHandle) return;
+  try {
+    const fh   = await state.dirHandle.getFileHandle('progresso.json');
+    const file = await fh.getFile();
+    const data = JSON.parse(await file.text());
+    if (Array.isArray(data.results) && data.results.length === questions.length) {
+      state.results = data.results;
+      state.points  = data.points ?? 180;
+      if (data.phase === 'quiz' || data.phase === 'results') {
+        state.phase   = data.phase;
+        state.current = data.current ?? 0;
+        if (Array.isArray(data.activeSet)) state.activeSet = data.activeSet;
+      }
+      const el = $('headerPontos'); if (el) el.textContent = state.points;
+    }
+  } catch (e) { /* sem progresso salvo, começa do zero */ }
+}
+
+// ── BADGE DE PASTA ───────────────────────────────────────────
+function updateFolderBadge() {
+  let badge = document.getElementById('folderBadge');
+  if (!state.dirHandle) {
+    if (badge) badge.remove();
+    return;
+  }
+  if (!badge) {
+    badge = document.createElement('div');
+    badge.id = 'folderBadge';
+    badge.className = 'folder-badge';
+    document.querySelector('.sidebar-footer-tip').before(badge);
+  }
+  badge.innerHTML = `<i class="fa-solid fa-folder-open"></i> <span>${state.dirHandle.name}</span>`;
+}
+
+// ── TELA DE CONFIGURAÇÃO DE PASTA ───────────────────────────
+function showSetupScreen() {
+  const supported = 'showDirectoryPicker' in window;
+
+  const overlay = document.createElement('div');
+  overlay.id        = 'setupOverlay';
+  overlay.className = 'setup-overlay';
+  overlay.innerHTML = `
+    <div class="setup-card">
+      <div class="setup-icon"><i class="fa-solid fa-folder-open"></i></div>
+      <h2>Salvar seu progresso</h2>
+      <p>Selecione uma pasta no seu dispositivo para guardar seu progresso. Nenhum dado é enviado para a internet — tudo fica salvo apenas no seu computador.</p>
+      <div class="setup-info">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>O progresso será armazenado <strong>localmente</strong>, na pasta que você escolher.</span>
+      </div>
+      ${supported
+        ? `<button type="button" class="btn-setup" id="selectFolderBtn">
+             <i class="fa-solid fa-folder-open"></i> Selecionar pasta
+           </button>
+           <button type="button" class="btn-setup-skip" id="skipSetupBtn">Continuar sem salvar</button>`
+        : `<div class="setup-warning">
+             <i class="fa-solid fa-triangle-exclamation"></i>
+             Seu navegador não suporta seleção de pasta. Use Chrome ou Edge para salvar o progresso.
+           </div>
+           <button type="button" class="btn-setup" id="skipSetupBtn">Continuar sem salvar</button>`
+      }
+    </div>`;
+  document.body.appendChild(overlay);
+
+  function dismiss() { overlay.remove(); updateFolderBadge(); updateStats(); render(); }
+
+  if (supported) {
+    document.getElementById('selectFolderBtn').addEventListener('click', async () => {
+      try {
+        const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        state.dirHandle = handle;
+        await idbSet('dirHandle', handle);
+        await loadProgress();
+        dismiss();
+      } catch (e) { /* usuário cancelou o seletor */ }
+    });
+  }
+  document.getElementById('skipSetupBtn').addEventListener('click', dismiss);
+}
+
+// ── INICIALIZAÇÃO ─────────────────────────────────────────────
+async function init() {
+  try {
+    const handle = await idbGet('dirHandle');
+    if (handle) {
+      const perm = await handle.queryPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        state.dirHandle = handle;
+        await loadProgress();
+        updateFolderBadge();
+        updateStats();
+        render();
+        return;
+      }
+    }
+  } catch (e) { /* IDB indisponível ou handle expirado */ }
+
+  showSetupScreen();
+  updateStats();
+  render();
+}
 
 const $ = id => document.getElementById(id);
 
@@ -464,6 +615,7 @@ function startQuiz() {
   const el = $('headerPontos'); if (el) el.textContent = state.points;
   updateStats();
   render();
+  saveProgress();
 }
 
 // ── TELA DE RESULTADOS ────────────────────────────────────────
@@ -516,6 +668,7 @@ function renderResults() {
       state.phase     = 'quiz';
       updateStats();
       render();
+      saveProgress();
     });
   }
 }
@@ -560,7 +713,7 @@ function renderQuestion() {
 
   $('prevBtn').addEventListener('click', () => navigate(-1));
   $('nextBtn').addEventListener('click', () => {
-    if (isLast) { state.phase = 'results'; render(); }
+    if (isLast) { state.phase = 'results'; render(); saveProgress(); }
     else        { navigate(1); }
   });
 }
@@ -661,6 +814,7 @@ function selectAnswer(idx) {
   if (correct) { state.points += 10; const el = $('headerPontos'); if (el) el.textContent = state.points; }
   updateStats();
   renderQuestion();
+  saveProgress();
 }
 
 // ── SELECIONAR (word-select) ─────────────────────────────────
@@ -672,12 +826,14 @@ function selectWordAnswer(wordIdx) {
   if (correct) { state.points += 10; const el = $('headerPontos'); if (el) el.textContent = state.points; }
   updateStats();
   renderQuestion();
+  saveProgress();
 }
 
 // ── NAVEGAR ──────────────────────────────────────────────────
 function navigate(dir) {
   state.current += dir;
   render();
+  saveProgress();
 }
 
 // ── ESTATÍSTICAS ─────────────────────────────────────────────
@@ -714,6 +870,4 @@ function updateStats() {
   }
 }
 
-// ── INICIAR ───────────────────────────────────────────────────
-updateStats();
-render();
+init();
