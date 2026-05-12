@@ -657,6 +657,68 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     margin-bottom: 16px;
 }
 
+.lesson-title-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-gray);
+}
+
+.lesson-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.lesson-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.lesson-col-key {
+    min-width: 180px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.lesson-col-arrow {
+    color: var(--text-light);
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.lesson-col-val {
+    color: var(--text-gray);
+}
+
+.lesson-grid {
+    display: grid;
+    grid-template-columns: max-content 24px 1fr;
+    row-gap: 10px;
+    column-gap: 4px;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.lg-key {
+    color: var(--text-dark);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.lg-arrow {
+    color: var(--text-light);
+    font-weight: 600;
+    text-align: center;
+}
+
+.lg-val {
+    color: var(--text-gray);
+}
+
 .lesson-body p {
     font-size: 15px;
     line-height: 1.75;
@@ -863,6 +925,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     /* Intro */
     .lesson-screen { padding: 24px 20px 32px; }
     .lesson-screen h2 { font-size: 17px; }
+    .lesson-title { font-size: 17px; }
     .lesson-body { padding: 18px 20px; }
     .lesson-body p { font-size: 14px; }
     .btn-start { width: 100%; justify-content: center; }
@@ -905,6 +968,14 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .feedback-icon { width: 32px; height: 32px; font-size: 14px; }
     .feedback-content h2 { font-size: 14px; }
     .feedback-content p { font-size: 13px; }
+
+    /* Intro */
+    .lesson-screen { padding: 16px 14px 24px; }
+    .lesson-screen h2 { font-size: 15px; }
+    .lesson-title { font-size: 16px; margin-bottom: 12px; }
+    .lesson-body { padding: 14px 16px; }
+    .lesson-body p { font-size: 13px; line-height: 1.65; }
+    .lesson-grid { font-size: 13px; grid-template-columns: 1fr 20px auto; }
 
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
