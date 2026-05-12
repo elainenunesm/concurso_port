@@ -936,16 +936,36 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
         order: 10;
     }
     .header-right { gap: 12px; }
-    .stat-item { display: none; } /* oculta sequência e pontos */
+    .stat-item { display: none; }
 
-    /* Grid coluna única */
+    /* Grid coluna única — todos os painéis empilhados */
     .main-container {
         grid-template-columns: 1fr;
         padding: 12px 16px;
         gap: 12px;
         min-height: unset;
     }
-    .left-sidebar { display: none; }
+
+    /* Painel central primeiro */
+    .center-panel { order: 1; }
+
+    /* Desempenho abaixo do conteúdo */
+    .right-sidebar {
+        display: flex;
+        order: 2;
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    /* Módulos (Conteúdos) por último */
+    .left-sidebar {
+        display: flex;
+        order: 3;
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+    }
 
     /* Header do painel central */
     .center-header {
