@@ -570,6 +570,7 @@ const state = {
   m2points:        0,
   m2errorNotebook: {},
   m2pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [] },
+  m2unlocked:      false,
   previousPhase:   null,
 };
 
@@ -660,6 +661,7 @@ async function saveProgress() {
       m2results:       state.m2results,
       m2points:        state.m2points,
       m2errorNotebook: state.m2errorNotebook,
+      m2unlocked:      state.m2unlocked,
       savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
@@ -692,6 +694,7 @@ async function loadProgress() {
         ? data.m2results : new Array(questions2.length).fill(null);
       state.m2points        = data.m2points ?? 0;
       state.m2errorNotebook = data.m2errorNotebook ?? {};
+      state.m2unlocked      = data.m2unlocked ?? PHASES_MODULE2.includes(data.phase);
       const el = $('statPontos'); if (el) el.textContent = state.points;
       updateStreak();
       updateModule2Card();
@@ -1025,7 +1028,7 @@ function updateHeaderH() {
 }
 
 const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective'];
-const PHASES_SHOW_TITLE = ['intro', 'objective'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
@@ -1044,6 +1047,10 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-bullseye" style="color:#0d9488;font-size:24px"></i>';
       if (h2El)    h2El.textContent = '0. Objetivo';
       if (descEl)  descEl.textContent = 'Entenda a proposta desta plataforma educacional.';
+    } else if (PHASES_MODULE2.includes(state.phase)) {
+      if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-diagram-project" style="color:#3b82f6;font-size:24px"></i>';
+      if (h2El)    h2El.textContent = '2. Sujeito - Básico';
+      if (descEl)  descEl.textContent = 'Aprenda a identificar os termos da oração e suas funções.';
     } else {
       if (iconEl)  iconEl.textContent = 'Aa';
       if (h2El)    h2El.textContent = '1. Verbos - Básico';
@@ -1101,7 +1108,14 @@ function renderObjective() {
     </div>`;
 
   $('objStartBtn').addEventListener('click', () => {
-    state.phase = 'intro';
+    const answered = state.results.filter(r => r !== null).length;
+    if (answered > 0 && answered < questions.length) {
+      state.phase = 'quiz';
+    } else if (answered === questions.length) {
+      state.phase = 'results';
+    } else {
+      state.phase = 'intro';
+    }
     render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -1150,7 +1164,15 @@ function renderIntro() {
         Começar questões ${icons.right}
       </button>
     </div>`;
-  $('startBtn').addEventListener('click', startQuiz);
+  $('startBtn').addEventListener('click', () => {
+    const hasProgress = state.results.some(r => r !== null);
+    if (hasProgress) {
+      state.phase = 'quiz';
+      render();
+    } else {
+      startQuiz();
+    }
+  });
 }
 
 // ── TELA DE INTRODUÇÃO — MÓDULO 2 ────────────────────────────
@@ -1158,11 +1180,12 @@ function renderModule2Intro() {
   $('quizContainer').innerHTML = `
     <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Segunda Etapa</div>
-      <h2>Você irá responder as questões que é a segunda etapa para conseguir analisar textos.</h2>
-      <div class="lesson-body">
+      <h2>Justificativa da lição:</h2>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Essa etapa 2 você irá aprender o segundo passo para poder analisar texto: aprender a identificar o sujeito simples da frase.</p>
+      <div class="lesson-body" style="margin-top:24px">
         <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
         <p>Agora que você já sabe identificar o verbo, ficará mais fácil encontrar o sujeito.</p>
-        <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou sobre quem se fala</strong> na frase.</p>
+        <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou o termo sujeito é sobre quem se fala</strong> na frase.</p>
 
         <p><strong>Como identificar o sujeito em uma frase ou texto?</strong></p>
         <div class="lesson-table">
@@ -1247,6 +1270,9 @@ function renderResults() {
         ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
            <div class="results-actions">
              <button type="button" class="btn-nav" id="retryAllBtn">${icons.retry} Recomeçar do início</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="nextModuleBtn">
+               Próximo módulo ${icons.right}
+             </button>
            </div>`
         : `<p class="results-message">
              Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
@@ -1266,7 +1292,15 @@ function renderResults() {
     startQuiz();
   });
 
-  if (!allClear) {
+  if (allClear) {
+    $('nextModuleBtn').addEventListener('click', () => {
+      state.m2unlocked = true;
+      state.phase = 'module2-intro';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      render();
+      saveProgress();
+    });
+  } else {
     $('practiceBtn').addEventListener('click', () => {
       wrongSet.forEach(i => { state.results[i] = null; });
       state.activeSet = wrongSet;
@@ -1310,7 +1344,7 @@ function getLessonBodyHTML(module) {
     <div class="lesson-body">
       <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
       <p>Agora que você já sabe identificar o verbo, ficará mais fácil encontrar o sujeito.</p>
-      <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou sobre quem se fala</strong> na frase.</p>
+      <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou o termo sujeito é sobre quem se fala</strong> na frase.</p>
       <p><strong>Como identificar o sujeito em uma frase ou texto?</strong></p>
       <div class="lesson-table">
         <div class="lesson-row"><span class="lesson-col-key">1º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Encontre o <strong>verbo</strong> da frase.</span></div>
@@ -2106,7 +2140,8 @@ function updateStats() {
 
   const badge = $('moduleBadge');
   const icon  = $('moduleStatusIcon');
-  const allDone = m1answeredCt === m1total && m1total > 0;
+  const m1correctCt = state.results.filter(r => r !== null && r.correct).length;
+  const allDone = m1correctCt === m1total && m1total > 0;
   if (allDone) {
     if (badge) { badge.className = 'badge'; badge.innerHTML = 'Concluído <i class="fa-solid fa-circle-check"></i>'; }
     if (icon)  icon.style.display = 'flex';
@@ -2117,10 +2152,12 @@ function updateStats() {
   } else {
     if (badge) { badge.className = 'badge in-progress'; badge.innerHTML = 'Em andamento <i class="fa-solid fa-circle-half-stroke"></i>'; }
     if (icon)  icon.style.display = 'none';
-    const m2 = $('module2Card');
-    const m2lock = $('module2LockIcon');
-    if (m2) m2.classList.add('locked');
-    if (m2lock) m2lock.style.display = '';
+    if (!state.m2unlocked) {
+      const m2 = $('module2Card');
+      const m2lock = $('module2LockIcon');
+      if (m2) m2.classList.add('locked');
+      if (m2lock) m2lock.style.display = '';
+    }
   }
 }
 

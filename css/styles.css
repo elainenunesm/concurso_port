@@ -865,25 +865,35 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     column-gap: 10px;
     row-gap: 0;
     align-items: end;
+    grid-template-rows: auto minmax(36px, auto);
 }
 /* Cada chip na linha 1 já vem com grid-row:1 via style inline */
 
 .annot-verb,
 .annot-subject {
+    position: relative;
     grid-row: 2;
     text-align: center;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 5px 6px 0;
-    margin-top: 6px;
+    padding: 5px 6px 3px;
+    margin-top: 10px;
     border-top: 2px solid currentColor;
-    border-left: 2px solid currentColor;
-    border-right: 2px solid currentColor;
-    border-radius: 0 0 4px 4px;
     white-space: nowrap;
 }
+.annot-verb::before, .annot-verb::after,
+.annot-subject::before, .annot-subject::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+.annot-verb::before,    .annot-subject::before { left: 0; }
+.annot-verb::after,     .annot-subject::after  { right: 0; }
 .annot-verb    { color: #2563eb; }
 .annot-subject { color: #dc2626; }
 
@@ -942,7 +952,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     cursor: not-allowed;
 }
 .dual-confirm-btn:not(:disabled):hover {
-    background: var(--primary-dark);
+    background: #5b21b6;
 }
 .hint-label.subject-hint {
     color: #dc2626;
@@ -1024,23 +1034,26 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 .lesson-row {
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     gap: 10px;
 }
 
 .lesson-col-key {
-    min-width: 180px;
+    flex-shrink: 0;
+    white-space: nowrap;
     color: var(--text-dark);
     font-weight: 500;
 }
 
 .lesson-col-arrow {
+    flex-shrink: 0;
+    padding-top: 1px;
     color: var(--text-light);
     font-weight: 600;
-    flex-shrink: 0;
 }
 
 .lesson-col-val {
+    flex: 1;
     color: var(--text-gray);
 }
 
