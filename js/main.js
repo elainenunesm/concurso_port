@@ -658,20 +658,266 @@ const questions = [
   },
 ];
 
+// ── QUESTÕES MÓDULO 2 ─────────────────────────────────────────
+const questions2 = [
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'gato', 'dormiu', 'na', 'cama', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Dormiu" é o verbo (ação de dormir). "O gato" é o sujeito — quem dormiu? O gato.',
+    example: 'Pergunte: Quem dormiu? → O gato. Essa é a técnica para encontrar o sujeito!',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'Maria', 'cantou', 'no', 'coral', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Cantou" é o verbo (ação de cantar). "A Maria" é o sujeito — quem cantou? A Maria.',
+    example: 'O sujeito pode ser uma pessoa. "A Maria" = artigo + nome próprio.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'Pedro', 'comeu', 'o', 'bolo', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Comeu" é o verbo (ação de comer). "O Pedro" é o sujeito — quem comeu? O Pedro.',
+    example: 'O artigo "O" faz parte do sujeito! Sujeito = "O Pedro", não só "Pedro".',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'chuva', 'caiu', 'de', 'manhã', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Caiu" é o verbo (fenômeno da natureza). "A chuva" é o sujeito — o que caiu? A chuva.',
+    example: 'O sujeito pode ser um elemento da natureza. Quem ou o que + verbo = sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'João', 'estudou', 'a', 'lição', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Estudou" é o verbo (ação de estudar). "O João" é o sujeito — quem estudou? O João.',
+    example: 'Sujeito simples: apenas uma pessoa ou coisa pratica a ação.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'Ana', 'bebeu', 'o', 'suco', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Bebeu" é o verbo (ação de beber). "A Ana" é o sujeito — quem bebeu? A Ana.',
+    example: 'Atenção: "o suco" é o objeto (o que foi bebido), não o sujeito!',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'menino', 'sorriu', 'feliz', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Sorriu" é o verbo (ação de sorrir). "O menino" é o sujeito — quem sorriu? O menino.',
+    example: '"Feliz" é adjetivo que descreve o menino — não é o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'professora', 'pôs', 'o', 'livro', 'na', 'mesa', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Pôs" é o verbo (ação de pôr). "A professora" é o sujeito — quem pôs? A professora.',
+    example: '"O livro" é o objeto (o que foi posto). O sujeito é quem pratica a ação.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'cachorro', 'correu', 'no', 'parque', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Correu" é o verbo (ação de correr). "O cachorro" é o sujeito — quem correu? O cachorro.',
+    example: 'O sujeito pode ser um animal. "No parque" indica lugar — não é o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'criança', 'pulou', 'na', 'cama', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Pulou" é o verbo (ação de pular). "A criança" é o sujeito — quem pulou? A criança.',
+    example: '"Na cama" indica lugar — não confunda com o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'avô', 'leu', 'o', 'jornal', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Leu" é o verbo (ação de ler). "O avô" é o sujeito — quem leu? O avô.',
+    example: '"O jornal" é o objeto (o que foi lido). Sujeito ≠ objeto.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'mãe', 'abriu', 'a', 'janela', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Abriu" é o verbo (ação de abrir). "A mãe" é o sujeito — quem abriu? A mãe.',
+    example: '"A janela" é o objeto. Encontre o verbo primeiro, depois pergunte quem praticou a ação.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong> e em <strong>TODAS</strong> as palavras do <strong>SUJEITO</strong>:',
+    sentence: ['O', 'sol', 'forte', 'brilhou', 'hoje', '.'],
+    verbIndex: 3,
+    subjectIndices: [0, 1, 2],
+    feedback: '"Brilhou" é o verbo. "O sol forte" é o sujeito — quem brilhou? O sol forte. O adjetivo "forte" faz parte do sujeito!',
+    example: 'O sujeito inclui todos os termos referentes a quem pratica a ação: artigo + substantivo + adjetivo.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong> e em <strong>TODAS</strong> as palavras do <strong>SUJEITO</strong>:',
+    sentence: ['O', 'vento', 'frio', 'soprou', 'forte', '.'],
+    verbIndex: 3,
+    subjectIndices: [0, 1, 2],
+    feedback: '"Soprou" é o verbo. "O vento frio" é o sujeito completo — quem soprou? O vento frio. O adjetivo "frio" faz parte do sujeito.',
+    example: 'Cuidado: "forte" no final é advérbio (como soprou?), não faz parte do sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong> e em <strong>TODAS</strong> as palavras do <strong>SUJEITO</strong>:',
+    sentence: ['O', 'pequeno', 'pássaro', 'voou', 'alto', '.'],
+    verbIndex: 3,
+    subjectIndices: [0, 1, 2],
+    feedback: '"Voou" é o verbo. "O pequeno pássaro" é o sujeito — quem voou? O pequeno pássaro. O adjetivo "pequeno" faz parte do sujeito.',
+    example: '"Alto" no final é advérbio (como voou?), não é parte do sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'menina', 'partiu', 'cedo', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Partiu" é o verbo (ação de partir). "A menina" é o sujeito — quem partiu? A menina.',
+    example: '"Cedo" é advérbio de tempo — indica quando, não quem praticou a ação.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['O', 'pai', 'vendeu', 'o', 'carro', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Vendeu" é o verbo (ação de vender). "O pai" é o sujeito — quem vendeu? O pai.',
+    example: '"O carro" é o objeto da venda — não é o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'vovó', 'propôs', 'uma', 'brincadeira', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Propôs" é o verbo (ação de propor). "A vovó" é o sujeito — quem propôs? A vovó.',
+    example: '"Uma brincadeira" é o que foi proposto (objeto), não o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'turma', 'aplaudiu', 'o', 'professor', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Aplaudiu" é o verbo (ação de aplaudir). "A turma" é o sujeito — quem aplaudiu? A turma.',
+    example: '"O professor" é quem recebeu o aplauso (objeto), não o sujeito.',
+  },
+  {
+    type: 'dual-select',
+    difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong> e no <strong>SUJEITO</strong> da frase:',
+    sentence: ['A', 'Maria', 'escreveu', 'uma', 'carta', '.'],
+    verbIndex: 2,
+    subjectIndices: [0, 1],
+    feedback: '"Escreveu" é o verbo (ação de escrever). "A Maria" é o sujeito — quem escreveu? A Maria.',
+    example: '"Uma carta" é o que foi escrito (objeto). O sujeito é quem pratica a ação do verbo.',
+  },
+];
+
 // ── ESTADO ───────────────────────────────────────────────────
 // phase: 'intro' | 'quiz' | 'results'
 // activeSet: índices das questões da rodada atual
 // results: array indexado pelo índice original da questão
 const state = {
-  phase:       'intro',
-  current:     0,
-  activeSet:   questions.map((_, i) => i),
-  results:     new Array(questions.length).fill(null),
-  points:      180,
-  dirHandle:   null,
-  folderName:  null,
-  allowReload: false,
+  phase:         'intro',
+  current:       0,
+  activeSet:     questions.map((_, i) => i),
+  results:       new Array(questions.length).fill(null),
+  points:        0,
+  dirHandle:     null,
+  folderName:    null,
+  allowReload:   false,
+  errorNotebook: {},
+  activityLog:   [],
+  m2phase:         'none',
+  m2current:       0,
+  m2activeSet:     questions2.map((_, i) => i),
+  m2results:       new Array(questions2.length).fill(null),
+  m2points:        0,
+  m2errorNotebook: {},
+  m2pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [] },
+  previousPhase:   null,
 };
+
+// ── SEQUÊNCIA (streak) ───────────────────────────────────────
+function localDateStr(isoStr) {
+  const d = new Date(isoStr);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function computeStreak(log) {
+  if (!log || log.length === 0) return 0;
+  const days = [...new Set(log.map(localDateStr))].sort().reverse();
+  const today = localDateStr(new Date().toISOString());
+  const yesterday = localDateStr(new Date(Date.now() - 864e5).toISOString());
+  if (days[0] !== today && days[0] !== yesterday) return 0;
+  let streak = 1;
+  for (let i = 1; i < days.length; i++) {
+    const prev = new Date(days[i - 1]);
+    const curr = new Date(days[i]);
+    const diff = Math.round((prev - curr) / 864e5);
+    if (diff === 1) streak++;
+    else break;
+  }
+  return streak;
+}
+function recordActivity() {
+  state.activityLog.push(new Date().toISOString());
+  updateStreak();
+}
+function updateStreak() {
+  const el = $('statSequencia');
+  if (!el) return;
+  const n = computeStreak(state.activityLog);
+  el.textContent = n === 1 ? '1 dia' : `${n} dias`;
+}
 
 // ── INDEXEDDB (persiste o handle da pasta entre sessões) ─────
 const IDB_NAME  = 'exercitar-portugues';
@@ -715,12 +961,20 @@ async function saveProgress() {
   if (!state.dirHandle) return;
   try {
     const data = {
-      phase:     state.phase,
-      current:   state.current,
-      activeSet: state.activeSet,
-      results:   state.results,
-      points:    state.points,
-      savedAt:   new Date().toISOString(),
+      phase:           state.phase,
+      current:         state.current,
+      activeSet:       state.activeSet,
+      results:         state.results,
+      points:          state.points,
+      errorNotebook:   state.errorNotebook,
+      activityLog:     state.activityLog,
+      m2phase:         state.m2phase,
+      m2current:       state.m2current,
+      m2activeSet:     state.m2activeSet,
+      m2results:       state.m2results,
+      m2points:        state.m2points,
+      m2errorNotebook: state.m2errorNotebook,
+      savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
     const wr = await fh.createWritable();
@@ -735,14 +989,26 @@ async function loadProgress() {
     const file = await fh.getFile();
     const data = JSON.parse(await file.text());
     if (Array.isArray(data.results) && data.results.length === questions.length) {
-      state.results = data.results;
-      state.points  = data.points ?? 180;
-      if (data.phase === 'quiz' || data.phase === 'results') {
+      state.results       = data.results;
+      state.points        = data.points ?? 0;
+      state.errorNotebook = data.errorNotebook ?? {};
+      state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
+      const validPhases = ['quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results'];
+      if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
         if (Array.isArray(data.activeSet)) state.activeSet = data.activeSet;
       }
+      state.m2phase         = data.m2phase ?? 'none';
+      state.m2current       = data.m2current ?? 0;
+      state.m2activeSet     = Array.isArray(data.m2activeSet) ? data.m2activeSet : questions2.map((_, i) => i);
+      state.m2results       = Array.isArray(data.m2results) && data.m2results.length === questions2.length
+        ? data.m2results : new Array(questions2.length).fill(null);
+      state.m2points        = data.m2points ?? 0;
+      state.m2errorNotebook = data.m2errorNotebook ?? {};
       const el = $('statPontos'); if (el) el.textContent = state.points;
+      updateStreak();
+      updateModule2Card();
     }
   } catch (e) { /* sem progresso salvo, começa do zero */ }
 }
@@ -827,7 +1093,7 @@ function showSetupScreen() {
     </div>`;
   document.body.appendChild(overlay);
 
-  function dismiss() { overlay.remove(); updateFolderBadge(); updateStats(); render(); }
+  function dismiss() { overlay.remove(); updateFolderBadge(); updateStats(); updateErrorNotebook(); render(); }
 
   if (supported) {
     document.getElementById('selectFolderBtn').addEventListener('click', async () => {
@@ -880,6 +1146,7 @@ function showReconnectScreen(handle) {
         overlay.remove();
         updateFolderBadge();
         updateStats();
+        updateErrorNotebook();
         render();
       }
     } catch (e) { /* usuário negou */ }
@@ -914,6 +1181,7 @@ async function init() {
         await loadProgress();
         updateFolderBadge();
         updateStats();
+        updateErrorNotebook();
         render();
         return;
       }
@@ -921,6 +1189,7 @@ async function init() {
       updateFolderBadge();
       showReconnectScreen(handle);
       updateStats();
+      updateErrorNotebook();
       render();
       return;
     }
@@ -930,6 +1199,7 @@ async function init() {
   updateFolderBadge();
   showSetupScreen();
   updateStats();
+  updateErrorNotebook();
   render();
 }
 
@@ -989,6 +1259,48 @@ window.addEventListener('beforeunload', e => {
   }
 });
 
+// ── CARD CLASSIFICAÇÃO DE PALAVRAS (SIDEBAR) ─────────────────
+document.getElementById('moduleBtnCard').addEventListener('click', () => {
+  const answered = state.results.filter(r => r !== null).length;
+  const allDone  = answered === questions.length;
+  state.phase = (answered > 0 && !allDone) ? 'quiz' : 'intro';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
+// ── CARD SUJEITO - BÁSICO (SIDEBAR) ──────────────────────────
+document.getElementById('module2Card').addEventListener('click', () => {
+  if ($('module2Card').classList.contains('locked')) return;
+  const answered = state.m2results.filter(r => r !== null).length;
+  if (answered > 0 && answered < questions2.length) {
+    state.phase = 'module2-quiz';
+  } else {
+    state.phase = 'module2-intro';
+  }
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
+// ── CARD CADERNO DE ERROS (SIDEBAR) ──────────────────────────
+document.getElementById('cadernoBtnCard').addEventListener('click', () => {
+  if (state.phase !== 'error-notebook') state.previousPhase = state.phase;
+  state.phase = 'error-notebook';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
+// ── BOTÃO VER DESEMPENHO ─────────────────────────────────────
+document.getElementById('btnVerDesempenho').addEventListener('click', showPerformanceModal);
+
 // ── BOTÃO DE SALVAR (SIDEBAR) ────────────────────────────────
 document.getElementById('btnSaveSidebar').addEventListener('click', async () => {
   if (state.dirHandle) {
@@ -1017,12 +1329,31 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results'];
+const PHASES_SHOW_TITLE = ['intro'];
+const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
+
+const PHASES_M1 = ['intro', 'quiz', 'results'];
+
 function render() {
+  updateStats();
   const hc = $('headerCenter');
-  if (hc) hc.style.display = state.phase === 'intro' ? 'none' : '';
+  if (hc) hc.style.display = PHASES_NO_HEADER.includes(state.phase) ? 'none' : '';
+  const titleArea = $('centerPanelTitleArea');
+  if (titleArea) titleArea.style.display = PHASES_SHOW_TITLE.includes(state.phase) ? '' : 'none';
+  const sb = document.querySelector('.header-status-badge');
+  if (sb) sb.style.display = PHASES_M1.includes(state.phase) ? '' : 'none';
   updateHeaderH();
-  if (state.phase === 'intro')   { renderIntro();   return; }
-  if (state.phase === 'results') { renderResults(); return; }
+  const cc  = $('cadernoBtnCard');
+  const m2c = $('module2Card');
+  if (cc)  cc.classList.toggle('active-view', state.phase === 'error-notebook');
+  if (m2c) m2c.classList.toggle('active-view', PHASES_MODULE2.includes(state.phase));
+  if (state.phase === 'intro')             { renderIntro();             return; }
+  if (state.phase === 'results')           { renderResults();           return; }
+  if (state.phase === 'error-notebook')    { renderErrorNotebookPage(); return; }
+  if (state.phase === 'module2-intro')     { renderModule2Intro();      return; }
+  if (state.phase === 'module2-quiz')      { renderModule2Question();   return; }
+  if (state.phase === 'module2-results')   { renderModule2Results();    return; }
   renderQuestion();
 }
 
@@ -1071,12 +1402,71 @@ function renderIntro() {
   $('startBtn').addEventListener('click', startQuiz);
 }
 
+// ── TELA DE INTRODUÇÃO — MÓDULO 2 ────────────────────────────
+function renderModule2Intro() {
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Segunda Etapa</div>
+      <h2>Você irá responder as questões que é a segunda etapa para conseguir analisar textos.</h2>
+      <div class="lesson-body">
+        <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
+        <p>Agora que você já sabe identificar o verbo, ficará mais fácil encontrar o sujeito.</p>
+        <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou sobre quem se fala</strong> na frase.</p>
+
+        <p><strong>Como identificar o sujeito em uma frase ou texto?</strong></p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key">1º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Encontre o <strong>verbo</strong> da frase.</span></div>
+          <div class="lesson-row"><span class="lesson-col-key">2º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Faça a pergunta: <strong>quem + verbo?</strong> ou <strong>o que + verbo?</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key">3º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">A resposta será o <strong>sujeito</strong>.</span></div>
+        </div>
+
+        <p><strong>Exemplos:</strong></p>
+        <div class="lesson-grid">
+          <span class="lg-key"><em>Maria estudou ontem.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem estudou? <strong>Maria</strong></span>
+          <span class="lg-key"><em>O cachorro latiu muito.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem latiu? <strong>o cachorro</strong></span>
+          <span class="lg-key"><em>As crianças brincaram na rua.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem brincou? <strong>as crianças</strong></span>
+          <span class="lg-key"><em>O carro quebrou.</em></span><span class="lg-arrow">→</span><span class="lg-val">O que quebrou? <strong>o carro</strong></span>
+          <span class="lg-key"><em>A janela abriu.</em></span><span class="lg-arrow">→</span><span class="lg-val">O que abriu? <strong>a janela</strong></span>
+          <span class="lg-key"><em>O computador desligou sozinho.</em></span><span class="lg-arrow">→</span><span class="lg-val">O que desligou? <strong>o computador</strong></span>
+          <span class="lg-key"><em>A chuva começou cedo.</em></span><span class="lg-arrow">→</span><span class="lg-val">O que começou cedo? <strong>a chuva</strong></span>
+        </div>
+
+        <p><strong>O sujeito pode ser:</strong></p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key">pessoa</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>Maria, o menino, elas…</em></span></div>
+          <div class="lesson-row"><span class="lesson-col-key">animal</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>o cachorro, a abelha…</em></span></div>
+          <div class="lesson-row"><span class="lesson-col-key">objeto</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>o carro, o computador…</em></span></div>
+          <div class="lesson-row"><span class="lesson-col-key">lugar</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>a cidade, a escola…</em></span></div>
+        </div>
+
+        <p><strong>Resumo:</strong> O sujeito é o termo da frase sobre o qual se declara algo. Geralmente, é quem faz a ação do verbo ou de quem se fala.</p>
+      </div>
+      <button type="button" class="btn-start" id="startModule2Btn">
+        Começar questões ${icons.right}
+      </button>
+    </div>`;
+  $('startModule2Btn').addEventListener('click', startModule2Quiz);
+}
+
+function startModule2Quiz() {
+  state.m2phase     = 'quiz';
+  state.m2current   = 0;
+  state.m2activeSet = questions2.map((_, i) => i);
+  state.m2results   = new Array(questions2.length).fill(null);
+  state.m2points    = 0;
+  state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+  state.phase       = 'module2-quiz';
+  updateModule2Card();
+  render();
+  saveProgress();
+}
+
 function startQuiz() {
   state.phase     = 'quiz';
   state.current   = 0;
   state.activeSet = questions.map((_, i) => i);
   state.results   = new Array(questions.length).fill(null);
-  state.points    = 180;
+  state.points    = 0;
   const el = $('statPontos'); if (el) el.textContent = state.points;
   updateStats();
   render();
@@ -1270,6 +1660,261 @@ function buildWordSelect(q, result, done) {
     </div>`;
 }
 
+// ── CADERNO DE ERROS ─────────────────────────────────────────
+function updateErrorNotebook() {
+  const count1 = Object.keys(state.errorNotebook).length;
+  const count2 = Object.keys(state.m2errorNotebook).length;
+  const count  = count1 + count2;
+  const badge        = $('cadernoErrorBadge');
+  const countEl      = $('cadernoErrorCount');
+  const progressText = $('cadernoProgressText');
+  const progressFill = $('cadernoProgressFill');
+  if (badge)        badge.style.display = count > 0 ? 'flex' : 'none';
+  if (countEl)      countEl.textContent = count;
+  if (progressText) progressText.textContent = count === 0 ? '0 erros' : `${count} erro${count !== 1 ? 's' : ''}`;
+  const totalQ = questions.length + questions2.length;
+  if (progressFill) progressFill.style.width = count === 0 ? '0%' : `${Math.round(count / totalQ * 100)}%`;
+  if (state.phase === 'error-notebook') renderErrorNotebookPage();
+}
+
+// ── MODAL DESEMPENHO DETALHADO ───────────────────────────────
+function showPerformanceModal() {
+  const total     = questions.length;
+  const correct   = state.results.filter(r => r && r.correct).length;
+  const wrong     = state.results.filter(r => r && !r.correct).length;
+  const blank     = state.results.filter(r => r === null).length;
+  const pct       = total > 0 ? Math.round(correct / total * 100) : 0;
+  const streak    = computeStreak(state.activityLog);
+
+  function diffClass(d) {
+    if (!d) return '';
+    const s = d.toLowerCase();
+    if (s.includes('fácil') || s.includes('facil')) return 'facil';
+    if (s.includes('médio') || s.includes('medio')) return 'medio';
+    return 'avancado';
+  }
+
+  const rowsHTML = questions.map((q, i) => {
+    const r = state.results[i];
+    const cls = r === null ? 'blank' : r.correct ? 'correct' : 'wrong';
+    const statusText = r === null
+      ? '<i class="fa-solid fa-circle" style="font-size:8px"></i> Em branco'
+      : r.correct
+        ? '<i class="fa-solid fa-check-circle"></i> Correto'
+        : '<i class="fa-solid fa-times-circle"></i> Errado';
+    const diff = q.difficulty
+      ? `<span class="perf-diff ${diffClass(q.difficulty)}">${q.difficulty}</span>`
+      : '';
+    const shortText = q.text.replace(/<[^>]+>/g, '').substring(0, 55);
+    return `<div class="perf-qrow ${cls}">
+      <span class="perf-qnum">Q${i + 1}</span>
+      ${diff}
+      <span class="perf-qtext">${shortText}</span>
+      <span class="perf-qstatus">${statusText}</span>
+    </div>`;
+  }).join('');
+
+  const overlay = document.createElement('div');
+  overlay.className = 'setup-overlay';
+  overlay.id = 'perfModalOverlay';
+  overlay.innerHTML = `
+    <div class="perf-modal">
+      <div class="perf-modal-header">
+        <h2><i class="fa-solid fa-chart-column" style="color:var(--primary-main);margin-right:8px"></i>Desempenho Detalhado</h2>
+        <button class="perf-close" id="perfCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="perf-summary">
+        <div class="perf-summary-card green">
+          <div class="psv">${pct}%</div>
+          <div class="psl">de acerto</div>
+        </div>
+        <div class="perf-summary-card purple">
+          <div class="psv">${state.points}</div>
+          <div class="psl">pontos</div>
+        </div>
+        <div class="perf-summary-card">
+          <div class="psv">${streak === 1 ? '1 dia' : streak + ' dias'}</div>
+          <div class="psl">sequência</div>
+        </div>
+      </div>
+
+      <div class="stats-list" style="background:var(--bg-page);border-radius:12px;padding:14px 16px;">
+        <div class="stat-row">
+          <div class="stat-label"><i class="fa-solid fa-check-circle"></i> Acertos</div>
+          <div class="stat-value" style="color:var(--success-green)">${correct}</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><i class="fa-solid fa-times-circle"></i> Erros</div>
+          <div class="stat-value" style="color:var(--error-red)">${wrong}</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-label"><i class="fa-solid fa-circle" style="font-size:10px"></i> Em branco</div>
+          <div class="stat-value">${blank}</div>
+        </div>
+      </div>
+
+      <p class="perf-section-title">Por questão</p>
+      <div class="perf-qlist">${rowsHTML}</div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.getElementById('perfCloseBtn').addEventListener('click', () => overlay.remove());
+}
+
+// ── PÁGINA CADERNO DE ERROS ───────────────────────────────────
+function renderErrorNotebookPage() {
+  const entries1 = Object.entries(state.errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const entries2 = Object.entries(state.m2errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const totalErrors = entries1.length + entries2.length;
+
+  function diffCls(d) {
+    if (!d) return 'easy';
+    const s = d.toLowerCase();
+    return s.includes('médio') || s.includes('medio') ? 'medium' : s.includes('difícil') || s.includes('dificil') ? 'hard' : 'easy';
+  }
+
+  const cardsM1 = entries1.map(([qIdx, count]) => {
+    const q = questions[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const qText = q.text.replace(/<[^>]+>/g, '').replace(/&[^;]+;/g, ' ').trim();
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M1·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${qText}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToQuestion(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
+  const cardsM2 = entries2.map(([qIdx, count]) => {
+    const q = questions2[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const sentence = q.sentence.filter(w => w !== '.').join(' ');
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M2·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${sentence}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToM2Question(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
+  const listHTML = totalErrors === 0
+    ? `<div class="enp-empty">
+         <i class="fa-solid fa-check-circle"></i>
+         <p>Nenhum erro ainda!<br>Continue praticando e suas questões erradas aparecerão aqui.</p>
+       </div>`
+    : [...cardsM1, ...cardsM2].join('');
+
+  const actionsHTML = [
+    entries1.length > 0
+      ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceAllErrorsBtn">
+           ${icons.retry} Praticar erros Módulo 1
+         </button>`
+      : '',
+    entries2.length > 0
+      ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceM2ErrorsBtn">
+           ${icons.retry} Praticar erros Módulo 2
+         </button>`
+      : '',
+  ].filter(Boolean).join('');
+
+  const backLabel = state.previousPhase && state.previousPhase.startsWith('module2') ? 'Módulo 2' : 'Módulo 1';
+
+  $('quizContainer').innerHTML = `
+    <div class="enp-page">
+      ${state.previousPhase ? `<button type="button" class="btn-nav enp-back" id="enpBackBtn">${icons.left} Voltar para ${backLabel}</button>` : ''}
+      <div class="enp-header">
+        <div class="enp-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="enp-titles">
+          <h2>Caderno de Erros</h2>
+          <p>Questões que você errou. Clique em uma para revisitar ou pratique todas de uma vez.</p>
+        </div>
+      </div>
+      <div class="enp-list">${listHTML}</div>
+      ${actionsHTML ? `<div class="enp-actions">${actionsHTML}</div>` : ''}
+    </div>`;
+
+  if (state.previousPhase) {
+    $('enpBackBtn').addEventListener('click', () => {
+      state.phase = state.previousPhase;
+      state.previousPhase = null;
+      render();
+    });
+  }
+
+  if (entries1.length > 0) {
+    $('practiceAllErrorsBtn').addEventListener('click', () => {
+      const wrongSet = Object.keys(state.errorNotebook).map(Number);
+      wrongSet.forEach(i => { state.results[i] = null; });
+      state.activeSet = wrongSet;
+      state.current   = 0;
+      state.phase     = 'quiz';
+      updateStats();
+      render();
+      saveProgress();
+    });
+  }
+  if (entries2.length > 0) {
+    $('practiceM2ErrorsBtn').addEventListener('click', () => {
+      const wrongSet = Object.keys(state.m2errorNotebook).map(Number);
+      wrongSet.forEach(i => { state.m2results[i] = null; });
+      state.m2activeSet = wrongSet;
+      state.m2current   = 0;
+      state.m2phase     = 'quiz';
+      state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+      state.phase       = 'module2-quiz';
+      updateModule2Card();
+      render();
+      saveProgress();
+    });
+  }
+}
+
+// ── NAVEGAR PARA QUESTÃO (caderno de erros) ──────────────────
+function goToQuestion(qIdx) {
+  if (state.activeSet.indexOf(Number(qIdx)) === -1) {
+    state.activeSet = questions.map((_, i) => i);
+  }
+  state.current = state.activeSet.indexOf(Number(qIdx));
+  state.results[Number(qIdx)] = null;
+  state.phase   = 'quiz';
+  updateStats();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+  render();
+}
+
+// ── NAVEGAR PARA QUESTÃO MÓDULO 2 (caderno de erros) ─────────
+function goToM2Question(qIdx) {
+  if (state.m2activeSet.indexOf(Number(qIdx)) === -1) {
+    state.m2activeSet = questions2.map((_, i) => i);
+  }
+  state.m2current = state.m2activeSet.indexOf(Number(qIdx));
+  state.m2results[Number(qIdx)] = null;
+  state.m2phase   = 'quiz';
+  state.m2pending = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+  state.phase     = 'module2-quiz';
+  updateModule2Card();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+  render();
+}
+
 // ── SELECIONAR (múltipla escolha) ────────────────────────────
 function selectAnswer(idx) {
   const qIdx = state.activeSet[state.current];
@@ -1277,7 +1922,10 @@ function selectAnswer(idx) {
   const correct = questions[qIdx].answers[idx].correct;
   state.results[qIdx] = { selected: idx, correct };
   if (correct) { state.points += 10; const el = $('statPontos'); if (el) el.textContent = state.points; }
+  if (!correct) { state.errorNotebook[qIdx] = (state.errorNotebook[qIdx] || 0) + 1; }
+  recordActivity();
   updateStats();
+  updateErrorNotebook();
   renderQuestion();
   saveProgress();
 }
@@ -1289,9 +1937,288 @@ function selectWordAnswer(wordIdx) {
   const correct = wordIdx === questions[qIdx].correctIndex;
   state.results[qIdx] = { selected: wordIdx, correct };
   if (correct) { state.points += 10; const el = $('statPontos'); if (el) el.textContent = state.points; }
+  if (!correct) { state.errorNotebook[qIdx] = (state.errorNotebook[qIdx] || 0) + 1; }
+  recordActivity();
   updateStats();
+  updateErrorNotebook();
   renderQuestion();
   saveProgress();
+}
+
+// ── MÓDULO 2: RENDERIZAR QUESTÃO ─────────────────────────────
+function renderModule2Question() {
+  const qIdx   = state.m2activeSet[state.m2current];
+  const q      = questions2[qIdx];
+  const result = state.m2results[qIdx];
+  const done   = result !== null;
+  const isLast = state.m2current === state.m2activeSet.length - 1;
+  const diffCls = q.difficulty === 'Médio'   ? ' difficulty-medium'
+                : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+
+  $('quizContainer').innerHTML = `
+    <div class="question-counter">Questão ${state.m2current + 1} de ${state.m2activeSet.length}</div>
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text}</p>
+    ${buildDualSelect(q, result, done)}
+    <div class="bottom-actions">
+      <button type="button" class="btn-nav" id="m2PrevBtn"${state.m2current === 0 ? ' disabled' : ''}>
+        ${icons.left} Questão anterior
+      </button>
+      <button type="button" class="btn-nav btn-nav-primary" id="m2NextBtn"${!done ? ' disabled' : ''}>
+        ${isLast ? 'Ver resultado' : 'Próxima questão'} ${icons.right}
+      </button>
+    </div>`;
+
+  if (!done) {
+    $('quizContainer').querySelectorAll('.word-chip[data-wi]').forEach(chip => {
+      chip.addEventListener('click', () => selectDualWord(+chip.dataset.wi));
+    });
+    const modeVerb = $('dualModeVerb');
+    const modeSubj = $('dualModeSubject');
+    if (modeVerb) modeVerb.addEventListener('click', () => { state.m2pending.mode = 'verb'; renderModule2Question(); });
+    if (modeSubj) modeSubj.addEventListener('click', () => { state.m2pending.mode = 'subject'; renderModule2Question(); });
+    const confirmBtn = $('dualConfirmBtn');
+    if (confirmBtn) confirmBtn.addEventListener('click', confirmDualAnswer);
+  }
+
+  $('m2PrevBtn').addEventListener('click', () => m2navigate(-1));
+  $('m2NextBtn').addEventListener('click', () => {
+    if (isLast) { state.phase = 'module2-results'; render(); saveProgress(); }
+    else        { m2navigate(1); }
+  });
+}
+
+// ── MÓDULO 2: MONTAR DUAL-SELECT ─────────────────────────────
+function buildAnnotatedSentence(q, chipsFn, annotFn) {
+  const N = q.sentence.length;
+  const chipsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) {
+      return `<span class="word-chip punctuation" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    }
+    return chipsFn(word, idx);
+  }).join('');
+  const annotHTML = annotFn(q);
+  return `<div class="sa-wrap"><div class="sentence-annotated" style="grid-template-columns:repeat(${N},auto)">${chipsHTML}${annotHTML}</div></div>`;
+}
+
+function buildDualSelect(q, result, done) {
+  if (!done) {
+    const { mode, verbIdx, subjectIdxs } = state.m2pending;
+    const canConfirm = verbIdx !== null && subjectIdxs.length > 0;
+
+    const sentenceHTML = buildAnnotatedSentence(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (idx === verbIdx)                cls += ' verb-pending';
+        else if (subjectIdxs.includes(idx)) cls += ' subject-pending';
+        return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      (q) => {
+        let a = '';
+        if (verbIdx !== null) {
+          a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
+        }
+        if (subjectIdxs.length > 0) {
+          const sorted = [...subjectIdxs].sort((a,b) => a-b);
+          const col = sorted[0] + 1;
+          const span = sorted[sorted.length-1] - sorted[0] + 1;
+          a += `<div class="annot-subject" style="grid-column:${col}/span ${span};grid-row:2">Sujeito</div>`;
+        }
+        return a;
+      }
+    );
+
+    const verbBtnCls = mode === 'verb'    ? 'dual-mode-btn active-verb'    : 'dual-mode-btn';
+    const subjBtnCls = mode === 'subject' ? 'dual-mode-btn active-subject' : 'dual-mode-btn';
+
+    return `
+      <div class="dual-mode-toggle">
+        <button type="button" class="${verbBtnCls}" id="dualModeVerb">
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> Selecionar Verbo
+        </button>
+        <button type="button" class="${subjBtnCls}" id="dualModeSubject">
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> Selecionar Sujeito
+        </button>
+      </div>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="dualConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar resposta
+      </button>`;
+  }
+
+  // Questão já respondida — mostrar resultado com chave
+  const sentenceHTML = buildAnnotatedSentence(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isCorrectVerb = idx === q.verbIndex;
+      const isCorrectSubj = q.subjectIndices.includes(idx);
+      const wasVerb = idx === result.verbSelected;
+      const wasSubj = result.subjectSelected.includes(idx);
+      if      (isCorrectVerb)              cls += ' correct-verb';
+      else if (isCorrectSubj)              cls += ' correct-subject';
+      else if (wasVerb && !isCorrectVerb)  cls += ' wrong-verb';
+      else if (wasSubj && !isCorrectSubj)  cls += ' wrong-subject';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    (q) => {
+      const subjStart = Math.min(...q.subjectIndices) + 1;
+      const subjSpan  = Math.max(...q.subjectIndices) - Math.min(...q.subjectIndices) + 1;
+      return `<div class="annot-verb" style="grid-column:${q.verbIndex+1};grid-row:2">Verbo</div>` +
+             `<div class="annot-subject" style="grid-column:${subjStart}/span ${subjSpan};grid-row:2">Sujeito</div>`;
+    }
+  );
+
+  const hintsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return '';
+    const isVerb = idx === q.verbIndex;
+    const isSubj = q.subjectIndices.includes(idx);
+    const role = isVerb ? 'Verbo' : isSubj ? 'Sujeito' : '—';
+    return `<div class="hint-row">
+      <span class="wh-word${isVerb || isSubj ? ' correct' : ''}">${word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${isVerb ? ' correct' : isSubj ? ' subject-hint' : ''}">${role}</span>
+      ${isVerb || isSubj ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`;
+  }).filter(h => h).join('');
+
+  return `
+    ${sentenceHTML}
+    <div class="feedback${result.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${result.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${result.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">Papel de cada palavra:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── MÓDULO 2: SELECIONAR PALAVRA ─────────────────────────────
+function selectDualWord(wordIdx) {
+  const { mode } = state.m2pending;
+  if (mode === 'verb') {
+    if (state.m2pending.verbIdx === wordIdx) {
+      state.m2pending.verbIdx = null;
+    } else {
+      state.m2pending.verbIdx = wordIdx;
+      state.m2pending.subjectIdxs = state.m2pending.subjectIdxs.filter(i => i !== wordIdx);
+      state.m2pending.mode = 'subject';
+    }
+  } else {
+    if (wordIdx === state.m2pending.verbIdx) return;
+    const i = state.m2pending.subjectIdxs.indexOf(wordIdx);
+    if (i === -1) state.m2pending.subjectIdxs.push(wordIdx);
+    else          state.m2pending.subjectIdxs.splice(i, 1);
+  }
+  renderModule2Question();
+}
+
+// ── MÓDULO 2: CONFIRMAR RESPOSTA ─────────────────────────────
+function confirmDualAnswer() {
+  const qIdx = state.m2activeSet[state.m2current];
+  if (state.m2results[qIdx] !== null) return;
+  const q = questions2[qIdx];
+  const { verbIdx, subjectIdxs } = state.m2pending;
+  if (verbIdx === null || subjectIdxs.length === 0) return;
+
+  const verbCorrect    = verbIdx === q.verbIndex;
+  const subjectCorrect = subjectIdxs.length === q.subjectIndices.length &&
+                         q.subjectIndices.every(i => subjectIdxs.includes(i));
+  const correct = verbCorrect && subjectCorrect;
+
+  state.m2results[qIdx] = { verbSelected: verbIdx, subjectSelected: [...subjectIdxs], correct, verbCorrect, subjectCorrect };
+  if (correct) state.m2points += 10;
+  if (!correct) state.m2errorNotebook[qIdx] = (state.m2errorNotebook[qIdx] || 0) + 1;
+  recordActivity();
+  updateModule2Card();
+  updateErrorNotebook();
+  renderModule2Question();
+  saveProgress();
+}
+
+// ── MÓDULO 2: NAVEGAR ────────────────────────────────────────
+function m2navigate(dir) {
+  state.m2current += dir;
+  state.m2pending = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+  renderModule2Question();
+  saveProgress();
+}
+
+// ── MÓDULO 2: TELA DE RESULTADOS ─────────────────────────────
+function renderModule2Results() {
+  const correctCt = state.m2results.filter(r => r && r.correct).length;
+  const wrongCt   = state.m2results.filter(r => r && !r.correct).length;
+  const allClear  = wrongCt === 0;
+  const iconBg    = allClear ? '#22c55e' : wrongCt > state.m2activeSet.length / 2 ? '#ef4444' : '#f97316';
+  const iconName  = allClear ? 'fa-trophy' : 'fa-flag-checkered';
+
+  $('quizContainer').innerHTML = `
+    <div class="results-screen">
+      <div class="results-icon" style="background:linear-gradient(135deg,${iconBg},${iconBg}bb)">
+        <i class="fa-solid ${iconName}"></i>
+      </div>
+      <h2>Você concluiu as questões de Sujeito — segunda etapa!</h2>
+      <div class="results-stats-row">
+        <div class="r-stat correct"><strong>${correctCt}</strong><span>Corretas</span></div>
+        <div class="r-stat wrong"><strong>${wrongCt}</strong><span>Incorretas</span></div>
+      </div>
+      ${allClear
+        ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m2RetryBtn">${icons.retry} Recomeçar</button>
+           </div>`
+        : `<p class="results-message">
+             Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
+             Clique em <strong>Praticar erros</strong> para tentar novamente as que errou.
+           </p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m2RetryBtn">${icons.retry} Recomeçar tudo</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m2PracticeBtn">
+               Praticar erros ${icons.right}
+             </button>
+           </div>`
+      }
+    </div>`;
+
+  $('m2RetryBtn').addEventListener('click', startModule2Quiz);
+
+  if (!allClear) {
+    $('m2PracticeBtn').addEventListener('click', () => {
+      const wrongSet = state.m2results
+        .map((r, i) => (r && !r.correct) ? i : -1)
+        .filter(i => i !== -1);
+      wrongSet.forEach(i => { state.m2results[i] = null; });
+      state.m2activeSet = wrongSet;
+      state.m2current   = 0;
+      state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+      state.phase       = 'module2-quiz';
+      render();
+      saveProgress();
+    });
+  }
+}
+
+// ── MÓDULO 2: ATUALIZAR CARD DA SIDEBAR ──────────────────────
+function updateModule2Card() {
+  const m2Card = $('module2Card');
+  if (!m2Card) return;
+  const total    = questions2.length;
+  const answered = state.m2results.filter(r => r !== null).length;
+  const pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  const fill = m2Card.querySelector('.fill');
+  const text = m2Card.querySelector('.module-progress span');
+  if (fill) fill.style.width = pct + '%';
+  if (text) text.textContent = pct + '%';
+
+  const allDone = answered === total && total > 0;
+  const m3Card = $('module3Card');
+  const m3Lock = $('module3LockIcon');
+  if (m3Card) m3Card.classList.toggle('locked', !allDone);
+  if (m3Lock) m3Lock.style.display = allDone ? 'none' : '';
 }
 
 // ── NAVEGAR ──────────────────────────────────────────────────
@@ -1303,35 +2230,59 @@ function navigate(dir) {
 
 // ── ESTATÍSTICAS ─────────────────────────────────────────────
 function updateStats() {
-  const answered    = state.activeSet.filter(i => state.results[i] !== null);
-  const correctCt   = answered.filter(i => state.results[i].correct).length;
-  const wrongCt     = answered.length - correctCt;
-  const blank       = state.activeSet.length - answered.length;
-  const acertoPct   = answered.length > 0 ? Math.round(correctCt / answered.length * 100) : 0;
-  const progressPct = state.activeSet.length > 0
-    ? Math.round(answered.length / state.activeSet.length * 100) : 0;
+  // Acertos/Erros/Em branco e donut refletem o módulo atual
+  const isM2 = PHASES_MODULE2.includes(state.phase);
+  let correctCt, wrongCt, blank, acertoPct;
+
+  if (isM2) {
+    correctCt = state.m2results.filter(r => r && r.correct).length;
+    wrongCt   = state.m2results.filter(r => r && !r.correct).length;
+    blank     = state.m2results.filter(r => r === null).length;
+    const answeredCt = correctCt + wrongCt;
+    acertoPct = answeredCt > 0 ? Math.round(correctCt / answeredCt * 100) : 0;
+  } else {
+    correctCt = state.results.filter(r => r && r.correct).length;
+    wrongCt   = state.results.filter(r => r && !r.correct).length;
+    blank     = state.results.filter(r => r === null).length;
+    const answeredCt = correctCt + wrongCt;
+    acertoPct = answeredCt > 0 ? Math.round(correctCt / answeredCt * 100) : 0;
+  }
 
   const dc = $('donutChart');   if (dc) dc.style.background = `conic-gradient(var(--success-green) ${acertoPct}%, var(--divider-color) 0)`;
   const dv = $('donutValue');   if (dv) dv.textContent = acertoPct + '%';
   const sa = $('statAcertos');  if (sa) sa.textContent = correctCt;
   const se = $('statErros');    if (se) se.textContent = wrongCt;
   const sb = $('statEmBranco'); if (sb) sb.textContent = blank;
+
+  // Header e card do Módulo 1 sempre usam o total real do módulo (não o activeSet)
+  const m1answeredCt = state.results.filter(r => r !== null).length;
+  const m1total      = questions.length;
+  const progressPct  = m1total > 0 ? Math.round(m1answeredCt / m1total * 100) : 0;
+
   const hp = $('headerPercent');      if (hp) hp.textContent = progressPct + '%';
   const hf = $('headerProgressFill'); if (hf) hf.style.width = progressPct + '%';
-  const hs = $('headerSubtext');      if (hs) hs.textContent = `${answered.length} de ${state.activeSet.length} questões respondidas`;
+  const hs = $('headerSubtext');      if (hs) hs.textContent = `${m1answeredCt} de ${m1total} questões respondidas`;
   const mf = $('moduleProgressFill'); if (mf) mf.style.width = progressPct + '%';
   const mt = $('moduleProgressText'); if (mt) mt.textContent = progressPct + '%';
-  const mp = $('moduleProgress');     if (mp) mp.textContent = `${answered.length} de ${state.activeSet.length} questões`;
+  const mp = $('moduleProgress');     if (mp) mp.textContent = `${m1answeredCt} de ${m1total} questões`;
 
   const badge = $('moduleBadge');
   const icon  = $('moduleStatusIcon');
-  const allDone = answered.length === state.activeSet.length && state.activeSet.length > 0;
+  const allDone = m1answeredCt === m1total && m1total > 0;
   if (allDone) {
     if (badge) { badge.className = 'badge'; badge.innerHTML = 'Concluído <i class="fa-solid fa-circle-check"></i>'; }
     if (icon)  icon.style.display = 'flex';
+    const m2 = $('module2Card');
+    const m2lock = $('module2LockIcon');
+    if (m2) m2.classList.remove('locked');
+    if (m2lock) m2lock.style.display = 'none';
   } else {
     if (badge) { badge.className = 'badge in-progress'; badge.innerHTML = 'Em andamento <i class="fa-solid fa-circle-half-stroke"></i>'; }
     if (icon)  icon.style.display = 'none';
+    const m2 = $('module2Card');
+    const m2lock = $('module2LockIcon');
+    if (m2) m2.classList.add('locked');
+    if (m2lock) m2lock.style.display = '';
   }
 }
 

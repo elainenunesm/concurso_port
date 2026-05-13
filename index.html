@@ -7,7 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
 
@@ -57,10 +57,10 @@
             </div>
             <div class="mobile-accordion-body">
             <div class="modules-list">
-                <div class="module-card active">
+                <div class="module-card active" id="moduleBtnCard">
                     <div class="module-icon bg-purple">Aa</div>
                     <div class="module-content">
-                        <h3 class="module-title">1. Classificação de Palavras</h3>
+                        <h3 class="module-title">1. Verbos - Básico</h3>
                         <p class="module-desc">Aprenda e pratique as classes de palavras.</p>
                         <div class="module-progress">
                             <div class="bar"><div class="fill" id="moduleProgressFill" style="width:0%"></div></div>
@@ -72,20 +72,20 @@
                     </div>
                 </div>
 
-                <div class="module-card locked">
+                <div class="module-card locked" id="module2Card">
                     <div class="module-icon bg-blue"><i class="fa-solid fa-diagram-project"></i></div>
                     <div class="module-content">
-                        <h3 class="module-title">2. Análise Sintática</h3>
+                        <h3 class="module-title">2. Sujeito - Básico</h3>
                         <p class="module-desc">Aprenda a identificar os termos da oração e suas funções.</p>
                         <div class="module-progress">
                             <div class="bar"><div class="fill" style="width:0%"></div></div>
                             <span>0%</span>
                         </div>
                     </div>
-                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                    <div class="status-icon lock" id="module2LockIcon"><i class="fa-solid fa-lock"></i></div>
                 </div>
 
-                <div class="module-card locked">
+                <div class="module-card locked" id="module3Card">
                     <div class="module-icon bg-orange">,</div>
                     <div class="module-content">
                         <h3 class="module-title">3. Pontuação</h3>
@@ -95,7 +95,7 @@
                             <span>0%</span>
                         </div>
                     </div>
-                    <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
+                    <div class="status-icon lock" id="module3LockIcon"><i class="fa-solid fa-lock"></i></div>
                 </div>
 
                 <div class="module-card locked">
@@ -123,6 +123,21 @@
                     </div>
                     <div class="status-icon lock"><i class="fa-solid fa-lock"></i></div>
                 </div>
+
+                <div class="module-card caderno-card" id="cadernoBtnCard">
+                    <div class="module-icon bg-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="module-content">
+                        <h3 class="module-title">Caderno de Erros</h3>
+                        <p class="module-desc">Questões que você errou para revisar.</p>
+                        <div class="module-progress">
+                            <div class="bar"><div class="fill caderno-fill" id="cadernoProgressFill" style="width:0%"></div></div>
+                            <span id="cadernoProgressText">0 erros</span>
+                        </div>
+                    </div>
+                    <div class="status-icon caderno-badge" id="cadernoErrorBadge" style="display:none">
+                        <span id="cadernoErrorCount">0</span>
+                    </div>
+                </div>
             </div>
 
             <div class="sidebar-save-area">
@@ -142,11 +157,11 @@
         <!-- PAINEL CENTRAL -->
         <section class="center-panel">
             <div class="center-header">
-                <div class="header-title-area">
+                <div class="header-title-area" id="centerPanelTitleArea">
                     <div class="header-icon-large">Aa</div>
                     <div class="header-texts">
-                        <h2>1. Classificação de Palavras</h2>
-                        <p>Aprenda as classes de palavras e como identificá-las em diferentes contextos.</p>
+                        <h2>1. Verbos - Básico</h2>
+                        <p id="centerPanelDesc">Aprenda as classes de palavras e como identificá-las em diferentes contextos.</p>
                     </div>
                 </div>
                 <div class="header-status-badge">
@@ -189,15 +204,15 @@
                     </div>
                     <div class="stat-row">
                         <div class="stat-label"><i class="fa-solid fa-fire" style="color:var(--warning-orange)"></i> Sequência</div>
-                        <div class="stat-value">3 dias</div>
+                        <div class="stat-value" id="statSequencia">0 dias</div>
                     </div>
                     <div class="stat-row">
                         <div class="stat-label"><i class="fa-solid fa-star" style="color:var(--star-yellow)"></i> Pontos</div>
-                        <div class="stat-value" id="statPontos">180</div>
+                        <div class="stat-value" id="statPontos">0</div>
                     </div>
                 </div>
 
-                <button class="btn-outline btn-full"><i class="fa-solid fa-chart-column"></i> Ver desempenho detalhado</button>
+                <button class="btn-outline btn-full" id="btnVerDesempenho"><i class="fa-solid fa-chart-column"></i> Ver desempenho detalhado</button>
             </div>
 
             <div class="card-widget">
