@@ -1339,7 +1339,7 @@ function updateHeaderH() {
 }
 
 const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective'];
-const PHASES_SHOW_TITLE = ['intro'];
+const PHASES_SHOW_TITLE = ['intro', 'objective'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
@@ -1373,11 +1373,17 @@ function render() {
 
 // ── TELA DE OBJETIVO ─────────────────────────────────────────
 function renderObjective() {
+  const titleArea = $('centerPanelTitleArea');
+  if (titleArea) {
+    titleArea.querySelector('.header-icon-large').innerHTML = '<i class="fa-solid fa-bullseye" style="color:#0d9488;font-size:24px"></i>';
+    titleArea.querySelector('.header-texts h2').textContent = '0. Objetivo';
+    const desc = $('centerPanelDesc');
+    if (desc) desc.textContent = 'Entenda a proposta desta plataforma educacional.';
+  }
   $('quizContainer').innerHTML = `
-    <div class="lesson-screen objective-screen">
+    <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto Integrador</div>
-      <h2>0. Objetivo</h2>
-      <div class="objective-body">
+      <div class="lesson-body objective-body">
         <p>Esta aplicação faz parte de um <strong>Projeto Integrador</strong> do curso de Análise e Desenvolvimento de Sistemas, com o objetivo de desenvolver uma plataforma web educacional interativa para auxiliar no aprendizado de Língua Portuguesa.</p>
         <p>O sistema utiliza recursos visuais, exercícios práticos, gamificação e acompanhamento de desempenho para tornar o estudo mais acessível, dinâmico e organizado, permitindo que o estudante avance progressivamente pelos conteúdos gramaticais e pratique questões inspiradas em concursos públicos.</p>
         <p>O projeto se enquadra na categoria de extensão voltada ao desenvolvimento de soluções tecnológicas e inovação educacional, alinhando-se aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
@@ -1395,10 +1401,10 @@ function renderObjective() {
             <div class="ods-text"><strong>ODS 10 — Redução das Desigualdades</strong></div>
           </div>
         </div>
-        <button type="button" class="btn-nav btn-nav-primary" id="objStartBtn">
-          Começar os módulos ${icons.right}
-        </button>
       </div>
+      <button type="button" class="btn-nav btn-nav-primary" id="objStartBtn">
+        Começar os módulos ${icons.right}
+      </button>
     </div>`;
 
   $('objStartBtn').addEventListener('click', () => {
