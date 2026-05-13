@@ -863,11 +863,11 @@ const questions2 = [
 ];
 
 // ── ESTADO ───────────────────────────────────────────────────
-// phase: 'intro' | 'quiz' | 'results'
+// phase: 'objective' | 'intro' | 'quiz' | 'results'
 // activeSet: índices das questões da rodada atual
 // results: array indexado pelo índice original da questão
 const state = {
-  phase:         'intro',
+  phase:         'objective',
   current:       0,
   activeSet:     questions.map((_, i) => i),
   results:       new Array(questions.length).fill(null),
@@ -993,7 +993,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -1272,6 +1272,15 @@ document.getElementById('moduleBtnCard').addEventListener('click', () => {
 });
 
 // ── CARD SUJEITO - BÁSICO (SIDEBAR) ──────────────────────────
+document.getElementById('module0Card').addEventListener('click', () => {
+  state.phase = 'objective';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
 document.getElementById('module2Card').addEventListener('click', () => {
   if ($('module2Card').classList.contains('locked')) return;
   const answered = state.m2results.filter(r => r !== null).length;
@@ -1329,7 +1338,7 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective'];
 const PHASES_SHOW_TITLE = ['intro'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 
@@ -1346,8 +1355,11 @@ function render() {
   updateHeaderH();
   const cc  = $('cadernoBtnCard');
   const m2c = $('module2Card');
+  const m0c = $('module0Card');
   if (cc)  cc.classList.toggle('active-view', state.phase === 'error-notebook');
   if (m2c) m2c.classList.toggle('active-view', PHASES_MODULE2.includes(state.phase));
+  if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
+  if (state.phase === 'objective')         { renderObjective();         return; }
   if (state.phase === 'intro')             { renderIntro();             return; }
   if (state.phase === 'results')           { renderResults();           return; }
   if (state.phase === 'error-notebook')    { renderErrorNotebookPage(); return; }
@@ -1355,6 +1367,42 @@ function render() {
   if (state.phase === 'module2-quiz')      { renderModule2Question();   return; }
   if (state.phase === 'module2-results')   { renderModule2Results();    return; }
   renderQuestion();
+}
+
+// ── TELA DE OBJETIVO ─────────────────────────────────────────
+function renderObjective() {
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen objective-screen">
+      <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto Integrador</div>
+      <h2>0. Objetivo</h2>
+      <div class="objective-body">
+        <p>Esta aplicação faz parte de um <strong>Projeto Integrador</strong> do curso de Análise e Desenvolvimento de Sistemas, com o objetivo de desenvolver uma plataforma web educacional interativa para auxiliar no aprendizado de Língua Portuguesa.</p>
+        <p>O sistema utiliza recursos visuais, exercícios práticos, gamificação e acompanhamento de desempenho para tornar o estudo mais acessível, dinâmico e organizado, permitindo que o estudante avance progressivamente pelos conteúdos gramaticais e pratique questões inspiradas em concursos públicos.</p>
+        <p>O projeto se enquadra na categoria de extensão voltada ao desenvolvimento de soluções tecnológicas e inovação educacional, alinhando-se aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
+        <div class="ods-list">
+          <div class="ods-item ods-4">
+            <div class="ods-icon"><strong>4</strong></div>
+            <div class="ods-text"><strong>ODS 4 — Educação de Qualidade</strong></div>
+          </div>
+          <div class="ods-item ods-9">
+            <div class="ods-icon"><strong>9</strong></div>
+            <div class="ods-text"><strong>ODS 9 — Indústria, Inovação e Infraestrutura</strong></div>
+          </div>
+          <div class="ods-item ods-10">
+            <div class="ods-icon"><strong>10</strong></div>
+            <div class="ods-text"><strong>ODS 10 — Redução das Desigualdades</strong></div>
+          </div>
+        </div>
+        <button type="button" class="btn-nav btn-nav-primary" id="objStartBtn">
+          Começar os módulos ${icons.right}
+        </button>
+      </div>
+    </div>`;
+
+  $('objStartBtn').addEventListener('click', () => {
+    state.phase = 'intro';
+    render();
+  });
 }
 
 // ── TELA DE INTRODUÇÃO ────────────────────────────────────────

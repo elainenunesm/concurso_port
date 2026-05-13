@@ -357,6 +357,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 
 .module-card.active { border: 2px solid var(--primary-main); padding: 11px 15px; box-shadow: 0 4px 12px rgba(109, 40, 217, 0.08); }
 .module-card.active-view { border: 2px solid #2563eb; padding: 11px 15px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12); background: #eff6ff; }
+#module0Card.active-view { border-color: #0d9488; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.12); background: #f0fdfa; }
 
 .module-icon {
     width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
@@ -368,6 +369,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .bg-green { background-color: var(--icon-green); }
 .bg-pink { background-color: var(--icon-pink); }
 .bg-red { background-color: var(--error-red); }
+.bg-teal { background-color: #0d9488; }
 
 .module-content { flex-grow: 1; min-width: 0; }
 .module-title { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
@@ -1107,6 +1109,19 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     transform: translateY(-1px);
 }
 
+/* ── TELA DE OBJETIVO ────────────────────────────────────────── */
+.objective-screen { padding: 40px 40px 48px; }
+.objective-body { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+.objective-body p { font-size: 15px; color: var(--text-gray); line-height: 1.7; }
+.ods-list { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+.ods-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: var(--radius-md); background: #f8fafc; border: 1px solid var(--border-color); }
+.ods-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; color: #fff; }
+.ods-4 .ods-icon  { background: #c7282a; }
+.ods-9 .ods-icon  { background: #fd6b25; }
+.ods-10 .ods-icon { background: #e01b84; }
+.ods-text { font-size: 14px; color: var(--text-dark); font-weight: 500; }
+.objective-body .btn-nav-primary { margin-top: 8px; align-self: flex-start; }
+
 /* ── TELA DE RESULTADOS ──────────────────────────────────────── */
 .results-screen {
     padding: 48px 32px;
@@ -1375,6 +1390,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-title { font-size: 17px; }
     .lesson-body { padding: 18px 20px; }
     .lesson-body p { font-size: 14px; }
+    .objective-screen { padding: 24px 20px 32px; }
+    .objective-body p { font-size: 14px; }
+    .objective-body .btn-nav-primary { align-self: stretch; justify-content: center; }
     .lesson-table { font-size: 14px; }
     .lesson-grid { font-size: 14px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
