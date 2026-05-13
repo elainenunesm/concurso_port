@@ -375,6 +375,287 @@ const questions = [
     example: 'Outros verbos -er: ler, vender, correr, beber, comer.',
     answers: [],
   },
+
+  // ── VERBOS: SENTIDO NA FRASE ─────────────────────────────────
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"O cachorro <strong>correu</strong> pelo jardim."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! "Correu" mostra o cachorro em movimento — uma ação praticada.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica como o sujeito se encontra, sem movimento. Aqui há deslocamento físico.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui há movimento físico intencional.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos como chover, amanhecer. Aqui o sujeito é um animal que se move.' },
+    ],
+    feedback: '"Correu" indica movimento físico do cachorro — ele praticou uma ação. Verbos de ação mostram que o sujeito faz algo ou se desloca.',
+    example: 'Outros verbos de ação: pular, nadar, escrever, rir, gritar.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"Ana <strong>está</strong> muito animada com a viagem."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ação implica movimento ou atividade. Aqui Ana não está fazendo nada — ela está num estado de ânimo.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Está" mostra como Ana se encontra — ela está em um estado de animação.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. Aqui não há mudança descrita, apenas a condição atual de Ana.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos como chover, nevar. Aqui o sujeito é uma pessoa.' },
+    ],
+    feedback: '"Está" mostra como Ana se encontra naquele momento — ela não está fazendo nada, apenas se encontra em um estado de animação. Verbos de estado: ser, estar, parecer, permanecer.',
+    example: 'Compare: "Ana <strong>está</strong> animada." (estado) x "Ana <strong>correu</strong> para abraçar a amiga." (ação).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"<strong>Amanheceu</strong> com neblina hoje."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ação implica um sujeito que age voluntariamente. Aqui não há sujeito — é um evento natural.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica como algo se encontra. "Amanhecer" indica um evento, não uma condição persistente.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de um ser. Aqui o sujeito é indeterminado — é a natureza.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: true,  hint: 'Correto! "Amanheceu" indica o nascer do dia — um evento natural sem sujeito determinado.' },
+    ],
+    feedback: '"Amanheceu" indica o nascer do dia — um evento natural que independe da vontade de qualquer ser. Verbos de fenômeno: chover, nevar, amanhecer, anoitecer, trovejar, relampejar.',
+    example: 'Esses verbos geralmente não têm sujeito: "Choveu." "Amanheceu." "Trovejou."',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"O garoto <strong>cresceu</strong> cinco centímetros em seis meses."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Crescer não é uma ação voluntária — o garoto não "fez" crescer. Houve uma transformação no seu corpo.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Crescer implica que algo mudou, não que ficou igual.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Cresceu" indica que o garoto passou de uma condição para outra — ele mudou de tamanho.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos como chover. O sujeito aqui é um ser humano que se transformou.' },
+    ],
+    feedback: '"Cresceu" indica que o garoto passou de uma condição para outra — mudou de tamanho. Não há ação voluntária; houve uma transformação no sujeito.',
+    example: 'Outros verbos de mudança de estado: envelhecer, emagrecer, engrossar, virar, tornar-se.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"A chuva <strong>caiu</strong> durante toda a madrugada."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'A chuva não "age" — ela é um evento meteorológico. O sujeito "chuva" não tem vontade própria.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica como algo se encontra. Aqui há o movimento de um fenômeno meteorológico.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui é um fenômeno meteorológico em curso.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: true,  hint: 'Correto! "A chuva caiu" descreve um evento meteorológico — fenômeno da natureza.' },
+    ],
+    feedback: 'Quando o sujeito é um elemento da natureza (chuva, neve, granizo) e o verbo descreve seu movimento, temos um <strong>fenômeno da natureza</strong>. Atenção: o mesmo verbo "cair" pode indicar ação em outros contextos!',
+    example: 'Compare: "A chuva <strong>caiu</strong>." (fenômeno) x "A criança <strong>caiu</strong>." (ação) x "A temperatura <strong>caiu</strong>." (mudança de estado).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"O doente <strong>ficou</strong> com febre alta."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ter febre não é uma ação praticada voluntariamente. O doente não "fez" ficar com febre.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Aqui a condição do doente mudou — antes estava sem febre.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Ficou com febre" indica que o doente passou de uma condição para outra — surgiu a febre.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos como chover. Aqui um ser humano mudou de condição física.' },
+    ],
+    feedback: '"Ficou com febre" indica que o doente passou de uma condição para outra — antes estava sem febre e depois passou a ter. "Ficar + condição/adjetivo" geralmente indica mudança de estado.',
+    example: 'Outros exemplos de mudança: "ficou triste", "ficou nervosa", "ficou doente".',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Fácil',
+    text: 'Na frase: <span style="font-weight:400"><em>"O professor <strong>permaneceu</strong> de pé durante toda a aula."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ação implica movimento ou atividade. Permanecer de pé indica que ele ficou assim, sem mudar.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Permaneceu" indica que o professor manteve a mesma condição — ficou de pé sem mudar.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. Aqui não houve mudança — ele permaneceu na mesma posição.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui uma pessoa manteve uma posição física.' },
+    ],
+    feedback: '"Permaneceu" indica continuidade — o professor ficou no mesmo estado (de pé) durante toda a aula. Não houve mudança, apenas manutenção de uma condição: isso é <strong>estado</strong>.',
+    example: 'Verbos de estado: ser, estar, parecer, permanecer, continuar (+ adj.), ficar (+ lugar).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"Pedro <strong>anda</strong> preocupado ultimamente."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Aqui "anda" não significa caminhar. Leia a frase com atenção: Pedro não está se deslocando.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Anda preocupado" é expressão coloquial para "está preocupado" — indica estado.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. A frase mostra como Pedro se encontra, não que ele mudou agora.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Pedro é uma pessoa em estado de preocupação.' },
+    ],
+    feedback: 'Atenção! Aqui "anda" não significa caminhar. No uso coloquial, <em>"anda preocupado"</em> = <em>"está preocupado ultimamente"</em>. O verbo indica como Pedro se encontra — um <strong>estado</strong>.',
+    example: 'Compare: "Pedro <strong>anda</strong> preocupado." (estado) x "Pedro <strong>andou</strong> quilômetros." (ação).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"A criança <strong>caiu</strong> da bicicleta."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! A criança sofreu uma ação física — o ato de cair é um evento com sujeito determinado.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Aqui houve movimento — a criança se deslocou involuntariamente.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui a criança realizou um movimento físico.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'O mesmo verbo "cair" indica fenômeno quando o sujeito é a chuva. Aqui o sujeito é uma criança.' },
+    ],
+    feedback: 'Atenção! O verbo "cair" muda de classificação conforme o contexto. Quando a <em>chuva</em> cai, é fenômeno da natureza. Quando a <em>criança</em> cai, é ação — um evento físico com sujeito determinado.',
+    example: 'Compare: "A chuva <strong>caiu</strong>." (fenômeno) x "A criança <strong>caiu</strong>." (ação) x "A temperatura <strong>caiu</strong>." (mudança de estado).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: 'Na frase: <span style="font-weight:400"><em>"Ela <strong>virou</strong> professora após anos de estudo."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: '"Virar professora" não é uma ação praticada — é o resultado de uma transformação de condição.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui houve uma transformação — ela não era professora antes.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Virou professora" indica que ela passou de uma condição para outra — transformação.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma mudança na condição de uma pessoa.' },
+    ],
+    feedback: '"Virou professora" indica que ela passou de uma condição para outra — antes não era professora, depois passou a ser. Verbos como <em>virar, tornar-se, ficar (+ adj.)</em> indicam mudança de estado.',
+    example: 'Atenção: "virar" pode indicar ação em outros contextos. "Ela <strong>virou</strong> professora." (mudança) x "Ele <strong>virou</strong> o barco." (ação).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: 'Na frase: <span style="font-weight:400"><em>"O paciente ainda <strong>vive</strong>, mas está em estado grave."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: '"Viver" aqui não indica uma atividade praticada — indica uma condição: estar vivo.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Vive" indica que o paciente está vivo — a condição em que ele se encontra.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. A frase mostra que o paciente continua em uma condição, sem indicar mudança.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui "vive" indica a condição de uma pessoa.' },
+    ],
+    feedback: '"Vive" aqui indica que o paciente está vivo — é a condição em que ele se encontra. O verbo "viver" nesse contexto equivale a "estar vivo", expressando um <strong>estado</strong>.',
+    example: 'Compare: "O paciente <strong>vive</strong>." (estado = está vivo) x "João <strong>vive</strong> reclamando." (ação = fica o tempo todo reclamando).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: 'Na frase: <span style="font-weight:400"><em>"Ela <strong>continua</strong> insatisfeita com o resultado."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Estar insatisfeita não é uma ação praticada — é uma condição que persiste.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Continua insatisfeita" indica que a condição de insatisfação persiste — estado.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Continuar + adjetivo" indica que o estado permanece igual, sem mudar. Não há transformação.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma pessoa em estado emocional persistente.' },
+    ],
+    feedback: '"Continua insatisfeita" indica que ela permanece no mesmo estado de insatisfação. "Continuar + adjetivo" geralmente expressa <strong>permanência de estado</strong>.',
+    example: 'Compare: "continua <strong>triste</strong>" (estado permanente) x "continua <strong>a trabalhar</strong>" (ação em curso).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"João <strong>vive</strong> reclamando da situação."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! "Vive reclamando" = fica o tempo todo reclamando. Indica uma ação repetida e contínua.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: '"Viver" indica estado quando significa "estar vivo". Aqui não se trata de estar vivo, mas de ação repetida.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. Aqui há uma ação que João repete constantemente.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui "vive" indica que João pratica uma ação repetidamente.' },
+    ],
+    feedback: 'Atenção! Aqui "vive" não indica o estado de estar vivo. <em>"Vive reclamando"</em> é expressão coloquial que significa "fica o tempo todo reclamando" — indica uma <strong>ação</strong> repetida e contínua.',
+    example: 'Compare: "O paciente <strong>vive</strong>." (estado = está vivo) x "João <strong>vive</strong> reclamando." (ação = repete a ação constantemente).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: 'Na frase: <span style="font-weight:400"><em>"O inverno <strong>passou</strong> e o calor voltou."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'O inverno não "age" voluntariamente. Houve uma transformação de condição, não uma ação praticada.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui o inverno deixou de existir — houve mudança.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "O inverno passou" indica que a estação deixou de existir — houve transformação.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos seriam: "choveu", "nevou". Aqui "passou" indica o fim de uma condição (a estação).' },
+    ],
+    feedback: '"O inverno passou" indica que a estação deixou de existir — houve uma transformação: de inverno passou-se para outra estação. Isso é <strong>mudança de estado</strong>.',
+    example: 'O verbo "passar" muda de sentido: "O ônibus <strong>passou</strong>." (ação) x "O inverno <strong>passou</strong>." (mudança) x "Ela <strong>passou</strong> mal." (mudança de estado).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Médio',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"João <strong>ficou</strong> em casa o fim de semana todo."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ficar em casa não implica movimento ou atividade — implica permanência em um lugar.' },
+      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Ficou em casa" indica permanência — João não saiu, manteve-se na mesma condição/lugar.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Ficar + adjetivo" indica mudança ("ficou doente"). Mas "ficar + lugar" indica permanência — estado.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui João é uma pessoa que permaneceu em um lugar.' },
+    ],
+    feedback: 'Atenção! "Ficar" nem sempre indica mudança de estado. Quando indica <strong>permanência em um lugar</strong>, expressa estado. Compare: "ficou <em>doente</em>" (mudança de estado) x "ficou <em>em casa</em>" (permanência = estado).',
+    example: 'A diferença: "ficar + adjetivo/condição" → mudança de estado. "ficar + lugar/permanência" → estado.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Difícil',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O soldado <strong>morreu</strong> no campo de batalha."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Morrer não é uma ação voluntária praticada pelo sujeito. É uma transformação irreversível de condição.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Morrer implica que a condição do sujeito se transformou.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Morreu" indica que o soldado passou da condição de vivo para a de morto — transformação irreversível.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há a transformação de condição de um ser humano.' },
+    ],
+    feedback: '"Morreu" indica que o soldado passou da condição de vivo para a de morto — uma <strong>mudança de estado</strong> irreversível. Muitos marcam "ação" por impulso, mas "morrer" não descreve uma ação voluntária: é uma transformação.',
+    example: 'Verbos de mudança de estado: morrer, nascer, envelhecer, crescer, emagrecer, virar, tornar-se.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Difícil',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"Ele <strong>amanheceu</strong> doente na segunda-feira."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'Amanhecer doente não é uma ação praticada. É uma condição em que o sujeito se encontrou ao acordar.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui "amanheceu" indica que ao acordar o sujeito passou a ter essa condição.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Amanheceu doente" indica que ao acordar ele estava numa nova condição — mudança de estado.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Atenção! "Amanheceu" só é fenômeno quando o sujeito é indeterminado (o dia amanheceu). Aqui o sujeito é "ele".' },
+    ],
+    feedback: 'Atenção! "Amanhecer" nem sempre é fenômeno da natureza. Quando o sujeito é uma <strong>pessoa</strong>, indica que ao amanhecer ela se encontrava naquela condição — <strong>mudança de estado</strong>. Compare: <em>"Amanheceu cedo."</em> (fenômeno) x <em>"Ele amanheceu doente."</em> (mudança de estado).',
+    example: 'O mesmo vale para "anoitecer": "Anoiteceu." (fenômeno) x "Ela anoiteceu triste." (mudança de estado).',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Difícil',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O barqueiro <strong>virou</strong> o barco sem querer."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! "Virou o barco" indica que o barqueiro realizou uma ação física — capotou o barco.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Aqui houve movimento físico, uma ação praticada.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Virar" indica mudança quando o sujeito se transforma ("virou professora"). Aqui o barqueiro realizou uma ação física sobre um objeto.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma ação humana sobre um objeto.' },
+    ],
+    feedback: 'Atenção! "Virar" pode indicar tanto <strong>ação</strong> quanto mudança de estado. Aqui, o barqueiro realiza uma ação física sobre o barco. Compare: <em>"Ela <strong>virou</strong> professora."</em> (mudança de estado) x <em>"Ele <strong>virou</strong> o barco."</em> (ação).',
+    example: 'A diferença: "virar + cargo/condição" → mudança de estado. "virar + objeto físico" → ação.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Difícil',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"A temperatura <strong>caiu</strong> dez graus durante a noite."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: false, hint: 'A temperatura não "age". Aqui "caiu" indica que um valor se transformou — mudou para baixo.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui a temperatura mudou de valor — não ficou igual.' },
+      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "A temperatura caiu" indica que o valor se transformou — passou de alto para baixo.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos seriam: "choveu", "trovejou". Aqui "caiu" indica a transformação de um valor numérico (temperatura).' },
+    ],
+    feedback: '"Cair" é um verbo camaleão! Aqui a temperatura mudou de valor — <strong>mudança de estado</strong>. Compare: <em>"A chuva <strong>caiu</strong>."</em> (fenômeno) x <em>"A criança <strong>caiu</strong>."</em> (ação) x <em>"A temperatura <strong>caiu</strong>."</em> (mudança de estado).',
+    example: 'O mesmo padrão vale para "subir": "As águas <strong>subiram</strong>." pode ser fenômeno ou mudança, dependendo do contexto.',
+  },
+
+  {
+    type: 'multiple-choice',
+    difficulty: 'Difícil',
+    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O menino <strong>andou</strong> quilômetros para chegar à escola."</em></span><br>O verbo em destaque indica:',
+    answers: [
+      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! Aqui "andou" indica movimento físico real — o menino caminhou uma longa distância.' },
+      { letter: 'B', text: 'estado',               correct: false, hint: '"Andar" indica estado quando equivale a "estar" ("anda preocupado"). Aqui indica deslocamento físico real.' },
+      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui há movimento físico intencional.' },
+      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui um ser humano pratica uma ação de deslocamento.' },
+    ],
+    feedback: 'Aqui "andou" indica movimento físico real — o menino <strong>caminhou</strong> uma longa distância: <strong>ação</strong>. Compare: <em>"Pedro <strong>anda</strong> preocupado."</em> (estado) x <em>"O menino <strong>andou</strong> quilômetros."</em> (ação). O mesmo verbo, sentidos opostos!',
+    example: 'Dica: quando "andar" puder ser substituído por "estar/ficar", indica estado. Quando indica deslocamento real, indica ação.',
+  },
 ];
 
 // ── ESTADO ───────────────────────────────────────────────────
