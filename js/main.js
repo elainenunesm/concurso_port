@@ -1,43 +1,30 @@
 'use strict';
 
-// ── QUESTÕES ─────────────────────────────────────────────────
+// ── QUESTÕES — MÓDULO 1: VERBOS ───────────────────────────────
+// Questões gerenciadas em QUESTOES.md. Alterar lá antes de implementar.
+// Ativas: A21 (conceito) + A01–A10 (reconhecimento) + B01–B10 (classificação) = 21 questões
 const questions = [
+
+  // ── A21: CONCEITO (multiple-choice) ──────────────────────────
   {
     type: 'multiple-choice',
     difficulty: 'Fácil',
-    text: '1. O que é um verbo?',
+    text: 'O que é um <strong>verbo</strong>?',
     answers: [
-      { letter: 'A', text: 'Palavra que indica ação, estado ou fenômeno da natureza.', correct: true,  hint: 'Verbo — resposta correta!' },
-      { letter: 'B', text: 'Palavra que dá nome a seres, objetos, lugares e sentimentos.',  correct: false, hint: 'Substantivo — dá nome aos seres.' },
-      { letter: 'C', text: 'Palavra que qualifica ou caracteriza o substantivo.',            correct: false, hint: 'Adjetivo — qualifica o substantivo.' },
-      { letter: 'D', text: 'Palavra que liga termos ou orações na frase.',                  correct: false, hint: 'Conjunção — conecta termos e orações.' },
+      { letter: 'A', text: 'Palavra que indica ação, estado, mudança de estado ou fenômeno da natureza.',  correct: true,  hint: 'Correto! Verbos expressam o que o sujeito faz, como está ou o que acontece na natureza.' },
+      { letter: 'B', text: 'Palavra que nomeia seres, lugares, objetos ou sentimentos.',                    correct: false, hint: 'Essa é a definição de substantivo, não de verbo. Ex: casa, João, alegria.' },
+      { letter: 'C', text: 'Palavra que qualifica ou caracteriza o substantivo.',                          correct: false, hint: 'Essa é a definição de adjetivo, não de verbo. Ex: bonito, alto, triste.' },
+      { letter: 'D', text: 'Palavra que indica lugar, tempo ou modo.',                                     correct: false, hint: 'Essa é a definição de advérbio, não de verbo. Ex: aqui, ontem, rapidamente.' },
     ],
-    feedback: 'Verbo é a palavra que indica ação. Toda vez que olhar um texto é a primeira coisa que precisa identificar.<br><br>Observe que a palavra faz o texto se mexer. A palavra <em>correr</em>, por exemplo — você imagina alguém se mexendo.<br><br>Também indica estado ou mudança de estado: <em>eu sou</em> ou <em>eu estou</em>, ou <em>estava</em>. Os textos indicam que inicialmente uma pessoa estava de uma forma e houve mudança (ser, estar).<br><br>Pode indicar também fenômeno da natureza (chover, amanhecer).<br><br>Os verbos têm terminação em <strong>ar, er, ir</strong> e <strong>pôr</strong> — que antes se chamava <em>poer</em>.',
-    example: 'Exemplos: correr, ser, chover, nascer, parecer.',
+    feedback: 'O <strong>verbo</strong> é a palavra que indica: <strong>ação</strong> (correu, estudou), <strong>estado</strong> (está, permanece), <strong>mudança de estado</strong> (ficou, cresceu) ou <strong>fenômeno da natureza</strong> (choveu, amanheceu).',
+    example: 'Exemplos de verbos: cantar, ser, ficar, chover. Em cada frase, o verbo é o núcleo que conecta o sujeito ao que acontece.',
   },
 
+  // ── A: RECONHECIMENTO DE VERBO (word-select) ─────────────────
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '3. Clique no VERBO da frase:',
-    sentence: ['O', 'gato', 'dormiu', 'na', 'cama', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'O',      wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'gato',   wordClass: 'Substantivo',                                 isVerb: false },
-      { word: 'dormiu', wordClass: 'Verbo — pretérito perfeito de dormir (-ir)',  isVerb: true  },
-      { word: 'na',     wordClass: 'Preposição + Artigo (em + a)',                isVerb: false },
-      { word: 'cama',   wordClass: 'Substantivo',                                 isVerb: false },
-    ],
-    feedback: '"Dormiu" é o verbo — indica o que o gato fez. No infinitivo: <strong>dormir</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: partir, abrir, sorrir, sentir, assistir.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '2. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
     sentence: ['A', 'Maria', 'cantou', 'no', 'coral', '.'],
     correctIndex: 2,
     wordClassHints: [
@@ -55,7 +42,25 @@ const questions = [
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '4. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
+    sentence: ['O', 'gato', 'dormiu', 'na', 'cama', '.'],
+    correctIndex: 2,
+    wordClassHints: [
+      { word: 'O',      wordClass: 'Artigo definido',                             isVerb: false },
+      { word: 'gato',   wordClass: 'Substantivo',                                 isVerb: false },
+      { word: 'dormiu', wordClass: 'Verbo — pretérito perfeito de dormir (-ir)',  isVerb: true  },
+      { word: 'na',     wordClass: 'Preposição + Artigo (em + a)',                isVerb: false },
+      { word: 'cama',   wordClass: 'Substantivo',                                 isVerb: false },
+    ],
+    feedback: '"Dormiu" é o verbo — indica o que o gato fez. No infinitivo: <strong>dormir</strong>, terminação <strong>-ir</strong>.',
+    example: 'Outros verbos -ir: partir, abrir, sorrir, sentir, assistir.',
+    answers: [],
+  },
+
+  {
+    type: 'word-select',
+    difficulty: 'Fácil',
+    text: 'Clique no VERBO da frase:',
     sentence: ['O', 'Pedro', 'comeu', 'o', 'bolo', '.'],
     correctIndex: 2,
     wordClassHints: [
@@ -73,78 +78,7 @@ const questions = [
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '5. Clique no VERBO da frase:',
-    sentence: ['A', 'chuva', 'caiu', 'de', 'manhã', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',     wordClass: 'Artigo definido',                           isVerb: false },
-      { word: 'chuva', wordClass: 'Substantivo',                               isVerb: false },
-      { word: 'caiu',  wordClass: 'Verbo — pretérito perfeito de cair (-ir)',  isVerb: true  },
-      { word: 'de',    wordClass: 'Preposição',                                isVerb: false },
-      { word: 'manhã', wordClass: 'Substantivo',                               isVerb: false },
-    ],
-    feedback: '"Caiu" é o verbo — indica um fenômeno da natureza. No infinitivo: <strong>cair</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: subir, dividir, fugir, existir, abrir.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '6. Clique no VERBO da frase:',
-    sentence: ['O', 'João', 'estudou', 'a', 'lição', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'O',       wordClass: 'Artigo definido',                              isVerb: false },
-      { word: 'João',    wordClass: 'Substantivo próprio',                          isVerb: false },
-      { word: 'estudou', wordClass: 'Verbo — pretérito perfeito de estudar (-ar)',  isVerb: true  },
-      { word: 'a',       wordClass: 'Artigo definido',                              isVerb: false },
-      { word: 'lição',   wordClass: 'Substantivo',                                  isVerb: false },
-    ],
-    feedback: '"Estudou" é o verbo — indica a ação de João. No infinitivo: <strong>estudar</strong>, terminação <strong>-ar</strong>.',
-    example: 'Outros verbos -ar: trabalhar, ajudar, terminar, amar, usar.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '7. Clique no VERBO da frase:',
-    sentence: ['A', 'Ana', 'bebeu', 'o', 'suco', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',     wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'Ana',   wordClass: 'Substantivo próprio',                        isVerb: false },
-      { word: 'bebeu', wordClass: 'Verbo — pretérito perfeito de beber (-er)',  isVerb: true  },
-      { word: 'o',     wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'suco',  wordClass: 'Substantivo',                                isVerb: false },
-    ],
-    feedback: '"Bebeu" é o verbo — indica o que Ana fez. No infinitivo: <strong>beber</strong>, terminação <strong>-er</strong>.',
-    example: 'Outros verbos -er: comer, correr, trazer, colher, vender.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '8. Clique no VERBO da frase:',
-    sentence: ['O', 'menino', 'sorriu', 'feliz', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'O',       wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'menino',  wordClass: 'Substantivo',                                 isVerb: false },
-      { word: 'sorriu',  wordClass: 'Verbo — pretérito perfeito de sorrir (-ir)',  isVerb: true  },
-      { word: 'feliz',   wordClass: 'Adjetivo',                                    isVerb: false },
-    ],
-    feedback: '"Sorriu" é o verbo — indica a expressão do menino. No infinitivo: <strong>sorrir</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: sentir, existir, dividir, transmitir, aplaudir.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '9. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
     sentence: ['A', 'professora', 'pôs', 'o', 'livro', 'na', 'mesa', '.'],
     correctIndex: 2,
     wordClassHints: [
@@ -164,79 +98,42 @@ const questions = [
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '10. Clique no VERBO da frase:',
-    sentence: ['O', 'cachorro', 'correu', 'no', 'parque', '.'],
+    text: 'Clique no VERBO da frase:',
+    sentence: ['O', 'menino', 'sorriu', 'feliz', '.'],
     correctIndex: 2,
     wordClassHints: [
-      { word: 'O',        wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'cachorro', wordClass: 'Substantivo',                                 isVerb: false },
-      { word: 'correu',   wordClass: 'Verbo — pretérito perfeito de correr (-er)',  isVerb: true  },
-      { word: 'no',       wordClass: 'Preposição + Artigo (em + o)',                isVerb: false },
-      { word: 'parque',   wordClass: 'Substantivo',                                 isVerb: false },
+      { word: 'O',       wordClass: 'Artigo definido',                             isVerb: false },
+      { word: 'menino',  wordClass: 'Substantivo',                                 isVerb: false },
+      { word: 'sorriu',  wordClass: 'Verbo — pretérito perfeito de sorrir (-ir)',  isVerb: true  },
+      { word: 'feliz',   wordClass: 'Adjetivo',                                    isVerb: false },
     ],
-    feedback: '"Correu" é o verbo — indica o que o cachorro fez. No infinitivo: <strong>correr</strong>, terminação <strong>-er</strong>.',
-    example: 'Outros verbos -er: comer, beber, vender, escrever, perder.',
+    feedback: '"Sorriu" é o verbo — indica a expressão do menino. No infinitivo: <strong>sorrir</strong>, terminação <strong>-ir</strong>.',
+    example: 'Outros verbos -ir: sentir, existir, dividir, transmitir, aplaudir.',
     answers: [],
   },
 
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '11. Clique no VERBO da frase:',
-    sentence: ['A', 'criança', 'pulou', 'na', 'cama', '.'],
+    text: 'Clique no VERBO da frase:',
+    sentence: ['O', 'João', 'estudou', 'a', 'lição', '.'],
     correctIndex: 2,
     wordClassHints: [
-      { word: 'A',       wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'criança', wordClass: 'Substantivo',                                isVerb: false },
-      { word: 'pulou',   wordClass: 'Verbo — pretérito perfeito de pular (-ar)',  isVerb: true  },
-      { word: 'na',      wordClass: 'Preposição + Artigo (em + a)',               isVerb: false },
-      { word: 'cama',    wordClass: 'Substantivo',                                isVerb: false },
+      { word: 'O',       wordClass: 'Artigo definido',                              isVerb: false },
+      { word: 'João',    wordClass: 'Substantivo próprio',                          isVerb: false },
+      { word: 'estudou', wordClass: 'Verbo — pretérito perfeito de estudar (-ar)',  isVerb: true  },
+      { word: 'a',       wordClass: 'Artigo definido',                              isVerb: false },
+      { word: 'lição',   wordClass: 'Substantivo',                                  isVerb: false },
     ],
-    feedback: '"Pulou" é o verbo — indica a ação da criança. No infinitivo: <strong>pular</strong>, terminação <strong>-ar</strong>.',
-    example: 'Outros verbos -ar: andar, brincar, desenhar, pintar, nadar.',
+    feedback: '"Estudou" é o verbo — indica a ação de João. No infinitivo: <strong>estudar</strong>, terminação <strong>-ar</strong>.',
+    example: 'Outros verbos -ar: trabalhar, ajudar, terminar, amar, usar.',
     answers: [],
   },
 
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '12. Clique no VERBO da frase:',
-    sentence: ['O', 'avô', 'leu', 'o', 'jornal', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'O',      wordClass: 'Artigo definido',                          isVerb: false },
-      { word: 'avô',    wordClass: 'Substantivo',                              isVerb: false },
-      { word: 'leu',    wordClass: 'Verbo — pretérito perfeito de ler (-er)',  isVerb: true  },
-      { word: 'o',      wordClass: 'Artigo definido',                          isVerb: false },
-      { word: 'jornal', wordClass: 'Substantivo',                              isVerb: false },
-    ],
-    feedback: '"Leu" é o verbo — indica o que o avô fez. No infinitivo: <strong>ler</strong>, terminação <strong>-er</strong>.',
-    example: 'Outros verbos -er: ver, querer, trazer, saber, esquecer.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '13. Clique no VERBO da frase:',
-    sentence: ['A', 'mãe', 'abriu', 'a', 'janela', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',      wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'mãe',    wordClass: 'Substantivo',                                isVerb: false },
-      { word: 'abriu',  wordClass: 'Verbo — pretérito perfeito de abrir (-ir)',  isVerb: true  },
-      { word: 'a',      wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'janela', wordClass: 'Substantivo',                                isVerb: false },
-    ],
-    feedback: '"Abriu" é o verbo — indica a ação da mãe. No infinitivo: <strong>abrir</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: partir, cobrir, descobrir, ferir, imprimir.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '14. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
     sentence: ['O', 'sol', 'forte', 'brilhou', 'hoje', '.'],
     correctIndex: 3,
     wordClassHints: [
@@ -247,49 +144,14 @@ const questions = [
       { word: 'hoje',    wordClass: 'Advérbio de tempo',                            isVerb: false },
     ],
     feedback: '"Brilhou" é o verbo — indica o fenômeno da natureza. No infinitivo: <strong>brilhar</strong>, terminação <strong>-ar</strong>. Atenção: o adjetivo "forte" vem antes do verbo, mas não é o verbo!',
-    example: 'Outros verbos -ar: iluminar, clarear, resplandecer? Não — resplandecer é -er. Ex: iluminar, clarear.',
+    example: 'Outros verbos -ar: iluminar, clarear, aquecer.',
     answers: [],
   },
 
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '15. Clique no VERBO da frase:',
-    sentence: ['A', 'menina', 'partiu', 'cedo', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',       wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'menina',  wordClass: 'Substantivo',                                 isVerb: false },
-      { word: 'partiu',  wordClass: 'Verbo — pretérito perfeito de partir (-ir)',  isVerb: true  },
-      { word: 'cedo',    wordClass: 'Advérbio de tempo',                           isVerb: false },
-    ],
-    feedback: '"Partiu" é o verbo — indica a ação de ir embora. No infinitivo: <strong>partir</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: sair, vir, ferir, nutrir, dividir.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '16. Clique no VERBO da frase:',
-    sentence: ['O', 'pai', 'vendeu', 'o', 'carro', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'O',      wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'pai',    wordClass: 'Substantivo',                                 isVerb: false },
-      { word: 'vendeu', wordClass: 'Verbo — pretérito perfeito de vender (-er)',  isVerb: true  },
-      { word: 'o',      wordClass: 'Artigo definido',                             isVerb: false },
-      { word: 'carro',  wordClass: 'Substantivo',                                 isVerb: false },
-    ],
-    feedback: '"Vendeu" é o verbo — indica o que o pai fez. No infinitivo: <strong>vender</strong>, terminação <strong>-er</strong>.',
-    example: 'Outros verbos -er: perder, morder, resolver, esquecer, entender.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '17. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
     sentence: ['O', 'vento', 'frio', 'soprou', 'forte', '.'],
     correctIndex: 3,
     wordClassHints: [
@@ -307,25 +169,7 @@ const questions = [
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '18. Clique no VERBO da frase:',
-    sentence: ['A', 'vovó', 'propôs', 'uma', 'brincadeira', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',            wordClass: 'Artigo definido',                            isVerb: false },
-      { word: 'vovó',         wordClass: 'Substantivo',                                isVerb: false },
-      { word: 'propôs',       wordClass: 'Verbo — pretérito perfeito de propor (-pôr)', isVerb: true  },
-      { word: 'uma',          wordClass: 'Artigo indefinido',                          isVerb: false },
-      { word: 'brincadeira',  wordClass: 'Substantivo',                                isVerb: false },
-    ],
-    feedback: '"Propôs" é o verbo — indica a ação da vovó. No infinitivo: <strong>propor</strong>, derivado de <strong>pôr</strong>, terminação <strong>-pôr</strong>.',
-    example: 'Outros derivados de pôr: compor, repor, dispor, supor, depor.',
-    answers: [],
-  },
-
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '19. Clique no VERBO da frase:',
+    text: 'Clique no VERBO da frase:',
     sentence: ['O', 'pequeno', 'pássaro', 'voou', 'alto', '.'],
     correctIndex: 3,
     wordClassHints: [
@@ -343,40 +187,22 @@ const questions = [
   {
     type: 'word-select',
     difficulty: 'Fácil',
-    text: '20. Clique no VERBO da frase:',
-    sentence: ['A', 'turma', 'aplaudiu', 'o', 'professor', '.'],
+    text: 'Clique no VERBO da frase:',
+    sentence: ['A', 'vovó', 'propôs', 'uma', 'brincadeira', '.'],
     correctIndex: 2,
     wordClassHints: [
-      { word: 'A',          wordClass: 'Artigo definido',                               isVerb: false },
-      { word: 'turma',      wordClass: 'Substantivo',                                   isVerb: false },
-      { word: 'aplaudiu',   wordClass: 'Verbo — pretérito perfeito de aplaudir (-ir)',  isVerb: true  },
-      { word: 'o',          wordClass: 'Artigo definido',                               isVerb: false },
-      { word: 'professor',  wordClass: 'Substantivo',                                   isVerb: false },
+      { word: 'A',            wordClass: 'Artigo definido',                             isVerb: false },
+      { word: 'vovó',         wordClass: 'Substantivo',                                 isVerb: false },
+      { word: 'propôs',       wordClass: 'Verbo — pretérito perfeito de propor (-pôr)', isVerb: true  },
+      { word: 'uma',          wordClass: 'Artigo indefinido',                           isVerb: false },
+      { word: 'brincadeira',  wordClass: 'Substantivo',                                 isVerb: false },
     ],
-    feedback: '"Aplaudiu" é o verbo — indica a ação da turma. No infinitivo: <strong>aplaudir</strong>, terminação <strong>-ir</strong>.',
-    example: 'Outros verbos -ir: distribuir, possuir, contribuir, fugir, sorrir.',
+    feedback: '"Propôs" é o verbo — indica a ação da vovó. No infinitivo: <strong>propor</strong>, derivado de <strong>pôr</strong>, terminação <strong>-pôr</strong>.',
+    example: 'Outros derivados de pôr: compor, repor, dispor, supor, depor.',
     answers: [],
   },
 
-  {
-    type: 'word-select',
-    difficulty: 'Fácil',
-    text: '21. Clique no VERBO da frase:',
-    sentence: ['A', 'Maria', 'escreveu', 'uma', 'carta', '.'],
-    correctIndex: 2,
-    wordClassHints: [
-      { word: 'A',        wordClass: 'Artigo definido',                                isVerb: false },
-      { word: 'Maria',    wordClass: 'Substantivo próprio',                            isVerb: false },
-      { word: 'escreveu', wordClass: 'Verbo — pretérito perfeito de escrever (-er)',   isVerb: true  },
-      { word: 'uma',      wordClass: 'Artigo indefinido',                              isVerb: false },
-      { word: 'carta',    wordClass: 'Substantivo',                                    isVerb: false },
-    ],
-    feedback: '"Escreveu" é o verbo — indica a ação de Maria. No infinitivo: <strong>escrever</strong>, terminação <strong>-er</strong>.',
-    example: 'Outros verbos -er: ler, vender, correr, beber, comer.',
-    answers: [],
-  },
-
-  // ── VERBOS: SENTIDO NA FRASE ─────────────────────────────────
+  // ── B: CLASSIFICAÇÃO DO VERBO (multiple-choice) ───────────────
   {
     type: 'multiple-choice',
     difficulty: 'Fácil',
@@ -431,20 +257,6 @@ const questions = [
     ],
     feedback: '"Cresceu" indica que o garoto passou de uma condição para outra — mudou de tamanho. Não há ação voluntária; houve uma transformação no sujeito.',
     example: 'Outros verbos de mudança de estado: envelhecer, emagrecer, engrossar, virar, tornar-se.',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Fácil',
-    text: 'Na frase: <span style="font-weight:400"><em>"A chuva <strong>caiu</strong> durante toda a madrugada."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: 'A chuva não "age" — ela é um evento meteorológico. O sujeito "chuva" não tem vontade própria.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica como algo se encontra. Aqui há o movimento de um fenômeno meteorológico.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui é um fenômeno meteorológico em curso.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: true,  hint: 'Correto! "A chuva caiu" descreve um evento meteorológico — fenômeno da natureza.' },
-    ],
-    feedback: 'Quando o sujeito é um elemento da natureza (chuva, neve, granizo) e o verbo descreve seu movimento, temos um <strong>fenômeno da natureza</strong>. Atenção: o mesmo verbo "cair" pode indicar ação em outros contextos!',
-    example: 'Compare: "A chuva <strong>caiu</strong>." (fenômeno) x "A criança <strong>caiu</strong>." (ação) x "A temperatura <strong>caiu</strong>." (mudança de estado).',
   },
 
   {
@@ -505,90 +317,6 @@ const questions = [
 
   {
     type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: 'Na frase: <span style="font-weight:400"><em>"Ela <strong>virou</strong> professora após anos de estudo."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: '"Virar professora" não é uma ação praticada — é o resultado de uma transformação de condição.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui houve uma transformação — ela não era professora antes.' },
-      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "Virou professora" indica que ela passou de uma condição para outra — transformação.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma mudança na condição de uma pessoa.' },
-    ],
-    feedback: '"Virou professora" indica que ela passou de uma condição para outra — antes não era professora, depois passou a ser. Verbos como <em>virar, tornar-se, ficar (+ adj.)</em> indicam mudança de estado.',
-    example: 'Atenção: "virar" pode indicar ação em outros contextos. "Ela <strong>virou</strong> professora." (mudança) x "Ele <strong>virou</strong> o barco." (ação).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: 'Na frase: <span style="font-weight:400"><em>"O paciente ainda <strong>vive</strong>, mas está em estado grave."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: '"Viver" aqui não indica uma atividade praticada — indica uma condição: estar vivo.' },
-      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Vive" indica que o paciente está vivo — a condição em que ele se encontra.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. A frase mostra que o paciente continua em uma condição, sem indicar mudança.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui "vive" indica a condição de uma pessoa.' },
-    ],
-    feedback: '"Vive" aqui indica que o paciente está vivo — é a condição em que ele se encontra. O verbo "viver" nesse contexto equivale a "estar vivo", expressando um <strong>estado</strong>.',
-    example: 'Compare: "O paciente <strong>vive</strong>." (estado = está vivo) x "João <strong>vive</strong> reclamando." (ação = fica o tempo todo reclamando).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: 'Na frase: <span style="font-weight:400"><em>"Ela <strong>continua</strong> insatisfeita com o resultado."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: 'Estar insatisfeita não é uma ação praticada — é uma condição que persiste.' },
-      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Continua insatisfeita" indica que a condição de insatisfação persiste — estado.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Continuar + adjetivo" indica que o estado permanece igual, sem mudar. Não há transformação.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma pessoa em estado emocional persistente.' },
-    ],
-    feedback: '"Continua insatisfeita" indica que ela permanece no mesmo estado de insatisfação. "Continuar + adjetivo" geralmente expressa <strong>permanência de estado</strong>.',
-    example: 'Compare: "continua <strong>triste</strong>" (estado permanente) x "continua <strong>a trabalhar</strong>" (ação em curso).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"João <strong>vive</strong> reclamando da situação."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! "Vive reclamando" = fica o tempo todo reclamando. Indica uma ação repetida e contínua.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: '"Viver" indica estado quando significa "estar vivo". Aqui não se trata de estar vivo, mas de ação repetida.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. Aqui há uma ação que João repete constantemente.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui "vive" indica que João pratica uma ação repetidamente.' },
-    ],
-    feedback: 'Atenção! Aqui "vive" não indica o estado de estar vivo. <em>"Vive reclamando"</em> é expressão coloquial que significa "fica o tempo todo reclamando" — indica uma <strong>ação</strong> repetida e contínua.',
-    example: 'Compare: "O paciente <strong>vive</strong>." (estado = está vivo) x "João <strong>vive</strong> reclamando." (ação = repete a ação constantemente).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: 'Na frase: <span style="font-weight:400"><em>"O inverno <strong>passou</strong> e o calor voltou."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: 'O inverno não "age" voluntariamente. Houve uma transformação de condição, não uma ação praticada.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui o inverno deixou de existir — houve mudança.' },
-      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "O inverno passou" indica que a estação deixou de existir — houve transformação.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos seriam: "choveu", "nevou". Aqui "passou" indica o fim de uma condição (a estação).' },
-    ],
-    feedback: '"O inverno passou" indica que a estação deixou de existir — houve uma transformação: de inverno passou-se para outra estação. Isso é <strong>mudança de estado</strong>.',
-    example: 'O verbo "passar" muda de sentido: "O ônibus <strong>passou</strong>." (ação) x "O inverno <strong>passou</strong>." (mudança) x "Ela <strong>passou</strong> mal." (mudança de estado).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Médio',
-    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"João <strong>ficou</strong> em casa o fim de semana todo."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: 'Ficar em casa não implica movimento ou atividade — implica permanência em um lugar.' },
-      { letter: 'B', text: 'estado',               correct: true,  hint: 'Correto! "Ficou em casa" indica permanência — João não saiu, manteve-se na mesma condição/lugar.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Ficar + adjetivo" indica mudança ("ficou doente"). Mas "ficar + lugar" indica permanência — estado.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui João é uma pessoa que permaneceu em um lugar.' },
-    ],
-    feedback: 'Atenção! "Ficar" nem sempre indica mudança de estado. Quando indica <strong>permanência em um lugar</strong>, expressa estado. Compare: "ficou <em>doente</em>" (mudança de estado) x "ficou <em>em casa</em>" (permanência = estado).',
-    example: 'A diferença: "ficar + adjetivo/condição" → mudança de estado. "ficar + lugar/permanência" → estado.',
-  },
-
-  {
-    type: 'multiple-choice',
     difficulty: 'Difícil',
     text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O soldado <strong>morreu</strong> no campo de batalha."</em></span><br>O verbo em destaque indica:',
     answers: [
@@ -613,48 +341,6 @@ const questions = [
     ],
     feedback: 'Atenção! "Amanhecer" nem sempre é fenômeno da natureza. Quando o sujeito é uma <strong>pessoa</strong>, indica que ao amanhecer ela se encontrava naquela condição — <strong>mudança de estado</strong>. Compare: <em>"Amanheceu cedo."</em> (fenômeno) x <em>"Ele amanheceu doente."</em> (mudança de estado).',
     example: 'O mesmo vale para "anoitecer": "Anoiteceu." (fenômeno) x "Ela anoiteceu triste." (mudança de estado).',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Difícil',
-    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O barqueiro <strong>virou</strong> o barco sem querer."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! "Virou o barco" indica que o barqueiro realizou uma ação física — capotou o barco.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência de condição. Aqui houve movimento físico, uma ação praticada.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: '"Virar" indica mudança quando o sujeito se transforma ("virou professora"). Aqui o barqueiro realizou uma ação física sobre um objeto.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui há uma ação humana sobre um objeto.' },
-    ],
-    feedback: 'Atenção! "Virar" pode indicar tanto <strong>ação</strong> quanto mudança de estado. Aqui, o barqueiro realiza uma ação física sobre o barco. Compare: <em>"Ela <strong>virou</strong> professora."</em> (mudança de estado) x <em>"Ele <strong>virou</strong> o barco."</em> (ação).',
-    example: 'A diferença: "virar + cargo/condição" → mudança de estado. "virar + objeto físico" → ação.',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Difícil',
-    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"A temperatura <strong>caiu</strong> dez graus durante a noite."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: false, hint: 'A temperatura não "age". Aqui "caiu" indica que um valor se transformou — mudou para baixo.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: 'Estado indica permanência. Aqui a temperatura mudou de valor — não ficou igual.' },
-      { letter: 'C', text: 'mudança de estado',    correct: true,  hint: 'Correto! "A temperatura caiu" indica que o valor se transformou — passou de alto para baixo.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos seriam: "choveu", "trovejou". Aqui "caiu" indica a transformação de um valor numérico (temperatura).' },
-    ],
-    feedback: '"Cair" é um verbo camaleão! Aqui a temperatura mudou de valor — <strong>mudança de estado</strong>. Compare: <em>"A chuva <strong>caiu</strong>."</em> (fenômeno) x <em>"A criança <strong>caiu</strong>."</em> (ação) x <em>"A temperatura <strong>caiu</strong>."</em> (mudança de estado).',
-    example: 'O mesmo padrão vale para "subir": "As águas <strong>subiram</strong>." pode ser fenômeno ou mudança, dependendo do contexto.',
-  },
-
-  {
-    type: 'multiple-choice',
-    difficulty: 'Difícil',
-    text: '<strong>Atenção, pegadinha!</strong><br>Na frase: <span style="font-weight:400"><em>"O menino <strong>andou</strong> quilômetros para chegar à escola."</em></span><br>O verbo em destaque indica:',
-    answers: [
-      { letter: 'A', text: 'ação',                 correct: true,  hint: 'Correto! Aqui "andou" indica movimento físico real — o menino caminhou uma longa distância.' },
-      { letter: 'B', text: 'estado',               correct: false, hint: '"Andar" indica estado quando equivale a "estar" ("anda preocupado"). Aqui indica deslocamento físico real.' },
-      { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança de estado indica transformação de condição. Aqui há movimento físico intencional.' },
-      { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos climáticos. Aqui um ser humano pratica uma ação de deslocamento.' },
-    ],
-    feedback: 'Aqui "andou" indica movimento físico real — o menino <strong>caminhou</strong> uma longa distância: <strong>ação</strong>. Compare: <em>"Pedro <strong>anda</strong> preocupado."</em> (estado) x <em>"O menino <strong>andou</strong> quilômetros."</em> (ação). O mesmo verbo, sentidos opostos!',
-    example: 'Dica: quando "andar" puder ser substituído por "estar/ficar", indica estado. Quando indica deslocamento real, indica ação.',
   },
 ];
 

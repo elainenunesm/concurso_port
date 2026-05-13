@@ -967,7 +967,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 /* ── TELA DE INTRODUÇÃO (lição) ──────────────────────────────── */
 .lesson-screen {
-    padding: 40px 32px 48px;
+    padding: 20px 32px 48px;
     max-width: 680px;
 }
 
@@ -1002,7 +1002,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 }
 
 .lesson-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--primary-main);
     margin-bottom: 16px;
@@ -1019,7 +1019,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     flex-direction: column;
     gap: 8px;
     margin-bottom: 12px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .lesson-row {
@@ -1051,7 +1051,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     column-gap: 4px;
     align-items: center;
     margin-bottom: 12px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .lg-key {
@@ -1070,7 +1070,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 }
 
 .lesson-body p {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.75;
     color: var(--text-dark);
     margin-bottom: 12px;
@@ -1465,13 +1465,13 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
     /* Intro */
     .lesson-screen { padding: 24px 20px 32px; }
-    .lesson-screen h2 { font-size: 17px; }
-    .lesson-title { font-size: 17px; }
+    .lesson-screen h2 { font-size: 18px; }
+    .lesson-title { font-size: 19px; }
     .lesson-body { padding: 18px 20px; }
-    .lesson-body p { font-size: 14px; }
+    .lesson-body p { font-size: 16px; }
 
-    .lesson-table { font-size: 14px; }
-    .lesson-grid { font-size: 14px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
+    .lesson-table { font-size: 16px; }
+    .lesson-grid { font-size: 16px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
 
     /* Resultados */
@@ -1514,12 +1514,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
     /* Intro */
     .lesson-screen { padding: 16px 14px 24px; }
-    .lesson-screen h2 { font-size: 15px; }
-    .lesson-title { font-size: 16px; margin-bottom: 12px; }
+    .lesson-screen h2 { font-size: 16px; }
+    .lesson-title { font-size: 17px; margin-bottom: 12px; }
     .lesson-body { padding: 14px 16px; }
-    .lesson-body p { font-size: 13px; line-height: 1.65; }
-    .lesson-table { font-size: 13px; }
-    .lesson-grid { font-size: 13px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
+    .lesson-body p { font-size: 15px; line-height: 1.7; }
+    .lesson-table { font-size: 15px; }
+    .lesson-grid { font-size: 15px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
 
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
