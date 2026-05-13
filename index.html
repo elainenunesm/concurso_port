@@ -258,6 +258,20 @@
     </main>
 
     <div id="mobilePanelBackdrop" class="mobile-panel-backdrop"></div>
+
+    <!-- MODAL CONSULTAR LIÇÃO -->
+    <div id="lessonModal" class="lesson-modal-overlay" style="display:none" aria-modal="true" role="dialog">
+        <div class="lesson-modal">
+            <div class="lesson-modal-header">
+                <h3 id="lessonModalTitle"></h3>
+                <button type="button" class="lesson-modal-close" id="lessonModalClose" aria-label="Fechar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="lesson-modal-body" id="lessonModalBody"></div>
+        </div>
+    </div>
+
     <script src="js/main.js?v=2"></script>
 </body>
 </html>

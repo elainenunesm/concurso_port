@@ -1417,6 +1417,7 @@ function renderObjective() {
   $('objStartBtn').addEventListener('click', () => {
     state.phase = 'intro';
     render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
@@ -1425,8 +1426,9 @@ function renderIntro() {
   $('quizContainer').innerHTML = `
     <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Primeira Etapa</div>
-      <h2>Você irá responder as questões que é a primeira etapa para conseguir analisar textos</h2>
-      <div class="lesson-body">
+      <h2>Justificativa da lição:</h2>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Essa etapa 1 você irá aprender o primeiro passo para poder analisar texto: aprender a identificar e classificar um verbo.</p>
+      <div class="lesson-body" style="margin-top:24px">
         <h3 class="lesson-title">Lição de Verbo <span class="lesson-title-sub">(Versão Resumida)</span></h3>
         <p>Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno da natureza</strong>. Ao ler um texto, uma das primeiras coisas que devemos identificar é o verbo, porque ele dá movimento e sentido à frase.</p>
         <p>Por exemplo, na palavra <em>correr</em>, imaginamos alguém em movimento, saindo de um ponto e se deslocando rapidamente. Isso mostra a ideia de ação.</p>
@@ -1591,6 +1593,85 @@ function renderResults() {
   }
 }
 
+// ── MODAL CONSULTAR LIÇÃO ────────────────────────────────────
+function getLessonBodyHTML(module) {
+  if (module === 1) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Verbo <span class="lesson-title-sub">(Versão Resumida)</span></h3>
+      <p>Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno da natureza</strong>. Ao ler um texto, uma das primeiras coisas que devemos identificar é o verbo, porque ele dá movimento e sentido à frase.</p>
+      <p>Por exemplo, na palavra <em>correr</em>, imaginamos alguém em movimento, saindo de um ponto e se deslocando rapidamente. Isso mostra a ideia de ação.</p>
+      <p><strong>Verbos indicam:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">ação</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em>, <em>cantar</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ser</em>, <em>estar</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">mudança de estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em>, <em>tornar-se</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">fenômeno da natureza</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>chover</em>, <em>amanhecer</em></span></div>
+      </div>
+      <p><strong>Os verbos normalmente terminam em:</strong></p>
+      <p class="lesson-examples"><strong>-ar</strong> → 1ª conjugação<br><strong>-er</strong> → 2ª conjugação<br><strong>-ir</strong> → 3ª conjugação</p>
+      <p>Existe também o verbo <strong>pôr</strong>, que antigamente era escrito como <em>poer</em>. Então ele é classificado na 2ª conjugação.</p>
+      <p><strong>Para identificar um verbo, tente colocá-lo no infinitivo:</strong></p>
+      <p class="lesson-examples"><em>cantou</em> → <em>cantar</em><br><em>bebeu</em> &nbsp; → <em>beber</em><br><em>partiu</em> → <em>partir</em></p>
+      <p><strong>Tente identificar também se ele é ação, fenômeno da natureza, estado ou mudança de estado:</strong></p>
+      <div class="lesson-grid">
+        <span class="lg-key"><em>estava</em> → <em>estar</em></span><span class="lg-arrow">→</span><span class="lg-val">estado</span>
+        <span class="lg-key"><em>ficou</em> → <em>ficar</em></span><span class="lg-arrow">→</span><span class="lg-val">mudança de estado</span>
+        <span class="lg-key"><em>amanheceu</em> → <em>amanhecer</em></span><span class="lg-arrow">→</span><span class="lg-val">fenômeno da natureza</span>
+        <span class="lg-key"><em>correu</em> → <em>correr</em></span><span class="lg-arrow">→</span><span class="lg-val">ação</span>
+      </div>
+    </div>`;
+  return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
+      <p>Agora que você já sabe identificar o verbo, ficará mais fácil encontrar o sujeito.</p>
+      <p>O sujeito é <strong>quem pratica a ação, sofre a ação ou sobre quem se fala</strong> na frase.</p>
+      <p><strong>Como identificar o sujeito em uma frase ou texto?</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">1º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Encontre o <strong>verbo</strong> da frase.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">2º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Faça a pergunta: <strong>quem + verbo?</strong> ou <strong>o que + verbo?</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">3º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">A resposta será o <strong>sujeito</strong>.</span></div>
+      </div>
+      <p><strong>Exemplos:</strong></p>
+      <div class="lesson-grid">
+        <span class="lg-key"><em>Maria estudou ontem.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem estudou? <strong>Maria</strong></span>
+        <span class="lg-key"><em>O cachorro latiu muito.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem latiu? <strong>o cachorro</strong></span>
+        <span class="lg-key"><em>As crianças brincaram na rua.</em></span><span class="lg-arrow">→</span><span class="lg-val">Quem brincou? <strong>as crianças</strong></span>
+      </div>
+      <p><strong>O sujeito pode ser:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">pessoa</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>Maria, o menino, elas…</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">animal</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>o cachorro, a abelha…</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">objeto</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>o carro, o computador…</em></span></div>
+      </div>
+      <p><strong>Resumo:</strong> O sujeito é o termo da frase sobre o qual se declara algo. Geralmente, é quem faz a ação do verbo ou de quem se fala.</p>
+    </div>`;
+}
+
+function openLessonModal(module) {
+  const overlay = document.getElementById('lessonModal');
+  const title   = document.getElementById('lessonModalTitle');
+  const body    = document.getElementById('lessonModalBody');
+  title.textContent = module === 1 ? 'Lição de Verbo (Versão Resumida)' : 'Lição de Sujeito (Versão Resumida)';
+  body.innerHTML = getLessonBodyHTML(module);
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLessonModal() {
+  document.getElementById('lessonModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+(function initLessonModal() {
+  document.getElementById('lessonModalClose').addEventListener('click', closeLessonModal);
+  document.getElementById('lessonModal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeLessonModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLessonModal();
+  });
+})();
+
 // ── RENDERIZAR QUESTÃO ────────────────────────────────────────
 function renderQuestion() {
   const qIdx   = state.activeSet[state.current];
@@ -1608,6 +1689,9 @@ function renderQuestion() {
   $('quizContainer').innerHTML = `
     <div class="question-counter">Questão ${state.current + 1} de ${state.activeSet.length}</div>
     <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <button type="button" class="btn-lesson-hint" id="btnLessonHint">
+      <i class="fa-solid fa-book-open"></i> Consultar lição
+    </button>
     <p class="question-title">${q.text}</p>
     ${bodyHTML}
     <div class="bottom-actions">
@@ -1629,6 +1713,7 @@ function renderQuestion() {
     });
   }
 
+  $('btnLessonHint').addEventListener('click', () => openLessonModal(1));
   $('prevBtn').addEventListener('click', () => navigate(-1));
   $('nextBtn').addEventListener('click', () => {
     if (isLast) { state.phase = 'results'; render(); saveProgress(); }
@@ -2021,6 +2106,9 @@ function renderModule2Question() {
   $('quizContainer').innerHTML = `
     <div class="question-counter">Questão ${state.m2current + 1} de ${state.m2activeSet.length}</div>
     <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <button type="button" class="btn-lesson-hint" id="m2BtnLessonHint">
+      <i class="fa-solid fa-book-open"></i> Consultar lição
+    </button>
     <p class="question-title">${q.text}</p>
     ${buildDualSelect(q, result, done)}
     <div class="bottom-actions">
@@ -2044,6 +2132,7 @@ function renderModule2Question() {
     if (confirmBtn) confirmBtn.addEventListener('click', confirmDualAnswer);
   }
 
+  $('m2BtnLessonHint').addEventListener('click', () => openLessonModal(2));
   $('m2PrevBtn').addEventListener('click', () => m2navigate(-1));
   $('m2NextBtn').addEventListener('click', () => {
     if (isLast) { state.phase = 'module2-results'; render(); saveProgress(); }
