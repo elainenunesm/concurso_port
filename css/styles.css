@@ -1074,6 +1074,8 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     line-height: 1.75;
     color: var(--text-dark);
     margin-bottom: 12px;
+    text-align: justify;
+    hyphens: auto;
 }
 
 .lesson-body p:last-child { margin-bottom: 0; }

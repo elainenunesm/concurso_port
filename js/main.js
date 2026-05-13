@@ -1349,7 +1349,21 @@ function render() {
   const hc = $('headerCenter');
   if (hc) hc.style.display = PHASES_NO_HEADER.includes(state.phase) ? 'none' : '';
   const titleArea = $('centerPanelTitleArea');
-  if (titleArea) titleArea.style.display = PHASES_SHOW_TITLE.includes(state.phase) ? '' : 'none';
+  if (titleArea) {
+    titleArea.style.display = PHASES_SHOW_TITLE.includes(state.phase) ? '' : 'none';
+    const iconEl = titleArea.querySelector('.header-icon-large');
+    const h2El   = titleArea.querySelector('.header-texts h2');
+    const descEl = $('centerPanelDesc');
+    if (state.phase === 'objective') {
+      if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-bullseye" style="color:#0d9488;font-size:24px"></i>';
+      if (h2El)    h2El.textContent = '0. Objetivo';
+      if (descEl)  descEl.textContent = 'Entenda a proposta desta plataforma educacional.';
+    } else {
+      if (iconEl)  iconEl.textContent = 'Aa';
+      if (h2El)    h2El.textContent = '1. Verbos - Básico';
+      if (descEl)  descEl.textContent = 'Aprenda as classes de palavras e como identificá-las em diferentes contextos.';
+    }
+  }
   const sb = document.querySelector('.header-status-badge');
   if (sb) sb.style.display = PHASES_M1.includes(state.phase) ? '' : 'none';
   updateHeaderH();
@@ -1373,13 +1387,6 @@ function render() {
 
 // ── TELA DE OBJETIVO ─────────────────────────────────────────
 function renderObjective() {
-  const titleArea = $('centerPanelTitleArea');
-  if (titleArea) {
-    titleArea.querySelector('.header-icon-large').innerHTML = '<i class="fa-solid fa-bullseye" style="color:#0d9488;font-size:24px"></i>';
-    titleArea.querySelector('.header-texts h2').textContent = '0. Objetivo';
-    const desc = $('centerPanelDesc');
-    if (desc) desc.textContent = 'Entenda a proposta desta plataforma educacional.';
-  }
   $('quizContainer').innerHTML = `
     <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto Integrador</div>
