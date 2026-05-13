@@ -1354,9 +1354,11 @@ function render() {
   if (sb) sb.style.display = PHASES_M1.includes(state.phase) ? '' : 'none';
   updateHeaderH();
   const cc  = $('cadernoBtnCard');
+  const m1c = $('moduleBtnCard');
   const m2c = $('module2Card');
   const m0c = $('module0Card');
   if (cc)  cc.classList.toggle('active-view', state.phase === 'error-notebook');
+  if (m1c) m1c.classList.toggle('active', PHASES_M1.includes(state.phase));
   if (m2c) m2c.classList.toggle('active-view', PHASES_MODULE2.includes(state.phase));
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
   if (state.phase === 'objective')         { renderObjective();         return; }
