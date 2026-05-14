@@ -1452,10 +1452,22 @@ function renderIntro() {
         <p>Depois de localizar o verbo, observe o sentido que ele transmite na oração.<br>Ele pode indicar <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>. Porém, o significado depende do contexto, já que um mesmo verbo pode assumir sentidos diferentes em frases diferentes.</p>
         <p><strong>Exemplos:</strong></p>
         <div class="lesson-table">
-          <div class="lesson-row"><span class="lesson-col-key"><em>estava</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estar</em> → <strong>estado</strong></span></div>
-          <div class="lesson-row"><span class="lesson-col-key"><em>ficou</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em> → <strong>mudança de estado</strong></span></div>
-          <div class="lesson-row"><span class="lesson-col-key"><em>amanheceu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
-          <div class="lesson-row"><span class="lesson-col-key"><em>correu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em> → <strong>ação</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>João correu no parque.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correu</em> → <em>correr</em> → <strong>ação</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Maria estava cansada.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>estado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>O leite ficou azedo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>mudança de estado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Amanheceu muito cedo hoje.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanheceu</em> → <em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
+        </div>
+        <hr>
+        <p><strong>Exemplos de como o sentido do verbo pode mudar conforme o contexto:</strong></p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key"><em>Pedro ficou em casa ontem.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>permanência</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Ana ficou triste com a notícia.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>mudança de estado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Carlos passou pela escola cedo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>passou</em> → <em>passar</em> → <strong>movimento</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Carlos passou na prova.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>passou</em> → <em>passar</em> → <strong>aprovação</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Marina estava na cozinha.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>estado/localização</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>Marina estava estudando.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>auxiliar de ação contínua</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>O menino virou a esquina.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>virou</em> → <em>virar</em> → <strong>movimento</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>O leite virou queijo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>virou</em> → <em>virar</em> → <strong>transformação/mudança de estado</strong></span></div>
         </div>
       </div>
       <button type="button" class="btn-start" id="startBtn">
@@ -1896,10 +1908,22 @@ function getLessonBodyHTML(module) {
       <p>Depois, observe o que a palavra expressa: <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Mas atenção: isso depende do contexto da frase. Um mesmo verbo pode apresentar sentidos diferentes, então é importante compreender primeiro o significado da oração.</p>
       <p><strong>Exemplos:</strong></p>
       <div class="lesson-table">
-        <div class="lesson-row"><span class="lesson-col-key"><em>estava</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estar</em> → <strong>estado</strong></span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>ficou</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em> → <strong>mudança de estado</strong></span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>amanheceu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>correu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em> → <strong>ação</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>João correu no parque.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correu</em> → <em>correr</em> → <strong>ação</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Maria estava cansada.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>estado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>O leite ficou azedo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>mudança de estado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Amanheceu muito cedo hoje.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanheceu</em> → <em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
+      </div>
+      <hr>
+      <p><strong>Exemplos de como o sentido do verbo pode mudar conforme o contexto:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Pedro ficou em casa ontem.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>permanência</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Ana ficou triste com a notícia.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficou</em> → <em>ficar</em> → <strong>mudança de estado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Carlos passou pela escola cedo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>passou</em> → <em>passar</em> → <strong>movimento</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Carlos passou na prova.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>passou</em> → <em>passar</em> → <strong>aprovação</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Marina estava na cozinha.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>estado/localização</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Marina estava estudando.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estava</em> → <em>estar</em> → <strong>auxiliar de ação contínua</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>O menino virou a esquina.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>virou</em> → <em>virar</em> → <strong>movimento</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>O leite virou queijo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>virou</em> → <em>virar</em> → <strong>transformação/mudança de estado</strong></span></div>
       </div>
     </div>`;
   return `

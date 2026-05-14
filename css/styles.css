@@ -1134,7 +1134,6 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 .lesson-col-key {
     flex-shrink: 0;
-    white-space: nowrap;
     color: var(--text-dark);
     font-weight: 500;
 }
@@ -1182,7 +1181,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     color: var(--text-dark);
     margin-bottom: 12px;
     text-align: justify;
-    hyphens: auto;
+    hyphens: none;
 }
 
 .lesson-body p:last-child { margin-bottom: 0; }
@@ -1545,7 +1544,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .header-texts p { max-width: 100%; }
 
     /* Área de questões */
-    .topics-container { padding: 16px 20px 24px; }
+    .topics-container { padding: 16px 14px 24px; }
     .question-title { font-size: 18px; }
 
     /* Chips de palavras */
@@ -1572,11 +1571,11 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .feedback { padding: 16px; gap: 12px; }
 
     /* Intro */
-    .lesson-screen { padding: 24px 20px 32px; }
+    .lesson-screen { padding: 24px 12px 32px; }
     .lesson-screen h2 { font-size: 18px; }
     .lesson-title { font-size: 19px; }
-    .lesson-body { padding: 18px 20px; }
-    .lesson-body p { font-size: 16px; }
+    .lesson-body { padding: 16px 14px; }
+    .lesson-body p { font-size: 16px; text-align: left; }
 
     .lesson-table { font-size: 16px; }
     .lesson-grid { font-size: 16px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
@@ -1608,7 +1607,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .header-texts p { font-size: 13px; }
     .badge { font-size: 12px; padding: 5px 10px; }
 
-    .topics-container { padding: 12px 14px 20px; }
+    .topics-container { padding: 12px 8px 20px; }
     .question-counter { font-size: 11px; }
     .question-title { font-size: 16px; }
     .difficulty { font-size: 12px; padding: 5px 10px; margin-bottom: 14px; }
@@ -1626,10 +1625,10 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .feedback-content p { font-size: 13px; }
 
     /* Intro */
-    .lesson-screen { padding: 16px 14px 24px; }
+    .lesson-screen { padding: 16px 6px 24px; }
     .lesson-screen h2 { font-size: 16px; }
     .lesson-title { font-size: 17px; margin-bottom: 12px; }
-    .lesson-body { padding: 12px 14px; }
+    .lesson-body { padding: 12px 10px; }
     .lesson-body p { font-size: 15px; line-height: 1.7; }
     .lesson-table { font-size: 13px; }
     .lesson-grid { font-size: 13px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
