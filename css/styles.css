@@ -1637,6 +1637,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .m3-example { padding: 6px 10px; }
     .annot-verb, .annot-subject, .annot-predicate { font-size: 10px; padding: 3px 4px 2px; margin-top: 8px; }
 
+    /* Na lição, esconde as grades visuais — o texto das etapas já explica */
+    .m3-example .sa-wrap { display: none; }
+
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
     .comp-stat strong { font-size: 22px; }
