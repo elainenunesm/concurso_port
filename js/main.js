@@ -1928,10 +1928,10 @@ function buildDualSelect(q, result, done) {
     return `
       <div class="dual-mode-toggle">
         <button type="button" class="${verbBtnCls}" id="dualModeVerb">
-          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> Selecionar Verbo
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> VERBO
         </button>
         <button type="button" class="${subjBtnCls}" id="dualModeSubject">
-          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> Selecionar Sujeito
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> SUJEITO
         </button>
       </div>
       ${sentenceHTML}
