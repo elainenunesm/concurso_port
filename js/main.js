@@ -1082,9 +1082,9 @@ function render() {
 function renderObjective() {
   $('quizContainer').innerHTML = `
     <div class="lesson-screen">
-      <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto Integrador</div>
+      <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto de extensão</div>
       <div class="lesson-body objective-body">
-        <p>Esta aplicação faz parte de um <strong>Projeto Integrador</strong> do curso de Análise e Desenvolvimento de Sistemas, com o objetivo de desenvolver uma plataforma web educacional interativa para auxiliar no aprendizado de Língua Portuguesa.</p>
+        <p>Esta aplicação faz parte de um <strong>Projeto de extensão</strong> do curso de Análise e Desenvolvimento de Sistemas, com o objetivo de desenvolver uma plataforma web educacional interativa para auxiliar no aprendizado de Língua Portuguesa.</p>
         <p>O sistema utiliza recursos visuais, exercícios práticos, gamificação e acompanhamento de desempenho para tornar o estudo mais acessível, dinâmico e organizado, permitindo que o estudante avance progressivamente pelos conteúdos gramaticais e pratique questões inspiradas em concursos públicos.</p>
         <p>O projeto se enquadra na categoria de extensão voltada ao desenvolvimento de soluções tecnológicas e inovação educacional, alinhando-se aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
         <div class="ods-list">
@@ -1129,35 +1129,42 @@ function renderIntro() {
       <h2>Justificativa da lição:</h2>
       <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Essa etapa 1 você irá aprender o primeiro passo para poder analisar texto: aprender a identificar e classificar um verbo.</p>
       <div class="lesson-body" style="margin-top:24px">
-        <h3 class="lesson-title">Lição de Verbo <span class="lesson-title-sub">(Versão Resumida)</span></h3>
-        <p>Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno da natureza</strong>. Ao ler um texto, uma das primeiras coisas que devemos identificar é o verbo, porque ele dá movimento e sentido à frase.</p>
-        <p>Por exemplo, na palavra <em>correr</em>, imaginamos alguém em movimento, saindo de um ponto e se deslocando rapidamente. Isso mostra a ideia de ação.</p>
-        <p><strong>Verbos indicam:</strong></p>
+        <h3 class="lesson-title">Lição de Verbo</h3>
+        <p>Verbo é a palavra que expressa <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Ao ler uma frase ou texto, uma das primeiras coisas que devemos procurar é o verbo, pois ele dá movimento e sentido à oração.<br>(Oração é toda frase que possui um verbo.)</p>
+        <p>Por exemplo, ao ouvir a palavra correr, imaginamos alguém se movimentando rapidamente de um lugar para outro. Isso representa uma ação.</p>
+        <p><strong>Os verbos podem indicar:</strong></p>
         <div class="lesson-table">
-          <div class="lesson-row"><span class="lesson-col-key">ação</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em>, <em>cantar</em></span></div>
-          <div class="lesson-row"><span class="lesson-col-key">estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ser</em>, <em>estar</em></span></div>
-          <div class="lesson-row"><span class="lesson-col-key">mudança de estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em>, <em>tornar-se</em></span></div>
-          <div class="lesson-row"><span class="lesson-col-key">fenômeno da natureza</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>chover</em>, <em>amanhecer</em></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>Ação</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">correr, cantar</span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>Estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ser, estar</span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>Mudança de estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ficar, tornar-se</span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>Fenômeno da natureza</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">chover, amanhecer</span></div>
         </div>
-        <p><strong>Os verbos normalmente terminam em:</strong></p>
-        <p class="lesson-examples">
-          <strong>-ar</strong> → 1ª conjugação<br>
-          <strong>-er</strong> → 2ª conjugação<br>
-          <strong>-ir</strong> → 3ª conjugação
-        </p>
-        <p>Existe também o verbo <strong>pôr</strong>, que antigamente era escrito como <em>poer</em>. Então ele é classificado na 2ª conjugação.</p>
-        <p><strong>Para identificar um verbo, tente colocá-lo no infinitivo:</strong></p>
-        <p class="lesson-examples">
-          <em>cantou</em> → <em>cantar</em><br>
-          <em>bebeu</em> &nbsp; → <em>beber</em><br>
-          <em>partiu</em> → <em>partir</em>
-        </p>
-        <p><strong>Tente identificar também se ele é ação, fenômeno da natureza, estado ou mudança de estado:</strong></p>
-        <div class="lesson-grid">
-          <span class="lg-key"><em>estava</em> → <em>estar</em></span><span class="lg-arrow">→</span><span class="lg-val">estado</span>
-          <span class="lg-key"><em>ficou</em> → <em>ficar</em></span><span class="lg-arrow">→</span><span class="lg-val">mudança de estado</span>
-          <span class="lg-key"><em>amanheceu</em> → <em>amanhecer</em></span><span class="lg-arrow">→</span><span class="lg-val">fenômeno da natureza</span>
-          <span class="lg-key"><em>correu</em> → <em>correr</em></span><span class="lg-arrow">→</span><span class="lg-val">ação</span>
+        <hr>
+        <p>Os verbos no <strong>infinitivo</strong> aparecem em sua forma original, sem indicar tempo, pessoa ou número.<br>Essa é a forma considerada "padrão" da palavra.</p>
+        <p><strong>Normalmente, os infinitivos terminam em:</strong></p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key">-<strong>ar</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">1ª conjugação</span></div>
+          <div class="lesson-row"><span class="lesson-col-key">-<strong>er</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">2ª conjugação</span></div>
+          <div class="lesson-row"><span class="lesson-col-key">-<strong>ir</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">3ª conjugação</span></div>
+        </div>
+        <p>Existe também o verbo pôr, que antigamente era escrito como poer. Por isso, ele pertence à 2ª conjugação.</p>
+        <hr>
+        <p><strong>Como identificar um verbo na oração?</strong></p>
+        <p>Uma maneira simples é transformar a palavra em infinitivo:</p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key"><strong>cantou</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">cantar → terminação <strong>-ar</strong> → 1ª conjugação</span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>bebeu</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">beber → terminação <strong>-er</strong> → 2ª conjugação</span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>partiu</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → terminação <strong>-ir</strong> → 3ª conjugação</span></div>
+        </div>
+        <p>Você pode fazer isso com qualquer palavra que suspeite ser um verbo. Assim, fica mais fácil praticar e reconhecer cada caso.</p>
+        <hr>
+        <p>Depois, observe o que a palavra expressa: <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Mas atenção: isso depende do contexto da frase. Um mesmo verbo pode apresentar sentidos diferentes, então é importante compreender primeiro o significado da oração.</p>
+        <p><strong>Exemplos:</strong></p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key"><em>estava</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estar</em> → <strong>estado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>ficou</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em> → <strong>mudança de estado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>amanheceu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><em>correu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em> → <strong>ação</strong></span></div>
         </div>
       </div>
       <button type="button" class="btn-start" id="startBtn">
@@ -1317,27 +1324,42 @@ function renderResults() {
 function getLessonBodyHTML(module) {
   if (module === 1) return `
     <div class="lesson-body">
-      <h3 class="lesson-title">Lição de Verbo <span class="lesson-title-sub">(Versão Resumida)</span></h3>
-      <p>Verbo é a palavra que indica <strong>ação, estado, mudança de estado ou fenômeno da natureza</strong>. Ao ler um texto, uma das primeiras coisas que devemos identificar é o verbo, porque ele dá movimento e sentido à frase.</p>
-      <p>Por exemplo, na palavra <em>correr</em>, imaginamos alguém em movimento, saindo de um ponto e se deslocando rapidamente. Isso mostra a ideia de ação.</p>
-      <p><strong>Verbos indicam:</strong></p>
+      <h3 class="lesson-title">Lição de Verbo</h3>
+      <p>Verbo é a palavra que expressa <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Ao ler uma frase ou texto, uma das primeiras coisas que devemos procurar é o verbo, pois ele dá movimento e sentido à oração.<br>(Oração é toda frase que possui um verbo.)</p>
+      <p>Por exemplo, ao ouvir a palavra correr, imaginamos alguém se movimentando rapidamente de um lugar para outro. Isso representa uma ação.</p>
+      <p><strong>Os verbos podem indicar:</strong></p>
       <div class="lesson-table">
-        <div class="lesson-row"><span class="lesson-col-key">ação</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em>, <em>cantar</em></span></div>
-        <div class="lesson-row"><span class="lesson-col-key">estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ser</em>, <em>estar</em></span></div>
-        <div class="lesson-row"><span class="lesson-col-key">mudança de estado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em>, <em>tornar-se</em></span></div>
-        <div class="lesson-row"><span class="lesson-col-key">fenômeno da natureza</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>chover</em>, <em>amanhecer</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Ação</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">correr, cantar</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ser, estar</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Mudança de estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ficar, tornar-se</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Fenômeno da natureza</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">chover, amanhecer</span></div>
       </div>
-      <p><strong>Os verbos normalmente terminam em:</strong></p>
-      <p class="lesson-examples"><strong>-ar</strong> → 1ª conjugação<br><strong>-er</strong> → 2ª conjugação<br><strong>-ir</strong> → 3ª conjugação</p>
-      <p>Existe também o verbo <strong>pôr</strong>, que antigamente era escrito como <em>poer</em>. Então ele é classificado na 2ª conjugação.</p>
-      <p><strong>Para identificar um verbo, tente colocá-lo no infinitivo:</strong></p>
-      <p class="lesson-examples"><em>cantou</em> → <em>cantar</em><br><em>bebeu</em> &nbsp; → <em>beber</em><br><em>partiu</em> → <em>partir</em></p>
-      <p><strong>Tente identificar também se ele é ação, fenômeno da natureza, estado ou mudança de estado:</strong></p>
-      <div class="lesson-grid">
-        <span class="lg-key"><em>estava</em> → <em>estar</em></span><span class="lg-arrow">→</span><span class="lg-val">estado</span>
-        <span class="lg-key"><em>ficou</em> → <em>ficar</em></span><span class="lg-arrow">→</span><span class="lg-val">mudança de estado</span>
-        <span class="lg-key"><em>amanheceu</em> → <em>amanhecer</em></span><span class="lg-arrow">→</span><span class="lg-val">fenômeno da natureza</span>
-        <span class="lg-key"><em>correu</em> → <em>correr</em></span><span class="lg-arrow">→</span><span class="lg-val">ação</span>
+      <hr>
+      <p>Os verbos no <strong>infinitivo</strong> aparecem em sua forma original, sem indicar tempo, pessoa ou número.<br>Essa é a forma considerada "padrão" da palavra.</p>
+      <p><strong>Normalmente, os infinitivos terminam em:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">-<strong>ar</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">1ª conjugação</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">-<strong>er</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">2ª conjugação</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">-<strong>ir</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">3ª conjugação</span></div>
+      </div>
+      <p>Existe também o verbo pôr, que antigamente era escrito como poer. Por isso, ele pertence à 2ª conjugação.</p>
+      <hr>
+      <p><strong>Como identificar um verbo na oração?</strong></p>
+      <p>Uma maneira simples é transformar a palavra em infinitivo:</p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><strong>cantou</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">cantar → terminação <strong>-ar</strong> → 1ª conjugação</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>bebeu</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">beber → terminação <strong>-er</strong> → 2ª conjugação</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>partiu</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → terminação <strong>-ir</strong> → 3ª conjugação</span></div>
+      </div>
+      <p>Você pode fazer isso com qualquer palavra que suspeite ser um verbo. Assim, fica mais fácil praticar e reconhecer cada caso.</p>
+      <hr>
+      <p>Depois, observe o que a palavra expressa: <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Mas atenção: isso depende do contexto da frase. Um mesmo verbo pode apresentar sentidos diferentes, então é importante compreender primeiro o significado da oração.</p>
+      <p><strong>Exemplos:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>estava</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estar</em> → <strong>estado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>ficou</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>ficar</em> → <strong>mudança de estado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>amanheceu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>amanhecer</em> → <strong>fenômeno da natureza</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>correu</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>correr</em> → <strong>ação</strong></span></div>
       </div>
     </div>`;
   return `
@@ -1371,7 +1393,7 @@ function openLessonModal(module) {
   const overlay = document.getElementById('lessonModal');
   const title   = document.getElementById('lessonModalTitle');
   const body    = document.getElementById('lessonModalBody');
-  title.textContent = module === 1 ? 'Lição de Verbo (Versão Resumida)' : 'Lição de Sujeito (Versão Resumida)';
+  title.textContent = module === 1 ? 'Lição de Verbo' : 'Lição de Sujeito (Versão Resumida)';
   body.innerHTML = getLessonBodyHTML(module);
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';

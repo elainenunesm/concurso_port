@@ -1018,6 +1018,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     margin-bottom: 16px;
 }
 
+.lesson-body hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0 36px;
+}
+
 .lesson-title-sub {
     font-size: 13px;
     font-weight: 400;
