@@ -1449,7 +1449,7 @@ function renderIntro() {
         </div>
         <p>Você pode fazer isso com qualquer palavra que suspeite ser um verbo. Assim, fica mais fácil praticar e reconhecer cada caso.</p>
         <hr>
-        <p>Depois, observe o que a palavra expressa: <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Mas atenção: isso depende do contexto da frase. Um mesmo verbo pode apresentar sentidos diferentes, então é importante compreender primeiro o significado da oração.</p>
+        <p>Depois de localizar o verbo, observe o sentido que ele transmite na oração.<br>Ele pode indicar <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>. Porém, o significado depende do contexto, já que um mesmo verbo pode assumir sentidos diferentes em frases diferentes.</p>
         <p><strong>Exemplos:</strong></p>
         <div class="lesson-table">
           <div class="lesson-row"><span class="lesson-col-key"><em>estava</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>estar</em> → <strong>estado</strong></span></div>
