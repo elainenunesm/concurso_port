@@ -885,11 +885,13 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 /* ── GRID ANOTADO (chave gramatical abaixo das palavras) ──── */
 .sa-wrap {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin-bottom: 24px;
+    min-width: 0;
 }
 .sentence-annotated {
     display: inline-grid;
-    column-gap: 10px;
+    column-gap: 8px;
     row-gap: 0;
     align-items: end;
     grid-template-rows: auto minmax(36px, auto);
@@ -1579,6 +1581,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-grid { font-size: 16px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
 
+    .sentence-annotated { column-gap: 6px; }
+    .m3-example { padding: 8px 12px; }
+
     /* Resultados */
     .results-screen { padding: 32px 20px; }
     .results-screen h2 { font-size: 16px; }
@@ -1618,13 +1623,19 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .feedback-content p { font-size: 13px; }
 
     /* Intro */
-    .lesson-screen { padding: 16px 14px 24px; }
+    .lesson-screen { padding: 16px 14px 24px; overflow-x: hidden; }
     .lesson-screen h2 { font-size: 16px; }
     .lesson-title { font-size: 17px; margin-bottom: 12px; }
-    .lesson-body { padding: 14px 16px; }
+    .lesson-body { padding: 12px 14px; }
     .lesson-body p { font-size: 15px; line-height: 1.7; }
     .lesson-table { font-size: 13px; }
     .lesson-grid { font-size: 13px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
+
+    .sentence-annotated { column-gap: 4px; }
+    .sa-wrap { margin-bottom: 14px; }
+    .sa-wrap .word-chip { padding: 5px 7px; font-size: 12px; }
+    .m3-example { padding: 6px 10px; }
+    .annot-verb, .annot-subject, .annot-predicate { font-size: 10px; padding: 3px 4px 2px; margin-top: 8px; }
 
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
