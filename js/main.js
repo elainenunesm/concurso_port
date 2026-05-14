@@ -1418,7 +1418,7 @@ function renderIntro() {
     <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Primeira Etapa</div>
       <h2>Justificativa da lição:</h2>
-      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Essa etapa 1 você irá aprender o primeiro passo para poder analisar texto: aprender a identificar e classificar um verbo.</p>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Esta etapa tem como objetivo desenvolver a compreensão de textos simples por meio da identificação do verbo.<br>O reconhecimento do verbo auxilia na interpretação das frases e na identificação do sujeito.<br>O conteúdo foi organizado de forma prática, gradual e acessível.</p>
       <div class="lesson-body" style="margin-top:24px">
         <h3 class="lesson-title">Lição de Verbo</h3>
         <p>Verbo é a palavra que expressa <strong>ação</strong>, <strong>estado</strong>, <strong>mudança de estado</strong> ou <strong>fenômeno da natureza</strong>.<br>Ao ler uma frase ou texto, uma das primeiras coisas que devemos procurar é o verbo, pois ele dá movimento e sentido à oração.<br>(Oração é toda frase que possui um verbo.)</p>
