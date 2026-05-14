@@ -716,6 +716,18 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .comp-stat span { font-size: 13px; color: var(--text-gray); }
 .completion-actions { display: flex; gap: 16px; }
 
+/* ── EXEMPLOS DO MÓDULO 3 ───────────────────────────────────── */
+.m3-example {
+    margin: 6px 0 14px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.03);
+    border-left: 3px solid var(--border-color);
+    border-radius: 0 6px 6px 0;
+}
+.m3-example p { margin: 3px 0; font-size: 15px; line-height: 1.5; }
+.m3-sub   { color: var(--text-gray); }
+.m3-concl { color: var(--text-gray); font-style: italic; }
+
 /* ── RESUMO DA RESPOSTA DO USUÁRIO (módulo 2 incorreto) ─────── */
 .user-answer-recap {
     display: flex;
@@ -911,6 +923,65 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .annot-verb::after,     .annot-subject::after  { right: 0; }
 .annot-verb    { color: #2563eb; }
 .annot-subject { color: #dc2626; }
+.annot-predicate {
+    position: relative;
+    grid-row: 2;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 6px 3px;
+    margin-top: 10px;
+    border-top: 2px solid currentColor;
+    white-space: nowrap;
+    color: #7c3aed;
+}
+.annot-predicate::before, .annot-predicate::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+.annot-predicate::before { left: 0; }
+.annot-predicate::after  { right: 0; }
+.word-chip.lesson-predicate {
+    border-color: #7c3aed;
+    background: #f5f3ff;
+    color: #7c3aed;
+    cursor: default;
+}
+.word-chip.lesson-verb {
+    border-color: #2563eb;
+    background: #eff6ff;
+    color: #2563eb;
+    cursor: default;
+}
+.word-chip.predicate-pending {
+    border-color: #7c3aed;
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+.dual-mode-btn.active-predicate {
+    border-color: #7c3aed;
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+.recap-predicate { color: #7c3aed; }
+.hint-label.predicate-hint { color: #7c3aed; font-weight: 600; }
+.m3-step-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-gray);
+    margin: 10px 0 3px;
+}
+.m3-step-value {
+    font-size: 15px;
+    margin: 0 0 4px;
+    padding-left: 14px;
+}
 
 .dual-mode-toggle {
     display: flex;
