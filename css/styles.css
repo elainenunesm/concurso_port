@@ -1584,9 +1584,8 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
     .sentence-annotated { column-gap: 6px; }
     .m3-example { padding: 8px 12px; }
-
-    /* Na lição, esconde as grades visuais em mobile/tablet — texto das etapas já explica */
-    .m3-example .sa-wrap { display: none; }
+    /* Impede que a grade anotada alargue a página; scroll fica no sa-wrap */
+    .lesson-screen { overflow-x: hidden; }
 
     /* Resultados */
     .results-screen { padding: 32px 20px; }
