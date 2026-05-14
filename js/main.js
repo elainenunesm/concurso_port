@@ -1975,12 +1975,19 @@ function buildDualSelect(q, result, done) {
     </div>`;
   }).filter(h => h).join('');
 
+  const userVerbWord  = result.verbSelected != null
+    ? q.sentence[result.verbSelected] : '—';
+  const userSubjWords = result.subjectSelected.length > 0
+    ? result.subjectSelected.slice().sort((a, b) => a - b).map(i => q.sentence[i]).join(' ')
+    : '—';
+
   return `
     ${sentenceHTML}
     <div class="feedback${result.correct ? '' : ' wrong'}">
       <div class="feedback-icon">${result.correct ? icons.check : icons.x}</div>
       <div class="feedback-content">
         <h2>${result.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        ${!result.correct ? `<p class="user-answer-recap"><span class="recap-verb">Verbo: <strong>${userVerbWord}</strong></span><span class="recap-sep">·</span><span class="recap-subject">Sujeito: <strong>${userSubjWords}</strong></span></p>` : ''}
         <p>${q.feedback}</p>
         ${q.example ? `<p>${q.example}</p>` : ''}
         <div class="hints-breakdown">

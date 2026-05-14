@@ -716,6 +716,21 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .comp-stat span { font-size: 13px; color: var(--text-gray); }
 .completion-actions { display: flex; gap: 16px; }
 
+/* ── RESUMO DA RESPOSTA DO USUÁRIO (módulo 2 incorreto) ─────── */
+.user-answer-recap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-size: 13px;
+    margin: 4px 0 10px;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 8px;
+}
+.recap-verb    { color: #2563eb; }
+.recap-subject { color: #dc2626; }
+.recap-sep     { color: var(--text-light); }
+
 /* ── BREAKDOWN DE CLASSES GRAMATICAIS ───────────────────────── */
 .hints-breakdown {
     margin-top: 18px;
