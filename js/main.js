@@ -1374,21 +1374,22 @@ function renderObjective() {
     <div class="lesson-screen">
       <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto de extensão</div>
       <div class="lesson-body objective-body">
-        <p>Esta aplicação faz parte de um <strong>Projeto de extensão</strong> do curso de Análise e Desenvolvimento de Sistemas, com o objetivo de desenvolver uma plataforma web educacional interativa para auxiliar no aprendizado de Língua Portuguesa.</p>
-        <p>O sistema utiliza recursos visuais, exercícios práticos, gamificação e acompanhamento de desempenho para tornar o estudo mais acessível, dinâmico e organizado, permitindo que o estudante avance progressivamente pelos conteúdos gramaticais e pratique questões inspiradas em concursos públicos.</p>
-        <p>O projeto se enquadra na categoria de extensão voltada ao desenvolvimento de soluções tecnológicas e inovação educacional, alinhando-se aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
+        <p>Esta aplicação foi desenvolvida como parte de um <strong>Projeto de Extensão</strong> do curso de Análise e Desenvolvimento de Sistemas, com o propósito de tornar o aprendizado de Língua Portuguesa mais acessível, prático e motivador para diferentes públicos e faixas etárias.</p>
+        <p>O site foi criado a partir da percepção de que muitos estudantes encontram dificuldades em conteúdos gramaticais devido ao excesso de teoria e à falta de ferramentas interativas que auxiliem na prática e na organização dos estudos. Pensando nisso, a plataforma reúne recursos visuais, exercícios, desafios, gamificação e acompanhamento de desempenho para transformar o processo de aprendizagem em uma experiência mais dinâmica e eficiente.</p>
+        <p>Além de apoiar estudantes em reforço escolar e preparação para concursos públicos, o projeto busca incentivar a autonomia nos estudos, permitindo que cada usuário avance no próprio ritmo e acompanhe sua evolução ao longo do aprendizado.</p>
+        <p>A iniciativa faz parte das ações de extensão universitária voltadas à inovação tecnológica e educacional, promovendo a integração entre tecnologia, educação e impacto social. O projeto também está alinhado aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
         <div class="ods-list">
           <div class="ods-item ods-4">
             <div class="ods-icon"><strong>4</strong></div>
-            <div class="ods-text"><strong>ODS 4 — Educação de Qualidade</strong></div>
+            <div class="ods-text"><strong>ODS 4 — Educação de Qualidade</strong><span>Promover acesso a uma aprendizagem mais inclusiva, acessível e eficiente.</span></div>
           </div>
           <div class="ods-item ods-9">
             <div class="ods-icon"><strong>9</strong></div>
-            <div class="ods-text"><strong>ODS 9 — Indústria, Inovação e Infraestrutura</strong></div>
+            <div class="ods-text"><strong>ODS 9 — Indústria, Inovação e Infraestrutura</strong><span>Estimular o desenvolvimento de soluções tecnológicas aplicadas à educação.</span></div>
           </div>
           <div class="ods-item ods-10">
             <div class="ods-icon"><strong>10</strong></div>
-            <div class="ods-text"><strong>ODS 10 — Redução das Desigualdades</strong></div>
+            <div class="ods-text"><strong>ODS 10 — Redução das Desigualdades</strong><span>Contribuir para ampliar o acesso ao aprendizado por meio da tecnologia.</span></div>
           </div>
         </div>
       </div>
