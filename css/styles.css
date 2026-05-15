@@ -1577,7 +1577,11 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-body { padding: 16px 14px; }
     .lesson-body p { font-size: 16px; text-align: left; }
 
-    .lesson-table { font-size: 16px; }
+    .lesson-table { font-size: 16px; gap: 10px; }
+    .lesson-row { flex-direction: column; gap: 2px; }
+    .lesson-col-arrow { display: none; }
+    .lesson-col-val { padding-left: 10px; }
+    .lesson-col-val::before { content: "→ "; color: var(--text-light); font-weight: 600; }
     .lesson-grid { font-size: 16px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
 
