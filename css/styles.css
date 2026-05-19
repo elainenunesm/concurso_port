@@ -988,8 +988,58 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .dual-mode-toggle {
     display: flex;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     flex-wrap: wrap;
+}
+.m4-nosubj-row {
+    margin-bottom: 14px;
+}
+.m4-nosubj-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px dashed var(--border-color);
+    background: transparent;
+    color: var(--text-gray);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.m4-nosubj-btn.active {
+    border-style: solid;
+    border-color: #dc2626;
+    background: #fef2f2;
+    color: #dc2626;
+}
+.m4-nosubj-result-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #16a34a;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.m4-nosubj-result-tag.wrong {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: #dc2626;
+}
+.m4-nosubj-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 .dual-mode-btn {
     display: inline-flex;

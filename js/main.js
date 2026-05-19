@@ -772,6 +772,164 @@ const questions3 = [
   },
 ];
 
+// ── QUESTÕES MÓDULO 4 ─────────────────────────────────────────
+const questions4 = [
+  // ── haver = existir ────────────────────────────────────────
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Há', 'muitos', 'livros', 'nesta', 'estante', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4],
+    feedback: 'O verbo "há" equivale a "existem". Verbos no sentido de existir são impessoais — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Havia', 'crianças', 'brincando', 'no', 'parque', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4],
+    feedback: 'O verbo "havia" equivale a "existiam". Nesse sentido, é impessoal e a oração não possui sujeito.',
+  },
+  // ── haver = ocorrer ────────────────────────────────────────
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Houve', 'uma', 'reunião', 'ontem', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3],
+    feedback: 'O verbo "houve" significa "ocorreu". Nesse sentido de ocorrência, é impessoal — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Haverá', 'mudanças', 'na', 'empresa', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3],
+    feedback: 'O verbo "haverá" equivale a "ocorrerão". Verbo impessoal — a oração não possui sujeito.',
+  },
+  // ── fazer/haver indicando tempo ────────────────────────────
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Médio',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Faz', 'três', 'dias', 'que', 'não', 'chove', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4, 5],
+    feedback: 'O verbo "faz" indica tempo decorrido. Nesse uso temporal, é impessoal — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Médio',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Faz', 'muito', 'tempo', 'que', 'não', 'viajamos', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4, 5],
+    feedback: 'O verbo "faz" indica tempo decorrido. Nesse uso, é impessoal — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Médio',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Há', 'dois', 'anos', 'que', 'moro', 'nesta', 'cidade', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4, 5, 6],
+    feedback: 'O verbo "há" indica tempo decorrido ("faz dois anos"). Nesse uso temporal, é impessoal — a oração não possui sujeito.',
+  },
+  // ── fenômenos da natureza ──────────────────────────────────
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Choveu', 'muito', 'esta', 'semana', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3],
+    feedback: 'O verbo "choveu" indica fenômeno da natureza. Verbos de fenômenos naturais são impessoais — não possuem sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Nevou', 'na', 'serra', 'durante', 'a', 'madrugada', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3, 4, 5],
+    feedback: 'O verbo "nevou" indica fenômeno da natureza. É impessoal — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Trovejou', 'a', 'noite', 'toda', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3],
+    feedback: 'O verbo "trovejou" indica fenômeno da natureza. É impessoal — a oração não possui sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: true, difficulty: 'Fácil',
+    text: 'Identifique o verbo e o predicado. Esta oração possui sujeito?',
+    sentence: ['Amanheceu', 'muito', 'cedo', 'hoje', '.'],
+    verbIndex: 0, subjectIndices: [], predicateIndices: [0, 1, 2, 3],
+    feedback: 'O verbo "amanheceu" indica fenômeno da natureza. É impessoal — a oração não possui sujeito.',
+  },
+  // ── existir / ocorrer COM sujeito ──────────────────────────
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Médio',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['Os', 'problemas', 'existem', 'em', 'todo', 'lugar', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4, 5],
+    feedback: '"Existem" tem sujeito: "Os problemas" — eles existem. Diferente do impessoal "há", o verbo "existir" admite sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Médio',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['O', 'acidente', 'ocorreu', 'na', 'rodovia', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"Ocorreu" tem sujeito: "O acidente" — ele ocorreu. Diferente do impessoal "houve", o verbo "ocorrer" admite sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Médio',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['A', 'neve', 'existe', 'em', 'regiões', 'muito', 'frias', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4, 5, 6],
+    feedback: '"Existe" tem sujeito: "A neve" — ela existe. Compare com "Há neve em regiões frias", onde "há" é impessoal.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Médio',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['Muitas', 'dificuldades', 'ocorrem', 'no', 'caminho', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"Ocorrem" tem sujeito: "Muitas dificuldades" — elas ocorrem. Compare com "Houve dificuldades", onde "houve" é impessoal.',
+  },
+  // ── fenômeno como sujeito explícito (contraste) ────────────
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Difícil',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['A', 'chuva', 'caiu', 'de', 'manhã', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: 'Atenção: "A chuva" é o sujeito — ela caiu. Quando o fenômeno natural aparece como sujeito explícito, a oração tem sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Difícil',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['A', 'tempestade', 'causou', 'muitos', 'danos', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"A tempestade" é o sujeito — ela causou os danos. O fenômeno natural como sujeito explícito faz a oração ter sujeito.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Difícil',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['O', 'trovão', 'assustou', 'as', 'crianças', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"O trovão" é o sujeito — ele assustou. Compare com "Trovejou" (impessoal). O substantivo como sujeito muda a análise.',
+  },
+  // ── misturadas do módulo 3 ─────────────────────────────────
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Fácil',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['O', 'gato', 'dormiu', 'na', 'cama', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"O gato" é o sujeito — ele dormiu. É uma oração comum com sujeito e predicado.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Fácil',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['A', 'Maria', 'cantou', 'no', 'coral', '.'],
+    verbIndex: 2, subjectIndices: [0, 1], predicateIndices: [2, 3, 4],
+    feedback: '"A Maria" é o sujeito — ela cantou. É uma oração com sujeito explícito.',
+  },
+  {
+    type: 'tri-select', noSubject: false, difficulty: 'Médio',
+    text: 'Identifique o verbo, o sujeito e o predicado. Esta oração possui sujeito?',
+    sentence: ['O', 'vento', 'forte', 'derrubou', 'as', 'árvores', '.'],
+    verbIndex: 3, subjectIndices: [0, 1, 2], predicateIndices: [3, 4, 5],
+    feedback: '"O vento forte" é o sujeito — ele derrubou as árvores. Compare com "Ventou" (impessoal): aqui o fenômeno é sujeito explícito.',
+  },
+];
+
 // ── ESTADO ───────────────────────────────────────────────────
 // phase: 'objective' | 'intro' | 'quiz' | 'results'
 // activeSet: índices das questões da rodada atual
@@ -804,6 +962,13 @@ const state = {
   m3pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] },
   m3unlocked:      false,
   m4unlocked:      false,
+  m4phase:         'none',
+  m4current:       0,
+  m4activeSet:     questions4.map((_, i) => i),
+  m4results:       new Array(questions4.length).fill(null),
+  m4points:        0,
+  m4errorNotebook: {},
+  m4pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false },
   previousPhase:   null,
 };
 
@@ -903,6 +1068,12 @@ async function saveProgress() {
       m3errorNotebook: state.m3errorNotebook,
       m3unlocked:      state.m3unlocked,
       m4unlocked:      state.m4unlocked,
+      m4phase:         state.m4phase,
+      m4current:       state.m4current,
+      m4activeSet:     state.m4activeSet,
+      m4results:       state.m4results,
+      m4points:        state.m4points,
+      m4errorNotebook: state.m4errorNotebook,
       savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
@@ -922,7 +1093,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -945,10 +1116,18 @@ async function loadProgress() {
       state.m3errorNotebook = data.m3errorNotebook ?? {};
       state.m3unlocked      = data.m3unlocked ?? PHASES_MODULE3.includes(data.phase);
       state.m4unlocked      = data.m4unlocked ?? (data.phase === 'module4-intro');
+      state.m4phase         = data.m4phase ?? 'none';
+      state.m4current       = data.m4current ?? 0;
+      state.m4activeSet     = Array.isArray(data.m4activeSet) ? data.m4activeSet : questions4.map((_, i) => i);
+      state.m4results       = Array.isArray(data.m4results) && data.m4results.length === questions4.length
+        ? data.m4results : new Array(questions4.length).fill(null);
+      state.m4points        = data.m4points ?? 0;
+      state.m4errorNotebook = data.m4errorNotebook ?? {};
       const el = $('statPontos'); if (el) el.textContent = state.points;
       updateStreak();
       updateModule2Card();
       updateModule3Card();
+      updateModule4Card();
       updateErrorNotebook();
     }
   } catch (e) { /* sem progresso salvo, começa do zero */ }
@@ -1300,10 +1479,11 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro'];
-const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE3    = ['module3-intro', 'module3-quiz', 'module3-results'];
+const PHASES_MODULE4    = ['module4-intro', 'module4-quiz', 'module4-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
 
@@ -1329,7 +1509,7 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:16px;font-weight:700;color:#3b82f6">VP</span>';
       if (h2El)    h2El.textContent = '3. Estudo do predicado';
       if (descEl)  descEl.textContent = 'Entenda o que é o predicado e como identificá-lo na oração.';
-    } else if (state.phase === 'module4-intro') {
+    } else if (PHASES_MODULE4.includes(state.phase)) {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:18px;font-weight:700;color:#0d9488">Ø</span>';
       if (h2El)    h2El.textContent = '4. Orações sem sujeito';
       if (descEl)  descEl.textContent = 'Entenda os verbos impessoais e as orações sem sujeito.';
@@ -1352,7 +1532,7 @@ function render() {
   if (m2c) m2c.classList.toggle('active-view', PHASES_MODULE2.includes(state.phase));
   if (m3c) m3c.classList.toggle('active-view', PHASES_MODULE3.includes(state.phase));
   const m4c = $('module4Card');
-  if (m4c) m4c.classList.toggle('active-view', state.phase === 'module4-intro');
+  if (m4c) m4c.classList.toggle('active-view', PHASES_MODULE4.includes(state.phase));
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
   if (state.phase === 'objective')         { renderObjective();         return; }
   if (state.phase === 'intro')             { renderIntro();             return; }
@@ -1365,6 +1545,8 @@ function render() {
   if (state.phase === 'module3-quiz')      { renderModule3Question();   return; }
   if (state.phase === 'module3-results')   { renderModule3Results();    return; }
   if (state.phase === 'module4-intro')     { renderModule4Intro();      return; }
+  if (state.phase === 'module4-quiz')      { renderModule4Question();   return; }
+  if (state.phase === 'module4-results')   { renderModule4Results();    return; }
   renderQuestion();
 }
 
@@ -1765,7 +1947,11 @@ function renderModule4Intro() {
           <p class="m3-concl">→ O verbo apenas indica um fenômeno da natureza.</p>
         </div>
       </div>
+      <button type="button" class="btn-start" id="startModule4Btn">
+        Começar questões ${icons.right}
+      </button>
     </div>`;
+  $('startModule4Btn').addEventListener('click', startModule4Quiz);
 }
 
 function startModule2Quiz() {
@@ -1951,13 +2137,37 @@ function getLessonBodyHTML(module) {
       </div>
       <p><strong>Resumo:</strong> O sujeito é o termo da frase sobre o qual se declara algo. Geralmente, é quem faz a ação do verbo ou de quem se fala.</p>
     </div>`;
+  if (module === 4) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Orações sem sujeito (Resumo)</h3>
+      <p>Alguns verbos são <strong>impessoais</strong> e formam orações sem sujeito. Os principais casos são:</p>
+      <p><strong>1. Haver = existir ou ocorrer</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Há livros na mesa.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">existem livros — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Houve um acidente.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ocorreu um acidente — sem sujeito</span></div>
+      </div>
+      <p><strong>2. Fazer/Haver indicando tempo</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Faz três dias.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Há dois anos.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
+      </div>
+      <p><strong>3. Fenômenos da natureza</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Choveu ontem.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Nevou na serra.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
+      </div>
+      <p><strong>Atenção:</strong> "Existir" e "ocorrer" admitem sujeito (<em>Os problemas existem. O acidente ocorreu.</em>). Compare sempre com o impessoal "há/houve".</p>
+    </div>`;
 }
 
 function openLessonModal(module) {
   const overlay = document.getElementById('lessonModal');
   const title   = document.getElementById('lessonModalTitle');
   const body    = document.getElementById('lessonModalBody');
-  title.textContent = module === 1 ? 'Lição de Verbo' : module === 3 ? 'Lição de Estudo do predicado' : 'Lição de Sujeito (Versão Resumida)';
+  title.textContent = module === 1 ? 'Lição de Verbo'
+    : module === 3 ? 'Lição de Estudo do predicado'
+    : module === 4 ? 'Lição de Orações sem sujeito'
+    : 'Lição de Sujeito (Versão Resumida)';
   body.innerHTML = getLessonBodyHTML(module);
   overlay.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -2698,6 +2908,19 @@ function updateModule2Card() {
   if (m3Lock) m3Lock.style.display = allDone ? 'none' : '';
 }
 
+// ── MÓDULO 4: ATUALIZAR CARD DA SIDEBAR ──────────────────────
+function updateModule4Card() {
+  const m4Card = $('module4Card');
+  if (!m4Card) return;
+  const total    = questions4.length;
+  const answered = state.m4results.filter(r => r !== null).length;
+  const pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  const fill = m4Card.querySelector('.fill');
+  const text = m4Card.querySelector('.module-progress span');
+  if (fill) fill.style.width = pct + '%';
+  if (text) text.textContent = pct + '%';
+}
+
 // ── MÓDULO 3: ATUALIZAR CARD DA SIDEBAR ──────────────────────
 function updateModule3Card() {
   const m3Card = $('module3Card');
@@ -3035,6 +3258,355 @@ function renderModule3Results() {
   }
 }
 
+// ── MÓDULO 4: INICIAR QUIZ ───────────────────────────────────
+function startModule4Quiz() {
+  state.m4phase     = 'quiz';
+  state.m4current   = 0;
+  state.m4activeSet = questions4.map((_, i) => i);
+  state.m4results   = new Array(questions4.length).fill(null);
+  state.m4points    = 0;
+  state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+  state.phase       = 'module4-quiz';
+  updateModule4Card();
+  render();
+  saveProgress();
+}
+
+// ── MÓDULO 4: MONTAR TRI-SELECT COM "SEM SUJEITO" ────────────
+function buildM4TriSelect(q, result, done) {
+  if (!done) {
+    const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject } = state.m4pending;
+    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject) && predicateIdxs.length > 0;
+
+    const sentenceHTML = buildAnnotatedSentence3(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (idx === verbIdx)                                     cls += ' verb-pending';
+        else if (!noSubject && subjectIdxs.includes(idx))       cls += ' subject-pending';
+        else if (predicateIdxs.includes(idx))                   cls += ' predicate-pending';
+        return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        let a = '';
+        if (!noSubject && subjectIdxs.length > 0) {
+          const sorted = [...subjectIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-subject" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Sujeito</div>`;
+        }
+        if (verbIdx !== null) {
+          a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
+        }
+        if (predicateIdxs.length > 0) {
+          const sorted = [...predicateIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
+        }
+        return a;
+      }
+    );
+
+    const verbBtnCls = mode === 'verb'                       ? 'dual-mode-btn active-verb'      : 'dual-mode-btn';
+    const subjBtnCls = mode === 'subject' && !noSubject      ? 'dual-mode-btn active-subject'   : 'dual-mode-btn';
+    const predBtnCls = mode === 'predicate'                  ? 'dual-mode-btn active-predicate' : 'dual-mode-btn';
+    const noSbjCls   = noSubject ? 'm4-nosubj-btn active' : 'm4-nosubj-btn';
+
+    return `
+      <div class="dual-mode-toggle">
+        <button type="button" class="${verbBtnCls}" id="m4ModeVerb">
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> VERBO
+        </button>
+        <button type="button" class="${subjBtnCls}" id="m4ModeSubject">
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> SUJEITO
+        </button>
+        <button type="button" class="${predBtnCls}" id="m4ModePredicate">
+          <i class="fa-solid fa-circle" style="color:#7c3aed;font-size:8px"></i> PREDICADO
+        </button>
+      </div>
+      <div class="m4-nosubj-row">
+        <button type="button" class="${noSbjCls}" id="m4NoSubjBtn">
+          <i class="fa-solid fa-ban" style="font-size:10px"></i>
+          ${noSubject ? 'Marcado: sem sujeito' : 'Oração sem sujeito'}
+        </button>
+      </div>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="m4ConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar resposta
+      </button>`;
+  }
+
+  // ── Questão já respondida ──────────────────────────────────
+  const sentenceHTML = buildAnnotatedSentence3(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isVerb = idx === q.verbIndex;
+      const isSubj = !q.noSubject && q.subjectIndices.includes(idx);
+      const isPred = q.predicateIndices.includes(idx);
+      const wasVerb = idx === result.verbSelected;
+      const wasSubj = !result.noSubjectSelected && result.subjectSelected.includes(idx);
+      const wasPred = result.predicateSelected.includes(idx);
+      if      (isVerb)               cls += ' correct-verb';
+      else if (isSubj)               cls += ' correct-subject';
+      else if (isPred)               cls += ' lesson-predicate';
+      else if (wasVerb && !isVerb)   cls += ' wrong-verb';
+      else if (wasSubj && !isSubj)   cls += ' wrong-subject';
+      else if (wasPred && !isPred)   cls += ' wrong-subject';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    (q) => {
+      let a = '';
+      if (!q.noSubject && q.subjectIndices.length > 0) {
+        const subjStart = Math.min(...q.subjectIndices) + 1;
+        const subjSpan  = Math.max(...q.subjectIndices) - Math.min(...q.subjectIndices) + 1;
+        a += `<div class="annot-subject" style="grid-column:${subjStart}/span ${subjSpan};grid-row:2">Sujeito</div>`;
+      }
+      a += `<div class="annot-verb" style="grid-column:${q.verbIndex+1};grid-row:2">Verbo</div>`;
+      if (q.predicateIndices.length > 0) {
+        const predStart = Math.min(...q.predicateIndices) + 1;
+        const predSpan  = Math.max(...q.predicateIndices) - Math.min(...q.predicateIndices) + 1;
+        a += `<div class="annot-predicate" style="grid-column:${predStart}/span ${predSpan};grid-row:3">Predicado</div>`;
+      }
+      return a;
+    }
+  );
+
+  const hintsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return '';
+    const isVerb = idx === q.verbIndex;
+    const isSubj = !q.noSubject && q.subjectIndices.includes(idx);
+    const isPred = q.predicateIndices.includes(idx) && !isVerb;
+    const role   = isVerb ? 'Verbo' : isSubj ? 'Sujeito' : isPred ? 'Predicado' : '—';
+    const cls    = isVerb ? ' correct' : isSubj ? ' subject-hint' : isPred ? ' predicate-hint' : '';
+    return `<div class="hint-row">
+      <span class="wh-word${isVerb || isSubj || isPred ? ' correct' : ''}">${word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${cls}">${role}</span>
+      ${isVerb || isSubj || isPred ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`;
+  }).filter(h => h).join('');
+
+  const userVerbWord  = result.verbSelected != null ? q.sentence[result.verbSelected] : '—';
+  const userSubjWords = result.noSubjectSelected ? 'Sem sujeito (✓)' :
+    result.subjectSelected.length > 0
+      ? result.subjectSelected.slice().sort((a,b) => a-b).map(i => q.sentence[i]).join(' ') : '—';
+  const userPredWords = result.predicateSelected.length > 0
+    ? result.predicateSelected.slice().sort((a,b) => a-b).map(i => q.sentence[i]).join(' ') : '—';
+
+  const noSubjLabel = q.noSubject
+    ? `<div class="m4-nosubj-result-tag${result.subjectCorrect ? '' : ' wrong'}">
+        <i class="fa-solid fa-ban"></i>
+        ${result.subjectCorrect ? 'Correto: esta oração não possui sujeito' : 'Incorreto: esta oração não possui sujeito'}
+      </div>` : '';
+
+  return `
+    ${sentenceHTML}
+    ${noSubjLabel}
+    <div class="feedback${result.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${result.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${result.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        ${!result.correct ? `<p class="user-answer-recap">
+          <span class="recap-verb">Verbo: <strong>${userVerbWord}</strong></span>
+          <span class="recap-sep">·</span>
+          <span class="recap-subject">Sujeito: <strong>${userSubjWords}</strong></span>
+          <span class="recap-sep">·</span>
+          <span class="recap-predicate">Predicado: <strong>${userPredWords}</strong></span>
+        </p>` : ''}
+        <p>${q.feedback}</p>
+        <div class="hints-breakdown">
+          <p class="hints-title">Papel de cada palavra:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+        ${q.noSubject ? `<p class="m4-nosubj-note"><i class="fa-solid fa-ban"></i> Esta oração <strong>não possui sujeito</strong> — verbo impessoal.</p>` : ''}
+      </div>
+    </div>`;
+}
+
+// ── MÓDULO 4: RENDERIZAR QUESTÃO ─────────────────────────────
+function renderModule4Question() {
+  const qIdx   = state.m4activeSet[state.m4current];
+  const q      = questions4[qIdx];
+  const result = state.m4results[qIdx];
+  const done   = result !== null;
+  const isLast = state.m4current === state.m4activeSet.length - 1;
+  const diffCls = q.difficulty === 'Médio'   ? ' difficulty-medium'
+                : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+
+  $('quizContainer').innerHTML = `
+    <div class="question-counter">Questão ${state.m4current + 1} de ${state.m4activeSet.length}</div>
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <button type="button" class="btn-lesson-hint" id="m4BtnLessonHint">
+      <i class="fa-solid fa-book-open"></i> Consultar lição
+    </button>
+    <p class="question-title">${q.text}</p>
+    ${buildM4TriSelect(q, result, done)}
+    <div class="bottom-actions">
+      <button type="button" class="btn-nav" id="m4PrevBtn"${state.m4current === 0 ? ' disabled' : ''}>
+        ${icons.left} Questão anterior
+      </button>
+      <button type="button" class="btn-nav btn-nav-primary" id="m4NextBtn"${!done ? ' disabled' : ''}>
+        ${isLast ? 'Ver resultado' : 'Próxima questão'} ${icons.right}
+      </button>
+    </div>`;
+
+  if (!done) {
+    $('quizContainer').querySelectorAll('.word-chip[data-wi]').forEach(chip => {
+      chip.addEventListener('click', () => selectM4Word(+chip.dataset.wi));
+    });
+    const mv = $('m4ModeVerb');
+    const ms = $('m4ModeSubject');
+    const mp = $('m4ModePredicate');
+    const mn = $('m4NoSubjBtn');
+    if (mv) mv.addEventListener('click', () => { state.m4pending.mode = 'verb';      renderModule4Question(); });
+    if (ms) ms.addEventListener('click', () => { state.m4pending.mode = 'subject';   renderModule4Question(); });
+    if (mp) mp.addEventListener('click', () => { state.m4pending.mode = 'predicate'; renderModule4Question(); });
+    if (mn) mn.addEventListener('click', toggleM4NoSubject);
+    const confirmBtn = $('m4ConfirmBtn');
+    if (confirmBtn) confirmBtn.addEventListener('click', confirmM4Answer);
+  }
+
+  $('m4BtnLessonHint').addEventListener('click', () => openLessonModal(4));
+  $('m4PrevBtn').addEventListener('click', () => m4navigate(-1));
+  $('m4NextBtn').addEventListener('click', () => {
+    if (isLast) { state.phase = 'module4-results'; render(); saveProgress(); }
+    else        { m4navigate(1); }
+  });
+}
+
+// ── MÓDULO 4: SELECIONAR PALAVRA ─────────────────────────────
+function selectM4Word(wordIdx) {
+  const { mode, noSubject } = state.m4pending;
+  if (mode === 'verb') {
+    if (state.m4pending.verbIdx === wordIdx) {
+      state.m4pending.verbIdx = null;
+    } else {
+      state.m4pending.subjectIdxs   = state.m4pending.subjectIdxs.filter(i => i !== wordIdx);
+      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m4pending.verbIdx = wordIdx;
+      state.m4pending.mode    = 'subject';
+    }
+  } else if (mode === 'subject') {
+    if (noSubject) return;
+    if (wordIdx === state.m4pending.verbIdx) return;
+    state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+    const i = state.m4pending.subjectIdxs.indexOf(wordIdx);
+    if (i === -1) state.m4pending.subjectIdxs.push(wordIdx);
+    else          state.m4pending.subjectIdxs.splice(i, 1);
+  } else {
+    if (state.m4pending.subjectIdxs.includes(wordIdx)) return;
+    const i = state.m4pending.predicateIdxs.indexOf(wordIdx);
+    if (i === -1) state.m4pending.predicateIdxs.push(wordIdx);
+    else          state.m4pending.predicateIdxs.splice(i, 1);
+  }
+  renderModule4Question();
+}
+
+// ── MÓDULO 4: TOGGLE SEM SUJEITO ─────────────────────────────
+function toggleM4NoSubject() {
+  if (state.m4pending.noSubject) {
+    state.m4pending.noSubject = false;
+    state.m4pending.mode = 'subject';
+  } else {
+    state.m4pending.noSubject    = true;
+    state.m4pending.subjectIdxs  = [];
+    state.m4pending.mode         = 'predicate';
+  }
+  renderModule4Question();
+}
+
+// ── MÓDULO 4: CONFIRMAR RESPOSTA ─────────────────────────────
+function confirmM4Answer() {
+  const qIdx = state.m4activeSet[state.m4current];
+  if (state.m4results[qIdx] !== null) return;
+  const q = questions4[qIdx];
+  const { verbIdx, subjectIdxs, predicateIdxs, noSubject } = state.m4pending;
+  if (verbIdx === null || predicateIdxs.length === 0) return;
+  if (!noSubject && subjectIdxs.length === 0) return;
+
+  const verbCorrect      = verbIdx === q.verbIndex;
+  const predicateCorrect = predicateIdxs.length === q.predicateIndices.length &&
+                           q.predicateIndices.every(i => predicateIdxs.includes(i));
+  const subjectCorrect   = q.noSubject
+    ? noSubject
+    : (!noSubject && subjectIdxs.length === q.subjectIndices.length &&
+       q.subjectIndices.every(i => subjectIdxs.includes(i)));
+  const correct = verbCorrect && subjectCorrect && predicateCorrect;
+
+  state.m4results[qIdx] = {
+    verbSelected: verbIdx,
+    subjectSelected: [...subjectIdxs],
+    predicateSelected: [...predicateIdxs],
+    noSubjectSelected: noSubject,
+    correct, verbCorrect, subjectCorrect, predicateCorrect,
+  };
+  if (correct)  state.m4points += 10;
+  if (!correct) state.m4errorNotebook[qIdx] = (state.m4errorNotebook[qIdx] || 0) + 1;
+  recordActivity();
+  updateModule4Card();
+  updateErrorNotebook();
+  renderModule4Question();
+  saveProgress();
+}
+
+// ── MÓDULO 4: NAVEGAR ────────────────────────────────────────
+function m4navigate(dir) {
+  state.m4current += dir;
+  state.m4pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+  renderModule4Question();
+  saveProgress();
+}
+
+// ── MÓDULO 4: TELA DE RESULTADOS ─────────────────────────────
+function renderModule4Results() {
+  const correctCt = state.m4results.filter(r => r && r.correct).length;
+  const wrongCt   = state.m4results.filter(r => r && !r.correct).length;
+  const allClear  = wrongCt === 0;
+  const iconBg    = allClear ? '#22c55e' : wrongCt > state.m4activeSet.length / 2 ? '#ef4444' : '#f97316';
+  const iconName  = allClear ? 'fa-trophy' : 'fa-flag-checkered';
+
+  $('quizContainer').innerHTML = `
+    <div class="results-screen">
+      <div class="results-icon" style="background:linear-gradient(135deg,${iconBg},${iconBg}bb)">
+        <i class="fa-solid ${iconName}"></i>
+      </div>
+      <h2>Você concluiu as questões de Orações sem sujeito — quarta etapa!</h2>
+      <div class="results-stats-row">
+        <div class="r-stat correct"><strong>${correctCt}</strong><span>Corretas</span></div>
+        <div class="r-stat wrong"><strong>${wrongCt}</strong><span>Incorretas</span></div>
+      </div>
+      ${allClear
+        ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m4RetryBtn">${icons.retry} Recomeçar</button>
+           </div>`
+        : `<p class="results-message">
+             Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
+             Clique em <strong>Praticar erros</strong> para tentar novamente as que errou.
+           </p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m4RetryBtn">${icons.retry} Recomeçar tudo</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m4PracticeBtn">
+               Praticar erros ${icons.right}
+             </button>
+           </div>`
+      }
+    </div>`;
+
+  $('m4RetryBtn').addEventListener('click', startModule4Quiz);
+
+  if (!allClear && $('m4PracticeBtn')) {
+    $('m4PracticeBtn').addEventListener('click', () => {
+      const wrongSet = state.m4results
+        .map((r, i) => (r && !r.correct) ? i : -1)
+        .filter(i => i !== -1);
+      wrongSet.forEach(i => { state.m4results[i] = null; });
+      state.m4activeSet = wrongSet;
+      state.m4current   = 0;
+      state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+      state.phase       = 'module4-quiz';
+      render();
+      saveProgress();
+    });
+  }
+}
+
 // ── NAVEGAR ──────────────────────────────────────────────────
 function navigate(dir) {
   state.current += dir;
@@ -3047,9 +3619,16 @@ function updateStats() {
   // Acertos/Erros/Em branco e donut refletem o módulo atual
   const isM2 = PHASES_MODULE2.includes(state.phase);
   const isM3 = PHASES_MODULE3.includes(state.phase) && state.phase !== 'module3-intro';
+  const isM4 = PHASES_MODULE4.includes(state.phase) && state.phase !== 'module4-intro';
   let correctCt, wrongCt, blank, acertoPct;
 
-  if (isM3) {
+  if (isM4) {
+    correctCt = state.m4results.filter(r => r && r.correct).length;
+    wrongCt   = state.m4results.filter(r => r && !r.correct).length;
+    blank     = state.m4results.filter(r => r === null).length;
+    const answeredCt = correctCt + wrongCt;
+    acertoPct = answeredCt > 0 ? Math.round(correctCt / answeredCt * 100) : 0;
+  } else if (isM3) {
     correctCt = state.m3results.filter(r => r && r.correct).length;
     wrongCt   = state.m3results.filter(r => r && !r.correct).length;
     blank     = state.m3results.filter(r => r === null).length;
