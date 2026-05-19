@@ -1410,6 +1410,7 @@ document.getElementById('module0Card').addEventListener('click', () => {
 
 document.getElementById('module2Card').addEventListener('click', () => {
   if ($('module2Card').classList.contains('locked')) return;
+  state.m2unlocked = true;
   const answered = state.m2results.filter(r => r !== null).length;
   if (answered > 0 && answered < questions2.length) {
     state.phase = 'module2-quiz';
@@ -1426,6 +1427,7 @@ document.getElementById('module2Card').addEventListener('click', () => {
 // ── CARD MÓDULO 3 (SIDEBAR) ──────────────────────────────────
 document.getElementById('module3Card').addEventListener('click', () => {
   if ($('module3Card').classList.contains('locked')) return;
+  state.m3unlocked = true;
   state.phase = 'module3-intro';
   render();
   document.getElementById('leftSidebar').classList.remove('open');
@@ -1436,6 +1438,7 @@ document.getElementById('module3Card').addEventListener('click', () => {
 
 document.getElementById('module4Card').addEventListener('click', () => {
   if ($('module4Card').classList.contains('locked')) return;
+  state.m4unlocked = true;
   state.phase = 'module4-intro';
   render();
   document.getElementById('leftSidebar').classList.remove('open');
@@ -2692,6 +2695,7 @@ function goToQuestion(qIdx) {
 
 // ── NAVEGAR PARA QUESTÃO MÓDULO 2 (caderno de erros) ─────────
 function goToM2Question(qIdx) {
+  state.m2unlocked = true;
   if (state.m2activeSet.indexOf(Number(qIdx)) === -1) {
     state.m2activeSet = questions2.map((_, i) => i);
   }
@@ -2710,6 +2714,7 @@ function goToM2Question(qIdx) {
 
 // ── NAVEGAR PARA QUESTÃO MÓDULO 3 (caderno de erros) ─────────
 function goToM3Question(qIdx) {
+  state.m3unlocked = true;
   if (state.m3activeSet.indexOf(Number(qIdx)) === -1) {
     state.m3activeSet = questions3.map((_, i) => i);
   }
@@ -2728,6 +2733,7 @@ function goToM3Question(qIdx) {
 
 // ── NAVEGAR PARA QUESTÃO MÓDULO 4 (caderno de erros) ─────────
 function goToM4Question(qIdx) {
+  state.m4unlocked = true;
   if (state.m4activeSet.indexOf(Number(qIdx)) === -1) {
     state.m4activeSet = questions4.map((_, i) => i);
   }
