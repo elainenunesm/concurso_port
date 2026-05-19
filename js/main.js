@@ -1106,7 +1106,7 @@ async function loadProgress() {
         ? data.m2results : new Array(questions2.length).fill(null);
       state.m2points        = data.m2points ?? 0;
       state.m2errorNotebook = data.m2errorNotebook ?? {};
-      state.m2unlocked      = data.m2unlocked ?? PHASES_MODULE2.includes(data.phase);
+      state.m2unlocked      = !!(data.m2unlocked || PHASES_MODULE2.includes(data.phase) || state.m2results.some(r => r !== null));
       state.m3phase         = data.m3phase ?? 'none';
       state.m3current       = data.m3current ?? 0;
       state.m3activeSet     = Array.isArray(data.m3activeSet) ? data.m3activeSet : questions3.map((_, i) => i);
@@ -1114,8 +1114,8 @@ async function loadProgress() {
         ? data.m3results : new Array(questions3.length).fill(null);
       state.m3points        = data.m3points ?? 0;
       state.m3errorNotebook = data.m3errorNotebook ?? {};
-      state.m3unlocked      = data.m3unlocked ?? PHASES_MODULE3.includes(data.phase);
-      state.m4unlocked      = data.m4unlocked ?? (data.phase === 'module4-intro');
+      state.m3unlocked      = !!(data.m3unlocked || PHASES_MODULE3.includes(data.phase) || state.m3results.some(r => r !== null));
+      state.m4unlocked      = !!(data.m4unlocked || PHASES_MODULE4.includes(data.phase) || (Array.isArray(data.m4results) && data.m4results.some(r => r !== null)));
       state.m4phase         = data.m4phase ?? 'none';
       state.m4current       = data.m4current ?? 0;
       state.m4activeSet     = Array.isArray(data.m4activeSet) ? data.m4activeSet : questions4.map((_, i) => i);
