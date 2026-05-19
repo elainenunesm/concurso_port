@@ -1334,10 +1334,13 @@ function showUnsavedReloadWarning(onProceed) {
   overlay.innerHTML = `
     <div class="setup-card">
       <div class="setup-icon setup-icon-warn"><i class="fa-solid fa-triangle-exclamation"></i></div>
-      <h2>Tem certeza que deseja sair?</h2>
-      <p>O progresso desta sessão não está salvo. Se sair agora, perderá tudo que respondeu.</p>
+      <h2>Progresso não salvo</h2>
+      <p>O progresso desta sessão não está salvo. O que deseja fazer?</p>
       <button type="button" class="btn-setup" id="btnSaveNow">
         <i class="fa-solid fa-floppy-disk"></i> Salvar progresso
+      </button>
+      <button type="button" class="btn-setup" id="btnKeepStudying" style="background:var(--success-green)">
+        <i class="fa-solid fa-book-open"></i> Continuar estudando
       </button>
       <button type="button" class="btn-setup-skip" id="btnLeaveAnyway">Sair sem salvar</button>
     </div>`;
@@ -1346,6 +1349,10 @@ function showUnsavedReloadWarning(onProceed) {
   document.getElementById('btnSaveNow').addEventListener('click', () => {
     overlay.remove();
     showSetupScreen();
+  });
+
+  document.getElementById('btnKeepStudying').addEventListener('click', () => {
+    overlay.remove();
   });
 
   document.getElementById('btnLeaveAnyway').addEventListener('click', async () => {
@@ -2112,6 +2119,90 @@ function getLessonBodyHTML(module) {
         <div class="lesson-row"><span class="lesson-col-key"><em>O leite virou queijo.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>virou</em> → <em>virar</em> → <strong>transformação/mudança de estado</strong></span></div>
       </div>
     </div>`;
+  if (module === 3) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Estudo do predicado</h3>
+      <p>Você já sabe identificar o verbo e o sujeito. Também entendeu que o verbo "fala" sobre o sujeito.</p>
+      <p>Depois de identificar o sujeito, surge outra pergunta: o que são o verbo e as outras palavras da oração?<br>Esse conjunto recebe o nome de <strong>predicado</strong>.</p>
+      <p>O <strong>predicado</strong> é tudo aquilo que se declara sobre o sujeito. É a parte da oração que contém a informação, ação, característica ou estado relacionado a ele.<br>O próprio verbo faz parte do predicado.</p>
+      <hr>
+      <p><strong>Como identificar o predicado?</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">1º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Encontre o <strong>verbo</strong> da frase.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">2º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Faça a pergunta: <strong>quem + verbo?</strong> ou <strong>o que + verbo?</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">3º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">A resposta é o <strong>sujeito</strong>.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">4º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Tudo que sobra na oração (com o verbo) é o <strong>predicado</strong>.</span></div>
+      </div>
+      <p><strong>Exemplos:</strong></p>
+      <div class="m3-example">
+        <p><strong>Frase:</strong> <em>Maria estudou ontem.</em></p>
+        <p class="m3-step-label">1ª etapa — identificar o verbo:</p>
+        <p class="m3-step-value">verbo: <strong>estudou</strong></p>
+        <p class="m3-step-label">2ª etapa — perguntar ao verbo "quem estudou?":</p>
+        <p class="m3-step-value">Sujeito: <strong>Maria</strong></p>
+        <p class="m3-step-label">3ª — o que não é sujeito é predicado:</p>
+        <p class="m3-step-value">Predicado: <strong>estudou ontem</strong> <span class="m3-concl">(inclusive o verbo faz parte do predicado)</span></p>
+        <div class="sa-wrap" style="margin-top:16px">
+          <div class="sentence-annotated" style="grid-template-columns:repeat(4,auto);grid-template-rows:auto auto auto">
+            <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:1">Maria</div>
+            <div class="word-chip lesson-verb" style="grid-row:1;grid-column:2">estudou</div>
+            <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:3">ontem</div>
+            <div class="word-chip punctuation" style="grid-row:1;grid-column:4">.</div>
+            <div class="annot-subject" style="grid-column:1;grid-row:2">Sujeito</div>
+            <div class="annot-verb" style="grid-column:2;grid-row:2">Verbo</div>
+            <div class="annot-predicate" style="grid-column:2/span 2;grid-row:3">Predicado</div>
+          </div>
+        </div>
+      </div>
+      <div class="m3-example">
+        <p><strong>Frase:</strong> <em>O cachorro latiu muito durante a noite.</em></p>
+        <p class="m3-step-value">Verbo: <strong>latiu</strong> — Sujeito: <strong>O cachorro</strong> — Predicado: <strong>latiu muito durante a noite</strong></p>
+        <div class="sa-wrap" style="margin-top:16px">
+          <div class="sentence-annotated" style="grid-template-columns:repeat(8,auto);grid-template-rows:auto auto auto">
+            <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:1">O</div>
+            <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:2">cachorro</div>
+            <div class="word-chip lesson-verb" style="grid-row:1;grid-column:3">latiu</div>
+            <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:4">muito</div>
+            <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:5">durante</div>
+            <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:6">a</div>
+            <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:7">noite</div>
+            <div class="word-chip punctuation" style="grid-row:1;grid-column:8">.</div>
+            <div class="annot-subject" style="grid-column:1/span 2;grid-row:2">Sujeito</div>
+            <div class="annot-verb" style="grid-column:3;grid-row:2">Verbo</div>
+            <div class="annot-predicate" style="grid-column:3/span 5;grid-row:3">Predicado</div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <p>O predicado sempre traz alguma informação sobre o sujeito. Ele pode indicar:</p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Ação</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>João correu rapidamente.</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>Ana está cansada.</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Característica</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>O menino é inteligente.</em></span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><strong>Mudança de estado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>O menino ficou feliz.</em></span></div>
+      </div>
+    </div>`;
+  if (module === 4) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Orações sem sujeito (Resumo)</h3>
+      <p>Alguns verbos são <strong>impessoais</strong> e formam orações sem sujeito. Os principais casos são:</p>
+      <p><strong>1. Haver = existir ou ocorrer</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Há livros na mesa.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">existem livros — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Houve um acidente.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ocorreu um acidente — sem sujeito</span></div>
+      </div>
+      <p><strong>2. Fazer/Haver indicando tempo</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Faz três dias.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Há dois anos.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
+      </div>
+      <p><strong>3. Fenômenos da natureza</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Choveu ontem.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Nevou na serra.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
+      </div>
+      <p><strong>Atenção:</strong> "Existir" e "ocorrer" admitem sujeito (<em>Os problemas existem. O acidente ocorreu.</em>). Compare sempre com o impessoal "há/houve".</p>
+    </div>`;
   return `
     <div class="lesson-body">
       <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
@@ -2136,27 +2227,6 @@ function getLessonBodyHTML(module) {
         <div class="lesson-row"><span class="lesson-col-key">objeto</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val"><em>o carro, o computador…</em></span></div>
       </div>
       <p><strong>Resumo:</strong> O sujeito é o termo da frase sobre o qual se declara algo. Geralmente, é quem faz a ação do verbo ou de quem se fala.</p>
-    </div>`;
-  if (module === 4) return `
-    <div class="lesson-body">
-      <h3 class="lesson-title">Lição de Orações sem sujeito (Resumo)</h3>
-      <p>Alguns verbos são <strong>impessoais</strong> e formam orações sem sujeito. Os principais casos são:</p>
-      <p><strong>1. Haver = existir ou ocorrer</strong></p>
-      <div class="lesson-table">
-        <div class="lesson-row"><span class="lesson-col-key"><em>Há livros na mesa.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">existem livros — sem sujeito</span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>Houve um acidente.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">ocorreu um acidente — sem sujeito</span></div>
-      </div>
-      <p><strong>2. Fazer/Haver indicando tempo</strong></p>
-      <div class="lesson-table">
-        <div class="lesson-row"><span class="lesson-col-key"><em>Faz três dias.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>Há dois anos.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">tempo decorrido — sem sujeito</span></div>
-      </div>
-      <p><strong>3. Fenômenos da natureza</strong></p>
-      <div class="lesson-table">
-        <div class="lesson-row"><span class="lesson-col-key"><em>Choveu ontem.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
-        <div class="lesson-row"><span class="lesson-col-key"><em>Nevou na serra.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">fenômeno natural — sem sujeito</span></div>
-      </div>
-      <p><strong>Atenção:</strong> "Existir" e "ocorrer" admitem sujeito (<em>Os problemas existem. O acidente ocorreu.</em>). Compare sempre com o impessoal "há/houve".</p>
     </div>`;
 }
 
@@ -2329,7 +2399,8 @@ function updateErrorNotebook() {
   const count1 = Object.keys(state.errorNotebook).length;
   const count2 = Object.keys(state.m2errorNotebook).length;
   const count3 = Object.keys(state.m3errorNotebook).length;
-  const count  = count1 + count2 + count3;
+  const count4 = Object.keys(state.m4errorNotebook).length;
+  const count  = count1 + count2 + count3 + count4;
   const badge        = $('cadernoErrorBadge');
   const countEl      = $('cadernoErrorCount');
   const progressText = $('cadernoProgressText');
@@ -2337,7 +2408,7 @@ function updateErrorNotebook() {
   if (badge)        badge.style.display = count > 0 ? 'flex' : 'none';
   if (countEl)      countEl.textContent = count;
   if (progressText) progressText.textContent = count === 0 ? '0 erros' : `${count} erro${count !== 1 ? 's' : ''}`;
-  const totalQ = questions.length + questions2.length + questions3.length;
+  const totalQ = questions.length + questions2.length + questions3.length + questions4.length;
   if (progressFill) progressFill.style.width = count === 0 ? '0%' : `${Math.round(count / totalQ * 100)}%`;
   if (state.phase === 'error-notebook') renderErrorNotebookPage();
 }
@@ -2432,7 +2503,9 @@ function showPerformanceModal() {
 function renderErrorNotebookPage() {
   const entries1 = Object.entries(state.errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
   const entries2 = Object.entries(state.m2errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
-  const totalErrors = entries1.length + entries2.length;
+  const entries3 = Object.entries(state.m3errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const entries4 = Object.entries(state.m4errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const totalErrors = entries1.length + entries2.length + entries3.length + entries4.length;
 
   function diffCls(d) {
     if (!d) return 'easy';
@@ -2474,27 +2547,59 @@ function renderErrorNotebookPage() {
     </div>`;
   });
 
+  const cardsM3 = entries3.map(([qIdx, count]) => {
+    const q = questions3[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const sentence = q.sentence.filter(w => w !== '.').join(' ');
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M3·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${sentence}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToM3Question(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
+  const cardsM4 = entries4.map(([qIdx, count]) => {
+    const q = questions4[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const sentence = q.sentence.filter(w => w !== '.').join(' ');
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M4·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${sentence}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToM4Question(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
   const listHTML = totalErrors === 0
     ? `<div class="enp-empty">
          <i class="fa-solid fa-check-circle"></i>
          <p>Nenhum erro ainda!<br>Continue praticando e suas questões erradas aparecerão aqui.</p>
        </div>`
-    : [...cardsM1, ...cardsM2].join('');
+    : [...cardsM1, ...cardsM2, ...cardsM3, ...cardsM4].join('');
 
-  const actionsHTML = [
-    entries1.length > 0
-      ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceAllErrorsBtn">
-           ${icons.retry} Praticar erros Módulo 1
-         </button>`
-      : '',
-    entries2.length > 0
-      ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceM2ErrorsBtn">
-           ${icons.retry} Praticar erros Módulo 2
-         </button>`
-      : '',
-  ].filter(Boolean).join('');
+  const actionsHTML = totalErrors > 0
+    ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceAllBtn">
+         ${icons.retry} Praticar tudo
+       </button>`
+    : '';
 
-  const backLabel = state.previousPhase && state.previousPhase.startsWith('module2') ? 'Módulo 2' : 'Módulo 1';
+  const backLabel = state.previousPhase
+    ? state.previousPhase.startsWith('module4') ? 'Módulo 4'
+    : state.previousPhase.startsWith('module3') ? 'Módulo 3'
+    : state.previousPhase.startsWith('module2') ? 'Módulo 2'
+    : 'Módulo 1'
+    : 'Módulo 1';
 
   $('quizContainer').innerHTML = `
     <div class="enp-page">
@@ -2518,28 +2623,51 @@ function renderErrorNotebookPage() {
     });
   }
 
-  if (entries1.length > 0) {
-    $('practiceAllErrorsBtn').addEventListener('click', () => {
-      const wrongSet = Object.keys(state.errorNotebook).map(Number);
-      wrongSet.forEach(i => { state.results[i] = null; });
-      state.activeSet = wrongSet;
-      state.current   = 0;
-      state.phase     = 'quiz';
-      updateStats();
-      render();
-      saveProgress();
-    });
-  }
-  if (entries2.length > 0) {
-    $('practiceM2ErrorsBtn').addEventListener('click', () => {
-      const wrongSet = Object.keys(state.m2errorNotebook).map(Number);
-      wrongSet.forEach(i => { state.m2results[i] = null; });
-      state.m2activeSet = wrongSet;
-      state.m2current   = 0;
-      state.m2phase     = 'quiz';
-      state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
-      state.phase       = 'module2-quiz';
-      updateModule2Card();
+  if (totalErrors > 0) {
+    $('practiceAllBtn').addEventListener('click', () => {
+      if (entries1.length > 0) {
+        const ws1 = Object.keys(state.errorNotebook).map(Number);
+        ws1.forEach(i => { state.results[i] = null; });
+        state.activeSet = ws1;
+        state.current   = 0;
+      }
+      if (entries2.length > 0) {
+        const ws2 = Object.keys(state.m2errorNotebook).map(Number);
+        ws2.forEach(i => { state.m2results[i] = null; });
+        state.m2activeSet = ws2;
+        state.m2current   = 0;
+        state.m2phase     = 'quiz';
+        state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
+      }
+      if (entries3.length > 0) {
+        const ws3 = Object.keys(state.m3errorNotebook).map(Number);
+        ws3.forEach(i => { state.m3results[i] = null; });
+        state.m3activeSet = ws3;
+        state.m3current   = 0;
+        state.m3phase     = 'quiz';
+        state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
+      }
+      if (entries4.length > 0) {
+        const ws4 = Object.keys(state.m4errorNotebook).map(Number);
+        ws4.forEach(i => { state.m4results[i] = null; });
+        state.m4activeSet = ws4;
+        state.m4current   = 0;
+        state.m4phase     = 'quiz';
+        state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+      }
+      if (entries1.length > 0) {
+        state.phase = 'quiz';
+        updateStats();
+      } else if (entries2.length > 0) {
+        state.phase = 'module2-quiz';
+        updateModule2Card();
+      } else if (entries3.length > 0) {
+        state.phase = 'module3-quiz';
+        updateModule3Card();
+      } else {
+        state.phase = 'module4-quiz';
+        updateModule4Card();
+      }
       render();
       saveProgress();
     });
@@ -2577,6 +2705,42 @@ function goToM2Question(qIdx) {
   document.getElementById('btnMobileConteudos').classList.remove('active');
   const bd = document.getElementById('mobilePanelBackdrop');
   if (bd) bd.classList.remove('active');
+  render();
+}
+
+// ── NAVEGAR PARA QUESTÃO MÓDULO 3 (caderno de erros) ─────────
+function goToM3Question(qIdx) {
+  if (state.m3activeSet.indexOf(Number(qIdx)) === -1) {
+    state.m3activeSet = questions3.map((_, i) => i);
+  }
+  state.m3current = state.m3activeSet.indexOf(Number(qIdx));
+  state.m3results[Number(qIdx)] = null;
+  state.m3phase   = 'quiz';
+  state.m3pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
+  state.phase     = 'module3-quiz';
+  updateModule3Card();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd3 = document.getElementById('mobilePanelBackdrop');
+  if (bd3) bd3.classList.remove('active');
+  render();
+}
+
+// ── NAVEGAR PARA QUESTÃO MÓDULO 4 (caderno de erros) ─────────
+function goToM4Question(qIdx) {
+  if (state.m4activeSet.indexOf(Number(qIdx)) === -1) {
+    state.m4activeSet = questions4.map((_, i) => i);
+  }
+  state.m4current = state.m4activeSet.indexOf(Number(qIdx));
+  state.m4results[Number(qIdx)] = null;
+  state.m4phase   = 'quiz';
+  state.m4pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+  state.phase     = 'module4-quiz';
+  updateModule4Card();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd4 = document.getElementById('mobilePanelBackdrop');
+  if (bd4) bd4.classList.remove('active');
   render();
 }
 

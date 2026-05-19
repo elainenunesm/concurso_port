@@ -90,3 +90,64 @@
 | C18 | A vovó propôs uma brincadeira. | propôs | A vovó | Fácil | ✅ Ativo |
 | C19 | A turma aplaudiu o professor. | aplaudiu | A turma | Fácil | ✅ Ativo |
 | C20 | A Maria escreveu uma carta. | escreveu | A Maria | Fácil | ✅ Ativo |
+
+---
+
+## Módulo 3 — Estudo do Predicado
+
+### Seção D — Identificar Verbo, Sujeito e Predicado (tri-select)
+*Clique no verbo, em todas as palavras do sujeito e em todas as palavras do predicado.*
+
+| # | Frase | Verbo | Sujeito | Predicado | Dificuldade | Status |
+|---|-------|-------|---------|-----------|-------------|--------|
+| D01 | O gato dormiu na cama. | dormiu | O gato | dormiu na cama | Fácil | ✅ Ativo |
+| D02 | A Maria cantou no coral. | cantou | A Maria | cantou no coral | Fácil | ✅ Ativo |
+| D03 | O Pedro comeu o bolo. | comeu | O Pedro | comeu o bolo | Fácil | ✅ Ativo |
+| D04 | A chuva caiu de manhã. | caiu | A chuva | caiu de manhã | Fácil | ✅ Ativo |
+| D05 | O João estudou a lição. | estudou | O João | estudou a lição | Fácil | ✅ Ativo |
+| D06 | A Ana bebeu o suco. | bebeu | A Ana | bebeu o suco | Fácil | ✅ Ativo |
+| D07 | O menino sorriu feliz. | sorriu | O menino | sorriu feliz | Fácil | ✅ Ativo |
+| D08 | A professora pôs o livro na mesa. | pôs | A professora | pôs o livro na mesa | Fácil | ✅ Ativo |
+| D09 | O cachorro correu no parque. | correu | O cachorro | correu no parque | Fácil | ✅ Ativo |
+| D10 | A criança pulou na cama. | pulou | A criança | pulou na cama | Fácil | ✅ Ativo |
+| D11 | O avô leu o jornal. | leu | O avô | leu o jornal | Fácil | ✅ Ativo |
+| D12 | A mãe abriu a janela. | abriu | A mãe | abriu a janela | Fácil | ✅ Ativo |
+| D13 | O sol forte brilhou hoje. | brilhou | O sol forte | brilhou hoje | Médio | ✅ Ativo |
+| D14 | O vento frio soprou forte. | soprou | O vento frio | soprou forte | Médio | ✅ Ativo |
+| D15 | O pequeno pássaro voou alto. | voou | O pequeno pássaro | voou alto | Médio | ✅ Ativo |
+| D16 | A menina partiu cedo. | partiu | A menina | partiu cedo | Fácil | ✅ Ativo |
+| D17 | O pai vendeu o carro. | vendeu | O pai | vendeu o carro | Fácil | ✅ Ativo |
+| D18 | A vovó propôs uma brincadeira. | propôs | A vovó | propôs uma brincadeira | Fácil | ✅ Ativo |
+| D19 | A turma aplaudiu o professor. | aplaudiu | A turma | aplaudiu o professor | Fácil | ✅ Ativo |
+| D20 | A Maria escreveu uma carta. | escreveu | A Maria | escreveu uma carta | Fácil | ✅ Ativo |
+
+---
+
+## Módulo 4 — Orações sem Sujeito
+
+### Seção E — Identificar Verbo, Sujeito/Sem Sujeito e Predicado (tri-select + botão SEM SUJEITO)
+*Clique no verbo e no predicado; marque "Oração sem sujeito" quando aplicável.*
+
+| # | Frase | Verbo | Sujeito | Predicado | Sem Sujeito | Dificuldade | Status |
+|---|-------|-------|---------|-----------|-------------|-------------|--------|
+| E01 | Há muitos livros nesta estante. | há | — | há muitos livros nesta estante | ✓ (haver = existir) | Fácil | ✅ Ativo |
+| E02 | Havia crianças brincando no parque. | havia | — | havia crianças brincando no parque | ✓ (haver = existir) | Fácil | ✅ Ativo |
+| E03 | Houve uma reunião ontem. | houve | — | houve uma reunião ontem | ✓ (haver = ocorrer) | Fácil | ✅ Ativo |
+| E04 | Haverá mudanças na empresa. | haverá | — | haverá mudanças na empresa | ✓ (haver = ocorrer) | Fácil | ✅ Ativo |
+| E05 | Faz três dias que não chove. | faz | — | faz três dias que não chove | ✓ (fazer = tempo) | Médio | ✅ Ativo |
+| E06 | Faz muito tempo que não viajamos. | faz | — | faz muito tempo que não viajamos | ✓ (fazer = tempo) | Médio | ✅ Ativo |
+| E07 | Há dois anos que moro nesta cidade. | há | — | há dois anos que moro nesta cidade | ✓ (haver = tempo) | Médio | ✅ Ativo |
+| E08 | Choveu muito esta semana. | choveu | — | choveu muito esta semana | ✓ (fenômeno) | Fácil | ✅ Ativo |
+| E09 | Nevou na serra durante a madrugada. | nevou | — | nevou na serra durante a madrugada | ✓ (fenômeno) | Fácil | ✅ Ativo |
+| E10 | Trovejou a noite toda. | trovejou | — | trovejou a noite toda | ✓ (fenômeno) | Fácil | ✅ Ativo |
+| E11 | Amanheceu muito cedo hoje. | amanheceu | — | amanheceu muito cedo hoje | ✓ (fenômeno) | Fácil | ✅ Ativo |
+| E12 | Os problemas existem em todo lugar. | existem | Os problemas | existem em todo lugar | — (existir com sujeito) | Médio | ✅ Ativo |
+| E13 | O acidente ocorreu na rodovia. | ocorreu | O acidente | ocorreu na rodovia | — (ocorrer com sujeito) | Médio | ✅ Ativo |
+| E14 | A neve existe em regiões muito frias. | existe | A neve | existe em regiões muito frias | — (existir com sujeito) | Médio | ✅ Ativo |
+| E15 | Muitas dificuldades ocorrem no caminho. | ocorrem | Muitas dificuldades | ocorrem no caminho | — (ocorrer com sujeito) | Médio | ✅ Ativo |
+| E16 | A chuva caiu de manhã. | caiu | A chuva | caiu de manhã | — (fenômeno como sujeito) | Difícil | ✅ Ativo |
+| E17 | A tempestade causou muitos danos. | causou | A tempestade | causou muitos danos | — (fenômeno como sujeito) | Difícil | ✅ Ativo |
+| E18 | O trovão assustou as crianças. | assustou | O trovão | assustou as crianças | — (fenômeno como sujeito) | Difícil | ✅ Ativo |
+| E19 | O gato dormiu na cama. | dormiu | O gato | dormiu na cama | — (oração comum) | Fácil | ✅ Ativo |
+| E20 | A Maria cantou no coral. | cantou | A Maria | cantou no coral | — (oração comum) | Fácil | ✅ Ativo |
+| E21 | O vento forte derrubou as árvores. | derrubou | O vento forte | derrubou as árvores | — (fenômeno como sujeito) | Médio | ✅ Ativo |
