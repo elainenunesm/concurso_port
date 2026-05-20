@@ -1054,6 +1054,118 @@ const questions5 = [
   },
 ];
 
+// ── MÓDULO 6: QUESTÕES ───────────────────────────────────────
+const questions6 = [
+  // ── FÁCIL ──
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Minha', 'mãe', 'estava', 'dormindo', 'na', 'varanda', '.'],
+    locuIndices: [2, 3], auxVerb: 'estava', mainVerb: 'dormindo', verbType: 'gerúndio',
+    feedback: '"Estava" é o auxiliar que indica o tempo e "dormindo" é o principal no gerúndio, indicando uma ação em andamento.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Ela', 'vai', 'viajar', 'nas', 'férias', '.'],
+    locuIndices: [1, 2], auxVerb: 'vai', mainVerb: 'viajar', verbType: 'infinitivo',
+    feedback: '"Vai" é o auxiliar que indica futuro próximo e "viajar" é o principal no infinitivo.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Os', 'alunos', 'estão', 'estudando', 'para', 'a', 'prova', '.'],
+    locuIndices: [2, 3], auxVerb: 'estão', mainVerb: 'estudando', verbType: 'gerúndio',
+    feedback: '"Estão" é o auxiliar e "estudando" é o verbo principal no gerúndio, indicando ação em andamento.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['O', 'menino', 'tinha', 'comido', 'todo', 'o', 'lanche', '.'],
+    locuIndices: [2, 3], auxVerb: 'tinha', mainVerb: 'comido', verbType: 'particípio',
+    feedback: '"Tinha" é o auxiliar e "comido" é o verbo principal no particípio, indicando ação concluída antes de outra.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['O', 'professor', 'pode', 'explicar', 'a', 'matéria', '.'],
+    locuIndices: [2, 3], auxVerb: 'pode', mainVerb: 'explicar', verbType: 'infinitivo',
+    feedback: '"Pode" é o auxiliar de modalidade e "explicar" é o verbo principal no infinitivo.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Fácil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Nós', 'devemos', 'respeitar', 'as', 'regras', '.'],
+    locuIndices: [1, 2], auxVerb: 'devemos', mainVerb: 'respeitar', verbType: 'infinitivo',
+    feedback: '"Devemos" é o auxiliar de modalidade e "respeitar" é o verbo principal no infinitivo.',
+  },
+  // ── MÉDIO ──
+  {
+    type: 'locucao-select', difficulty: 'Médio',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['A', 'criança', 'estava', 'chorando', 'muito', '.'],
+    locuIndices: [2, 3], auxVerb: 'estava', mainVerb: 'chorando', verbType: 'gerúndio',
+    feedback: '"Estava" é o auxiliar e "chorando" é o verbo principal no gerúndio.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Médio',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['O', 'trabalho', 'foi', 'entregue', 'no', 'prazo', '.'],
+    locuIndices: [2, 3], auxVerb: 'foi', mainVerb: 'entregue', verbType: 'particípio',
+    feedback: '"Foi" é o auxiliar de voz passiva e "entregue" é o verbo principal no particípio.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Médio',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['João', 'tem', 'estudado', 'todos', 'os', 'dias', '.'],
+    locuIndices: [1, 2], auxVerb: 'tem', mainVerb: 'estudado', verbType: 'particípio',
+    feedback: '"Tem" é o auxiliar e "estudado" é o principal no particípio, indicando ação repetida até o presente.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Médio',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Os', 'jogadores', 'estão', 'treinando', 'bastante', '.'],
+    locuIndices: [2, 3], auxVerb: 'estão', mainVerb: 'treinando', verbType: 'gerúndio',
+    feedback: '"Estão" é o auxiliar e "treinando" é o verbo principal no gerúndio.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Médio',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Pedro', 'pode', 'vir', 'à', 'festa', '.'],
+    locuIndices: [1, 2], auxVerb: 'pode', mainVerb: 'vir', verbType: 'infinitivo',
+    feedback: '"Pode" é o auxiliar de modalidade e "vir" é o verbo principal no infinitivo.',
+  },
+  // ── DIFÍCIL ──
+  {
+    type: 'locucao-select', difficulty: 'Difícil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['As', 'flores', 'vão', 'ser', 'regadas', 'amanhã', '.'],
+    locuIndices: [2, 3, 4], auxVerb: 'vão ser', mainVerb: 'regadas', verbType: 'particípio',
+    feedback: 'Locução de três verbos: "vão" e "ser" são auxiliares e "regadas" é o principal no particípio (voz passiva analítica com futuro).',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Difícil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Ela', 'deve', 'ter', 'chegado', 'cedo', '.'],
+    locuIndices: [1, 2, 3], auxVerb: 'deve ter', mainVerb: 'chegado', verbType: 'particípio',
+    feedback: 'Locução de três verbos: "deve" e "ter" são auxiliares e "chegado" é o principal no particípio.',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Difícil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['O', 'relatório', 'tinha', 'sido', 'enviado', 'antes', '.'],
+    locuIndices: [2, 3, 4], auxVerb: 'tinha sido', mainVerb: 'enviado', verbType: 'particípio',
+    feedback: 'Locução de três verbos: "tinha" e "sido" são auxiliares e "enviado" é o principal no particípio (voz passiva no passado).',
+  },
+  {
+    type: 'locucao-select', difficulty: 'Difícil',
+    text: 'Identifique a locução verbal desta oração:',
+    sentence: ['Maria', 'vai', 'continuar', 'estudando', 'amanhã', '.'],
+    locuIndices: [1, 2, 3], auxVerb: 'vai continuar', mainVerb: 'estudando', verbType: 'gerúndio',
+    feedback: 'Locução de três verbos: "vai" e "continuar" são auxiliares e "estudando" é o principal no gerúndio.',
+  },
+];
+
 // ── ESTADO ───────────────────────────────────────────────────
 // phase: 'objective' | 'intro' | 'quiz' | 'results'
 // activeSet: índices das questões da rodada atual
@@ -1101,6 +1213,14 @@ const state = {
   m5points:        0,
   m5errorNotebook: {},
   m5pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false },
+  m6phase:         'none',
+  m6current:       0,
+  m6activeSet:     questions6.map((_, i) => i),
+  m6results:       new Array(questions6.length).fill(null),
+  m6points:        0,
+  m6pending:       { locuIndices: [] },
+  m6errorNotebook: {},
+  m6unlocked:      false,
   simUnlocked:     false,
   simPhase:        'none',
   simQueue:        [],
@@ -1111,6 +1231,7 @@ const state = {
   cadernoCurrent:  0,
   cadernoAnswered: {},
   cadernoPending:  { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false },
+  cadernoM6Pending: { locuIndices: [] },
 };
 
 // ── SEQUÊNCIA (streak) ───────────────────────────────────────
@@ -1222,6 +1343,13 @@ async function saveProgress() {
       m5results:       state.m5results,
       m5points:        state.m5points,
       m5errorNotebook: state.m5errorNotebook,
+      m6unlocked:      state.m6unlocked,
+      m6phase:         state.m6phase,
+      m6current:       state.m6current,
+      m6activeSet:     state.m6activeSet,
+      m6results:       state.m6results,
+      m6points:        state.m6points,
+      m6errorNotebook: state.m6errorNotebook,
       simUnlocked:     state.simUnlocked,
       simPhase:        state.simPhase,
       simQueue:        state.simQueue,
@@ -1246,7 +1374,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'module6-intro', 'module6-quiz', 'module6-results', 'sim-intro', 'sim-quiz', 'sim-results'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -1284,6 +1412,14 @@ async function loadProgress() {
       state.m5phase         = data.m5phase ?? 'none';
       state.m5current       = data.m5current ?? 0;
       if (Array.isArray(data.m5activeSet)) state.m5activeSet = data.m5activeSet;
+      state.m6unlocked      = !!(data.m6unlocked || PHASES_MODULE6.includes(data.phase) || (Array.isArray(data.m6results) && data.m6results.some(r => r !== null)));
+      state.m6phase         = data.m6phase ?? 'none';
+      state.m6current       = data.m6current ?? 0;
+      state.m6activeSet     = Array.isArray(data.m6activeSet) ? data.m6activeSet : questions6.map((_, i) => i);
+      state.m6results       = Array.isArray(data.m6results) && data.m6results.length === questions6.length
+        ? data.m6results : new Array(questions6.length).fill(null);
+      state.m6points        = data.m6points ?? 0;
+      state.m6errorNotebook = data.m6errorNotebook ?? {};
       state.simUnlocked  = !!(data.simUnlocked || PHASES_SIM.includes(data.phase) || (Array.isArray(data.m5results) && data.m5results.length > 0 && data.m5results.every(r => r !== null)));
       state.simPhase     = data.simPhase ?? 'none';
       state.simQueue     = Array.isArray(data.simQueue) ? data.simQueue : [];
@@ -1295,6 +1431,7 @@ async function loadProgress() {
       updateModule3Card();
       updateModule4Card();
       updateModule5Card();
+      updateModule6Card();
       updateSimCard();
       updateErrorNotebook();
     }
@@ -1639,6 +1776,18 @@ document.getElementById('moduleSimCard').addEventListener('click', () => {
   if (bd) bd.classList.remove('active');
 });
 
+// ── CARD MÓDULO 6 (SIDEBAR) ──────────────────────────────────
+document.getElementById('module6Card').addEventListener('click', () => {
+  if ($('module6Card').classList.contains('locked')) return;
+  state.m6unlocked = true;
+  state.phase = 'module6-intro';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
 // ── CARD CADERNO DE ERROS (SIDEBAR) ──────────────────────────
 document.getElementById('cadernoBtnCard').addEventListener('click', () => {
   if (state.phase !== 'error-notebook') state.previousPhase = state.phase;
@@ -1681,12 +1830,13 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
-const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'module6-intro', 'module6-quiz', 'module6-results', 'sim-intro', 'sim-quiz', 'sim-results'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'module6-intro', 'module6-quiz', 'module6-results', 'sim-intro', 'sim-quiz', 'sim-results'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE3    = ['module3-intro', 'module3-quiz', 'module3-results'];
 const PHASES_MODULE4    = ['module4-intro', 'module4-quiz', 'module4-results'];
 const PHASES_MODULE5    = ['module5-intro', 'module5-quiz', 'module5-results'];
+const PHASES_MODULE6    = ['module6-intro', 'module6-quiz', 'module6-results'];
 const PHASES_SIM        = ['sim-intro', 'sim-quiz', 'sim-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
@@ -1721,6 +1871,10 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:13px;font-weight:700;color:#7c3aed">INV</span>';
       if (h2El)    h2El.textContent = '5. Inversão da ordem - termos essenciais';
       if (descEl)  descEl.textContent = 'Identifique verbo, sujeito e predicado em orações com ordem invertida.';
+    } else if (PHASES_MODULE6.includes(state.phase)) {
+      if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-link" style="color:#3b82f6;font-size:22px"></i>';
+      if (h2El)    h2El.textContent = '6. Verbos - Locução';
+      if (descEl)  descEl.textContent = 'Aprenda a identificar locuções verbais formadas por dois ou mais verbos.';
     } else if (PHASES_SIM.includes(state.phase)) {
       if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-graduation-cap" style="color:#16a34a;font-size:22px"></i>';
       if (h2El)    h2El.textContent = 'S. Simulados';
@@ -1751,6 +1905,8 @@ function render() {
   if (m4c) m4c.classList.toggle('active-view', PHASES_MODULE4.includes(state.phase));
   const m5c = $('module5Card');
   if (m5c) m5c.classList.toggle('active-view', PHASES_MODULE5.includes(state.phase));
+  const m6c = $('module6Card');
+  if (m6c) m6c.classList.toggle('active-view', PHASES_MODULE6.includes(state.phase));
   const mSc = $('moduleSimCard');
   if (mSc) mSc.classList.toggle('active-view', PHASES_SIM.includes(state.phase));
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
@@ -1770,6 +1926,9 @@ function render() {
   if (state.phase === 'module5-intro')     { renderModule5Intro();      return; }
   if (state.phase === 'module5-quiz')      { renderModule5Question();   return; }
   if (state.phase === 'module5-results')   { renderModule5Results();    return; }
+  if (state.phase === 'module6-intro')     { renderModule6Intro();      return; }
+  if (state.phase === 'module6-quiz')      { renderModule6Question();   return; }
+  if (state.phase === 'module6-results')   { renderModule6Results();    return; }
   if (state.phase === 'sim-intro')         { renderSimIntro();          return; }
   if (state.phase === 'sim-quiz')          { renderSimQuestion();       return; }
   if (state.phase === 'sim-results')       { renderSimResults();        return; }
@@ -2614,6 +2773,43 @@ function getLessonBodyHTML(module) {
       </div>
       <p><strong>Resumo:</strong> O sujeito é o termo da frase sobre o qual se declara algo. Geralmente, é quem faz a ação do verbo ou de quem se fala.</p>
     </div>`;
+  if (module === 6) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Locução Verbal</h3>
+      <p><strong>Locução verbal</strong> é um conjunto de dois ou mais verbos que funcionam juntos como uma unidade, formando o núcleo verbal da oração.</p>
+      <p>A estrutura básica é:</p>
+      <div class="m3-example"><p><strong>Verbo auxiliar + verbo principal</strong></p></div>
+      <p>O verbo <strong>principal</strong> aparece em uma das formas nominais: <strong>infinitivo</strong>, <strong>gerúndio</strong> ou <strong>particípio</strong>.</p>
+      <hr>
+      <p><strong>Infinitivo</strong> — terminação <strong>-ar, -er, -ir</strong> (ação como potencialidade):</p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">estudar</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Ela vai <em>estudar</em>.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">correr</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Ele pode <em>correr</em>.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">partir</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Vamos <em>partir</em> cedo.</span></div>
+      </div>
+      <hr>
+      <p><strong>Gerúndio</strong> — terminação <strong>-ando, -endo, -indo</strong> (ação em andamento):</p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">estudando</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">estudar → est<strong>ando</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">correndo</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">correr → corr<strong>endo</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">partindo</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → part<strong>indo</strong></span></div>
+      </div>
+      <hr>
+      <p><strong>Particípio</strong> — terminação <strong>-ado, -ido</strong> (ação concluída):</p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">estudado</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">estudar → estud<strong>ado</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">vendido</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">vender → vend<strong>ido</strong></span></div>
+        <div class="lesson-row"><span class="lesson-col-key">partido</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → part<strong>ido</strong></span></div>
+      </div>
+      <hr>
+      <p><strong>Exemplos de locuções:</strong></p>
+      <div class="lesson-grid">
+        <span class="lg-key"><em>estava dormindo</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + gerúndio</span>
+        <span class="lg-key"><em>vai viajar</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + infinitivo</span>
+        <span class="lg-key"><em>tinha comido</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + particípio</span>
+        <span class="lg-key"><em>vão ser regadas</em></span><span class="lg-arrow">→</span><span class="lg-val">dois auxiliares + particípio</span>
+      </div>
+    </div>`;
 }
 
 function openLessonModal(module) {
@@ -2624,6 +2820,7 @@ function openLessonModal(module) {
     : module === 3 ? 'Lição de Estudo do predicado'
     : module === 4 ? 'Lição de Orações sem sujeito'
     : module === 5 ? 'Lição de Inversão da ordem'
+    : module === 6 ? 'Lição de Locução Verbal'
     : 'Lição de Sujeito (Versão Resumida)';
   body.innerHTML = getLessonBodyHTML(module);
   overlay.style.display = 'flex';
@@ -2788,7 +2985,8 @@ function updateErrorNotebook() {
   const count3 = Object.keys(state.m3errorNotebook).length;
   const count4 = Object.keys(state.m4errorNotebook).length;
   const count5 = Object.keys(state.m5errorNotebook).length;
-  const count  = count1 + count2 + count3 + count4 + count5;
+  const count6 = Object.keys(state.m6errorNotebook).length;
+  const count  = count1 + count2 + count3 + count4 + count5 + count6;
   const badge        = $('cadernoErrorBadge');
   const countEl      = $('cadernoErrorCount');
   const progressText = $('cadernoProgressText');
@@ -2895,11 +3093,13 @@ function buildCadernoQueue() {
   Object.keys(state.m3errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:3, qIdx:+i}));
   Object.keys(state.m4errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:4, qIdx:+i}));
   Object.keys(state.m5errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:5, qIdx:+i}));
+  Object.keys(state.m6errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:6, qIdx:+i}));
   return q;
 }
 
 function cadernoResetPending() {
-  state.cadernoPending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
+  state.cadernoPending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
+  state.cadernoM6Pending = { locuIndices: [] };
 }
 
 function cadernoExit() {
@@ -2921,7 +3121,7 @@ function renderCadernoQuestion() {
   const key      = `${mod}-${qIdx}`;
   const answered = state.cadernoAnswered[key];
   const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : mod === 5 ? '#7c3aed' : '#3b82f6';
-  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão' };
+  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão', 6: 'Módulo 6 — Locução' };
   const modLabel = modNames[mod] || `Módulo ${mod}`;
 
   let bodyHTML = '';
@@ -2934,6 +3134,8 @@ function renderCadernoQuestion() {
     bodyHTML = cadernoTriSelectHTML(questions3[qIdx], answered, false);
   } else if (mod === 5) {
     bodyHTML = cadernoTriSelectHTML(questions5[qIdx], answered, false);
+  } else if (mod === 6) {
+    bodyHTML = cadernoLocSelectHTML(questions6[qIdx], answered);
   } else {
     bodyHTML = cadernoTriSelectHTML(questions4[qIdx], answered, true);
   }
@@ -2977,6 +3179,8 @@ function renderCadernoQuestion() {
     setupCadernoTriSelect(questions3[qIdx], qIdx, key, false, 3);
   } else if (mod === 5) {
     setupCadernoTriSelect(questions5[qIdx], qIdx, key, false, 5);
+  } else if (mod === 6) {
+    setupCadernoLocSelect(questions6[qIdx], qIdx, key);
   } else {
     setupCadernoTriSelect(questions4[qIdx], qIdx, key, true, 4);
   }
@@ -3433,6 +3637,85 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject, mod) {
   });
 }
 
+// ── CADERNO: M6 LOCUÇÃO-SELECT ────────────────────────────────
+function cadernoLocSelectHTML(q, answered) {
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+  if (!answered) {
+    const { locuIndices } = state.cadernoM6Pending;
+    const canConfirm = locuIndices.length >= 2;
+    const sentenceHTML = buildAnnotatedSentence(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (locuIndices.includes(idx)) cls += ' verb-pending';
+        return `<span class="${cls}" data-cadloc="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        if (locuIndices.length === 0) return '';
+        const sorted = [...locuIndices].sort((a, b) => a - b);
+        return `<div class="annot-verb" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Locução Verbal</div>`;
+      }
+    );
+    return `
+      <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+      <p class="question-title">${q.text}</p>
+      <p style="font-size:13px;color:var(--text-gray);margin:0 0 8px">Clique em <strong>todas</strong> as palavras que formam a locução verbal.</p>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="cadernoConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar locução verbal
+      </button>`;
+  }
+  // Respondida
+  const sentenceHTML = buildAnnotatedSentence(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isCorrect   = q.locuIndices.includes(idx);
+      const wasSelected = answered.selected && answered.selected.includes(idx);
+      if (isCorrect)                      cls += ' correct-verb';
+      else if (wasSelected && !isCorrect) cls += ' wrong-verb';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    () => {
+      const sorted = [...q.locuIndices].sort((a, b) => a - b);
+      return `<div class="annot-verb" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Locução Verbal</div>`;
+    }
+  );
+  const locuWords = q.locuIndices.map(i => q.sentence[i]).join(' ');
+  return `
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text}</p>
+    ${sentenceHTML}
+    <div class="feedback${answered.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${answered.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        <p>A locução verbal é <strong>${locuWords}</strong> — <em>${q.auxVerb}</em> (auxiliar) + <em>${q.mainVerb}</em> (principal) na forma de ${q.verbType}.</p>
+        <p>${q.feedback}</p>
+      </div>
+    </div>`;
+}
+
+function setupCadernoLocSelect(q, qIdx, key) {
+  document.querySelectorAll('[data-cadloc]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const i = +chip.dataset.cadloc;
+      if (PUNCT.has(q.sentence[i])) return;
+      const loci = state.cadernoM6Pending.locuIndices;
+      const idx = loci.indexOf(i);
+      if (idx === -1) loci.push(i); else loci.splice(idx, 1);
+      render();
+    });
+  });
+  const cf = document.getElementById('cadernoConfirmBtn');
+  if (cf) cf.addEventListener('click', () => {
+    const selected = [...state.cadernoM6Pending.locuIndices];
+    if (selected.length < 2) return;
+    const correct = selected.length === q.locuIndices.length && q.locuIndices.every(i => selected.includes(i));
+    state.cadernoAnswered[key] = { correct, selected };
+    if (!correct) state.m6errorNotebook[qIdx] = (state.m6errorNotebook[qIdx] || 0) + 1;
+    recordActivity(); updateErrorNotebook(); saveProgress(); render();
+  });
+}
+
 // ── PÁGINA CADERNO DE ERROS ───────────────────────────────────
 function renderErrorNotebookPage() {
   const entries1 = Object.entries(state.errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
@@ -3440,7 +3723,8 @@ function renderErrorNotebookPage() {
   const entries3 = Object.entries(state.m3errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
   const entries4 = Object.entries(state.m4errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
   const entries5 = Object.entries(state.m5errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
-  const totalErrors = entries1.length + entries2.length + entries3.length + entries4.length + entries5.length;
+  const entries6 = Object.entries(state.m6errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const totalErrors = entries1.length + entries2.length + entries3.length + entries4.length + entries5.length + entries6.length;
 
   function diffCls(d) {
     if (!d) return 'easy';
@@ -3533,12 +3817,29 @@ function renderErrorNotebookPage() {
     </div>`;
   });
 
+  const cardsM6 = entries6.map(([qIdx, count]) => {
+    const q = questions6[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const sentence = q.sentence.filter(w => w !== '.').join(' ');
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M6·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${sentence}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToM6Question(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
   const listHTML = totalErrors === 0
     ? `<div class="enp-empty">
          <i class="fa-solid fa-check-circle"></i>
          <p>Nenhum erro ainda!<br>Continue praticando e suas questões erradas aparecerão aqui.</p>
        </div>`
-    : [...cardsM1, ...cardsM2, ...cardsM3, ...cardsM4, ...cardsM5].join('');
+    : [...cardsM1, ...cardsM2, ...cardsM3, ...cardsM4, ...cardsM5, ...cardsM6].join('');
 
   const actionsHTML = totalErrors > 0
     ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceAllBtn">
@@ -3547,7 +3848,8 @@ function renderErrorNotebookPage() {
     : '';
 
   const backLabel = state.previousPhase
-    ? state.previousPhase.startsWith('module5') ? 'Módulo 5'
+    ? state.previousPhase.startsWith('module6') ? 'Módulo 6'
+    : state.previousPhase.startsWith('module5') ? 'Módulo 5'
     : state.previousPhase.startsWith('module4') ? 'Módulo 4'
     : state.previousPhase.startsWith('module3') ? 'Módulo 3'
     : state.previousPhase.startsWith('module2') ? 'Módulo 2'
@@ -3986,11 +4288,32 @@ function updateModule5Card() {
   if (fill) fill.style.width = pct + '%';
   if (text) text.textContent = pct + '%';
 
-  if (answered === total && total > 0) state.simUnlocked = true;
+  if (answered === total && total > 0) { state.simUnlocked = true; state.m6unlocked = true; }
   const simCard = $('moduleSimCard');
   const simLock = $('moduleSimLockIcon');
   if (simCard) simCard.classList.toggle('locked', !state.simUnlocked);
   if (simLock) simLock.style.display = state.simUnlocked ? 'none' : '';
+  const m6Card2 = $('module6Card');
+  const m6Lock2 = $('module6LockIcon');
+  if (m6Card2) m6Card2.classList.toggle('locked', !state.m6unlocked);
+  if (m6Lock2) m6Lock2.style.display = state.m6unlocked ? 'none' : '';
+}
+
+// ── MÓDULO 6: ATUALIZAR CARD DA SIDEBAR ──────────────────────
+function updateModule6Card() {
+  const m6Card = $('module6Card');
+  if (!m6Card) return;
+  const total    = questions6.length;
+  const answered = state.m6results.filter(r => r !== null).length;
+  const pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  const fill = m6Card.querySelector('.fill');
+  const text = m6Card.querySelector('.module-progress span');
+  if (fill) fill.style.width = pct + '%';
+  if (text) text.textContent = pct + '%';
+  // aplica estado de bloqueado/desbloqueado
+  m6Card.classList.toggle('locked', !state.m6unlocked);
+  const m6Lock = $('module6LockIcon');
+  if (m6Lock) m6Lock.style.display = state.m6unlocked ? 'none' : '';
 }
 
 // ── SIMULADOS: ATUALIZAR CARD DA SIDEBAR ─────────────────────
@@ -5081,6 +5404,265 @@ function goToM5Question(qIdx) {
   render();
 }
 
+// ── MÓDULO 6: INTRO ──────────────────────────────────────────
+function renderModule6Intro() {
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Sexta Etapa</div>
+      <h2>Justificativa da lição:</h2>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7;text-align:justify">
+        Até o momento, estudamos os verbos em sua forma simples, analisando orações que apresentam apenas um verbo.
+        A partir de agora, avançaremos para um novo nível de análise: as locuções, estruturas formadas por duas ou mais palavras que atuam juntas na oração.
+      </p>
+      <div class="lesson-body" style="margin-top:24px">
+        <h3 class="lesson-title">Locução Verbal</h3>
+        <p><strong>Locução</strong> é um termo da Língua Portuguesa que significa um conjunto de duas ou mais palavras que funcionam como uma só unidade de sentido dentro da frase.</p>
+        <p>Os verbos ficam assim:</p>
+        <div class="m3-example"><p><strong>Verbo auxiliar + verbo principal</strong></p></div>
+        <p>No verbo principal aparece na forma <strong>infinitiva</strong>, <strong>gerúndio</strong> ou <strong>particípio</strong>.</p>
+        <hr>
+        <p>Já vimos o que é o infinitivo, terminação <strong>-ar, -er</strong> ou <strong>-ir</strong>.</p>
+        <p>O <strong>gerúndio</strong> é uma das formas nominais do verbo e normalmente indica uma ação em andamento, acontecendo naquele momento. Os verbos no gerúndio terminam em:</p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-ando</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">estudar → estud<strong>ando</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-endo</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">correr → corr<strong>endo</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-indo</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → part<strong>indo</strong></span></div>
+        </div>
+        <hr>
+        <p>O <strong>particípio</strong> é uma das formas nominais do verbo e geralmente indica uma ação já concluída. Os verbos no particípio normalmente terminam em:</p>
+        <div class="lesson-table">
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-ado</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">estudar → estud<strong>ado</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-ido</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">vender → vend<strong>ido</strong></span></div>
+          <div class="lesson-row"><span class="lesson-col-key"><strong>-ido</strong></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">partir → part<strong>ido</strong></span></div>
+        </div>
+        <hr>
+        <p><strong>Exemplos de locuções verbais:</strong></p>
+        <div class="lesson-grid">
+          <span class="lg-key"><em>estava dormindo</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + gerúndio (ação em andamento)</span>
+          <span class="lg-key"><em>vai viajar</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + infinitivo (ação futura)</span>
+          <span class="lg-key"><em>tinha comido</em></span><span class="lg-arrow">→</span><span class="lg-val">auxiliar + particípio (ação concluída)</span>
+        </div>
+      </div>
+      <button type="button" class="btn-nav btn-nav-primary" id="m6StartBtn">
+        Iniciar exercícios ${icons.right}
+      </button>
+    </div>`;
+
+  $('m6StartBtn').addEventListener('click', startModule6Quiz);
+}
+
+function startModule6Quiz() {
+  const answered = state.m6results.filter(r => r !== null).length;
+  if (answered > 0 && answered < questions6.length) {
+    state.m6phase = 'quiz';
+    state.phase   = 'module6-quiz';
+  } else {
+    state.m6activeSet = questions6.map((_, i) => i);
+    state.m6current   = 0;
+    state.m6results   = new Array(questions6.length).fill(null);
+    state.m6points    = 0;
+    state.m6pending   = { locuIndices: [] };
+    state.m6phase     = 'quiz';
+    state.phase       = 'module6-quiz';
+  }
+  updateModule6Card();
+  render();
+  saveProgress();
+}
+
+// ── MÓDULO 6: RENDERIZAR QUESTÃO ─────────────────────────────
+function buildM6LocSelect(q, result, done) {
+  const N = q.sentence.length;
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+
+  if (!done) {
+    const { locuIndices } = state.m6pending;
+    const canConfirm = locuIndices.length >= 2;
+    const sentenceHTML = buildAnnotatedSentence(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (locuIndices.includes(idx)) cls += ' verb-pending';
+        return `<span class="${cls}" data-m6wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        if (locuIndices.length === 0) return '';
+        const sorted = [...locuIndices].sort((a, b) => a - b);
+        return `<div class="annot-verb" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Locução Verbal</div>`;
+      }
+    );
+    return `
+      <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+      <p class="question-title">${q.text}</p>
+      <p style="font-size:13px;color:var(--text-gray);margin:0 0 8px">Clique em <strong>todas</strong> as palavras que formam a locução verbal.</p>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="m6ConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar locução verbal
+      </button>`;
+  }
+
+  // Questão respondida
+  const sentenceHTML = buildAnnotatedSentence(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isCorrect  = q.locuIndices.includes(idx);
+      const wasSelected = result.selected && result.selected.includes(idx);
+      if (isCorrect)                    cls += ' correct-verb';
+      else if (wasSelected && !isCorrect) cls += ' wrong-verb';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    () => {
+      const sorted = [...q.locuIndices].sort((a, b) => a - b);
+      return `<div class="annot-verb" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Locução Verbal</div>`;
+    }
+  );
+  const locuWords = q.locuIndices.map(i => q.sentence[i]).join(' ');
+  return `
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text}</p>
+    ${sentenceHTML}
+    <div class="feedback${result.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${result.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${result.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        <p>A locução verbal é <strong>${locuWords}</strong> — <em>${q.auxVerb}</em> (auxiliar) + <em>${q.mainVerb}</em> (principal) na forma de ${q.verbType}.</p>
+        <p>${q.feedback}</p>
+      </div>
+    </div>`;
+}
+
+function renderModule6Question() {
+  const qIdx   = state.m6activeSet[state.m6current];
+  const q      = questions6[qIdx];
+  const result = state.m6results[qIdx];
+  const done   = result !== null;
+  const isLast = state.m6current === state.m6activeSet.length - 1;
+
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <button type="button" class="btn-lesson-hint" id="m6LessonBtn"><i class="fa-solid fa-book-open"></i> Consultar lição</button>
+        <span style="font-size:13px;color:var(--text-gray);margin-left:auto">Questão ${state.m6current + 1} de ${state.m6activeSet.length}</span>
+      </div>
+      ${buildM6LocSelect(q, result, done)}
+      ${done ? `<div class="bottom-actions">
+        ${state.m6current > 0 ? `<button type="button" class="btn-nav" id="m6PrevBtn">${icons.left} Anterior</button>` : ''}
+        ${isLast
+          ? `<button type="button" class="btn-nav btn-nav-primary" id="m6ResultsBtn">${icons.check} Ver resultados</button>`
+          : `<button type="button" class="btn-nav btn-nav-primary" id="m6NextBtn">Próxima ${icons.right}</button>`
+        }
+      </div>` : ''}
+    </div>`;
+
+  $('m6LessonBtn').addEventListener('click', () => openLessonModal(6));
+  if (done) {
+    if ($('m6PrevBtn')) $('m6PrevBtn').addEventListener('click', () => m6navigate(-1));
+    if ($('m6NextBtn')) $('m6NextBtn').addEventListener('click', () => m6navigate(1));
+    if ($('m6ResultsBtn')) $('m6ResultsBtn').addEventListener('click', () => { state.phase = 'module6-results'; render(); saveProgress(); });
+    return;
+  }
+
+  document.querySelectorAll('[data-m6wi]').forEach(chip => {
+    chip.addEventListener('click', () => selectM6Word(+chip.dataset.m6wi));
+  });
+  const cf = $('m6ConfirmBtn');
+  if (cf) cf.addEventListener('click', confirmM6Answer);
+}
+
+function selectM6Word(wordIdx) {
+  if (PUNCT.has(questions6[state.m6activeSet[state.m6current]].sentence[wordIdx])) return;
+  const loci = state.m6pending.locuIndices;
+  const idx = loci.indexOf(wordIdx);
+  if (idx === -1) loci.push(wordIdx); else loci.splice(idx, 1);
+  renderModule6Question();
+}
+
+function confirmM6Answer() {
+  const qIdx = state.m6activeSet[state.m6current];
+  if (state.m6results[qIdx] !== null) return;
+  const q = questions6[qIdx];
+  const selected = [...state.m6pending.locuIndices];
+  if (selected.length < 2) return;
+  const correct = selected.length === q.locuIndices.length && q.locuIndices.every(i => selected.includes(i));
+  state.m6results[qIdx] = { correct, selected };
+  if (correct)  state.m6points += 10;
+  if (!correct) state.m6errorNotebook[qIdx] = (state.m6errorNotebook[qIdx] || 0) + 1;
+  state.m6pending = { locuIndices: [] };
+  recordActivity();
+  updateModule6Card();
+  updateErrorNotebook();
+  renderModule6Question();
+  saveProgress();
+}
+
+function m6navigate(dir) {
+  state.m6current += dir;
+  state.m6pending  = { locuIndices: [] };
+  renderModule6Question();
+  saveProgress();
+}
+
+// ── MÓDULO 6: RESULTADOS ──────────────────────────────────────
+function renderModule6Results() {
+  const correctCt = state.m6results.filter(r => r && r.correct).length;
+  const wrongCt   = state.m6results.filter(r => r && !r.correct).length;
+  const allClear  = wrongCt === 0;
+  const iconBg    = allClear ? '#22c55e' : wrongCt > state.m6activeSet.length / 2 ? '#ef4444' : '#f97316';
+  const iconName  = allClear ? 'fa-trophy' : 'fa-flag-checkered';
+
+  $('quizContainer').innerHTML = `
+    <div class="results-screen">
+      <div class="results-icon" style="background:linear-gradient(135deg,${iconBg},${iconBg}bb)">
+        <i class="fa-solid ${iconName}"></i>
+      </div>
+      <h2>Você concluiu as questões de Locução Verbal — sexta etapa!</h2>
+      <div class="results-stats-row">
+        <div class="r-stat correct"><strong>${correctCt}</strong><span>Corretas</span></div>
+        <div class="r-stat wrong"><strong>${wrongCt}</strong><span>Incorretas</span></div>
+      </div>
+      ${allClear
+        ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m6RetryBtn">${icons.retry} Recomeçar</button>
+           </div>`
+        : `<p class="results-message">
+             Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
+             Clique em <strong>Praticar erros</strong> para tentar novamente as que errou.
+           </p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m6RetryBtn">${icons.retry} Recomeçar tudo</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m6PracticeBtn">
+               Praticar erros ${icons.right}
+             </button>
+           </div>`
+      }
+    </div>`;
+
+  $('m6RetryBtn').addEventListener('click', startModule6Quiz);
+  if (!allClear && $('m6PracticeBtn')) {
+    $('m6PracticeBtn').addEventListener('click', () => {
+      const wrongSet = state.m6results.map((r, i) => (r && !r.correct) ? i : -1).filter(i => i !== -1);
+      wrongSet.forEach(i => { state.m6results[i] = null; });
+      state.m6activeSet = wrongSet;
+      state.m6current   = 0;
+      state.m6pending   = { locuIndices: [] };
+      state.phase       = 'module6-quiz';
+      render();
+      saveProgress();
+    });
+  }
+}
+
+// ── MÓDULO 6: IR PARA QUESTÃO (caderno de erros) ─────────────
+function goToM6Question(qIdx) {
+  state.cadernoQueue    = [{ mod: 6, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  state.cadernoPending  = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
+  state.cadernoM6Pending = { locuIndices: [] };
+  state.phase = 'caderno-quiz';
+  render();
+}
+
 // ── SIMULADOS: CONSTRUIR FILA ─────────────────────────────────
 function buildSimQueue() {
   function pickRandom(arr, mod, count) {
@@ -5193,7 +5775,7 @@ function renderSimQuestion() {
   const key      = `${mod}-${qIdx}`;
   const answered = state.simAnswered[key];
   const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : mod === 5 ? '#7c3aed' : '#3b82f6';
-  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão' };
+  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão', 6: 'Módulo 6 — Locução' };
   const modLabel = modNames[mod] || `Módulo ${mod}`;
 
   let bodyHTML = '';
