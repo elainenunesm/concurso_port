@@ -3184,7 +3184,7 @@ function cadernoTriSelectHTML(q, answered, hasNoSubject) {
   const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
   if (!answered) {
     const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject, predicateConfirmed } = state.cadernoPending;
-    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject) && predicateConfirmed;
+    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject);
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
@@ -3380,7 +3380,7 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject, mod) {
   const cf = document.getElementById('cadernoConfirmBtn');
   if (cf) cf.addEventListener('click', () => {
     const p = state.cadernoPending;
-    if (p.verbIdx === null || !p.predicateConfirmed) return;
+    if (p.verbIdx === null) return;
     if (!p.noSubject && p.subjectIdxs.length === 0) return;
     const vOk = p.verbIdx === q.verbIndex;
     const pOk = p.predicateIdxs.length === q.predicateIndices.length && q.predicateIndices.every(i => p.predicateIdxs.includes(i));
@@ -3987,7 +3987,7 @@ function buildAnnotatedSentence3(q, chipsFn, annotFn) {
 function buildTriSelect(q, result, done) {
   if (!done) {
     const { mode, verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m3pending;
-    const canConfirm = verbIdx !== null && subjectIdxs.length > 0 && predicateConfirmed;
+    const canConfirm = verbIdx !== null && subjectIdxs.length > 0;
 
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
@@ -4210,7 +4210,7 @@ function confirmTriAnswer() {
   if (state.m3results[qIdx] !== null) return;
   const q = questions3[qIdx];
   const { verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m3pending;
-  if (verbIdx === null || subjectIdxs.length === 0 || !predicateConfirmed) return;
+  if (verbIdx === null || subjectIdxs.length === 0) return;
 
   const verbCorrect      = verbIdx === q.verbIndex;
   const subjectCorrect   = subjectIdxs.length === q.subjectIndices.length &&
@@ -4325,7 +4325,7 @@ function startModule4Quiz() {
 function buildM4TriSelect(q, result, done) {
   if (!done) {
     const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject, predicateConfirmed } = state.m4pending;
-    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject) && predicateConfirmed;
+    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject);
 
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
@@ -4585,7 +4585,7 @@ function confirmM4Answer() {
   if (state.m4results[qIdx] !== null) return;
   const q = questions4[qIdx];
   const { verbIdx, subjectIdxs, predicateIdxs, noSubject, predicateConfirmed } = state.m4pending;
-  if (verbIdx === null || !predicateConfirmed) return;
+  if (verbIdx === null) return;
   if (!noSubject && subjectIdxs.length === 0) return;
 
   const verbCorrect      = verbIdx === q.verbIndex;
@@ -4693,7 +4693,7 @@ function startModule5Quiz() {
 function buildM5TriSelect(q, result, done) {
   if (!done) {
     const { mode, verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m5pending;
-    const canConfirm = verbIdx !== null && subjectIdxs.length > 0 && predicateConfirmed;
+    const canConfirm = verbIdx !== null && subjectIdxs.length > 0;
 
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
@@ -4915,7 +4915,7 @@ function confirmM5Answer() {
   if (state.m5results[qIdx] !== null) return;
   const q = questions5[qIdx];
   const { verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m5pending;
-  if (verbIdx === null || subjectIdxs.length === 0 || !predicateConfirmed) return;
+  if (verbIdx === null || subjectIdxs.length === 0) return;
 
   const verbCorrect      = verbIdx === q.verbIndex;
   const subjectCorrect   = subjectIdxs.length === q.subjectIndices.length &&
