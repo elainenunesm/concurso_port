@@ -930,6 +930,130 @@ const questions4 = [
   },
 ];
 
+// ── QUESTÕES MÓDULO 5 ─────────────────────────────────────────
+const questions5 = [
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Chegou', 'o', 'ônibus', '.'],
+    verbIndex: 0, subjectIndices: [1, 2], predicateIndices: [0],
+    feedback: '"Chegou" é o verbo. Quem chegou? "O ônibus" — esse é o sujeito. Note a ordem inversa: verbo antes do sujeito.',
+    example: 'Dica: faça a pergunta "Quem + verbo?" para encontrar o sujeito.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Correu', 'o', 'menino', '.'],
+    verbIndex: 0, subjectIndices: [1, 2], predicateIndices: [0],
+    feedback: '"Correu" é o verbo. Quem correu? "O menino" — esse é o sujeito. O predicado é apenas "correu".',
+    example: 'Na ordem inversa, o sujeito aparece depois do verbo.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Dormiu', 'muito', 'o', 'gato', '.'],
+    verbIndex: 0, subjectIndices: [2, 3], predicateIndices: [0, 1],
+    feedback: '"Dormiu" é o verbo. Quem dormiu? "O gato" — esse é o sujeito. O predicado é "dormiu muito" — verbo + complemento antes do sujeito.',
+    example: '"Muito" é adjunto adverbial de intensidade — faz parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Saíram', 'cedo', 'os', 'alunos', '.'],
+    verbIndex: 0, subjectIndices: [2, 3], predicateIndices: [0, 1],
+    feedback: '"Saíram" é o verbo. Quem saiu? "Os alunos" — esse é o sujeito. O predicado é "saíram cedo".',
+    example: '"Cedo" indica tempo — é adjunto adverbial e faz parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Chegou', 'tarde', 'o', 'professor', '.'],
+    verbIndex: 0, subjectIndices: [2, 3], predicateIndices: [0, 1],
+    feedback: '"Chegou" é o verbo. Quem chegou? "O professor" — esse é o sujeito. O predicado é "chegou tarde".',
+    example: 'Perceba que "tarde" qualifica a chegada — é parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Fácil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Correu', 'rápido', 'o', 'ciclista', '.'],
+    verbIndex: 0, subjectIndices: [2, 3], predicateIndices: [0, 1],
+    feedback: '"Correu" é o verbo. Quem correu? "O ciclista" — esse é o sujeito. O predicado é "correu rápido".',
+    example: '"Rápido" qualifica a corrida — é adjunto adverbial de modo no predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Ontem', ',', 'dormiu', 'o', 'gato', '.'],
+    verbIndex: 2, subjectIndices: [3, 4], predicateIndices: [0, 2],
+    feedback: '"Dormiu" é o verbo. Quem dormiu? "O gato" — esse é o sujeito. O predicado é "Ontem dormiu" — o adjunto temporal faz parte do predicado mesmo separado.',
+    example: 'O predicado pode ser separado pelo sujeito. "Ontem" + "dormiu" formam o predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Na', 'festa', ',', 'chegaram', 'os', 'convidados', '.'],
+    verbIndex: 3, subjectIndices: [4, 5], predicateIndices: [0, 1, 3],
+    feedback: '"Chegaram" é o verbo. Quem chegou? "Os convidados" — esse é o sujeito. O predicado é "Na festa chegaram".',
+    example: '"Na festa" é o adjunto adverbial de lugar — integra o predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Ao', 'longe', ',', 'cantavam', 'os', 'pássaros', '.'],
+    verbIndex: 3, subjectIndices: [4, 5], predicateIndices: [0, 1, 3],
+    feedback: '"Cantavam" é o verbo. Quem cantava? "Os pássaros" — esse é o sujeito. O predicado é "Ao longe cantavam".',
+    example: '"Ao longe" indica lugar — é adjunto adverbial no predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['De', 'manhã', ',', 'saiu', 'a', 'professora', '.'],
+    verbIndex: 3, subjectIndices: [4, 5], predicateIndices: [0, 1, 3],
+    feedback: '"Saiu" é o verbo. Quem saiu? "A professora" — esse é o sujeito. O predicado é "De manhã saiu".',
+    example: '"De manhã" é adjunto adverbial de tempo — faz parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['No', 'jardim', ',', 'brincavam', 'as', 'crianças', '.'],
+    verbIndex: 3, subjectIndices: [4, 5], predicateIndices: [0, 1, 3],
+    feedback: '"Brincavam" é o verbo. Quem brincava? "As crianças" — esse é o sujeito. O predicado é "No jardim brincavam".',
+    example: '"No jardim" indica o lugar onde a ação acontece — faz parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Médio',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Nesta', 'cidade', ',', 'vivem', 'muitas', 'pessoas', '.'],
+    verbIndex: 3, subjectIndices: [4, 5], predicateIndices: [0, 1, 3],
+    feedback: '"Vivem" é o verbo. Quem vive? "Muitas pessoas" — esse é o sujeito. O predicado é "Nesta cidade vivem".',
+    example: '"Muitas pessoas" é o sujeito — responde à pergunta "Quem vive nesta cidade?"',
+  },
+  {
+    type: 'tri-select', difficulty: 'Difícil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Com', 'grande', 'esforço', ',', 'venceu', 'o', 'time', '.'],
+    verbIndex: 4, subjectIndices: [5, 6], predicateIndices: [0, 1, 2, 4],
+    feedback: '"Venceu" é o verbo. Quem venceu? "O time" — esse é o sujeito. O predicado é "Com grande esforço venceu".',
+    example: '"Com grande esforço" é adjunto adverbial de modo — faz parte do predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Difícil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['No', 'início', 'do', 'ano', ',', 'chegou', 'a', 'carta', '.'],
+    verbIndex: 5, subjectIndices: [6, 7], predicateIndices: [0, 1, 2, 3, 5],
+    feedback: '"Chegou" é o verbo. Quem chegou? "A carta" — esse é o sujeito. O predicado é "No início do ano chegou".',
+    example: '"No início do ano" é um adjunto adverbial de tempo — integra o predicado.',
+  },
+  {
+    type: 'tri-select', difficulty: 'Difícil',
+    text: 'Clique no <strong>VERBO</strong>, no <strong>SUJEITO</strong> e em todas as palavras do <strong>PREDICADO</strong>:',
+    sentence: ['Sob', 'o', 'sol', 'forte', ',', 'trabalhavam', 'os', 'operários', '.'],
+    verbIndex: 5, subjectIndices: [6, 7], predicateIndices: [0, 1, 2, 3, 5],
+    feedback: '"Trabalhavam" é o verbo. Quem trabalhava? "Os operários" — esse é o sujeito. O predicado é "Sob o sol forte trabalhavam".',
+    example: '"Sob o sol forte" descreve a condição da ação — é parte do predicado.',
+  },
+];
+
 // ── ESTADO ───────────────────────────────────────────────────
 // phase: 'objective' | 'intro' | 'quiz' | 'results'
 // activeSet: índices das questões da rodada atual
@@ -970,6 +1094,13 @@ const state = {
   m4points:        0,
   m4errorNotebook: {},
   m4pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false },
+  m5phase:         'none',
+  m5current:       0,
+  m5activeSet:     questions5.map((_, i) => i),
+  m5results:       new Array(questions5.length).fill(null),
+  m5points:        0,
+  m5errorNotebook: {},
+  m5pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false },
   previousPhase:   null,
   cadernoQueue:    [],
   cadernoCurrent:  0,
@@ -1080,6 +1211,12 @@ async function saveProgress() {
       m4results:       state.m4results,
       m4points:        state.m4points,
       m4errorNotebook: state.m4errorNotebook,
+      m5phase:         state.m5phase,
+      m5current:       state.m5current,
+      m5activeSet:     state.m5activeSet,
+      m5results:       state.m5results,
+      m5points:        state.m5points,
+      m5errorNotebook: state.m5errorNotebook,
       savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
@@ -1099,7 +1236,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -1122,7 +1259,7 @@ async function loadProgress() {
       state.m3errorNotebook = data.m3errorNotebook ?? {};
       state.m3unlocked      = !!(data.m3unlocked || PHASES_MODULE3.includes(data.phase) || state.m3results.some(r => r !== null));
       state.m4unlocked      = !!(data.m4unlocked || PHASES_MODULE4.includes(data.phase) || (Array.isArray(data.m4results) && data.m4results.some(r => r !== null)));
-      state.m5unlocked      = !!(data.m5unlocked || (Array.isArray(data.m4results) && data.m4results.every(r => r !== null) && data.m4results.length > 0));
+      state.m5unlocked      = !!(data.m5unlocked || ['module5-intro','module5-quiz','module5-results'].includes(data.phase) || (Array.isArray(data.m4results) && data.m4results.every(r => r !== null) && data.m4results.length > 0) || (Array.isArray(data.m5results) && data.m5results.some(r => r !== null)));
       state.m4phase         = data.m4phase ?? 'none';
       state.m4current       = data.m4current ?? 0;
       state.m4activeSet     = Array.isArray(data.m4activeSet) ? data.m4activeSet : questions4.map((_, i) => i);
@@ -1130,11 +1267,19 @@ async function loadProgress() {
         ? data.m4results : new Array(questions4.length).fill(null);
       state.m4points        = data.m4points ?? 0;
       state.m4errorNotebook = data.m4errorNotebook ?? {};
+      state.m5results       = Array.isArray(data.m5results) && data.m5results.length === questions5.length
+        ? data.m5results : new Array(questions5.length).fill(null);
+      state.m5points        = data.m5points ?? 0;
+      state.m5errorNotebook = data.m5errorNotebook ?? {};
+      state.m5phase         = data.m5phase ?? 'none';
+      state.m5current       = data.m5current ?? 0;
+      if (Array.isArray(data.m5activeSet)) state.m5activeSet = data.m5activeSet;
       const el = $('statPontos'); if (el) el.textContent = state.points;
       updateStreak();
       updateModule2Card();
       updateModule3Card();
       updateModule4Card();
+      updateModule5Card();
       updateErrorNotebook();
     }
   } catch (e) { /* sem progresso salvo, começa do zero */ }
@@ -1508,11 +1653,12 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
-const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE3    = ['module3-intro', 'module3-quiz', 'module3-results'];
 const PHASES_MODULE4    = ['module4-intro', 'module4-quiz', 'module4-results'];
+const PHASES_MODULE5    = ['module5-intro', 'module5-quiz', 'module5-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
 
@@ -1542,10 +1688,10 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:18px;font-weight:700;color:#0d9488">Ø</span>';
       if (h2El)    h2El.textContent = '4. Orações sem sujeito';
       if (descEl)  descEl.textContent = 'Entenda os verbos impessoais e as orações sem sujeito.';
-    } else if (state.phase === 'module5-intro') {
+    } else if (PHASES_MODULE5.includes(state.phase)) {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:13px;font-weight:700;color:#7c3aed">INV</span>';
       if (h2El)    h2El.textContent = '5. Inversão da ordem - termos essenciais';
-      if (descEl)  descEl.textContent = 'Entenda como sujeito e predicado podem aparecer em ordem invertida.';
+      if (descEl)  descEl.textContent = 'Identifique verbo, sujeito e predicado em orações com ordem invertida.';
     } else if (state.phase === 'caderno-quiz') {
       if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;font-size:20px"></i>';
       if (h2El)    h2El.textContent = 'Caderno de Erros';
@@ -1571,7 +1717,7 @@ function render() {
   const m4c = $('module4Card');
   if (m4c) m4c.classList.toggle('active-view', PHASES_MODULE4.includes(state.phase));
   const m5c = $('module5Card');
-  if (m5c) m5c.classList.toggle('active-view', state.phase === 'module5-intro');
+  if (m5c) m5c.classList.toggle('active-view', PHASES_MODULE5.includes(state.phase));
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
   if (state.phase === 'objective')         { renderObjective();         return; }
   if (state.phase === 'intro')             { renderIntro();             return; }
@@ -1587,6 +1733,8 @@ function render() {
   if (state.phase === 'module4-quiz')      { renderModule4Question();   return; }
   if (state.phase === 'module4-results')   { renderModule4Results();    return; }
   if (state.phase === 'module5-intro')     { renderModule5Intro();      return; }
+  if (state.phase === 'module5-quiz')      { renderModule5Question();   return; }
+  if (state.phase === 'module5-results')   { renderModule5Results();    return; }
   if (state.phase === 'caderno-quiz')      { renderCadernoQuestion();   return; }
   renderQuestion();
 }
@@ -2135,7 +2283,11 @@ function renderModule5Intro() {
           <p class="m3-sub" style="margin-top:8px">→ O predicado é "Ontem" + "dormiu" (separados pelo sujeito)</p>
         </div>
       </div>
+      <button type="button" class="btn-start" id="startModule5Btn">
+        Iniciar exercícios <i class="fa-solid fa-arrow-right"></i>
+      </button>
     </div>`;
+  $('startModule5Btn').addEventListener('click', startModule5Quiz);
 }
 
 function startModule2Quiz() {
@@ -2380,6 +2532,25 @@ function getLessonBodyHTML(module) {
       </div>
       <p><strong>Atenção:</strong> "Existir" e "ocorrer" admitem sujeito (<em>Os problemas existem. O acidente ocorreu.</em>). Compare sempre com o impessoal "há/houve".</p>
     </div>`;
+  if (module === 5) return `
+    <div class="lesson-body">
+      <h3 class="lesson-title">Lição de Inversão da ordem (Resumo)</h3>
+      <p>Na <strong>ordem direta</strong>, a estrutura mais comum é: <strong>Sujeito + Verbo + Complemento</strong>.</p>
+      <p>Na <strong>ordem inversa</strong>, os termos aparecem deslocados. O sujeito pode vir depois do verbo ou até no final da frase.</p>
+      <p><strong>Como analisar frases em ordem inversa:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key">1º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Encontre o <strong>verbo</strong>.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">2º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Pergunte: <strong>Quem + verbo?</strong> — a resposta é o <strong>sujeito</strong>.</span></div>
+        <div class="lesson-row"><span class="lesson-col-key">3º</span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Tudo que não é sujeito (inclusive o verbo e adjuntos) é o <strong>predicado</strong>.</span></div>
+      </div>
+      <p><strong>Exemplos de inversão:</strong></p>
+      <div class="lesson-table">
+        <div class="lesson-row"><span class="lesson-col-key"><em>Chegou o ônibus.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Verbo: chegou · Sujeito: o ônibus · Predicado: chegou</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Ontem, dormiu o gato.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Verbo: dormiu · Sujeito: o gato · Predicado: Ontem dormiu</span></div>
+        <div class="lesson-row"><span class="lesson-col-key"><em>Na festa, chegaram os convidados.</em></span><span class="lesson-col-arrow">→</span><span class="lesson-col-val">Verbo: chegaram · Sujeito: os convidados · Predicado: Na festa chegaram</span></div>
+      </div>
+      <p><strong>Atenção:</strong> O predicado pode ser separado pelo sujeito. Adjuntos adverbiais (lugar, tempo, modo) fazem parte do predicado mesmo quando aparecem antes do verbo.</p>
+    </div>`;
   return `
     <div class="lesson-body">
       <h3 class="lesson-title">Lição de Sujeito <span class="lesson-title-sub">(Versão Resumida)</span></h3>
@@ -2414,6 +2585,7 @@ function openLessonModal(module) {
   title.textContent = module === 1 ? 'Lição de Verbo'
     : module === 3 ? 'Lição de Estudo do predicado'
     : module === 4 ? 'Lição de Orações sem sujeito'
+    : module === 5 ? 'Lição de Inversão da ordem'
     : 'Lição de Sujeito (Versão Resumida)';
   body.innerHTML = getLessonBodyHTML(module);
   overlay.style.display = 'flex';
@@ -2577,7 +2749,8 @@ function updateErrorNotebook() {
   const count2 = Object.keys(state.m2errorNotebook).length;
   const count3 = Object.keys(state.m3errorNotebook).length;
   const count4 = Object.keys(state.m4errorNotebook).length;
-  const count  = count1 + count2 + count3 + count4;
+  const count5 = Object.keys(state.m5errorNotebook).length;
+  const count  = count1 + count2 + count3 + count4 + count5;
   const badge        = $('cadernoErrorBadge');
   const countEl      = $('cadernoErrorCount');
   const progressText = $('cadernoProgressText');
@@ -2585,7 +2758,7 @@ function updateErrorNotebook() {
   if (badge)        badge.style.display = count > 0 ? 'flex' : 'none';
   if (countEl)      countEl.textContent = count;
   if (progressText) progressText.textContent = count === 0 ? '0 erros' : `${count} erro${count !== 1 ? 's' : ''}`;
-  const totalQ = questions.length + questions2.length + questions3.length + questions4.length;
+  const totalQ = questions.length + questions2.length + questions3.length + questions4.length + questions5.length;
   if (progressFill) progressFill.style.width = count === 0 ? '0%' : `${Math.round(count / totalQ * 100)}%`;
   if (state.phase === 'error-notebook') renderErrorNotebookPage();
 }
@@ -2683,6 +2856,7 @@ function buildCadernoQueue() {
   Object.keys(state.m2errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:2, qIdx:+i}));
   Object.keys(state.m3errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:3, qIdx:+i}));
   Object.keys(state.m4errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:4, qIdx:+i}));
+  Object.keys(state.m5errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:5, qIdx:+i}));
   return q;
 }
 
@@ -2708,8 +2882,8 @@ function renderCadernoQuestion() {
   const pos      = state.cadernoCurrent + 1;
   const key      = `${mod}-${qIdx}`;
   const answered = state.cadernoAnswered[key];
-  const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : '#3b82f6';
-  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações' };
+  const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : mod === 5 ? '#7c3aed' : '#3b82f6';
+  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão' };
   const modLabel = modNames[mod] || `Módulo ${mod}`;
 
   let bodyHTML = '';
@@ -2720,6 +2894,8 @@ function renderCadernoQuestion() {
     bodyHTML = cadernoDualSelectHTML(questions2[qIdx], answered);
   } else if (mod === 3) {
     bodyHTML = cadernoTriSelectHTML(questions3[qIdx], answered, false);
+  } else if (mod === 5) {
+    bodyHTML = cadernoTriSelectHTML(questions5[qIdx], answered, false);
   } else {
     bodyHTML = cadernoTriSelectHTML(questions4[qIdx], answered, true);
   }
@@ -2760,9 +2936,11 @@ function renderCadernoQuestion() {
   } else if (mod === 2) {
     setupCadernoDualSelect(questions2[qIdx], qIdx, key);
   } else if (mod === 3) {
-    setupCadernoTriSelect(questions3[qIdx], qIdx, key, false);
+    setupCadernoTriSelect(questions3[qIdx], qIdx, key, false, 3);
+  } else if (mod === 5) {
+    setupCadernoTriSelect(questions5[qIdx], qIdx, key, false, 5);
   } else {
-    setupCadernoTriSelect(questions4[qIdx], qIdx, key, true);
+    setupCadernoTriSelect(questions4[qIdx], qIdx, key, true, 4);
   }
 }
 
@@ -3010,7 +3188,7 @@ function cadernoTriSelectHTML(q, answered, hasNoSubject) {
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
-        if (idx === verbIdx)                                     cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
+        if (idx === verbIdx)                                     cls += (mode === 'predicate' && predicateConfirmed) ? ' predicate-pending' : ' verb-pending';
         else if (!noSubject && subjectIdxs.includes(idx))       cls += ' subject-pending';
         else if (predicateIdxs.includes(idx))                   cls += ' predicate-pending';
         return `<span class="${cls}" data-cadtri="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
@@ -3023,8 +3201,19 @@ function cadernoTriSelectHTML(q, answered, hasNoSubject) {
         }
         if (verbIdx !== null) a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const sorted = [...predicateIdxs].sort((a,b) => a-b);
-          a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
+          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          if (renderIdxs.length > 0) {
+            const sorted = [...renderIdxs].sort((a,b) => a-b);
+            const segs = []; let seg = [sorted[0]];
+            for (let i = 1; i < sorted.length; i++) {
+              const prev = sorted[i-1], curr = sorted[i];
+              let ok = true;
+              for (let j = prev+1; j < curr; j++) if (!PUNCT.has(q.sentence[j])) { ok = false; break; }
+              ok ? seg.push(curr) : (segs.push(seg), seg = [curr]);
+            }
+            segs.push(seg);
+            segs.forEach(g => { a += `<div class="annot-predicate" style="grid-column:${g[0]+1}/span ${g[g.length-1]-g[0]+1};grid-row:3">Predicado</div>`; });
+          }
         }
         return a;
       }
@@ -3143,7 +3332,7 @@ function cadernoTriSelectHTML(q, answered, hasNoSubject) {
     </div>`;
 }
 
-function setupCadernoTriSelect(q, qIdx, key, hasNoSubject) {
+function setupCadernoTriSelect(q, qIdx, key, hasNoSubject, mod) {
   document.querySelectorAll('[data-cadtri]').forEach(chip => {
     chip.addEventListener('click', () => {
       const i = +chip.dataset.cadtri;
@@ -3151,13 +3340,12 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject) {
       const p = state.cadernoPending;
       if (p.mode === 'verb') {
         if (p.verbIdx === i) {
-          p.predicateIdxs = p.predicateIdxs.filter(x => x !== i);
+          p.predicateIdxs      = [];
           p.predicateConfirmed = false;
           p.verbIdx = null;
         } else {
-          p.predicateIdxs = p.predicateIdxs.filter(x => x !== p.verbIdx);
-          p.subjectIdxs   = p.subjectIdxs.filter(x => x !== i);
-          p.predicateIdxs = p.predicateIdxs.filter(x => x !== i);
+          p.subjectIdxs        = p.subjectIdxs.filter(x => x !== i);
+          p.predicateIdxs      = [];
           p.predicateConfirmed = false;
           p.verbIdx = i;
           p.predicateIdxs.push(i);
@@ -3200,7 +3388,8 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject) {
     const ok  = vOk && sOk && pOk;
     state.cadernoAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, predicateCorrect: pOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs], predicateSelected: [...p.predicateIdxs], noSubjectSelected: p.noSubject };
     if (!ok) {
-      if (hasNoSubject) state.m4errorNotebook[qIdx] = (state.m4errorNotebook[qIdx] || 0) + 1;
+      if (mod === 5)    state.m5errorNotebook[qIdx] = (state.m5errorNotebook[qIdx] || 0) + 1;
+      else if (hasNoSubject) state.m4errorNotebook[qIdx] = (state.m4errorNotebook[qIdx] || 0) + 1;
       else              state.m3errorNotebook[qIdx] = (state.m3errorNotebook[qIdx] || 0) + 1;
     }
     recordActivity(); updateErrorNotebook(); saveProgress(); render();
@@ -3213,7 +3402,8 @@ function renderErrorNotebookPage() {
   const entries2 = Object.entries(state.m2errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
   const entries3 = Object.entries(state.m3errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
   const entries4 = Object.entries(state.m4errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
-  const totalErrors = entries1.length + entries2.length + entries3.length + entries4.length;
+  const entries5 = Object.entries(state.m5errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
+  const totalErrors = entries1.length + entries2.length + entries3.length + entries4.length + entries5.length;
 
   function diffCls(d) {
     if (!d) return 'easy';
@@ -3289,12 +3479,29 @@ function renderErrorNotebookPage() {
     </div>`;
   });
 
+  const cardsM5 = entries5.map(([qIdx, count]) => {
+    const q = questions5[Number(qIdx)];
+    const num = Number(qIdx) + 1;
+    const sentence = q.sentence.filter(w => w !== '.' && w !== ',').join(' ');
+    return `<div class="enp-card">
+      <div class="enp-card-meta">
+        <span class="enb-num">M5·Q${num}</span>
+        <span class="enb-diff enb-diff-${diffCls(q.difficulty)}">${q.difficulty}</span>
+        <span class="enb-count">${count}×</span>
+      </div>
+      <p class="enp-qtext">${sentence}</p>
+      <button type="button" class="btn-nav enp-goto" onclick="goToM5Question(${qIdx})">
+        Ir para questão ${icons.right}
+      </button>
+    </div>`;
+  });
+
   const listHTML = totalErrors === 0
     ? `<div class="enp-empty">
          <i class="fa-solid fa-check-circle"></i>
          <p>Nenhum erro ainda!<br>Continue praticando e suas questões erradas aparecerão aqui.</p>
        </div>`
-    : [...cardsM1, ...cardsM2, ...cardsM3, ...cardsM4].join('');
+    : [...cardsM1, ...cardsM2, ...cardsM3, ...cardsM4, ...cardsM5].join('');
 
   const actionsHTML = totalErrors > 0
     ? `<button type="button" class="btn-nav btn-nav-primary" id="practiceAllBtn">
@@ -3303,7 +3510,8 @@ function renderErrorNotebookPage() {
     : '';
 
   const backLabel = state.previousPhase
-    ? state.previousPhase.startsWith('module4') ? 'Módulo 4'
+    ? state.previousPhase.startsWith('module5') ? 'Módulo 5'
+    : state.previousPhase.startsWith('module4') ? 'Módulo 4'
     : state.previousPhase.startsWith('module3') ? 'Módulo 3'
     : state.previousPhase.startsWith('module2') ? 'Módulo 2'
     : 'Módulo 1'
@@ -3729,6 +3937,19 @@ function updateModule4Card() {
   if (m5Lock) m5Lock.style.display = allDone ? 'none' : '';
 }
 
+// ── MÓDULO 5: ATUALIZAR CARD DA SIDEBAR ──────────────────────
+function updateModule5Card() {
+  const m5Card = $('module5Card');
+  if (!m5Card) return;
+  const total    = questions5.length;
+  const answered = state.m5results.filter(r => r !== null).length;
+  const pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  const fill = m5Card.querySelector('.fill');
+  const text = m5Card.querySelector('.module-progress span');
+  if (fill) fill.style.width = pct + '%';
+  if (text) text.textContent = pct + '%';
+}
+
 // ── MÓDULO 3: ATUALIZAR CARD DA SIDEBAR ──────────────────────
 function updateModule3Card() {
   const m3Card = $('module3Card');
@@ -3771,7 +3992,7 @@ function buildTriSelect(q, result, done) {
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
-        if (idx === verbIdx)                  cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
+        if (idx === verbIdx)                  cls += (mode === 'predicate' && predicateConfirmed) ? ' predicate-pending' : ' verb-pending';
         else if (subjectIdxs.includes(idx))   cls += ' subject-pending';
         else if (predicateIdxs.includes(idx)) cls += ' predicate-pending';
         return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
@@ -3786,8 +4007,19 @@ function buildTriSelect(q, result, done) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const sorted = [...predicateIdxs].sort((a,b) => a-b);
-          a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
+          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          if (renderIdxs.length > 0) {
+            const sorted = [...renderIdxs].sort((a,b) => a-b);
+            const segs = []; let seg = [sorted[0]];
+            for (let i = 1; i < sorted.length; i++) {
+              const prev = sorted[i-1], curr = sorted[i];
+              let ok = true;
+              for (let j = prev+1; j < curr; j++) if (!PUNCT.has(q.sentence[j])) { ok = false; break; }
+              ok ? seg.push(curr) : (segs.push(seg), seg = [curr]);
+            }
+            segs.push(seg);
+            segs.forEach(g => { a += `<div class="annot-predicate" style="grid-column:${g[0]+1}/span ${g[g.length-1]-g[0]+1};grid-row:3">Predicado</div>`; });
+          }
         }
         return a;
       }
@@ -3942,13 +4174,12 @@ function selectTriWord(wordIdx) {
   const { mode } = state.m3pending;
   if (mode === 'verb') {
     if (state.m3pending.verbIdx === wordIdx) {
-      state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m3pending.predicateIdxs     = [];
       state.m3pending.predicateConfirmed = false;
       state.m3pending.verbIdx = null;
     } else {
-      state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== state.m3pending.verbIdx);
-      state.m3pending.subjectIdxs   = state.m3pending.subjectIdxs.filter(i => i !== wordIdx);
-      state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m3pending.subjectIdxs        = state.m3pending.subjectIdxs.filter(i => i !== wordIdx);
+      state.m3pending.predicateIdxs      = [];
       state.m3pending.predicateConfirmed = false;
       state.m3pending.verbIdx = wordIdx;
       state.m3pending.predicateIdxs.push(wordIdx);
@@ -4099,7 +4330,7 @@ function buildM4TriSelect(q, result, done) {
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
-        if (idx === verbIdx)                                     cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
+        if (idx === verbIdx)                                     cls += (mode === 'predicate' && predicateConfirmed) ? ' predicate-pending' : ' verb-pending';
         else if (!noSubject && subjectIdxs.includes(idx))       cls += ' subject-pending';
         else if (predicateIdxs.includes(idx))                   cls += ' predicate-pending';
         return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
@@ -4114,8 +4345,19 @@ function buildM4TriSelect(q, result, done) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const sorted = [...predicateIdxs].sort((a,b) => a-b);
-          a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
+          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          if (renderIdxs.length > 0) {
+            const sorted = [...renderIdxs].sort((a,b) => a-b);
+            const segs = []; let seg = [sorted[0]];
+            for (let i = 1; i < sorted.length; i++) {
+              const prev = sorted[i-1], curr = sorted[i];
+              let ok = true;
+              for (let j = prev+1; j < curr; j++) if (!PUNCT.has(q.sentence[j])) { ok = false; break; }
+              ok ? seg.push(curr) : (segs.push(seg), seg = [curr]);
+            }
+            segs.push(seg);
+            segs.forEach(g => { a += `<div class="annot-predicate" style="grid-column:${g[0]+1}/span ${g[g.length-1]-g[0]+1};grid-row:3">Predicado</div>`; });
+          }
         }
         return a;
       }
@@ -4293,13 +4535,12 @@ function selectM4Word(wordIdx) {
   const { mode, noSubject } = state.m4pending;
   if (mode === 'verb') {
     if (state.m4pending.verbIdx === wordIdx) {
-      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m4pending.predicateIdxs     = [];
       state.m4pending.predicateConfirmed = false;
       state.m4pending.verbIdx = null;
     } else {
-      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== state.m4pending.verbIdx);
-      state.m4pending.subjectIdxs   = state.m4pending.subjectIdxs.filter(i => i !== wordIdx);
-      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m4pending.subjectIdxs        = state.m4pending.subjectIdxs.filter(i => i !== wordIdx);
+      state.m4pending.predicateIdxs      = [];
       state.m4pending.predicateConfirmed = false;
       state.m4pending.verbIdx = wordIdx;
       state.m4pending.predicateIdxs.push(wordIdx);
@@ -4434,6 +4675,347 @@ function renderModule4Results() {
   }
 }
 
+// ── MÓDULO 5: INICIAR QUIZ ───────────────────────────────────
+function startModule5Quiz() {
+  state.m5phase     = 'quiz';
+  state.m5current   = 0;
+  state.m5activeSet = questions5.map((_, i) => i);
+  state.m5results   = new Array(questions5.length).fill(null);
+  state.m5points    = 0;
+  state.m5pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
+  state.phase       = 'module5-quiz';
+  updateModule5Card();
+  render();
+  saveProgress();
+}
+
+// ── MÓDULO 5: MONTAR TRI-SELECT ───────────────────────────────
+function buildM5TriSelect(q, result, done) {
+  if (!done) {
+    const { mode, verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m5pending;
+    const canConfirm = verbIdx !== null && subjectIdxs.length > 0 && predicateIdxs.length > 0;
+
+    const sentenceHTML = buildAnnotatedSentence3(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (idx === verbIdx)                  cls += (mode === 'predicate' && predicateConfirmed) ? ' predicate-pending' : ' verb-pending';
+        else if (subjectIdxs.includes(idx))   cls += ' subject-pending';
+        else if (predicateIdxs.includes(idx)) cls += ' predicate-pending';
+        return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        let a = '';
+        if (subjectIdxs.length > 0) {
+          const sorted = [...subjectIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-subject" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Sujeito</div>`;
+        }
+        if (verbIdx !== null) {
+          a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
+        }
+        if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
+          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          if (renderIdxs.length > 0) {
+            const sorted = [...renderIdxs].sort((a,b) => a-b);
+            const segs = []; let seg = [sorted[0]];
+            for (let i = 1; i < sorted.length; i++) {
+              const prev = sorted[i-1], curr = sorted[i];
+              let ok = true;
+              for (let j = prev+1; j < curr; j++) if (!PUNCT.has(q.sentence[j])) { ok = false; break; }
+              ok ? seg.push(curr) : (segs.push(seg), seg = [curr]);
+            }
+            segs.push(seg);
+            segs.forEach(g => { a += `<div class="annot-predicate" style="grid-column:${g[0]+1}/span ${g[g.length-1]-g[0]+1};grid-row:3">Predicado</div>`; });
+          }
+        }
+        return a;
+      }
+    );
+
+    const verbBtnCls = mode === 'verb'      ? 'dual-mode-btn active-verb'      : 'dual-mode-btn';
+    const subjBtnCls = mode === 'subject'   ? 'dual-mode-btn active-subject'   : 'dual-mode-btn';
+    const predBtnCls = mode === 'predicate' ? 'dual-mode-btn active-predicate' : 'dual-mode-btn';
+
+    return `
+      <div class="dual-mode-toggle">
+        <button type="button" class="${verbBtnCls}" id="m5ModeVerb">
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> VERBO
+        </button>
+        <button type="button" class="${subjBtnCls}" id="m5ModeSubject">
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> SUJEITO
+        </button>
+        <button type="button" class="${predBtnCls}" id="m5ModePredicate">
+          <i class="fa-solid fa-circle" style="color:#7c3aed;font-size:8px"></i> PREDICADO
+        </button>
+      </div>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="m5ConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar resposta
+      </button>`;
+  }
+
+  // Questão já respondida — mostrar resultado
+  const sentenceHTML = buildAnnotatedSentence3(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isVerb  = idx === q.verbIndex;
+      const isSubj  = q.subjectIndices.includes(idx);
+      const isPred  = q.predicateIndices.includes(idx);
+      const wasVerb = idx === result.verbSelected;
+      const wasSubj = result.subjectSelected.includes(idx);
+      const wasPred = result.predicateSelected.includes(idx);
+      if      (isVerb)                      cls += ' correct-verb';
+      else if (isSubj)                      cls += ' correct-subject';
+      else if (isPred)                      cls += ' lesson-predicate';
+      else if (wasVerb && !isVerb)          cls += ' wrong-verb';
+      else if (wasSubj && !isSubj)          cls += ' wrong-subject';
+      else if (wasPred && !isPred)          cls += ' wrong-subject';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    (q) => {
+      const subjStart = Math.min(...q.subjectIndices) + 1;
+      const subjSpan  = Math.max(...q.subjectIndices) - Math.min(...q.subjectIndices) + 1;
+      const predStart = Math.min(...q.predicateIndices) + 1;
+      const predSpan  = Math.max(...q.predicateIndices) - Math.min(...q.predicateIndices) + 1;
+      return `<div class="annot-subject" style="grid-column:${subjStart}/span ${subjSpan};grid-row:2">Sujeito</div>` +
+             `<div class="annot-verb" style="grid-column:${q.verbIndex+1};grid-row:2">Verbo</div>` +
+             `<div class="annot-predicate" style="grid-column:${predStart}/span ${predSpan};grid-row:3">Predicado</div>`;
+    }
+  );
+
+  const hintsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return '';
+    const isVerb = idx === q.verbIndex;
+    const isSubj = q.subjectIndices.includes(idx);
+    const isPred = q.predicateIndices.includes(idx) && !isVerb;
+    const role   = isVerb ? 'Verbo' : isSubj ? 'Sujeito' : isPred ? 'Predicado' : '—';
+    const cls    = isVerb ? ' correct' : isSubj ? ' subject-hint' : isPred ? ' predicate-hint' : '';
+    return `<div class="hint-row">
+      <span class="wh-word${isVerb || isSubj || isPred ? ' correct' : ''}">${word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${cls}">${role}</span>
+      ${isVerb || isSubj || isPred ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`;
+  }).filter(h => h).join('');
+
+  const userVerbWord  = result.verbSelected != null ? q.sentence[result.verbSelected] : '—';
+  const userSubjWords = result.subjectSelected.length > 0
+    ? result.subjectSelected.slice().sort((a,b) => a-b).map(i => q.sentence[i]).join(' ') : '—';
+  const userPredWords = result.predicateSelected.length > 0
+    ? result.predicateSelected.slice().sort((a,b) => a-b).map(i => q.sentence[i]).join(' ') : '—';
+
+  return `
+    ${sentenceHTML}
+    <div class="feedback${result.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${result.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${result.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        ${!result.correct ? `<p class="user-answer-recap">
+          <span class="recap-verb">Verbo: <strong>${userVerbWord}</strong></span>
+          <span class="recap-sep">·</span>
+          <span class="recap-subject">Sujeito: <strong>${userSubjWords}</strong></span>
+          <span class="recap-sep">·</span>
+          <span class="recap-predicate">Predicado: <strong>${userPredWords}</strong></span>
+        </p>` : ''}
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">Papel de cada palavra:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── MÓDULO 5: RENDERIZAR QUESTÃO ─────────────────────────────
+function renderModule5Question() {
+  const qIdx   = state.m5activeSet[state.m5current];
+  const q      = questions5[qIdx];
+  const result = state.m5results[qIdx];
+  const done   = result !== null;
+  const isLast = state.m5current === state.m5activeSet.length - 1;
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+
+  $('quizContainer').innerHTML = `
+    <div class="question-counter">Questão ${state.m5current + 1} de ${state.m5activeSet.length}</div>
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <button type="button" class="btn-lesson-hint" id="m5BtnLessonHint">
+      <i class="fa-solid fa-book-open"></i> Consultar lição
+    </button>
+    <p class="question-title">${q.text}</p>
+    ${buildM5TriSelect(q, result, done)}
+    <div class="bottom-actions">
+      <button type="button" class="btn-nav" id="m5PrevBtn"${state.m5current === 0 ? ' disabled' : ''}>
+        ${icons.left} Questão anterior
+      </button>
+      <button type="button" class="btn-nav btn-nav-primary" id="m5NextBtn"${!done ? ' disabled' : ''}>
+        ${isLast ? 'Ver resultado' : 'Próxima questão'} ${icons.right}
+      </button>
+    </div>`;
+
+  if (!done) {
+    $('quizContainer').querySelectorAll('.word-chip[data-wi]').forEach(chip => {
+      chip.addEventListener('click', () => selectM5Word(+chip.dataset.wi));
+    });
+    const mv = $('m5ModeVerb');
+    const ms = $('m5ModeSubject');
+    const mp = $('m5ModePredicate');
+    if (mv) mv.addEventListener('click', () => { state.m5pending.mode = 'verb';      renderModule5Question(); });
+    if (ms) ms.addEventListener('click', () => { state.m5pending.mode = 'subject';   renderModule5Question(); });
+    if (mp) mp.addEventListener('click', () => { state.m5pending.mode = 'predicate'; renderModule5Question(); });
+    const confirmBtn = $('m5ConfirmBtn');
+    if (confirmBtn) confirmBtn.addEventListener('click', confirmM5Answer);
+  }
+
+  $('m5BtnLessonHint').addEventListener('click', () => openLessonModal(5));
+  $('m5PrevBtn').addEventListener('click', () => m5navigate(-1));
+  $('m5NextBtn').addEventListener('click', () => {
+    if (isLast) { state.phase = 'module5-results'; render(); saveProgress(); }
+    else        { m5navigate(1); }
+  });
+}
+
+// ── MÓDULO 5: SELECIONAR PALAVRA ─────────────────────────────
+function selectM5Word(wordIdx) {
+  const { mode } = state.m5pending;
+  if (mode === 'verb') {
+    if (state.m5pending.verbIdx === wordIdx) {
+      state.m5pending.predicateIdxs     = [];
+      state.m5pending.predicateConfirmed = false;
+      state.m5pending.verbIdx = null;
+    } else {
+      state.m5pending.subjectIdxs        = state.m5pending.subjectIdxs.filter(i => i !== wordIdx);
+      state.m5pending.predicateIdxs      = [];
+      state.m5pending.predicateConfirmed = false;
+      state.m5pending.verbIdx = wordIdx;
+      state.m5pending.predicateIdxs.push(wordIdx);
+      state.m5pending.mode    = 'subject';
+    }
+  } else if (mode === 'subject') {
+    if (wordIdx === state.m5pending.verbIdx) return;
+    state.m5pending.predicateIdxs = state.m5pending.predicateIdxs.filter(i => i !== wordIdx);
+    const i = state.m5pending.subjectIdxs.indexOf(wordIdx);
+    if (i === -1) state.m5pending.subjectIdxs.push(wordIdx);
+    else          state.m5pending.subjectIdxs.splice(i, 1);
+  } else {
+    if (wordIdx === state.m5pending.verbIdx) {
+      state.m5pending.predicateConfirmed = true;
+    } else {
+      if (state.m5pending.subjectIdxs.includes(wordIdx)) return;
+      const i = state.m5pending.predicateIdxs.indexOf(wordIdx);
+      if (i === -1) state.m5pending.predicateIdxs.push(wordIdx);
+      else          state.m5pending.predicateIdxs.splice(i, 1);
+    }
+  }
+  renderModule5Question();
+}
+
+// ── MÓDULO 5: CONFIRMAR RESPOSTA ─────────────────────────────
+function confirmM5Answer() {
+  const qIdx = state.m5activeSet[state.m5current];
+  if (state.m5results[qIdx] !== null) return;
+  const q = questions5[qIdx];
+  const { verbIdx, subjectIdxs, predicateIdxs } = state.m5pending;
+  if (verbIdx === null || subjectIdxs.length === 0 || predicateIdxs.length === 0) return;
+
+  const verbCorrect      = verbIdx === q.verbIndex;
+  const subjectCorrect   = subjectIdxs.length === q.subjectIndices.length &&
+                           q.subjectIndices.every(i => subjectIdxs.includes(i));
+  const predicateCorrect = predicateIdxs.length === q.predicateIndices.length &&
+                           q.predicateIndices.every(i => predicateIdxs.includes(i));
+  const correct = verbCorrect && subjectCorrect && predicateCorrect;
+
+  state.m5results[qIdx] = {
+    verbSelected: verbIdx,
+    subjectSelected: [...subjectIdxs],
+    predicateSelected: [...predicateIdxs],
+    correct, verbCorrect, subjectCorrect, predicateCorrect,
+  };
+  if (correct)  state.m5points += 10;
+  if (!correct) state.m5errorNotebook[qIdx] = (state.m5errorNotebook[qIdx] || 0) + 1;
+  recordActivity();
+  updateModule5Card();
+  updateErrorNotebook();
+  renderModule5Question();
+  saveProgress();
+}
+
+// ── MÓDULO 5: NAVEGAR ────────────────────────────────────────
+function m5navigate(dir) {
+  state.m5current += dir;
+  state.m5pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
+  renderModule5Question();
+  saveProgress();
+}
+
+// ── MÓDULO 5: TELA DE RESULTADOS ─────────────────────────────
+function renderModule5Results() {
+  const correctCt = state.m5results.filter(r => r && r.correct).length;
+  const wrongCt   = state.m5results.filter(r => r && !r.correct).length;
+  const allClear  = wrongCt === 0;
+  const iconBg    = allClear ? '#22c55e' : wrongCt > state.m5activeSet.length / 2 ? '#ef4444' : '#f97316';
+  const iconName  = allClear ? 'fa-trophy' : 'fa-flag-checkered';
+
+  $('quizContainer').innerHTML = `
+    <div class="results-screen">
+      <div class="results-icon" style="background:linear-gradient(135deg,${iconBg},${iconBg}bb)">
+        <i class="fa-solid ${iconName}"></i>
+      </div>
+      <h2>Você concluiu as questões de Inversão da ordem — quinta etapa!</h2>
+      <div class="results-stats-row">
+        <div class="r-stat correct"><strong>${correctCt}</strong><span>Corretas</span></div>
+        <div class="r-stat wrong"><strong>${wrongCt}</strong><span>Incorretas</span></div>
+      </div>
+      ${allClear
+        ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m5RetryBtn">${icons.retry} Recomeçar</button>
+           </div>`
+        : `<p class="results-message">
+             Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
+             Clique em <strong>Praticar erros</strong> para tentar novamente as que errou.
+           </p>
+           <div class="results-actions">
+             <button type="button" class="btn-nav" id="m5RetryBtn">${icons.retry} Recomeçar tudo</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m5PracticeBtn">
+               Praticar erros ${icons.right}
+             </button>
+           </div>`
+      }
+    </div>`;
+
+  $('m5RetryBtn').addEventListener('click', startModule5Quiz);
+
+  if (!allClear && $('m5PracticeBtn')) {
+    $('m5PracticeBtn').addEventListener('click', () => {
+      const wrongSet = state.m5results
+        .map((r, i) => (r && !r.correct) ? i : -1)
+        .filter(i => i !== -1);
+      wrongSet.forEach(i => { state.m5results[i] = null; });
+      state.m5activeSet = wrongSet;
+      state.m5current   = 0;
+      state.m5pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
+      state.phase       = 'module5-quiz';
+      render();
+      saveProgress();
+    });
+  }
+}
+
+// ── MÓDULO 5: IR PARA QUESTÃO (caderno de erros) ─────────────
+function goToM5Question(qIdx) {
+  state.m5unlocked = true;
+  if (state.m5activeSet.indexOf(Number(qIdx)) === -1) {
+    state.m5activeSet = questions5.map((_, i) => i);
+  }
+  state.m5current = state.m5activeSet.indexOf(Number(qIdx));
+  state.m5phase   = 'quiz';
+  state.phase     = 'module5-quiz';
+  state.m5pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
+  updateModule5Card();
+  render();
+  saveProgress();
+}
+
 // ── NAVEGAR ──────────────────────────────────────────────────
 function navigate(dir) {
   state.current += dir;
@@ -4447,9 +5029,16 @@ function updateStats() {
   const isM2 = PHASES_MODULE2.includes(state.phase);
   const isM3 = PHASES_MODULE3.includes(state.phase) && state.phase !== 'module3-intro';
   const isM4 = PHASES_MODULE4.includes(state.phase) && state.phase !== 'module4-intro';
+  const isM5 = PHASES_MODULE5.includes(state.phase) && state.phase !== 'module5-intro';
   let correctCt, wrongCt, blank, acertoPct;
 
-  if (isM4) {
+  if (isM5) {
+    correctCt = state.m5results.filter(r => r && r.correct).length;
+    wrongCt   = state.m5results.filter(r => r && !r.correct).length;
+    blank     = state.m5results.filter(r => r === null).length;
+    const answeredCt = correctCt + wrongCt;
+    acertoPct = answeredCt > 0 ? Math.round(correctCt / answeredCt * 100) : 0;
+  } else if (isM4) {
     correctCt = state.m4results.filter(r => r && r.correct).length;
     wrongCt   = state.m4results.filter(r => r && !r.correct).length;
     blank     = state.m4results.filter(r => r === null).length;
