@@ -5025,6 +5025,9 @@ function renderModule5Results() {
         ? `<p class="results-message">Parabéns! Você acertou todas as questões!</p>
            <div class="results-actions">
              <button type="button" class="btn-nav" id="m5RetryBtn">${icons.retry} Recomeçar</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m5NextModuleBtn">
+               <i class="fa-solid fa-graduation-cap"></i> Ir para Simulados ${icons.right}
+             </button>
            </div>`
         : `<p class="results-message">
              Você errou <strong>${wrongCt}</strong> questão${wrongCt > 1 ? 'ões' : ''}.
@@ -5032,14 +5035,25 @@ function renderModule5Results() {
            </p>
            <div class="results-actions">
              <button type="button" class="btn-nav" id="m5RetryBtn">${icons.retry} Recomeçar tudo</button>
-             <button type="button" class="btn-nav btn-nav-primary" id="m5PracticeBtn">
+             <button type="button" class="btn-nav" id="m5PracticeBtn">
                Praticar erros ${icons.right}
+             </button>
+             <button type="button" class="btn-nav btn-nav-primary" id="m5NextModuleBtn">
+               <i class="fa-solid fa-graduation-cap"></i> Ir para Simulados ${icons.right}
              </button>
            </div>`
       }
     </div>`;
 
   $('m5RetryBtn').addEventListener('click', startModule5Quiz);
+
+  if ($('m5NextModuleBtn')) {
+    $('m5NextModuleBtn').addEventListener('click', () => {
+      state.simUnlocked = true;
+      state.phase = 'sim-intro';
+      render();
+    });
+  }
 
   if (!allClear && $('m5PracticeBtn')) {
     $('m5PracticeBtn').addEventListener('click', () => {
