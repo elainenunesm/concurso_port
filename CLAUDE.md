@@ -205,14 +205,106 @@ function goToMNQuestion(qIdx) {
 
 ## Módulos existentes
 
-| # | Nome | Fases | Quiz |
-|---|------|-------|------|
-| 0 | Objetivo | `objective` | não |
-| 1 | Verbos - Básico | `intro / quiz / results` | sim — `questions[]` |
-| 2 | Sujeito - Básico | `module2-*` | sim — `questions2[]` |
-| 3 | Estudo do predicado | `module3-*` | sim — `questions3[]` |
-| 4 | Orações sem sujeito | `module4-*` | sim — `questions4[]` |
-| 5 | Inversão da ordem | `module5-intro` | não (só lição) |
-| 6 | Pontuação | placeholder bloqueado | não |
-| 7 | Interpretação de Texto | placeholder bloqueado | não |
-| 8 | Ortografia | placeholder bloqueado | não |
+| # | Nome | Fases | Quiz | Tipo de questão |
+|---|------|-------|------|-----------------|
+| 0 | Objetivo | `objective` | não | — |
+| 1 | Verbos - Básico | `intro / quiz / results` | sim — `questions[]` | `multiple-choice`, `word-select` |
+| 2 | Sujeito - Básico | `module2-*` | sim — `questions2[]` | `dual-select` |
+| 3 | Estudo do predicado | `module3-*` | sim — `questions3[]` | `tri-select` |
+| 4 | Orações sem sujeito | `module4-*` | sim — `questions4[]` | `tri-select` (com `noSubject`) |
+| 5 | Inversão da ordem | `module5-*` | sim — `questions5[]` | `tri-select` |
+| 6 | Pontuação | placeholder bloqueado | não | — |
+| 7 | Interpretação de Texto | placeholder bloqueado | não | — |
+| 8 | Ortografia | placeholder bloqueado | não | — |
+
+---
+
+## Tipos de questão
+
+### `multiple-choice`
+Usada no módulo 1. O aluno escolhe uma alternativa (A–D).
+```js
+{
+  type: 'multiple-choice',
+  difficulty: 'Fácil' | 'Médio' | 'Difícil',
+  text: 'HTML da pergunta',
+  answers: [
+    { letter: 'A', text: '...', correct: true,  hint: 'feedback por alternativa' },
+    { letter: 'B', text: '...', correct: false, hint: '...' },
+    // ...
+  ],
+  feedback: 'explicação geral após responder',
+  example:  'exemplo complementar',
+}
+```
+
+### `word-select`
+Usada no módulo 1. O aluno clica em uma palavra da frase.
+```js
+{
+  type: 'word-select',
+  difficulty: '...',
+  text: 'instrução',
+  sentence: ['array', 'de', 'tokens'],
+  correctIndex: 2,                           // índice da palavra correta
+  wordClassHints: [
+    { word: '...', wordClass: '...', isVerb: false },
+    // ...
+  ],
+  feedback: '...',
+  example:  '...',
+  answers:  [],                              // sempre vazio neste tipo
+}
+```
+
+### `dual-select`
+Usada no módulo 2. O aluno clica no verbo (1 palavra) e depois no sujeito (1 ou mais palavras).  
+Estado pendente: `m2pending = { mode: 'verb' | 'subject', verbIdx: null, subjectIdxs: [] }`.
+```js
+{
+  type: 'dual-select',
+  difficulty: '...',
+  text: 'instrução',
+  sentence: ['array', 'de', 'tokens'],
+  verbIndex:      2,                         // índice do verbo correto
+  subjectIndices: [0, 1],                    // índices do sujeito correto
+  feedback: '...',
+  example:  '...',
+}
+```
+
+### `tri-select`
+Usada nos módulos 3, 4 e 5. O aluno seleciona verbo → sujeito → predicado.  
+Estado pendente: `m3pending / m4pending / m5pending = { mode: 'verb'|'subject'|'predicate', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false }`.  
+Questões de módulo 4 com `noSubject: true` representam orações sem sujeito (verbo impessoal).
+```js
+{
+  type: 'tri-select',
+  difficulty: '...',
+  text: 'instrução',
+  sentence: ['array', 'de', 'tokens'],
+  verbIndex:        2,
+  subjectIndices:   [0, 1],
+  predicateIndices: [2, 3, 4],
+  noSubject: false,                          // true → oração sem sujeito (módulo 4)
+  feedback: '...',
+  example:  '...',
+}
+```
+
+---
+
+## Atenção: nomenclatura do Módulo 1
+
+O módulo 1 foi criado antes da convenção `mN*`. Suas chaves no `state` são **sem prefixo**:
+
+| Convenção (módulos 2+) | Módulo 1 |
+|------------------------|----------|
+| `state.mNcurrent` | `state.current` |
+| `state.mNresults` | `state.results` |
+| `state.mNpoints` | `state.points` |
+| `state.mNactiveSet` | `state.activeSet` |
+| `state.mNerrorNotebook` | `state.errorNotebook` |
+| `state.mNphase` | (não existe — usa `state.phase` direto) |
+
+As fases do módulo 1 (`'intro'`, `'quiz'`, `'results'`) ficam diretamente em `state.phase`, sem prefixo de módulo. A constante correspondente é `PHASES_M1`.

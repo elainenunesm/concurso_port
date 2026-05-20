@@ -1101,6 +1101,11 @@ const state = {
   m5points:        0,
   m5errorNotebook: {},
   m5pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false },
+  simUnlocked:     false,
+  simPhase:        'none',
+  simQueue:        [],
+  simAnswered:     {},
+  simCurrent:      0,
   previousPhase:   null,
   cadernoQueue:    [],
   cadernoCurrent:  0,
@@ -1217,6 +1222,7 @@ async function saveProgress() {
       m5results:       state.m5results,
       m5points:        state.m5points,
       m5errorNotebook: state.m5errorNotebook,
+      simUnlocked:     state.simUnlocked,
       savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
@@ -1236,7 +1242,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -1274,12 +1280,14 @@ async function loadProgress() {
       state.m5phase         = data.m5phase ?? 'none';
       state.m5current       = data.m5current ?? 0;
       if (Array.isArray(data.m5activeSet)) state.m5activeSet = data.m5activeSet;
+      state.simUnlocked     = !!(data.simUnlocked || PHASES_SIM.includes(data.phase) || (Array.isArray(data.m5results) && data.m5results.length > 0 && data.m5results.every(r => r !== null)));
       const el = $('statPontos'); if (el) el.textContent = state.points;
       updateStreak();
       updateModule2Card();
       updateModule3Card();
       updateModule4Card();
       updateModule5Card();
+      updateSimCard();
       updateErrorNotebook();
     }
   } catch (e) { /* sem progresso salvo, começa do zero */ }
@@ -1611,6 +1619,18 @@ document.getElementById('module5Card').addEventListener('click', () => {
   if (bd) bd.classList.remove('active');
 });
 
+// ── CARD SIMULADOS (SIDEBAR) ─────────────────────────────────
+document.getElementById('moduleSimCard').addEventListener('click', () => {
+  if ($('moduleSimCard').classList.contains('locked')) return;
+  state.simUnlocked = true;
+  state.phase = 'sim-intro';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
 // ── CARD CADERNO DE ERROS (SIDEBAR) ──────────────────────────
 document.getElementById('cadernoBtnCard').addEventListener('click', () => {
   if (state.phase !== 'error-notebook') state.previousPhase = state.phase;
@@ -1653,12 +1673,13 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
-const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro', 'module5-quiz', 'module5-results', 'sim-intro', 'sim-quiz', 'sim-results'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE3    = ['module3-intro', 'module3-quiz', 'module3-results'];
 const PHASES_MODULE4    = ['module4-intro', 'module4-quiz', 'module4-results'];
 const PHASES_MODULE5    = ['module5-intro', 'module5-quiz', 'module5-results'];
+const PHASES_SIM        = ['sim-intro', 'sim-quiz', 'sim-results'];
 
 const PHASES_M1 = ['intro', 'quiz', 'results'];
 
@@ -1692,6 +1713,10 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:13px;font-weight:700;color:#7c3aed">INV</span>';
       if (h2El)    h2El.textContent = '5. Inversão da ordem - termos essenciais';
       if (descEl)  descEl.textContent = 'Identifique verbo, sujeito e predicado em orações com ordem invertida.';
+    } else if (PHASES_SIM.includes(state.phase)) {
+      if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-graduation-cap" style="color:#16a34a;font-size:22px"></i>';
+      if (h2El)    h2El.textContent = 'S. Simulados';
+      if (descEl)  descEl.textContent = 'Teste seus conhecimentos com questões misturadas dos módulos 1 a 5.';
     } else if (state.phase === 'caderno-quiz') {
       if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;font-size:20px"></i>';
       if (h2El)    h2El.textContent = 'Caderno de Erros';
@@ -1718,6 +1743,8 @@ function render() {
   if (m4c) m4c.classList.toggle('active-view', PHASES_MODULE4.includes(state.phase));
   const m5c = $('module5Card');
   if (m5c) m5c.classList.toggle('active-view', PHASES_MODULE5.includes(state.phase));
+  const mSc = $('moduleSimCard');
+  if (mSc) mSc.classList.toggle('active-view', PHASES_SIM.includes(state.phase));
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
   if (state.phase === 'objective')         { renderObjective();         return; }
   if (state.phase === 'intro')             { renderIntro();             return; }
@@ -1735,6 +1762,9 @@ function render() {
   if (state.phase === 'module5-intro')     { renderModule5Intro();      return; }
   if (state.phase === 'module5-quiz')      { renderModule5Question();   return; }
   if (state.phase === 'module5-results')   { renderModule5Results();    return; }
+  if (state.phase === 'sim-intro')         { renderSimIntro();          return; }
+  if (state.phase === 'sim-quiz')          { renderSimQuestion();       return; }
+  if (state.phase === 'sim-results')       { renderSimResults();        return; }
   if (state.phase === 'caderno-quiz')      { renderCadernoQuestion();   return; }
   renderQuestion();
 }
@@ -3947,6 +3977,25 @@ function updateModule5Card() {
   const text = m5Card.querySelector('.module-progress span');
   if (fill) fill.style.width = pct + '%';
   if (text) text.textContent = pct + '%';
+
+  if (answered === total && total > 0) state.simUnlocked = true;
+  const simCard = $('moduleSimCard');
+  const simLock = $('moduleSimLockIcon');
+  if (simCard) simCard.classList.toggle('locked', !state.simUnlocked);
+  if (simLock) simLock.style.display = state.simUnlocked ? 'none' : '';
+}
+
+// ── SIMULADOS: ATUALIZAR CARD DA SIDEBAR ─────────────────────
+function updateSimCard() {
+  const simCard = $('moduleSimCard');
+  if (!simCard) return;
+  const total    = state.simQueue.length || 25;
+  const answered = Object.keys(state.simAnswered).length;
+  const pct      = total > 0 ? Math.round(answered / total * 100) : 0;
+  const fill = simCard.querySelector('.fill');
+  const text = simCard.querySelector('.module-progress span');
+  if (fill) fill.style.width = pct + '%';
+  if (text) text.textContent = pct + '%';
 }
 
 // ── MÓDULO 3: ATUALIZAR CARD DA SIDEBAR ──────────────────────
@@ -5002,17 +5051,349 @@ function renderModule5Results() {
 
 // ── MÓDULO 5: IR PARA QUESTÃO (caderno de erros) ─────────────
 function goToM5Question(qIdx) {
-  state.m5unlocked = true;
-  if (state.m5activeSet.indexOf(Number(qIdx)) === -1) {
-    state.m5activeSet = questions5.map((_, i) => i);
-  }
-  state.m5current = state.m5activeSet.indexOf(Number(qIdx));
-  state.m5phase   = 'quiz';
-  state.phase     = 'module5-quiz';
-  state.m5pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
-  updateModule5Card();
+  state.cadernoQueue    = [{ mod: 5, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  state.phase = 'caderno-quiz';
   render();
-  saveProgress();
+}
+
+// ── SIMULADOS: CONSTRUIR FILA ─────────────────────────────────
+function buildSimQueue() {
+  function pickRandom(arr, mod, count) {
+    const indices = arr.map((_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    return indices.slice(0, Math.min(count, indices.length)).map(qIdx => ({ mod, qIdx }));
+  }
+  const queue = [
+    ...pickRandom(questions,  1, 5),
+    ...pickRandom(questions2, 2, 5),
+    ...pickRandom(questions3, 3, 5),
+    ...pickRandom(questions4, 4, 5),
+    ...pickRandom(questions5, 5, 5),
+  ];
+  for (let i = queue.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [queue[i], queue[j]] = [queue[j], queue[i]];
+  }
+  return queue;
+}
+
+// ── SIMULADOS: INTRO ──────────────────────────────────────────
+function renderSimIntro() {
+  const answered   = Object.keys(state.simAnswered).length;
+  const total      = state.simQueue.length;
+  const hasPartial = total > 0 && answered > 0 && answered < total;
+  const hasDone    = total > 0 && answered === total;
+
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div class="lesson-badge"><i class="fa-solid fa-graduation-cap"></i> Revisão geral</div>
+      <h2>Simulados — Revisão dos módulos 1 a 5</h2>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7;text-align:justify">
+        Este simulado reúne <strong>25 questões</strong> escolhidas aleatoriamente dos módulos 1 a 5 (5 por módulo) e apresentadas em ordem misturada.
+        Use para testar seus conhecimentos de forma integrada!
+      </p>
+      <div class="lesson-body" style="margin-top:24px">
+        <h3 class="lesson-title">O que será cobrado</h3>
+        <div class="how-it-works-list" style="margin-top:12px">
+          <div class="step-item">
+            <div class="step-icon purple"><span style="font-weight:700;font-size:13px">M1</span></div>
+            <div class="step-text"><h4>Verbos — 5 questões</h4><p>Múltipla escolha e seleção de palavra</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-icon blue"><span style="font-weight:700;font-size:13px">M2</span></div>
+            <div class="step-text"><h4>Sujeito — 5 questões</h4><p>Identificar verbo e sujeito na frase</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-icon blue"><span style="font-weight:700;font-size:13px">M3</span></div>
+            <div class="step-text"><h4>Predicado — 5 questões</h4><p>Identificar verbo, sujeito e predicado</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-icon" style="background:#0d9488"><span style="font-weight:700;font-size:13px;color:#fff">M4</span></div>
+            <div class="step-text"><h4>Orações sem sujeito — 5 questões</h4><p>Identificar verbos impessoais</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-icon purple"><span style="font-weight:700;font-size:13px">M5</span></div>
+            <div class="step-text"><h4>Inversão da ordem — 5 questões</h4><p>Frases com ordem invertida</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="results-actions" style="margin-top:24px">
+        ${hasPartial
+          ? `<button type="button" class="btn-nav" id="simRetryBtn">${icons.retry} Recomeçar</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="simStartBtn">Continuar ${icons.right}</button>`
+          : hasDone
+          ? `<button type="button" class="btn-nav" id="simRetryBtn">${icons.retry} Refazer simulado</button>
+             <button type="button" class="btn-nav btn-nav-primary" id="simResultsBtn">${icons.check} Ver resultados</button>`
+          : `<button type="button" class="btn-nav btn-nav-primary" id="simStartBtn">Iniciar simulado ${icons.right}</button>`
+        }
+      </div>
+    </div>`;
+
+  const startBtn   = $('simStartBtn');
+  const retryBtn   = $('simRetryBtn');
+  const resultsBtn = $('simResultsBtn');
+  if (startBtn)   startBtn.addEventListener('click', hasPartial ? resumeSimQuiz : startSimQuiz);
+  if (retryBtn)   retryBtn.addEventListener('click', startSimQuiz);
+  if (resultsBtn) resultsBtn.addEventListener('click', () => { state.phase = 'sim-results'; render(); });
+}
+
+function startSimQuiz() {
+  state.simQueue    = buildSimQueue();
+  state.simAnswered = {};
+  state.simCurrent  = 0;
+  cadernoResetPending();
+  state.simPhase = 'quiz';
+  state.phase    = 'sim-quiz';
+  updateSimCard();
+  render();
+}
+
+function resumeSimQuiz() {
+  cadernoResetPending();
+  state.phase = 'sim-quiz';
+  render();
+}
+
+// ── SIMULADOS: RENDERIZAR QUESTÃO ────────────────────────────
+function renderSimQuestion() {
+  const item = state.simQueue[state.simCurrent];
+  if (!item) { state.phase = 'sim-results'; render(); return; }
+  const { mod, qIdx } = item;
+  const total    = state.simQueue.length;
+  const pos      = state.simCurrent + 1;
+  const key      = `${mod}-${qIdx}`;
+  const answered = state.simAnswered[key];
+  const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : mod === 5 ? '#7c3aed' : '#3b82f6';
+  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações', 5: 'Módulo 5 — Inversão' };
+  const modLabel = modNames[mod] || `Módulo ${mod}`;
+
+  let bodyHTML = '';
+  if (mod === 1) {
+    const q = questions[qIdx];
+    bodyHTML = q.type === 'word-select' ? cadernoWordSelectHTML(q, answered) : cadernoMCHTML(q, answered);
+  } else if (mod === 2) {
+    bodyHTML = cadernoDualSelectHTML(questions2[qIdx], answered);
+  } else if (mod === 3) {
+    bodyHTML = cadernoTriSelectHTML(questions3[qIdx], answered, false);
+  } else if (mod === 5) {
+    bodyHTML = cadernoTriSelectHTML(questions5[qIdx], answered, false);
+  } else {
+    bodyHTML = cadernoTriSelectHTML(questions4[qIdx], answered, true);
+  }
+
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <span style="background:${modColor}18;color:${modColor};font-size:12px;padding:3px 10px;border-radius:20px;font-weight:700">${modLabel}</span>
+        <button type="button" class="btn-lesson-hint" id="simLessonBtn"><i class="fa-solid fa-book-open"></i> Consultar lição</button>
+        <span style="font-size:13px;color:var(--text-gray);margin-left:auto">Questão ${pos} de ${total}</span>
+        <button type="button" class="btn-nav enp-back" id="simBackBtn" style="padding:4px 10px;font-size:13px">${icons.left} Simulado</button>
+      </div>
+      ${bodyHTML}
+      ${answered ? `<div class="bottom-actions">
+        <button type="button" class="btn-nav" id="simBackBtn2">${icons.left} Voltar ao início</button>
+        <button type="button" class="btn-nav btn-nav-primary" id="simNextBtn">
+          ${pos < total ? `Próxima questão ${icons.right}` : `${icons.check} Concluir simulado`}
+        </button></div>` : ''}
+    </div>`;
+
+  document.querySelectorAll('#simBackBtn,#simBackBtn2').forEach(b => {
+    if (b) b.addEventListener('click', () => { state.phase = 'sim-intro'; render(); });
+  });
+  $('simLessonBtn').addEventListener('click', () => openLessonModal(mod));
+
+  if (answered) {
+    $('simNextBtn').addEventListener('click', () => {
+      if (pos < total) { state.simCurrent++; cadernoResetPending(); render(); }
+      else             { state.phase = 'sim-results'; render(); }
+    });
+    return;
+  }
+
+  if (mod === 1) {
+    const q = questions[qIdx];
+    if (q.type === 'word-select') setupSimWS(q, key);
+    else                          setupSimMC(q, key);
+  } else if (mod === 2) {
+    setupSimDualSelect(questions2[qIdx], key);
+  } else if (mod === 3) {
+    setupSimTriSelect(questions3[qIdx], key, false);
+  } else if (mod === 5) {
+    setupSimTriSelect(questions5[qIdx], key, false);
+  } else {
+    setupSimTriSelect(questions4[qIdx], key, true);
+  }
+}
+
+function setupSimMC(q, key) {
+  document.querySelectorAll('button[data-cadmc]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.cadmc;
+      const correct = q.answers[i].correct;
+      state.simAnswered[key] = { correct, selected: i };
+      updateSimCard();
+      recordActivity();
+      render();
+    });
+  });
+}
+
+function setupSimWS(q, key) {
+  document.querySelectorAll('[data-cadws]').forEach(chip => {
+    const i = +chip.dataset.cadws;
+    if (PUNCT.has(q.sentence[i])) return;
+    chip.addEventListener('click', () => {
+      const correct = i === q.correctIndex;
+      state.simAnswered[key] = { correct, selected: i };
+      updateSimCard();
+      recordActivity();
+      render();
+    });
+  });
+}
+
+function setupSimDualSelect(q, key) {
+  document.querySelectorAll('[data-caddual]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const i = +chip.dataset.caddual;
+      if (PUNCT.has(q.sentence[i])) return;
+      const p = state.cadernoPending;
+      if (p.mode === 'verb') {
+        if (p.verbIdx === i) { p.verbIdx = null; }
+        else { p.subjectIdxs = p.subjectIdxs.filter(x => x !== i); p.verbIdx = i; p.mode = 'subject'; }
+      } else {
+        if (i === p.verbIdx) return;
+        const idx = p.subjectIdxs.indexOf(i);
+        idx === -1 ? p.subjectIdxs.push(i) : p.subjectIdxs.splice(idx, 1);
+      }
+      render();
+    });
+  });
+  const bv = document.getElementById('cPhaseVerb');
+  const bs = document.getElementById('cPhaseSuj');
+  if (bv) bv.addEventListener('click', () => { state.cadernoPending.mode = 'verb';    render(); });
+  if (bs) bs.addEventListener('click', () => { state.cadernoPending.mode = 'subject'; render(); });
+  const cf = document.getElementById('cadernoConfirmBtn');
+  if (cf) cf.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.verbIdx === null || p.subjectIdxs.length === 0) return;
+    const vOk = p.verbIdx === q.verbIndex;
+    const sOk = p.subjectIdxs.length === q.subjectIndices.length && q.subjectIndices.every(i => p.subjectIdxs.includes(i));
+    const ok  = vOk && sOk;
+    state.simAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs] };
+    updateSimCard();
+    recordActivity();
+    render();
+  });
+}
+
+function setupSimTriSelect(q, key, hasNoSubject) {
+  document.querySelectorAll('[data-cadtri]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const i = +chip.dataset.cadtri;
+      if (PUNCT.has(q.sentence[i])) return;
+      const p = state.cadernoPending;
+      if (p.mode === 'verb') {
+        if (p.verbIdx === i) {
+          p.predicateIdxs      = [];
+          p.predicateConfirmed = false;
+          p.verbIdx = null;
+        } else {
+          p.subjectIdxs        = p.subjectIdxs.filter(x => x !== i);
+          p.predicateIdxs      = [];
+          p.predicateConfirmed = false;
+          p.verbIdx = i;
+          p.mode = 'subject';
+        }
+      } else if (p.mode === 'subject') {
+        if (p.noSubject || i === p.verbIdx) return;
+        p.predicateIdxs = p.predicateIdxs.filter(x => x !== i);
+        const idx = p.subjectIdxs.indexOf(i); idx === -1 ? p.subjectIdxs.push(i) : p.subjectIdxs.splice(idx, 1);
+      } else {
+        if (i === p.verbIdx) { p.predicateConfirmed = true; if (!p.predicateIdxs.includes(i)) p.predicateIdxs.push(i); }
+        else if (!p.subjectIdxs.includes(i)) {
+          const idx = p.predicateIdxs.indexOf(i); idx === -1 ? p.predicateIdxs.push(i) : p.predicateIdxs.splice(idx, 1);
+        }
+      }
+      render();
+    });
+  });
+  const bv = document.getElementById('cPhaseVerb');
+  const bs = document.getElementById('cPhaseSuj');
+  const bp = document.getElementById('cPhasePred');
+  const bn = document.getElementById('cNoSubjBtn');
+  if (bv) bv.addEventListener('click', () => { state.cadernoPending.mode = 'verb';      render(); });
+  if (bs) bs.addEventListener('click', () => { state.cadernoPending.mode = 'subject';   render(); });
+  if (bp) bp.addEventListener('click', () => { state.cadernoPending.mode = 'predicate'; render(); });
+  if (bn) bn.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.noSubject) { p.noSubject = false; p.mode = 'subject'; }
+    else             { p.noSubject = true; p.subjectIdxs = []; p.mode = 'predicate'; }
+    render();
+  });
+  const cf = document.getElementById('cadernoConfirmBtn');
+  if (cf) cf.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.verbIdx === null) return;
+    if (!p.noSubject && p.subjectIdxs.length === 0) return;
+    const vOk = p.verbIdx === q.verbIndex;
+    const pOk = p.predicateIdxs.length === q.predicateIndices.length && q.predicateIndices.every(i => p.predicateIdxs.includes(i));
+    const sOk = q.noSubject ? p.noSubject : (!p.noSubject && p.subjectIdxs.length === q.subjectIndices.length && q.subjectIndices.every(i => p.subjectIdxs.includes(i)));
+    const ok  = vOk && sOk && pOk;
+    state.simAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, predicateCorrect: pOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs], predicateSelected: [...p.predicateIdxs], noSubjectSelected: p.noSubject };
+    updateSimCard();
+    recordActivity();
+    render();
+  });
+}
+
+// ── SIMULADOS: RESULTADOS ─────────────────────────────────────
+function renderSimResults() {
+  const values  = Object.values(state.simAnswered);
+  const total   = state.simQueue.length;
+  const correct = values.filter(r => r && r.correct).length;
+  const wrong   = values.filter(r => r && !r.correct).length;
+  const blank   = total - values.length;
+  const pct     = total > 0 ? Math.round(correct / total * 100) : 0;
+  const iconBg  = pct >= 80 ? '#22c55e' : pct >= 50 ? '#f97316' : '#ef4444';
+  const iconName = pct >= 80 ? 'fa-trophy' : 'fa-flag-checkered';
+
+  $('quizContainer').innerHTML = `
+    <div class="results-screen">
+      <div class="results-icon" style="background:linear-gradient(135deg,${iconBg},${iconBg}bb)">
+        <i class="fa-solid ${iconName}"></i>
+      </div>
+      <h2>Simulado concluído!</h2>
+      <div class="results-stats-row">
+        <div class="r-stat correct"><strong>${correct}</strong><span>Corretas</span></div>
+        <div class="r-stat wrong"><strong>${wrong}</strong><span>Incorretas</span></div>
+        ${blank > 0 ? `<div class="r-stat"><strong>${blank}</strong><span>Em branco</span></div>` : ''}
+      </div>
+      <div style="text-align:center;margin:16px 0">
+        <span style="font-size:32px;font-weight:700;color:${iconBg}">${pct}%</span>
+        <p style="color:var(--text-gray);font-size:14px;margin:4px 0 0">de acerto</p>
+      </div>
+      <p class="results-message">${
+        pct >= 80 ? 'Excelente! Você dominou o conteúdo dos módulos 1 a 5!' :
+        pct >= 50 ? 'Bom trabalho! Continue praticando para melhorar seu desempenho.' :
+        'Continue estudando! Revise os módulos com mais erros e tente novamente.'
+      }</p>
+      <div class="results-actions">
+        <button type="button" class="btn-nav" id="simRetryBtn">${icons.retry} Refazer simulado</button>
+        <button type="button" class="btn-nav btn-nav-primary" id="simBackToIntroBtn">
+          ${icons.left} Voltar ao início
+        </button>
+      </div>
+    </div>`;
+
+  $('simRetryBtn').addEventListener('click', startSimQuiz);
+  $('simBackToIntroBtn').addEventListener('click', () => { state.phase = 'sim-intro'; render(); });
 }
 
 // ── NAVEGAR ──────────────────────────────────────────────────
