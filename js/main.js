@@ -3201,7 +3201,7 @@ function cadernoTriSelectHTML(q, answered, hasNoSubject) {
         }
         if (verbIdx !== null) a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          const renderIdxs = predicateIdxs;
           if (renderIdxs.length > 0) {
             const sorted = [...renderIdxs].sort((a,b) => a-b);
             const segs = []; let seg = [sorted[0]];
@@ -3348,7 +3348,6 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject, mod) {
           p.predicateIdxs      = [];
           p.predicateConfirmed = false;
           p.verbIdx = i;
-          p.predicateIdxs.push(i);
           p.mode = 'subject';
         }
       } else if (p.mode === 'subject') {
@@ -3356,7 +3355,7 @@ function setupCadernoTriSelect(q, qIdx, key, hasNoSubject, mod) {
         p.predicateIdxs = p.predicateIdxs.filter(x=>x!==i);
         const idx = p.subjectIdxs.indexOf(i); idx===-1 ? p.subjectIdxs.push(i) : p.subjectIdxs.splice(idx,1);
       } else {
-        if (i === p.verbIdx) { p.predicateConfirmed = true; }
+        if (i === p.verbIdx) { p.predicateConfirmed = true; if (!p.predicateIdxs.includes(i)) p.predicateIdxs.push(i); }
         else if (!p.subjectIdxs.includes(i)) {
           const idx = p.predicateIdxs.indexOf(i); idx===-1 ? p.predicateIdxs.push(i) : p.predicateIdxs.splice(idx,1);
         }
@@ -4007,7 +4006,7 @@ function buildTriSelect(q, result, done) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          const renderIdxs = predicateIdxs;
           if (renderIdxs.length > 0) {
             const sorted = [...renderIdxs].sort((a,b) => a-b);
             const segs = []; let seg = [sorted[0]];
@@ -4182,7 +4181,6 @@ function selectTriWord(wordIdx) {
       state.m3pending.predicateIdxs      = [];
       state.m3pending.predicateConfirmed = false;
       state.m3pending.verbIdx = wordIdx;
-      state.m3pending.predicateIdxs.push(wordIdx);
       state.m3pending.mode    = 'subject';
     }
   } else if (mode === 'subject') {
@@ -4194,6 +4192,7 @@ function selectTriWord(wordIdx) {
   } else {
     if (wordIdx === state.m3pending.verbIdx) {
       state.m3pending.predicateConfirmed = true;
+      if (!state.m3pending.predicateIdxs.includes(wordIdx)) state.m3pending.predicateIdxs.push(wordIdx);
     } else {
       if (state.m3pending.subjectIdxs.includes(wordIdx)) return;
       const i = state.m3pending.predicateIdxs.indexOf(wordIdx);
@@ -4345,7 +4344,7 @@ function buildM4TriSelect(q, result, done) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          const renderIdxs = predicateIdxs;
           if (renderIdxs.length > 0) {
             const sorted = [...renderIdxs].sort((a,b) => a-b);
             const segs = []; let seg = [sorted[0]];
@@ -4543,7 +4542,6 @@ function selectM4Word(wordIdx) {
       state.m4pending.predicateIdxs      = [];
       state.m4pending.predicateConfirmed = false;
       state.m4pending.verbIdx = wordIdx;
-      state.m4pending.predicateIdxs.push(wordIdx);
       state.m4pending.mode    = 'subject';
     }
   } else if (mode === 'subject') {
@@ -4556,6 +4554,7 @@ function selectM4Word(wordIdx) {
   } else {
     if (wordIdx === state.m4pending.verbIdx) {
       state.m4pending.predicateConfirmed = true;
+      if (!state.m4pending.predicateIdxs.includes(wordIdx)) state.m4pending.predicateIdxs.push(wordIdx);
     } else {
       if (state.m4pending.subjectIdxs.includes(wordIdx)) return;
       const i = state.m4pending.predicateIdxs.indexOf(wordIdx);
@@ -4713,7 +4712,7 @@ function buildM5TriSelect(q, result, done) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
         if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
-          const renderIdxs = predicateConfirmed ? predicateIdxs : predicateIdxs.filter(i => i !== verbIdx);
+          const renderIdxs = predicateIdxs;
           if (renderIdxs.length > 0) {
             const sorted = [...renderIdxs].sort((a,b) => a-b);
             const segs = []; let seg = [sorted[0]];
@@ -4887,7 +4886,6 @@ function selectM5Word(wordIdx) {
       state.m5pending.predicateIdxs      = [];
       state.m5pending.predicateConfirmed = false;
       state.m5pending.verbIdx = wordIdx;
-      state.m5pending.predicateIdxs.push(wordIdx);
       state.m5pending.mode    = 'subject';
     }
   } else if (mode === 'subject') {
@@ -4899,6 +4897,7 @@ function selectM5Word(wordIdx) {
   } else {
     if (wordIdx === state.m5pending.verbIdx) {
       state.m5pending.predicateConfirmed = true;
+      if (!state.m5pending.predicateIdxs.includes(wordIdx)) state.m5pending.predicateIdxs.push(wordIdx);
     } else {
       if (state.m5pending.subjectIdxs.includes(wordIdx)) return;
       const i = state.m5pending.predicateIdxs.indexOf(wordIdx);
