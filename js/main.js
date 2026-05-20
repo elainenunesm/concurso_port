@@ -1223,6 +1223,10 @@ async function saveProgress() {
       m5points:        state.m5points,
       m5errorNotebook: state.m5errorNotebook,
       simUnlocked:     state.simUnlocked,
+      simPhase:        state.simPhase,
+      simQueue:        state.simQueue,
+      simAnswered:     state.simAnswered,
+      simCurrent:      state.simCurrent,
       savedAt:         new Date().toISOString(),
     };
     const fh = await state.dirHandle.getFileHandle('progresso.json', { create: true });
@@ -1280,7 +1284,11 @@ async function loadProgress() {
       state.m5phase         = data.m5phase ?? 'none';
       state.m5current       = data.m5current ?? 0;
       if (Array.isArray(data.m5activeSet)) state.m5activeSet = data.m5activeSet;
-      state.simUnlocked     = !!(data.simUnlocked || PHASES_SIM.includes(data.phase) || (Array.isArray(data.m5results) && data.m5results.length > 0 && data.m5results.every(r => r !== null)));
+      state.simUnlocked  = !!(data.simUnlocked || PHASES_SIM.includes(data.phase) || (Array.isArray(data.m5results) && data.m5results.length > 0 && data.m5results.every(r => r !== null)));
+      state.simPhase     = data.simPhase ?? 'none';
+      state.simQueue     = Array.isArray(data.simQueue) ? data.simQueue : [];
+      state.simAnswered  = (data.simAnswered && typeof data.simAnswered === 'object') ? data.simAnswered : {};
+      state.simCurrent   = data.simCurrent ?? 0;
       const el = $('statPontos'); if (el) el.textContent = state.points;
       updateStreak();
       updateModule2Card();
@@ -5151,6 +5159,7 @@ function startSimQuiz() {
   state.simPhase = 'quiz';
   state.phase    = 'sim-quiz';
   updateSimCard();
+  saveProgress();
   render();
 }
 
@@ -5239,6 +5248,7 @@ function setupSimMC(q, key) {
       state.simAnswered[key] = { correct, selected: i };
       updateSimCard();
       recordActivity();
+      saveProgress();
       render();
     });
   });
@@ -5253,6 +5263,7 @@ function setupSimWS(q, key) {
       state.simAnswered[key] = { correct, selected: i };
       updateSimCard();
       recordActivity();
+      saveProgress();
       render();
     });
   });
@@ -5289,6 +5300,7 @@ function setupSimDualSelect(q, key) {
     state.simAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs] };
     updateSimCard();
     recordActivity();
+    saveProgress();
     render();
   });
 }
@@ -5349,6 +5361,7 @@ function setupSimTriSelect(q, key, hasNoSubject) {
     state.simAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, predicateCorrect: pOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs], predicateSelected: [...p.predicateIdxs], noSubjectSelected: p.noSubject };
     updateSimCard();
     recordActivity();
+    saveProgress();
     render();
   });
 }
