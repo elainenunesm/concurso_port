@@ -959,17 +959,22 @@ const state = {
   m3results:       new Array(questions3.length).fill(null),
   m3points:        0,
   m3errorNotebook: {},
-  m3pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] },
+  m3pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false },
   m3unlocked:      false,
   m4unlocked:      false,
+  m5unlocked:      false,
   m4phase:         'none',
   m4current:       0,
   m4activeSet:     questions4.map((_, i) => i),
   m4results:       new Array(questions4.length).fill(null),
   m4points:        0,
   m4errorNotebook: {},
-  m4pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false },
+  m4pending:       { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false },
   previousPhase:   null,
+  cadernoQueue:    [],
+  cadernoCurrent:  0,
+  cadernoAnswered: {},
+  cadernoPending:  { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false },
 };
 
 // ── SEQUÊNCIA (streak) ───────────────────────────────────────
@@ -1068,6 +1073,7 @@ async function saveProgress() {
       m3errorNotebook: state.m3errorNotebook,
       m3unlocked:      state.m3unlocked,
       m4unlocked:      state.m4unlocked,
+      m5unlocked:      state.m5unlocked,
       m4phase:         state.m4phase,
       m4current:       state.m4current,
       m4activeSet:     state.m4activeSet,
@@ -1093,7 +1099,7 @@ async function loadProgress() {
       state.points        = data.points ?? 0;
       state.errorNotebook = data.errorNotebook ?? {};
       state.activityLog   = Array.isArray(data.activityLog) ? data.activityLog : [];
-      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
+      const validPhases = ['objective', 'intro', 'quiz', 'results', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
       if (validPhases.includes(data.phase)) {
         state.phase   = data.phase;
         state.current = data.current ?? 0;
@@ -1116,6 +1122,7 @@ async function loadProgress() {
       state.m3errorNotebook = data.m3errorNotebook ?? {};
       state.m3unlocked      = !!(data.m3unlocked || PHASES_MODULE3.includes(data.phase) || state.m3results.some(r => r !== null));
       state.m4unlocked      = !!(data.m4unlocked || PHASES_MODULE4.includes(data.phase) || (Array.isArray(data.m4results) && data.m4results.some(r => r !== null)));
+      state.m5unlocked      = !!(data.m5unlocked || (Array.isArray(data.m4results) && data.m4results.every(r => r !== null) && data.m4results.length > 0));
       state.m4phase         = data.m4phase ?? 'none';
       state.m4current       = data.m4current ?? 0;
       state.m4activeSet     = Array.isArray(data.m4activeSet) ? data.m4activeSet : questions4.map((_, i) => i);
@@ -1447,6 +1454,18 @@ document.getElementById('module4Card').addEventListener('click', () => {
   if (bd) bd.classList.remove('active');
 });
 
+// ── CARD MÓDULO 5 (SIDEBAR) ──────────────────────────────────
+document.getElementById('module5Card').addEventListener('click', () => {
+  if ($('module5Card').classList.contains('locked')) return;
+  state.m5unlocked = true;
+  state.phase = 'module5-intro';
+  render();
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('btnMobileConteudos').classList.remove('active');
+  const bd = document.getElementById('mobilePanelBackdrop');
+  if (bd) bd.classList.remove('active');
+});
+
 // ── CARD CADERNO DE ERROS (SIDEBAR) ──────────────────────────
 document.getElementById('cadernoBtnCard').addEventListener('click', () => {
   if (state.phase !== 'error-notebook') state.previousPhase = state.phase;
@@ -1489,8 +1508,8 @@ function updateHeaderH() {
   if (navbar) document.documentElement.style.setProperty('--header-h', navbar.offsetHeight + 'px');
 }
 
-const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
-const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results'];
+const PHASES_NO_HEADER  = ['intro', 'error-notebook', 'caderno-quiz', 'module2-intro', 'module2-quiz', 'module2-results', 'objective', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
+const PHASES_SHOW_TITLE = ['intro', 'objective', 'module2-intro', 'module2-quiz', 'module2-results', 'module3-intro', 'module3-quiz', 'module3-results', 'module4-intro', 'module4-quiz', 'module4-results', 'module5-intro'];
 const PHASES_MODULE2    = ['module2-intro', 'module2-quiz', 'module2-results'];
 const PHASES_MODULE3    = ['module3-intro', 'module3-quiz', 'module3-results'];
 const PHASES_MODULE4    = ['module4-intro', 'module4-quiz', 'module4-results'];
@@ -1523,6 +1542,14 @@ function render() {
       if (iconEl)  iconEl.innerHTML = '<span style="font-size:18px;font-weight:700;color:#0d9488">Ø</span>';
       if (h2El)    h2El.textContent = '4. Orações sem sujeito';
       if (descEl)  descEl.textContent = 'Entenda os verbos impessoais e as orações sem sujeito.';
+    } else if (state.phase === 'module5-intro') {
+      if (iconEl)  iconEl.innerHTML = '<span style="font-size:13px;font-weight:700;color:#7c3aed">INV</span>';
+      if (h2El)    h2El.textContent = '5. Inversão da ordem - termos essenciais';
+      if (descEl)  descEl.textContent = 'Entenda como sujeito e predicado podem aparecer em ordem invertida.';
+    } else if (state.phase === 'caderno-quiz') {
+      if (iconEl)  iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;font-size:20px"></i>';
+      if (h2El)    h2El.textContent = 'Caderno de Erros';
+      if (descEl)  descEl.textContent = 'Pratique as questões que você errou.';
     } else {
       if (iconEl)  iconEl.textContent = 'Aa';
       if (h2El)    h2El.textContent = '1. Verbos - Básico';
@@ -1537,12 +1564,14 @@ function render() {
   const m2c = $('module2Card');
   const m3c = $('module3Card');
   const m0c = $('module0Card');
-  if (cc)  cc.classList.toggle('active-view', state.phase === 'error-notebook');
+  if (cc)  cc.classList.toggle('active-view', state.phase === 'error-notebook' || state.phase === 'caderno-quiz');
   if (m1c) m1c.classList.toggle('active', PHASES_M1.includes(state.phase));
   if (m2c) m2c.classList.toggle('active-view', PHASES_MODULE2.includes(state.phase));
   if (m3c) m3c.classList.toggle('active-view', PHASES_MODULE3.includes(state.phase));
   const m4c = $('module4Card');
   if (m4c) m4c.classList.toggle('active-view', PHASES_MODULE4.includes(state.phase));
+  const m5c = $('module5Card');
+  if (m5c) m5c.classList.toggle('active-view', state.phase === 'module5-intro');
   if (m0c) m0c.classList.toggle('active-view', state.phase === 'objective');
   if (state.phase === 'objective')         { renderObjective();         return; }
   if (state.phase === 'intro')             { renderIntro();             return; }
@@ -1557,6 +1586,8 @@ function render() {
   if (state.phase === 'module4-intro')     { renderModule4Intro();      return; }
   if (state.phase === 'module4-quiz')      { renderModule4Question();   return; }
   if (state.phase === 'module4-results')   { renderModule4Results();    return; }
+  if (state.phase === 'module5-intro')     { renderModule5Intro();      return; }
+  if (state.phase === 'caderno-quiz')      { renderCadernoQuestion();   return; }
   renderQuestion();
 }
 
@@ -1964,6 +1995,149 @@ function renderModule4Intro() {
   $('startModule4Btn').addEventListener('click', startModule4Quiz);
 }
 
+// ── TELA DE INTRODUÇÃO — MÓDULO 5 ────────────────────────────
+function renderModule5Intro() {
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div class="lesson-badge"><i class="fa-solid fa-book-open"></i> Quinta Etapa</div>
+      <h2>Justificativa da lição:</h2>
+      <p style="margin-top:8px;margin-bottom:0;font-size:15px;color:var(--text-gray);line-height:1.7">Essa etapa 5 você irá aprender porque na grande maioria das vezes você erra quem é o sujeito e o complemento.</p>
+      <div class="lesson-body" style="margin-top:24px">
+        <h3 class="lesson-title">Lição de Estudo da inversão da ordem</h3>
+        <p>Preste atenção: até o momento analisamos orações na <strong>ordem direta</strong>, ou seja, na estrutura mais comum da língua:</p>
+        <div class="m3-example">
+          <p><strong>Sujeito + verbo + complemento</strong></p>
+        </div>
+        <p><strong>Exemplo:</strong></p>
+        <div class="m3-example">
+          <p class="m3-concl">→ João comprou um livro.</p>
+          <div class="sa-wrap" style="margin-top:10px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(5,auto);grid-template-rows:auto auto auto">
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:1">João</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:2">comprou</div>
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:3">um</div>
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:4">livro</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:5">.</div>
+              <div class="annot-subject" style="grid-column:1;grid-row:2">Sujeito</div>
+              <div class="annot-verb" style="grid-column:2;grid-row:2">Verbo</div>
+              <div class="annot-predicate" style="grid-column:2/span 3;grid-row:3">Predicado</div>
+            </div>
+          </div>
+        </div>
+        <p>Porém, principalmente em textos de concursos, é muito comum encontrarmos orações na <strong>ordem inversa</strong>.</p>
+        <hr>
+        <p><strong>E o que seria a ordem inversa?</strong></p>
+        <p>É quando os termos da oração aparecem deslocados, mudando a posição tradicional da frase. Assim, o texto pode aparecer de diferentes formas:</p>
+        <div class="m3-example">
+          <p><strong>Verbo + complemento + sujeito</strong></p>
+          <div class="sa-wrap" style="margin-top:10px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(5,auto);grid-template-rows:auto auto auto">
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:1">Dormiu</div>
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:2">muito</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:3">o</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:4">gato</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:5">.</div>
+              <div class="annot-verb" style="grid-column:1;grid-row:2">Verbo</div>
+              <div class="annot-subject" style="grid-column:3/span 2;grid-row:2">Sujeito</div>
+              <div class="annot-predicate" style="grid-column:1/span 2;grid-row:3">Predicado</div>
+            </div>
+          </div>
+        </div>
+        <div class="m3-example">
+          <p><strong>Complemento + verbo + sujeito</strong></p>
+          <div class="sa-wrap" style="margin-top:10px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(7,auto);grid-template-rows:auto auto auto">
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:1">Na</div>
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:2">festa</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:3">,</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:4">chegaram</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:5">os</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:6">convidados</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:7">.</div>
+              <div class="annot-verb" style="grid-column:4;grid-row:2">Verbo</div>
+              <div class="annot-subject" style="grid-column:5/span 2;grid-row:2">Sujeito</div>
+              <div class="annot-predicate" style="grid-column:1/span 4;grid-row:3">Predicado</div>
+            </div>
+          </div>
+        </div>
+        <div class="m3-example">
+          <p><strong>Complemento + sujeito + verbo</strong></p>
+          <div class="sa-wrap" style="margin-top:10px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(5,auto);grid-template-rows:auto auto auto">
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:1">Ontem</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:2">,</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:3">Pedro</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:4">dormiu</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:5">.</div>
+              <div class="annot-subject" style="grid-column:3;grid-row:2">Sujeito</div>
+              <div class="annot-verb" style="grid-column:4;grid-row:2">Verbo</div>
+              <div class="annot-predicate" style="grid-column:1;grid-row:3">Predicado</div>
+              <div class="annot-predicate" style="grid-column:4;grid-row:3">Predicado</div>
+            </div>
+          </div>
+          <p class="m3-sub" style="margin-top:8px">→ O predicado é formado por "Ontem" + "dormiu" (separados pelo sujeito)</p>
+        </div>
+        <p>Essas inversões tornam a análise mais difícil, porque o sujeito nem sempre aparece no início da oração. Por isso, as primeiras lições focaram na identificação do verbo e do sujeito.</p>
+        <p>Até aqui trabalhamos principalmente com a ordem direta; agora, precisamos nos acostumar com as inversões presentes na ordem indireta.</p>
+        <hr>
+        <p><strong>Resumo rápido:</strong></p>
+        <p>Veja como aplicar a análise na frase em ordem inversa: <em>"Ontem, dormiu o gato."</em></p>
+        <div class="m3-example">
+          <p><strong>1º</strong> Ache o verbo</p>
+          <div class="sa-wrap" style="margin-top:8px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(6,auto);grid-template-rows:auto auto">
+              <div class="word-chip" style="grid-row:1;grid-column:1">Ontem</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:2">,</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:3">dormiu</div>
+              <div class="word-chip" style="grid-row:1;grid-column:4">o</div>
+              <div class="word-chip" style="grid-row:1;grid-column:5">gato</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:6">.</div>
+              <div class="annot-verb" style="grid-column:3;grid-row:2">Verbo</div>
+            </div>
+          </div>
+        </div>
+        <div class="m3-example">
+          <p><strong>2º</strong> Identifique se é impessoal <em>(verbos impessoais: haver/existir, fazer/tempo, fenômenos da natureza)</em></p>
+          <p class="m3-sub" style="margin-top:6px">→ <em>Dormir</em> não é impessoal — continue a análise.</p>
+        </div>
+        <div class="m3-example">
+          <p><strong>3º</strong> Faça a pergunta: <em>Quem dormiu?</em></p>
+          <p><strong>4º</strong> A resposta é o sujeito: <em>"o gato"</em></p>
+          <div class="sa-wrap" style="margin-top:8px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(6,auto);grid-template-rows:auto auto">
+              <div class="word-chip" style="grid-row:1;grid-column:1">Ontem</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:2">,</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:3">dormiu</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:4">o</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:5">gato</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:6">.</div>
+              <div class="annot-verb" style="grid-column:3;grid-row:2">Verbo</div>
+              <div class="annot-subject" style="grid-column:4/span 2;grid-row:2">Sujeito</div>
+            </div>
+          </div>
+        </div>
+        <div class="m3-example">
+          <p><strong>5º</strong> O que não é sujeito é o predicado, incluindo o verbo</p>
+          <div class="sa-wrap" style="margin-top:8px">
+            <div class="sentence-annotated" style="grid-template-columns:repeat(6,auto);grid-template-rows:auto auto auto">
+              <div class="word-chip lesson-predicate" style="grid-row:1;grid-column:1">Ontem</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:2">,</div>
+              <div class="word-chip lesson-verb" style="grid-row:1;grid-column:3">dormiu</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:4">o</div>
+              <div class="word-chip correct-subject disabled" style="grid-row:1;grid-column:5">gato</div>
+              <div class="word-chip punctuation" style="grid-row:1;grid-column:6">.</div>
+              <div class="annot-verb" style="grid-column:3;grid-row:2">Verbo</div>
+              <div class="annot-subject" style="grid-column:4/span 2;grid-row:2">Sujeito</div>
+              <div class="annot-predicate" style="grid-column:1;grid-row:3">Predicado</div>
+              <div class="annot-predicate" style="grid-column:3;grid-row:3">Predicado</div>
+            </div>
+          </div>
+          <p class="m3-sub" style="margin-top:8px">→ O predicado é "Ontem" + "dormiu" (separados pelo sujeito)</p>
+        </div>
+      </div>
+    </div>`;
+}
+
 function startModule2Quiz() {
   state.m2phase     = 'quiz';
   state.m2current   = 0;
@@ -1983,7 +2157,7 @@ function startModule3Quiz() {
   state.m3activeSet = questions3.map((_, i) => i);
   state.m3results   = new Array(questions3.length).fill(null);
   state.m3points    = 0;
-  state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
+  state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
   state.phase       = 'module3-quiz';
   updateModule3Card();
   render();
@@ -2502,6 +2676,537 @@ function showPerformanceModal() {
   document.getElementById('perfCloseBtn').addEventListener('click', () => overlay.remove());
 }
 
+// ── CADERNO: MONTAR FILA DE QUESTÕES ─────────────────────────
+function buildCadernoQueue() {
+  const q = [];
+  Object.keys(state.errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:1, qIdx:+i}));
+  Object.keys(state.m2errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:2, qIdx:+i}));
+  Object.keys(state.m3errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:3, qIdx:+i}));
+  Object.keys(state.m4errorNotebook).sort((a,b)=>+a-+b).forEach(i => q.push({mod:4, qIdx:+i}));
+  return q;
+}
+
+function cadernoResetPending() {
+  state.cadernoPending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
+}
+
+function cadernoExit() {
+  state.phase = 'error-notebook';
+  state.cadernoQueue = [];
+  state.cadernoCurrent = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  render();
+}
+
+// ── CADERNO: RENDERIZAR QUESTÃO ───────────────────────────────
+function renderCadernoQuestion() {
+  const item = state.cadernoQueue[state.cadernoCurrent];
+  if (!item) { cadernoExit(); return; }
+  const { mod, qIdx } = item;
+  const total    = state.cadernoQueue.length;
+  const pos      = state.cadernoCurrent + 1;
+  const key      = `${mod}-${qIdx}`;
+  const answered = state.cadernoAnswered[key];
+  const modColor = mod === 1 ? '#7c3aed' : mod === 4 ? '#0d9488' : '#3b82f6';
+  const modNames = { 1: 'Módulo 1 — Verbos', 2: 'Módulo 2 — Sujeito', 3: 'Módulo 3 — Predicado', 4: 'Módulo 4 — Orações' };
+  const modLabel = modNames[mod] || `Módulo ${mod}`;
+
+  let bodyHTML = '';
+  if (mod === 1) {
+    const q = questions[qIdx];
+    bodyHTML = q.type === 'word-select' ? cadernoWordSelectHTML(q, answered) : cadernoMCHTML(q, answered);
+  } else if (mod === 2) {
+    bodyHTML = cadernoDualSelectHTML(questions2[qIdx], answered);
+  } else if (mod === 3) {
+    bodyHTML = cadernoTriSelectHTML(questions3[qIdx], answered, false);
+  } else {
+    bodyHTML = cadernoTriSelectHTML(questions4[qIdx], answered, true);
+  }
+
+  $('quizContainer').innerHTML = `
+    <div class="lesson-screen">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+        <span style="background:${modColor}18;color:${modColor};font-size:12px;padding:3px 10px;border-radius:20px;font-weight:700">${modLabel}</span>
+        <button type="button" class="btn-lesson-hint" id="cadernoLessonBtn"><i class="fa-solid fa-book-open"></i> Consultar lição</button>
+        <span style="font-size:13px;color:var(--text-gray);margin-left:auto">Questão ${pos} de ${total}</span>
+        <button type="button" class="btn-nav enp-back" id="cadernoBackBtn" style="padding:4px 10px;font-size:13px">${icons.left} Caderno</button>
+      </div>
+      ${bodyHTML}
+      ${answered ? `<div class="bottom-actions">
+        <button type="button" class="btn-nav" id="cadernoBackBtn2">${icons.left} Voltar ao caderno</button>
+        <button type="button" class="btn-nav btn-nav-primary" id="cadernoNextBtn">
+          ${pos < total ? `Próxima questão ${icons.right}` : `${icons.check} Concluir prática`}
+        </button></div>` : ''}
+    </div>`;
+
+  document.querySelectorAll('#cadernoBackBtn,#cadernoBackBtn2').forEach(b => {
+    if (b) b.addEventListener('click', cadernoExit);
+  });
+  $('cadernoLessonBtn').addEventListener('click', () => openLessonModal(mod));
+
+  if (answered) {
+    $('cadernoNextBtn').addEventListener('click', () => {
+      if (pos < total) { state.cadernoCurrent++; cadernoResetPending(); render(); }
+      else             { cadernoExit(); }
+    });
+    return;
+  }
+
+  if (mod === 1) {
+    const q = questions[qIdx];
+    if (q.type === 'word-select') setupCadernoWordSelect(q, qIdx, key);
+    else                          setupCadernoMC(q, qIdx, key);
+  } else if (mod === 2) {
+    setupCadernoDualSelect(questions2[qIdx], qIdx, key);
+  } else if (mod === 3) {
+    setupCadernoTriSelect(questions3[qIdx], qIdx, key, false);
+  } else {
+    setupCadernoTriSelect(questions4[qIdx], qIdx, key, true);
+  }
+}
+
+// ── CADERNO: M1 MÚLTIPLA ESCOLHA ─────────────────────────────
+function cadernoMCHTML(q, answered) {
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+  const answersHTML = q.answers.map((a, i) => {
+    let cls = 'answer';
+    let mark = '';
+    if (answered) {
+      cls += ' disabled';
+      if (a.correct)                                       { cls += ' correct'; mark = `<span class="check-mark">${icons.check}</span>`; }
+      else if (i === answered.selected && !answered.correct) { cls += ' wrong';   mark = `<span class="wrong-mark">${icons.x}</span>`; }
+    }
+    return `<button type="button" class="${cls}" data-cadmc="${i}"${answered ? ' disabled' : ''}>
+      <span class="letter">${a.letter}</span><span>${a.text}</span>${mark}
+    </button>`;
+  }).join('');
+  const header = `<div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text}</p>
+    <div class="answers">${answersHTML}</div>`;
+  if (!answered) return header;
+  const hintsHTML = q.answers.map(ans => `
+    <div class="hint-row">
+      <span class="hint-letter${ans.correct ? ' correct' : ''}">${ans.letter}</span>
+      <span class="hint-label${ans.correct ? ' correct' : ''}">${ans.hint}</span>
+      ${ans.correct ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`).join('');
+  return `${header}
+    <div class="feedback${answered.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${answered.correct ? 'Resposta correta!' : 'Resposta incorreta!'}</h2>
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">O que cada alternativa descrevia:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function setupCadernoMC(q, qIdx, key) {
+  document.querySelectorAll('button[data-cadmc]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const i = +btn.dataset.cadmc;
+      const correct = q.answers[i].correct;
+      state.cadernoAnswered[key] = { correct, selected: i };
+      if (!correct) state.errorNotebook[qIdx] = (state.errorNotebook[qIdx] || 0) + 1;
+      recordActivity(); updateErrorNotebook(); saveProgress(); render();
+    });
+  });
+}
+
+// ── CADERNO: M1 WORD-SELECT ───────────────────────────────────
+function cadernoWordSelectHTML(q, answered) {
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+  const chipsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return `<span class="word-chip punctuation">${word}</span>`;
+    let cls = 'word-chip';
+    if (answered) {
+      cls += ' disabled';
+      if (idx === q.correctIndex)                              cls += ' correct';
+      else if (idx === answered.selected && !answered.correct) cls += ' wrong';
+    }
+    return `<span class="${cls}" data-cadws="${idx}">${word}</span>`;
+  }).join('');
+  const instruction = answered ? '' : `<p class="word-select-instruction">Clique na palavra que é um <strong>verbo</strong></p>`;
+  const header = `<div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text}</p>
+    ${instruction}<div class="sentence-display">${chipsHTML}</div>`;
+  if (!answered) return header;
+  const hintsHTML = q.wordClassHints.map(h => `
+    <div class="hint-row">
+      <span class="wh-word${h.isVerb ? ' correct' : ''}">${h.word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${h.isVerb ? ' correct' : ''}">${h.wordClass}</span>
+      ${h.isVerb ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`).join('');
+  return `${header}
+    <div class="feedback${answered.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${answered.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">Classe de cada palavra da frase:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function setupCadernoWordSelect(q, qIdx, key) {
+  document.querySelectorAll('[data-cadws]').forEach(chip => {
+    const i = +chip.dataset.cadws;
+    if (PUNCT.has(q.sentence[i])) return;
+    chip.addEventListener('click', () => {
+      const correct = i === q.correctIndex;
+      state.cadernoAnswered[key] = { correct, selected: i };
+      if (!correct) state.errorNotebook[qIdx] = (state.errorNotebook[qIdx] || 0) + 1;
+      recordActivity(); updateErrorNotebook(); saveProgress(); render();
+    });
+  });
+}
+
+// ── CADERNO: M2 DUAL-SELECT ───────────────────────────────────
+function cadernoDualSelectHTML(q, answered) {
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+  if (!answered) {
+    const { mode, verbIdx, subjectIdxs } = state.cadernoPending;
+    const canConfirm = verbIdx !== null && subjectIdxs.length > 0;
+    const sentenceHTML = buildAnnotatedSentence(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (idx === verbIdx)                cls += ' verb-pending';
+        else if (subjectIdxs.includes(idx)) cls += ' subject-pending';
+        return `<span class="${cls}" data-caddual="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        let a = '';
+        if (verbIdx !== null) a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
+        if (subjectIdxs.length > 0) {
+          const sorted = [...subjectIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-subject" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Sujeito</div>`;
+        }
+        return a;
+      }
+    );
+    const verbBtnCls = mode === 'verb'    ? 'dual-mode-btn active-verb'    : 'dual-mode-btn';
+    const subjBtnCls = mode === 'subject' ? 'dual-mode-btn active-subject' : 'dual-mode-btn';
+    return `
+      <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+      <p class="question-title">${q.text || 'Identifique o verbo e o sujeito:'}</p>
+      <div class="dual-mode-toggle">
+        <button type="button" class="${verbBtnCls}" id="cPhaseVerb">
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> VERBO
+        </button>
+        <button type="button" class="${subjBtnCls}" id="cPhaseSuj">
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> SUJEITO
+        </button>
+      </div>
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="cadernoConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar resposta
+      </button>`;
+  }
+  // Questão respondida
+  const sentenceHTML = buildAnnotatedSentence(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isV = idx === q.verbIndex;
+      const isS = q.subjectIndices.includes(idx);
+      const wasV = idx === answered.verbSelected;
+      const wasS = answered.subjectSelected && answered.subjectSelected.includes(idx);
+      if      (isV)           cls += ' correct-verb';
+      else if (isS)           cls += ' correct-subject';
+      else if (wasV && !isV)  cls += ' wrong-verb';
+      else if (wasS && !isS)  cls += ' wrong-subject';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    (q) => {
+      const subjStart = Math.min(...q.subjectIndices) + 1;
+      const subjSpan  = Math.max(...q.subjectIndices) - Math.min(...q.subjectIndices) + 1;
+      return `<div class="annot-verb" style="grid-column:${q.verbIndex+1};grid-row:2">Verbo</div>` +
+             `<div class="annot-subject" style="grid-column:${subjStart}/span ${subjSpan};grid-row:2">Sujeito</div>`;
+    }
+  );
+  const hintsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return '';
+    const isVerb = idx === q.verbIndex;
+    const isSubj = q.subjectIndices.includes(idx);
+    const role = isVerb ? 'Verbo' : isSubj ? 'Sujeito' : '—';
+    return `<div class="hint-row">
+      <span class="wh-word${isVerb || isSubj ? ' correct' : ''}">${word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${isVerb ? ' correct' : isSubj ? ' subject-hint' : ''}">${role}</span>
+      ${isVerb || isSubj ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`;
+  }).filter(h => h).join('');
+  const userVerbWord  = answered.verbSelected != null ? q.sentence[answered.verbSelected] : '—';
+  const userSubjWords = answered.subjectSelected && answered.subjectSelected.length > 0
+    ? [...answered.subjectSelected].sort((a,b)=>a-b).map(i=>q.sentence[i]).join(' ') : '—';
+  return `
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text || 'Identifique o verbo e o sujeito:'}</p>
+    ${sentenceHTML}
+    <div class="feedback${answered.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${answered.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        ${!answered.correct ? `<p class="user-answer-recap"><span class="recap-verb">Verbo: <strong>${userVerbWord}</strong></span><span class="recap-sep">·</span><span class="recap-subject">Sujeito: <strong>${userSubjWords}</strong></span></p>` : ''}
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">Papel de cada palavra:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function setupCadernoDualSelect(q, qIdx, key) {
+  document.querySelectorAll('[data-caddual]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const i = +chip.dataset.caddual;
+      if (PUNCT.has(q.sentence[i])) return;
+      const p = state.cadernoPending;
+      if (p.mode === 'verb') {
+        if (p.verbIdx === i) { p.verbIdx = null; }
+        else { p.subjectIdxs = p.subjectIdxs.filter(x=>x!==i); p.verbIdx = i; p.mode = 'subject'; }
+      } else {
+        if (i === p.verbIdx) return;
+        const idx = p.subjectIdxs.indexOf(i);
+        idx === -1 ? p.subjectIdxs.push(i) : p.subjectIdxs.splice(idx, 1);
+      }
+      render();
+    });
+  });
+  const bv = document.getElementById('cPhaseVerb');
+  const bs = document.getElementById('cPhaseSuj');
+  if (bv) bv.addEventListener('click', () => { state.cadernoPending.mode = 'verb';    render(); });
+  if (bs) bs.addEventListener('click', () => { state.cadernoPending.mode = 'subject'; render(); });
+  const cf = document.getElementById('cadernoConfirmBtn');
+  if (cf) cf.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.verbIdx === null || p.subjectIdxs.length === 0) return;
+    const vOk = p.verbIdx === q.verbIndex;
+    const sOk = p.subjectIdxs.length === q.subjectIndices.length && q.subjectIndices.every(i => p.subjectIdxs.includes(i));
+    const ok  = vOk && sOk;
+    state.cadernoAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs] };
+    if (!ok) state.m2errorNotebook[qIdx] = (state.m2errorNotebook[qIdx] || 0) + 1;
+    recordActivity(); updateErrorNotebook(); saveProgress(); render();
+  });
+}
+
+// ── CADERNO: M3/M4 TRI-SELECT ────────────────────────────────
+function cadernoTriSelectHTML(q, answered, hasNoSubject) {
+  const diffCls = q.difficulty === 'Médio' ? ' difficulty-medium' : q.difficulty === 'Difícil' ? ' difficulty-hard' : '';
+  if (!answered) {
+    const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject, predicateConfirmed } = state.cadernoPending;
+    const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject) && predicateIdxs.length > 0;
+    const sentenceHTML = buildAnnotatedSentence3(q,
+      (word, idx) => {
+        let cls = 'word-chip';
+        if (idx === verbIdx)                                     cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
+        else if (!noSubject && subjectIdxs.includes(idx))       cls += ' subject-pending';
+        else if (predicateIdxs.includes(idx))                   cls += ' predicate-pending';
+        return `<span class="${cls}" data-cadtri="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+      },
+      () => {
+        let a = '';
+        if (!noSubject && subjectIdxs.length > 0) {
+          const sorted = [...subjectIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-subject" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:2">Sujeito</div>`;
+        }
+        if (verbIdx !== null) a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
+        if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
+          const sorted = [...predicateIdxs].sort((a,b) => a-b);
+          a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
+        }
+        return a;
+      }
+    );
+    const verbBtnCls = mode === 'verb'                       ? 'dual-mode-btn active-verb'      : 'dual-mode-btn';
+    const subjBtnCls = mode === 'subject' && !noSubject      ? 'dual-mode-btn active-subject'   : 'dual-mode-btn';
+    const predBtnCls = mode === 'predicate'                  ? 'dual-mode-btn active-predicate' : 'dual-mode-btn';
+    const noSbjCls   = noSubject ? 'm4-nosubj-btn active' : 'm4-nosubj-btn';
+    return `
+      <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+      <p class="question-title">${q.text || 'Identifique o verbo, sujeito e predicado:'}</p>
+      <div class="dual-mode-toggle">
+        <button type="button" class="${verbBtnCls}" id="cPhaseVerb">
+          <i class="fa-solid fa-circle" style="color:#2563eb;font-size:8px"></i> VERBO
+        </button>
+        <button type="button" class="${subjBtnCls}" id="cPhaseSuj">
+          <i class="fa-solid fa-circle" style="color:#dc2626;font-size:8px"></i> SUJEITO
+        </button>
+        <button type="button" class="${predBtnCls}" id="cPhasePred">
+          <i class="fa-solid fa-circle" style="color:#7c3aed;font-size:8px"></i> PREDICADO
+        </button>
+      </div>
+      ${hasNoSubject ? `<div class="m4-nosubj-row">
+        <button type="button" class="${noSbjCls}" id="cNoSubjBtn">
+          <i class="fa-solid fa-ban" style="font-size:10px"></i>
+          ${noSubject ? 'Marcado: sem sujeito' : 'Oração sem sujeito'}
+        </button>
+      </div>` : ''}
+      ${sentenceHTML}
+      <button type="button" class="dual-confirm-btn" id="cadernoConfirmBtn"${canConfirm ? '' : ' disabled'}>
+        ${icons.check} Confirmar resposta
+      </button>`;
+  }
+  // Questão respondida
+  const sentenceHTML = buildAnnotatedSentence3(q,
+    (word, idx) => {
+      let cls = 'word-chip disabled';
+      const isVerb = idx === q.verbIndex;
+      const isSubj = !q.noSubject && q.subjectIndices.includes(idx);
+      const isPred = q.predicateIndices.includes(idx);
+      const wasVerb = idx === answered.verbSelected;
+      const wasSubj = !answered.noSubjectSelected && answered.subjectSelected && answered.subjectSelected.includes(idx);
+      const wasPred = answered.predicateSelected && answered.predicateSelected.includes(idx);
+      if      (isVerb)              cls += ' correct-verb';
+      else if (isSubj)              cls += ' correct-subject';
+      else if (isPred)              cls += ' lesson-predicate';
+      else if (wasVerb && !isVerb)  cls += ' wrong-verb';
+      else if (wasSubj && !isSubj)  cls += ' wrong-subject';
+      else if (wasPred && !isPred)  cls += ' wrong-subject';
+      return `<span class="${cls}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
+    },
+    (q) => {
+      let a = '';
+      if (!q.noSubject && q.subjectIndices.length > 0) {
+        const subjStart = Math.min(...q.subjectIndices) + 1;
+        const subjSpan  = Math.max(...q.subjectIndices) - Math.min(...q.subjectIndices) + 1;
+        a += `<div class="annot-subject" style="grid-column:${subjStart}/span ${subjSpan};grid-row:2">Sujeito</div>`;
+      }
+      a += `<div class="annot-verb" style="grid-column:${q.verbIndex+1};grid-row:2">Verbo</div>`;
+      if (q.predicateIndices.length > 0) {
+        const predStart = Math.min(...q.predicateIndices) + 1;
+        const predSpan  = Math.max(...q.predicateIndices) - Math.min(...q.predicateIndices) + 1;
+        a += `<div class="annot-predicate" style="grid-column:${predStart}/span ${predSpan};grid-row:3">Predicado</div>`;
+      }
+      return a;
+    }
+  );
+  const hintsHTML = q.sentence.map((word, idx) => {
+    if (PUNCT.has(word)) return '';
+    const isVerb = idx === q.verbIndex;
+    const isSubj = !q.noSubject && q.subjectIndices.includes(idx);
+    const isPred = q.predicateIndices.includes(idx) && !isVerb;
+    const role   = isVerb ? 'Verbo' : isSubj ? 'Sujeito' : isPred ? 'Predicado' : '—';
+    const cls    = isVerb ? ' correct' : isSubj ? ' subject-hint' : isPred ? ' predicate-hint' : '';
+    return `<div class="hint-row">
+      <span class="wh-word${isVerb || isSubj || isPred ? ' correct' : ''}">${word}</span>
+      <span class="wh-arrow">→</span>
+      <span class="hint-label${cls}">${role}</span>
+      ${isVerb || isSubj || isPred ? `<span class="hint-check">${icons.check}</span>` : ''}
+    </div>`;
+  }).filter(h => h).join('');
+  const userVerbWord  = answered.verbSelected != null ? q.sentence[answered.verbSelected] : '—';
+  const userSubjWords = answered.noSubjectSelected ? 'Sem sujeito'
+    : (answered.subjectSelected && answered.subjectSelected.length > 0
+        ? [...answered.subjectSelected].sort((a,b)=>a-b).map(i=>q.sentence[i]).join(' ') : '—');
+  const userPredWords = answered.predicateSelected && answered.predicateSelected.length > 0
+    ? [...answered.predicateSelected].sort((a,b)=>a-b).map(i=>q.sentence[i]).join(' ') : '—';
+  const noSubjLabel = q.noSubject
+    ? `<div class="m4-nosubj-result-tag${answered.subjectCorrect ? '' : ' wrong'}">
+        <i class="fa-solid fa-ban"></i>
+        ${answered.subjectCorrect ? 'Correto: esta oração não possui sujeito' : 'Incorreto: esta oração não possui sujeito'}
+      </div>` : '';
+  return `
+    <div class="difficulty${diffCls}">${icons.bars} ${q.difficulty}</div>
+    <p class="question-title">${q.text || 'Identifique o verbo, sujeito e predicado:'}</p>
+    ${sentenceHTML}
+    ${noSubjLabel}
+    <div class="feedback${answered.correct ? '' : ' wrong'}">
+      <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
+      <div class="feedback-content">
+        <h2>${answered.correct ? 'Correto!' : 'Incorreto!'}</h2>
+        ${!answered.correct ? `<p class="user-answer-recap">
+          <span class="recap-verb">Verbo: <strong>${userVerbWord}</strong></span>
+          <span class="recap-sep">·</span>
+          <span class="recap-subject">Sujeito: <strong>${userSubjWords}</strong></span>
+          <span class="recap-sep">·</span>
+          <span>Predicado: <strong>${userPredWords}</strong></span>
+        </p>` : ''}
+        <p>${q.feedback}</p>
+        ${q.example ? `<p>${q.example}</p>` : ''}
+        <div class="hints-breakdown">
+          <p class="hints-title">Papel de cada palavra:</p>
+          <div class="hints-list">${hintsHTML}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function setupCadernoTriSelect(q, qIdx, key, hasNoSubject) {
+  document.querySelectorAll('[data-cadtri]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const i = +chip.dataset.cadtri;
+      if (PUNCT.has(q.sentence[i])) return;
+      const p = state.cadernoPending;
+      if (p.mode === 'verb') {
+        if (p.verbIdx === i) {
+          p.predicateIdxs = p.predicateIdxs.filter(x => x !== i);
+          p.predicateConfirmed = false;
+          p.verbIdx = null;
+        } else {
+          p.predicateIdxs = p.predicateIdxs.filter(x => x !== p.verbIdx);
+          p.subjectIdxs   = p.subjectIdxs.filter(x => x !== i);
+          p.predicateIdxs = p.predicateIdxs.filter(x => x !== i);
+          p.predicateConfirmed = false;
+          p.verbIdx = i;
+          p.predicateIdxs.push(i);
+          p.mode = 'subject';
+        }
+      } else if (p.mode === 'subject') {
+        if (p.noSubject || i === p.verbIdx) return;
+        p.predicateIdxs = p.predicateIdxs.filter(x=>x!==i);
+        const idx = p.subjectIdxs.indexOf(i); idx===-1 ? p.subjectIdxs.push(i) : p.subjectIdxs.splice(idx,1);
+      } else {
+        if (i === p.verbIdx) { p.predicateConfirmed = true; }
+        else if (!p.subjectIdxs.includes(i)) {
+          const idx = p.predicateIdxs.indexOf(i); idx===-1 ? p.predicateIdxs.push(i) : p.predicateIdxs.splice(idx,1);
+        }
+      }
+      render();
+    });
+  });
+  const bv = document.getElementById('cPhaseVerb');
+  const bs = document.getElementById('cPhaseSuj');
+  const bp = document.getElementById('cPhasePred');
+  const bn = document.getElementById('cNoSubjBtn');
+  if (bv) bv.addEventListener('click', () => { state.cadernoPending.mode = 'verb';      render(); });
+  if (bs) bs.addEventListener('click', () => { state.cadernoPending.mode = 'subject';   render(); });
+  if (bp) bp.addEventListener('click', () => { state.cadernoPending.mode = 'predicate'; render(); });
+  if (bn) bn.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.noSubject) { p.noSubject = false; p.mode = 'subject'; }
+    else             { p.noSubject = true; p.subjectIdxs = []; p.mode = 'predicate'; }
+    render();
+  });
+  const cf = document.getElementById('cadernoConfirmBtn');
+  if (cf) cf.addEventListener('click', () => {
+    const p = state.cadernoPending;
+    if (p.verbIdx === null || p.predicateIdxs.length === 0) return;
+    if (!p.noSubject && p.subjectIdxs.length === 0) return;
+    const vOk = p.verbIdx === q.verbIndex;
+    const pOk = p.predicateIdxs.length === q.predicateIndices.length && q.predicateIndices.every(i => p.predicateIdxs.includes(i));
+    const sOk = q.noSubject ? p.noSubject : (!p.noSubject && p.subjectIdxs.length === q.subjectIndices.length && q.subjectIndices.every(i => p.subjectIdxs.includes(i)));
+    const ok  = vOk && sOk && pOk;
+    state.cadernoAnswered[key] = { correct: ok, verbCorrect: vOk, subjectCorrect: sOk, predicateCorrect: pOk, verbSelected: p.verbIdx, subjectSelected: [...p.subjectIdxs], predicateSelected: [...p.predicateIdxs], noSubjectSelected: p.noSubject };
+    if (!ok) {
+      if (hasNoSubject) state.m4errorNotebook[qIdx] = (state.m4errorNotebook[qIdx] || 0) + 1;
+      else              state.m3errorNotebook[qIdx] = (state.m3errorNotebook[qIdx] || 0) + 1;
+    }
+    recordActivity(); updateErrorNotebook(); saveProgress(); render();
+  });
+}
+
 // ── PÁGINA CADERNO DE ERROS ───────────────────────────────────
 function renderErrorNotebookPage() {
   const entries1 = Object.entries(state.errorNotebook).sort((a, b) => Number(a[0]) - Number(b[0]));
@@ -2628,125 +3333,50 @@ function renderErrorNotebookPage() {
 
   if (totalErrors > 0) {
     $('practiceAllBtn').addEventListener('click', () => {
-      if (entries1.length > 0) {
-        const ws1 = Object.keys(state.errorNotebook).map(Number);
-        ws1.forEach(i => { state.results[i] = null; });
-        state.activeSet = ws1;
-        state.current   = 0;
-      }
-      if (entries2.length > 0) {
-        const ws2 = Object.keys(state.m2errorNotebook).map(Number);
-        ws2.forEach(i => { state.m2results[i] = null; });
-        state.m2activeSet = ws2;
-        state.m2current   = 0;
-        state.m2phase     = 'quiz';
-        state.m2pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
-      }
-      if (entries3.length > 0) {
-        const ws3 = Object.keys(state.m3errorNotebook).map(Number);
-        ws3.forEach(i => { state.m3results[i] = null; });
-        state.m3activeSet = ws3;
-        state.m3current   = 0;
-        state.m3phase     = 'quiz';
-        state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
-      }
-      if (entries4.length > 0) {
-        const ws4 = Object.keys(state.m4errorNotebook).map(Number);
-        ws4.forEach(i => { state.m4results[i] = null; });
-        state.m4activeSet = ws4;
-        state.m4current   = 0;
-        state.m4phase     = 'quiz';
-        state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
-      }
-      if (entries1.length > 0) {
-        state.phase = 'quiz';
-        updateStats();
-      } else if (entries2.length > 0) {
-        state.phase = 'module2-quiz';
-        updateModule2Card();
-      } else if (entries3.length > 0) {
-        state.phase = 'module3-quiz';
-        updateModule3Card();
-      } else {
-        state.phase = 'module4-quiz';
-        updateModule4Card();
-      }
+      state.cadernoQueue    = buildCadernoQueue();
+      state.cadernoCurrent  = 0;
+      state.cadernoAnswered = {};
+      cadernoResetPending();
+      state.phase = 'caderno-quiz';
       render();
-      saveProgress();
     });
   }
 }
 
 // ── NAVEGAR PARA QUESTÃO (caderno de erros) ──────────────────
 function goToQuestion(qIdx) {
-  if (state.activeSet.indexOf(Number(qIdx)) === -1) {
-    state.activeSet = questions.map((_, i) => i);
-  }
-  state.current = state.activeSet.indexOf(Number(qIdx));
-  state.results[Number(qIdx)] = null;
-  state.phase   = 'quiz';
-  updateStats();
-  document.getElementById('leftSidebar').classList.remove('open');
-  document.getElementById('btnMobileConteudos').classList.remove('active');
-  const bd = document.getElementById('mobilePanelBackdrop');
-  if (bd) bd.classList.remove('active');
+  state.cadernoQueue    = [{ mod: 1, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  state.phase = 'caderno-quiz';
   render();
 }
 
-// ── NAVEGAR PARA QUESTÃO MÓDULO 2 (caderno de erros) ─────────
 function goToM2Question(qIdx) {
-  state.m2unlocked = true;
-  if (state.m2activeSet.indexOf(Number(qIdx)) === -1) {
-    state.m2activeSet = questions2.map((_, i) => i);
-  }
-  state.m2current = state.m2activeSet.indexOf(Number(qIdx));
-  state.m2results[Number(qIdx)] = null;
-  state.m2phase   = 'quiz';
-  state.m2pending = { mode: 'verb', verbIdx: null, subjectIdxs: [] };
-  state.phase     = 'module2-quiz';
-  updateModule2Card();
-  document.getElementById('leftSidebar').classList.remove('open');
-  document.getElementById('btnMobileConteudos').classList.remove('active');
-  const bd = document.getElementById('mobilePanelBackdrop');
-  if (bd) bd.classList.remove('active');
+  state.cadernoQueue    = [{ mod: 2, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  state.phase = 'caderno-quiz';
   render();
 }
 
-// ── NAVEGAR PARA QUESTÃO MÓDULO 3 (caderno de erros) ─────────
 function goToM3Question(qIdx) {
-  state.m3unlocked = true;
-  if (state.m3activeSet.indexOf(Number(qIdx)) === -1) {
-    state.m3activeSet = questions3.map((_, i) => i);
-  }
-  state.m3current = state.m3activeSet.indexOf(Number(qIdx));
-  state.m3results[Number(qIdx)] = null;
-  state.m3phase   = 'quiz';
-  state.m3pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
-  state.phase     = 'module3-quiz';
-  updateModule3Card();
-  document.getElementById('leftSidebar').classList.remove('open');
-  document.getElementById('btnMobileConteudos').classList.remove('active');
-  const bd3 = document.getElementById('mobilePanelBackdrop');
-  if (bd3) bd3.classList.remove('active');
+  state.cadernoQueue    = [{ mod: 3, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  state.phase = 'caderno-quiz';
   render();
 }
 
-// ── NAVEGAR PARA QUESTÃO MÓDULO 4 (caderno de erros) ─────────
 function goToM4Question(qIdx) {
-  state.m4unlocked = true;
-  if (state.m4activeSet.indexOf(Number(qIdx)) === -1) {
-    state.m4activeSet = questions4.map((_, i) => i);
-  }
-  state.m4current = state.m4activeSet.indexOf(Number(qIdx));
-  state.m4results[Number(qIdx)] = null;
-  state.m4phase   = 'quiz';
-  state.m4pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
-  state.phase     = 'module4-quiz';
-  updateModule4Card();
-  document.getElementById('leftSidebar').classList.remove('open');
-  document.getElementById('btnMobileConteudos').classList.remove('active');
-  const bd4 = document.getElementById('mobilePanelBackdrop');
-  if (bd4) bd4.classList.remove('active');
+  state.cadernoQueue    = [{ mod: 4, qIdx: +qIdx }];
+  state.cadernoCurrent  = 0;
+  state.cadernoAnswered = {};
+  cadernoResetPending();
+  state.phase = 'caderno-quiz';
   render();
 }
 
@@ -3071,7 +3701,8 @@ function updateModule2Card() {
   if (fill) fill.style.width = pct + '%';
   if (text) text.textContent = pct + '%';
 
-  const allDone = (answered === total && total > 0) || state.m3unlocked;
+  if (answered === total && total > 0) state.m3unlocked = true;
+  const allDone = state.m3unlocked;
   const m3Card = $('module3Card');
   const m3Lock = $('module3LockIcon');
   if (m3Card) m3Card.classList.toggle('locked', !allDone);
@@ -3089,6 +3720,13 @@ function updateModule4Card() {
   const text = m4Card.querySelector('.module-progress span');
   if (fill) fill.style.width = pct + '%';
   if (text) text.textContent = pct + '%';
+
+  if (answered === total && total > 0) state.m5unlocked = true;
+  const allDone = state.m5unlocked;
+  const m5Card = $('module5Card');
+  const m5Lock = $('module5LockIcon');
+  if (m5Card) m5Card.classList.toggle('locked', !allDone);
+  if (m5Lock) m5Lock.style.display = allDone ? 'none' : '';
 }
 
 // ── MÓDULO 3: ATUALIZAR CARD DA SIDEBAR ──────────────────────
@@ -3103,7 +3741,8 @@ function updateModule3Card() {
   if (fill) fill.style.width = pct + '%';
   if (text) text.textContent = pct + '%';
 
-  const allDone = (answered === total && total > 0) || state.m4unlocked;
+  if (answered === total && total > 0) state.m4unlocked = true;
+  const allDone = state.m4unlocked;
   const m4Card = $('module4Card');
   const m4Lock = $('module4LockIcon');
   if (m4Card) m4Card.classList.toggle('locked', !allDone);
@@ -3126,13 +3765,13 @@ function buildAnnotatedSentence3(q, chipsFn, annotFn) {
 // ── MÓDULO 3: MONTAR TRI-SELECT ───────────────────────────────
 function buildTriSelect(q, result, done) {
   if (!done) {
-    const { mode, verbIdx, subjectIdxs, predicateIdxs } = state.m3pending;
+    const { mode, verbIdx, subjectIdxs, predicateIdxs, predicateConfirmed } = state.m3pending;
     const canConfirm = verbIdx !== null && subjectIdxs.length > 0 && predicateIdxs.length > 0;
 
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
-        if (idx === verbIdx)                  cls += ' verb-pending';
+        if (idx === verbIdx)                  cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
         else if (subjectIdxs.includes(idx))   cls += ' subject-pending';
         else if (predicateIdxs.includes(idx)) cls += ' predicate-pending';
         return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
@@ -3146,7 +3785,7 @@ function buildTriSelect(q, result, done) {
         if (verbIdx !== null) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
-        if (predicateIdxs.length > 0) {
+        if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
           const sorted = [...predicateIdxs].sort((a,b) => a-b);
           a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
         }
@@ -3303,11 +3942,16 @@ function selectTriWord(wordIdx) {
   const { mode } = state.m3pending;
   if (mode === 'verb') {
     if (state.m3pending.verbIdx === wordIdx) {
+      state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m3pending.predicateConfirmed = false;
       state.m3pending.verbIdx = null;
     } else {
+      state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== state.m3pending.verbIdx);
       state.m3pending.subjectIdxs   = state.m3pending.subjectIdxs.filter(i => i !== wordIdx);
       state.m3pending.predicateIdxs = state.m3pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m3pending.predicateConfirmed = false;
       state.m3pending.verbIdx = wordIdx;
+      state.m3pending.predicateIdxs.push(wordIdx);
       state.m3pending.mode    = 'subject';
     }
   } else if (mode === 'subject') {
@@ -3317,10 +3961,14 @@ function selectTriWord(wordIdx) {
     if (i === -1) state.m3pending.subjectIdxs.push(wordIdx);
     else          state.m3pending.subjectIdxs.splice(i, 1);
   } else {
-    if (state.m3pending.subjectIdxs.includes(wordIdx)) return;
-    const i = state.m3pending.predicateIdxs.indexOf(wordIdx);
-    if (i === -1) state.m3pending.predicateIdxs.push(wordIdx);
-    else          state.m3pending.predicateIdxs.splice(i, 1);
+    if (wordIdx === state.m3pending.verbIdx) {
+      state.m3pending.predicateConfirmed = true;
+    } else {
+      if (state.m3pending.subjectIdxs.includes(wordIdx)) return;
+      const i = state.m3pending.predicateIdxs.indexOf(wordIdx);
+      if (i === -1) state.m3pending.predicateIdxs.push(wordIdx);
+      else          state.m3pending.predicateIdxs.splice(i, 1);
+    }
   }
   renderModule3Question();
 }
@@ -3358,7 +4006,7 @@ function confirmTriAnswer() {
 // ── MÓDULO 3: NAVEGAR ────────────────────────────────────────
 function m3navigate(dir) {
   state.m3current += dir;
-  state.m3pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
+  state.m3pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
   renderModule3Question();
   saveProgress();
 }
@@ -3420,7 +4068,7 @@ function renderModule3Results() {
       wrongSet.forEach(i => { state.m3results[i] = null; });
       state.m3activeSet = wrongSet;
       state.m3current   = 0;
-      state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [] };
+      state.m3pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], predicateConfirmed: false };
       state.phase       = 'module3-quiz';
       render();
       saveProgress();
@@ -3435,7 +4083,7 @@ function startModule4Quiz() {
   state.m4activeSet = questions4.map((_, i) => i);
   state.m4results   = new Array(questions4.length).fill(null);
   state.m4points    = 0;
-  state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+  state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
   state.phase       = 'module4-quiz';
   updateModule4Card();
   render();
@@ -3445,13 +4093,13 @@ function startModule4Quiz() {
 // ── MÓDULO 4: MONTAR TRI-SELECT COM "SEM SUJEITO" ────────────
 function buildM4TriSelect(q, result, done) {
   if (!done) {
-    const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject } = state.m4pending;
+    const { mode, verbIdx, subjectIdxs, predicateIdxs, noSubject, predicateConfirmed } = state.m4pending;
     const canConfirm = verbIdx !== null && (subjectIdxs.length > 0 || noSubject) && predicateIdxs.length > 0;
 
     const sentenceHTML = buildAnnotatedSentence3(q,
       (word, idx) => {
         let cls = 'word-chip';
-        if (idx === verbIdx)                                     cls += ' verb-pending';
+        if (idx === verbIdx)                                     cls += mode === 'predicate' ? ' predicate-pending' : ' verb-pending';
         else if (!noSubject && subjectIdxs.includes(idx))       cls += ' subject-pending';
         else if (predicateIdxs.includes(idx))                   cls += ' predicate-pending';
         return `<span class="${cls}" data-wi="${idx}" style="grid-column:${idx+1};grid-row:1">${word}</span>`;
@@ -3465,7 +4113,7 @@ function buildM4TriSelect(q, result, done) {
         if (verbIdx !== null) {
           a += `<div class="annot-verb" style="grid-column:${verbIdx+1};grid-row:2">Verbo</div>`;
         }
-        if (predicateIdxs.length > 0) {
+        if (predicateConfirmed || predicateIdxs.some(i => i !== verbIdx)) {
           const sorted = [...predicateIdxs].sort((a,b) => a-b);
           a += `<div class="annot-predicate" style="grid-column:${sorted[0]+1}/span ${sorted[sorted.length-1]-sorted[0]+1};grid-row:3">Predicado</div>`;
         }
@@ -3645,11 +4293,16 @@ function selectM4Word(wordIdx) {
   const { mode, noSubject } = state.m4pending;
   if (mode === 'verb') {
     if (state.m4pending.verbIdx === wordIdx) {
+      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m4pending.predicateConfirmed = false;
       state.m4pending.verbIdx = null;
     } else {
+      state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== state.m4pending.verbIdx);
       state.m4pending.subjectIdxs   = state.m4pending.subjectIdxs.filter(i => i !== wordIdx);
       state.m4pending.predicateIdxs = state.m4pending.predicateIdxs.filter(i => i !== wordIdx);
+      state.m4pending.predicateConfirmed = false;
       state.m4pending.verbIdx = wordIdx;
+      state.m4pending.predicateIdxs.push(wordIdx);
       state.m4pending.mode    = 'subject';
     }
   } else if (mode === 'subject') {
@@ -3660,10 +4313,14 @@ function selectM4Word(wordIdx) {
     if (i === -1) state.m4pending.subjectIdxs.push(wordIdx);
     else          state.m4pending.subjectIdxs.splice(i, 1);
   } else {
-    if (state.m4pending.subjectIdxs.includes(wordIdx)) return;
-    const i = state.m4pending.predicateIdxs.indexOf(wordIdx);
-    if (i === -1) state.m4pending.predicateIdxs.push(wordIdx);
-    else          state.m4pending.predicateIdxs.splice(i, 1);
+    if (wordIdx === state.m4pending.verbIdx) {
+      state.m4pending.predicateConfirmed = true;
+    } else {
+      if (state.m4pending.subjectIdxs.includes(wordIdx)) return;
+      const i = state.m4pending.predicateIdxs.indexOf(wordIdx);
+      if (i === -1) state.m4pending.predicateIdxs.push(wordIdx);
+      else          state.m4pending.predicateIdxs.splice(i, 1);
+    }
   }
   renderModule4Question();
 }
@@ -3718,7 +4375,7 @@ function confirmM4Answer() {
 // ── MÓDULO 4: NAVEGAR ────────────────────────────────────────
 function m4navigate(dir) {
   state.m4current += dir;
-  state.m4pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+  state.m4pending = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
   renderModule4Question();
   saveProgress();
 }
@@ -3769,7 +4426,7 @@ function renderModule4Results() {
       wrongSet.forEach(i => { state.m4results[i] = null; });
       state.m4activeSet = wrongSet;
       state.m4current   = 0;
-      state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false };
+      state.m4pending   = { mode: 'verb', verbIdx: null, subjectIdxs: [], predicateIdxs: [], noSubject: false, predicateConfirmed: false };
       state.phase       = 'module4-quiz';
       render();
       saveProgress();
@@ -3840,23 +4497,18 @@ function updateStats() {
   const icon  = $('moduleStatusIcon');
   const m1correctCt = state.results.filter(r => r !== null && r.correct).length;
   const allDone = m1correctCt === m1total && m1total > 0;
+  if (allDone) state.m2unlocked = true;
   if (allDone) {
     if (badge) { badge.className = 'badge'; badge.innerHTML = 'Concluído <i class="fa-solid fa-circle-check"></i>'; }
     if (icon)  icon.style.display = 'flex';
-    const m2 = $('module2Card');
-    const m2lock = $('module2LockIcon');
-    if (m2) m2.classList.remove('locked');
-    if (m2lock) m2lock.style.display = 'none';
   } else {
     if (badge) { badge.className = 'badge in-progress'; badge.innerHTML = 'Em andamento <i class="fa-solid fa-circle-half-stroke"></i>'; }
     if (icon)  icon.style.display = 'none';
-    if (!state.m2unlocked) {
-      const m2 = $('module2Card');
-      const m2lock = $('module2LockIcon');
-      if (m2) m2.classList.add('locked');
-      if (m2lock) m2lock.style.display = '';
-    }
   }
+  const m2 = $('module2Card');
+  const m2lock = $('module2LockIcon');
+  if (m2) m2.classList.toggle('locked', !state.m2unlocked);
+  if (m2lock) m2lock.style.display = state.m2unlocked ? 'none' : '';
 }
 
 // Mobile nav panel toggles
