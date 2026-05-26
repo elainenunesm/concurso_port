@@ -864,6 +864,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     background: #fff5f5;
     color: #dc2626;
 }
+.word-chip.nucleo-pending {
+    border-color: #d97706;
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 700;
+}
 .word-chip.correct-verb {
     border-color: #2563eb;
     background: linear-gradient(90deg, #eff6ff, #f5f9ff);
@@ -873,6 +879,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     border-color: #dc2626;
     background: linear-gradient(90deg, #fff5f5, #fffbfb);
     color: #dc2626;
+}
+.word-chip.correct-nucleo {
+    border-color: #d97706;
+    background: linear-gradient(90deg, #fef3c7, #fffbeb);
+    color: #92400e;
+    font-weight: 700;
 }
 .word-chip.wrong-verb,
 .word-chip.wrong-subject {
@@ -949,6 +961,30 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 }
 .annot-predicate::before { left: 0; }
 .annot-predicate::after  { right: 0; }
+.annot-nucleo {
+    position: relative;
+    grid-row: 3;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 6px 3px;
+    margin-top: 10px;
+    border-top: 2px solid currentColor;
+    white-space: nowrap;
+    color: #d97706;
+}
+.annot-nucleo::before, .annot-nucleo::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+.annot-nucleo::before { left: 0; }
+.annot-nucleo::after  { right: 0; }
 .word-chip.lesson-predicate {
     border-color: #7c3aed;
     background: #f5f3ff;
@@ -1065,7 +1101,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     background: #fff5f5;
     color: #dc2626;
 }
-.dual-mode-btn:not(.active-verb):not(.active-subject):hover {
+.dual-mode-btn.active-nucleo {
+    border-color: #d97706;
+    background: #fffbeb;
+    color: #d97706;
+}
+.dual-mode-btn:not(.active-verb):not(.active-subject):not(.active-nucleo):hover {
     border-color: var(--text-gray);
     background: var(--bg-page);
 }
@@ -1095,6 +1136,89 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .hint-label.subject-hint {
     color: #dc2626;
     font-weight: 600;
+}
+
+/* ── SENSE-SELECT (módulo 6: sentido da locução verbal) ─────── */
+.sense-sentence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 16px;
+    background: var(--bg-body);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 12px;
+}
+.sense-hint {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin: 0 0 14px;
+}
+.sense-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.sense-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 13px 48px 13px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    text-align: left;
+    width: 100%;
+}
+.sense-option:not(.disabled):hover {
+    border-color: #7c3aed;
+    background: #f5f3ff;
+}
+.sense-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+.sense-sub {
+    font-size: 12px;
+    color: var(--text-gray);
+}
+.sense-option.sense-correct {
+    border-color: var(--success-green);
+    background: linear-gradient(90deg, #f0fdf4, #f9fffe);
+}
+.sense-option.sense-correct .sense-label { color: #16a34a; }
+.sense-option.sense-correct .sense-sub   { color: #4ade80; }
+.sense-option.sense-wrong {
+    border-color: var(--error-red);
+    background: linear-gradient(90deg, #fff5f5, #fffbfb);
+}
+.sense-option.sense-wrong .sense-label { color: var(--error-red); }
+.sense-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+.sense-option.sense-correct .sense-icon {
+    background: var(--success-green);
+    color: #fff;
+}
+.sense-option.sense-wrong .sense-icon {
+    background: var(--error-red);
+    color: #fff;
 }
 
 /* Palavra + classe gramatical no breakdown pós-resposta */
@@ -1691,7 +1815,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .sa-wrap { margin-bottom: 14px; }
     .sa-wrap .word-chip { padding: 5px 7px; font-size: 12px; }
     .m3-example { padding: 6px 10px; }
-    .annot-verb, .annot-subject, .annot-predicate { font-size: 10px; padding: 3px 4px 2px; margin-top: 8px; }
+    .annot-verb, .annot-subject, .annot-predicate, .annot-nucleo { font-size: 10px; padding: 3px 4px 2px; margin-top: 8px; }
 
     .completion-screen { padding: 32px 16px; }
     .completion-stats { gap: 16px; padding: 18px 20px; flex-wrap: wrap; justify-content: center; }
