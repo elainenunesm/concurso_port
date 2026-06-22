@@ -1295,24 +1295,25 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .lesson-table {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 12px;
     font-size: 17px;
 }
 
 .lesson-row {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 4px 10px;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 14px;
+    background: var(--bg-page);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
 .lesson-col-key {
-    flex: 1 1 220px;
     color: var(--text-dark);
     font-weight: 500;
     overflow-wrap: break-word;
-    min-width: 0;
 }
 
 .lesson-col-arrow {
@@ -1320,17 +1321,12 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 }
 
 .lesson-col-val {
-    flex: 1 1 220px;
     color: var(--text-gray);
     overflow-wrap: break-word;
-    min-width: 0;
+    font-size: 0.93em;
 }
 
-.lesson-col-val::before {
-    content: "\2192\00a0";
-    color: var(--text-light);
-    font-weight: 600;
-}
+.lesson-col-val::before { content: none; }
 
 .lesson-grid {
     display: grid;
@@ -1789,9 +1785,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-body { padding: 16px 14px; }
     .lesson-body p { font-size: 16px; text-align: left; }
 
-    .lesson-table { font-size: 16px; gap: 10px; }
-    .lesson-col-key { flex-basis: 100%; }
-    .lesson-col-val { flex-basis: 100%; }
+    .lesson-table { font-size: 16px; gap: 8px; }
     .btn-start { width: 100%; justify-content: center; }
 
     .sentence-annotated { column-gap: 6px; }
@@ -1843,9 +1837,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-title { font-size: 17px; margin-bottom: 12px; }
     .lesson-body { padding: 12px 10px; }
     .lesson-body p { font-size: 15px; line-height: 1.7; }
-    .lesson-table { font-size: 13px; }
-    .lesson-col-key { flex-basis: 100%; font-size: 13px; }
-    .lesson-col-val { flex-basis: 100%; font-size: 13px; }
+    .lesson-table { font-size: 14px; gap: 8px; }
+    .lesson-col-key { font-size: 14px; }
+    .lesson-col-val { font-size: 13px; }
     .lesson-grid { font-size: 14px; grid-template-columns: 1fr; row-gap: 0; }
     .lesson-grid .lg-key { margin-top: 10px; font-size: 14px; }
     .lesson-grid .lg-val { font-size: 13px; }
