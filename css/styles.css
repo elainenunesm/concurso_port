@@ -1505,7 +1505,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .obj-example-table td { padding: 9px 12px; border-top: 1px solid #e5e7eb; color: var(--text-gray); }
 .obj-example-answer { font-weight: 700; color: #16a34a !important; }
 /* Evolução gradual */
-.obj-evolucao { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 6px; }
+.obj-evolucao { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 6px; }
 .obj-evo-col { display: flex; flex-direction: column; gap: 5px; }
 .obj-evo-header { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
 .obj-evo-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
