@@ -1307,9 +1307,11 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 }
 
 .lesson-col-key {
-    flex-shrink: 0;
+    flex-shrink: 1;
     color: var(--text-dark);
     font-weight: 500;
+    overflow-wrap: break-word;
+    min-width: 0;
 }
 
 .lesson-col-arrow {
@@ -1326,12 +1328,14 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 .lesson-grid {
     display: grid;
-    grid-template-columns: max-content 24px 1fr;
+    grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr);
     row-gap: 10px;
     column-gap: 4px;
     align-items: center;
     margin-bottom: 12px;
     font-size: 17px;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .lg-key {
@@ -1784,7 +1788,13 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-col-arrow { display: none; }
     .lesson-col-val { padding-left: 10px; }
     .lesson-col-val::before { content: "→ "; color: var(--text-light); font-weight: 600; }
-    .lesson-grid { font-size: 16px; grid-template-columns: minmax(0, max-content) 20px 1fr; column-gap: 8px; }
+    /* Lesson grid: empilha cada par chave/valor em coluna única */
+    .lesson-grid { font-size: 16px; grid-template-columns: 1fr; row-gap: 0; column-gap: 0; }
+    .lesson-grid .lg-arrow { display: none; }
+    .lesson-grid .lg-key { margin-top: 12px; font-weight: 600; border-left: 3px solid var(--primary-main); padding-left: 8px; overflow-wrap: break-word; word-break: break-word; }
+    .lesson-grid .lg-key:first-child { margin-top: 0; }
+    .lesson-grid .lg-val { padding-left: 11px; overflow-wrap: break-word; }
+    .lesson-grid .lg-val::before { content: "→ "; color: var(--text-light); font-weight: 600; }
     .btn-start { width: 100%; justify-content: center; }
 
     .sentence-annotated { column-gap: 6px; }
@@ -1837,7 +1847,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     .lesson-body { padding: 12px 10px; }
     .lesson-body p { font-size: 15px; line-height: 1.7; }
     .lesson-table { font-size: 13px; }
-    .lesson-grid { font-size: 13px; grid-template-columns: minmax(0, max-content) 18px 1fr; column-gap: 6px; row-gap: 12px; }
+    .lesson-grid { font-size: 14px; grid-template-columns: 1fr; row-gap: 0; }
+    .lesson-grid .lg-key { margin-top: 10px; font-size: 14px; }
+    .lesson-grid .lg-val { font-size: 13px; }
 
     .sentence-annotated { column-gap: 4px; }
     .sa-wrap { margin-bottom: 14px; }
