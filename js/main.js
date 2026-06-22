@@ -2222,31 +2222,237 @@ function render() {
 function renderObjective() {
   $('quizContainer').innerHTML = `
     <div class="lesson-screen">
-      <div class="lesson-badge"><i class="fa-solid fa-bullseye"></i> Projeto de extensão</div>
-      <div class="lesson-body objective-body">
-        <p>Esta aplicação foi desenvolvida como parte de um <strong>Projeto de Extensão</strong> do curso de Análise e Desenvolvimento de Sistemas, com o propósito de tornar o aprendizado de Língua Portuguesa mais acessível, prático e motivador para diferentes públicos e faixas etárias.</p>
-        <p>O site foi criado a partir da percepção de que muitos estudantes encontram dificuldades em conteúdos gramaticais devido ao excesso de teoria e à falta de ferramentas interativas que auxiliem na prática e na organização dos estudos. Pensando nisso, a plataforma reúne recursos visuais, exercícios, desafios, gamificação e acompanhamento de desempenho para transformar o processo de aprendizagem em uma experiência mais dinâmica e eficiente.</p>
-        <p>Além de apoiar estudantes em reforço escolar e preparação para concursos públicos, o projeto busca incentivar a autonomia nos estudos, permitindo que cada usuário avance no próprio ritmo e acompanhe sua evolução ao longo do aprendizado.</p>
-        <p>A iniciativa faz parte das ações de extensão universitária voltadas à inovação tecnológica e educacional, promovendo a integração entre tecnologia, educação e impacto social. O projeto também está alinhado aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, especialmente:</p>
-        <div class="ods-list">
-          <div class="ods-item ods-4">
-            <div class="ods-icon"><strong>4</strong></div>
-            <div class="ods-text"><strong>ODS 4 — Educação de Qualidade</strong><span>Promover acesso a uma aprendizagem mais inclusiva, acessível e eficiente.</span></div>
-          </div>
-          <div class="ods-item ods-9">
-            <div class="ods-icon"><strong>9</strong></div>
-            <div class="ods-text"><strong>ODS 9 — Indústria, Inovação e Infraestrutura</strong><span>Estimular o desenvolvimento de soluções tecnológicas aplicadas à educação.</span></div>
-          </div>
-          <div class="ods-item ods-10">
-            <div class="ods-icon"><strong>10</strong></div>
-            <div class="ods-text"><strong>ODS 10 — Redução das Desigualdades</strong><span>Contribuir para ampliar o acesso ao aprendizado por meio da tecnologia.</span></div>
+      <div class="obj-accordion" id="objAccordion">
+
+        <!-- 1. Nosso Objetivo -->
+        <div class="obj-acc-item open" id="objAcc1">
+          <button class="obj-acc-header" data-idx="1">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <span class="obj-acc-title">1. Nosso Objetivo</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <p style="font-size:16px;color:var(--text-gray);line-height:1.6;margin:0">
+              Aprender gramática não precisa ser decorar regras.
+            </p>
+            <p style="font-size:16px;color:var(--text-gray);line-height:1.6;margin:8px 0 0">
+              O <strong>Gramix</strong> foi criado para ajudar você a entender como os textos são construídos, ajudando a criar cada elemento da língua <strong>passo a passo</strong>.
+            </p>
           </div>
         </div>
+
+        <!-- 2. Aprenda como um Quebra-Cabeça -->
+        <div class="obj-acc-item open" id="objAcc2">
+          <button class="obj-acc-header" data-idx="2">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <span class="obj-acc-title">2. Aprenda como um Quebra-Cabeça</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <div class="obj-flow">
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#3b82f6"><i class="fa-solid fa-bolt"></i></div>
+                <span class="obj-flow-label">VERBOS</span>
+              </div>
+              <i class="fa-solid fa-arrow-right obj-flow-arrow"></i>
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#f97316"><i class="fa-solid fa-user"></i></div>
+                <span class="obj-flow-label">SUJEITO</span>
+              </div>
+              <i class="fa-solid fa-arrow-right obj-flow-arrow"></i>
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#10b981"><i class="fa-solid fa-comment"></i></div>
+                <span class="obj-flow-label">PREDICADO</span>
+              </div>
+              <i class="fa-solid fa-arrow-right obj-flow-arrow"></i>
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#8b5cf6"><i class="fa-solid fa-ellipsis"></i></div>
+                <span class="obj-flow-label">PONTUAÇÃO</span>
+              </div>
+              <i class="fa-solid fa-arrow-right obj-flow-arrow"></i>
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#ec4899"><i class="fa-solid fa-book-open"></i></div>
+                <span class="obj-flow-label">NARRAÇÃO</span>
+              </div>
+              <i class="fa-solid fa-arrow-right obj-flow-arrow"></i>
+              <div class="obj-flow-item">
+                <div class="obj-flow-icon" style="background:#6366f1"><i class="fa-solid fa-link"></i></div>
+                <span class="obj-flow-label">PERÍODOS COMPOSTOS</span>
+              </div>
+            </div>
+            <p style="font-size:15px;color:var(--text-gray);line-height:1.5;margin:0;font-style:italic">
+              Você aprende uma peça de cada vez, e as peças, juntas, montam um todo complexo.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Explicações Simples -->
+        <div class="obj-acc-item open" id="objAcc3">
+          <button class="obj-acc-header" data-idx="3">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#16a34a,#15803d)">
+              <i class="fa-solid fa-book"></i>
+            </div>
+            <span class="obj-acc-title">3. Explicações Simples</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <div class="obj-features">
+              <div class="obj-feature-item">
+                <div class="obj-feature-icon"><i class="fa-solid fa-check"></i></div>
+                <span class="obj-feature-text">Linguagem simples</span>
+              </div>
+              <div class="obj-feature-item">
+                <div class="obj-feature-icon"><i class="fa-solid fa-check"></i></div>
+                <span class="obj-feature-text">Exemplos visuais</span>
+              </div>
+              <div class="obj-feature-item">
+                <div class="obj-feature-icon"><i class="fa-solid fa-check"></i></div>
+                <span class="obj-feature-text">Do simples ao complexo</span>
+              </div>
+              <div class="obj-feature-item">
+                <div class="obj-feature-icon"><i class="fa-solid fa-check"></i></div>
+                <span class="obj-feature-text">Aprenda sozinho</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Exemplo -->
+        <div class="obj-acc-item open" id="objAcc4">
+          <button class="obj-acc-header" data-idx="4">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#059669,#047857)">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <span class="obj-acc-title">4. Exemplo</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <div class="obj-example-sentence">Maria cantou no coral</div>
+            <table class="obj-example-table">
+              <thead><tr><th>Pergunta</th><th>Resposta</th></tr></thead>
+              <tbody>
+                <tr><td>Qual é o verbo?</td><td class="obj-example-answer">cantou</td></tr>
+                <tr><td>Quem cantou?</td><td class="obj-example-answer">Maria</td></tr>
+                <tr><td>O que fez Maria?</td><td class="obj-example-answer">cantou no coral</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5. Evolução Gradual -->
+        <div class="obj-acc-item open" id="objAcc5">
+          <button class="obj-acc-header" data-idx="5">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <span class="obj-acc-title">5. Evolução Gradual</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <div class="obj-evolucao">
+              <div class="obj-evo-col">
+                <div class="obj-evo-header">
+                  <div class="obj-evo-dot" style="background:#22c55e"></div>
+                  <span>Início</span>
+                </div>
+                <div class="obj-evo-item">• Identificar o verbo</div>
+                <div class="obj-evo-item">• Frases simples</div>
+                <div class="obj-evo-item">• Vocabulário básico</div>
+              </div>
+              <div class="obj-evo-col">
+                <div class="obj-evo-header">
+                  <div class="obj-evo-dot" style="background:#eab308"></div>
+                  <span>Intermediário</span>
+                </div>
+                <div class="obj-evo-item">• Sujeito e predicado</div>
+                <div class="obj-evo-item">• Mais estruturas</div>
+                <div class="obj-evo-item">• Análise de texto</div>
+              </div>
+              <div class="obj-evo-col">
+                <div class="obj-evo-header">
+                  <div class="obj-evo-dot" style="background:#ef4444"></div>
+                  <span>Avançado</span>
+                </div>
+                <div class="obj-evo-item">• Períodos compostos</div>
+                <div class="obj-evo-item">• Narração</div>
+                <div class="obj-evo-item">• Pontuação avançada</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Nossa Proposta -->
+        <div class="obj-acc-item open" id="objAcc6">
+          <button class="obj-acc-header" data-idx="6">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <span class="obj-acc-title">6. Nossa Proposta</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <p style="font-size:16px;color:var(--text-gray);line-height:1.6;margin:0">
+              Muito mais do que um app de gramática, o <strong>Gramix</strong> é um espaço para questionar, praticar e entender a língua portuguesa de forma natural e progressiva, respeitando o ritmo de cada estudante.
+            </p>
+          </div>
+        </div>
+
+        <!-- 7. Impacto Social -->
+        <div class="obj-acc-item open" id="objAcc7">
+          <button class="obj-acc-header" data-idx="7">
+            <div class="obj-acc-icon" style="background:linear-gradient(135deg,#1e40af,#1e3a8a)">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <span class="obj-acc-title">7. Impacto Social</span>
+            <i class="fa-solid fa-chevron-down obj-acc-chevron"></i>
+          </button>
+          <div class="obj-acc-body">
+            <p style="font-size:16px;color:var(--text-gray);line-height:1.6;margin:0 0 14px">
+              Projeto alinhado aos <strong>Objetivos de Desenvolvimento Sustentável (ODS) da ONU</strong>, democratizando o acesso ao aprendizado da língua portuguesa por meio da tecnologia.
+            </p>
+            <div class="obj-ods-grid">
+              <div class="obj-ods-card" style="border-color:#c7282a22;background:#fff5f5">
+                <div class="obj-ods-num" style="background:#c7282a">4</div>
+                <div class="obj-ods-info">
+                  <strong style="font-size:16px;color:#c7282a">Educação de Qualidade</strong>
+                  <span style="font-size:15px;color:var(--text-gray)">Aprendizado inclusivo, acessível e eficiente para todos.</span>
+                </div>
+              </div>
+              <div class="obj-ods-card" style="border-color:#fd6b2522;background:#fff7f0">
+                <div class="obj-ods-num" style="background:#fd6b25">9</div>
+                <div class="obj-ods-info">
+                  <strong style="font-size:16px;color:#fd6b25">Inovação e Infraestrutura</strong>
+                  <span style="font-size:15px;color:var(--text-gray)">Soluções tecnológicas aplicadas à educação.</span>
+                </div>
+              </div>
+              <div class="obj-ods-card" style="border-color:#e01b8422;background:#fdf2f8">
+                <div class="obj-ods-num" style="background:#e01b84">10</div>
+                <div class="obj-ods-info">
+                  <strong style="font-size:16px;color:#e01b84">Redução das Desigualdades</strong>
+                  <span style="font-size:15px;color:var(--text-gray)">Acesso ao aprendizado ampliado pela tecnologia.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <button type="button" class="btn-nav btn-nav-primary" id="objStartBtn">
+
+      <button type="button" class="btn-nav btn-nav-primary" id="objStartBtn" style="margin-top:20px">
         Começar os módulos ${icons.right}
       </button>
     </div>`;
+
+  // accordion toggle — cada item abre/fecha independentemente
+  document.querySelectorAll('#objAccordion .obj-acc-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.obj-acc-item').classList.toggle('open');
+    });
+  });
 
   $('objStartBtn').addEventListener('click', () => {
     const answered = state.results.filter(r => r !== null).length;
