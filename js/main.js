@@ -3466,12 +3466,16 @@ function buildMultipleChoice(q, result, done) {
 
   if (!done) return `<div class="answers">${answersHTML}</div>`;
 
-  const hintsHTML = q.answers.map(ans => `
-    <div class="hint-row">
-      <span class="hint-letter${ans.correct ? ' correct' : ''}">${ans.letter}</span>
-      <span class="hint-label${ans.correct ? ' correct' : ''}">${ans.hint}</span>
+  const hintsHTML = q.answers.map(ans => {
+    const isWrongSelected = !result.correct && ans.letter === q.answers[result.selected]?.letter;
+    return `
+    <div class="hint-row${isWrongSelected ? ' hint-row-wrong' : ''}"> 
+      <span class="hint-letter${ans.correct ? ' correct' : ''}${isWrongSelected ? ' wrong-selected' : ''}">${ans.letter}</span>
+      <span class="hint-label${ans.correct ? ' correct' : ''}${isWrongSelected ? ' wrong-selected' : ''}">${ans.hint}</span>
       ${ans.correct ? `<span class="hint-check">${icons.check}</span>` : ''}
-    </div>`).join('');
+      ${isWrongSelected ? `<span class="hint-check wrong-icon">${icons.x}</span>` : ''}
+    </div>`;
+  }).join('');
 
   return `
     <div class="answers">${answersHTML}</div>
@@ -3482,7 +3486,7 @@ function buildMultipleChoice(q, result, done) {
         <p>${q.feedback}</p>
         ${q.example ? `<p>${q.example}</p>` : ''}
         <div class="hints-breakdown">
-          <p class="hints-title">O que cada alternativa descrevia:</p>
+          <p class="hints-title">Resposta de cada item:</p>
           <div class="hints-list">${hintsHTML}</div>
         </div>
       </div>
@@ -3779,12 +3783,16 @@ function cadernoMCHTML(q, answered) {
     <p class="question-title">${q.text}</p>
     <div class="answers">${answersHTML}</div>`;
   if (!answered) return header;
-  const hintsHTML = q.answers.map(ans => `
-    <div class="hint-row">
-      <span class="hint-letter${ans.correct ? ' correct' : ''}">${ans.letter}</span>
-      <span class="hint-label${ans.correct ? ' correct' : ''}">${ans.hint}</span>
+  const hintsHTML = q.answers.map(ans => {
+    const isWrongSelected = !answered.correct && ans.letter === q.answers[answered.selected]?.letter;
+    return `
+    <div class="hint-row${isWrongSelected ? ' hint-row-wrong' : ''}">
+      <span class="hint-letter${ans.correct ? ' correct' : ''}${isWrongSelected ? ' wrong-selected' : ''}">${ans.letter}</span>
+      <span class="hint-label${ans.correct ? ' correct' : ''}${isWrongSelected ? ' wrong-selected' : ''}">${ans.hint}</span>
       ${ans.correct ? `<span class="hint-check">${icons.check}</span>` : ''}
-    </div>`).join('');
+      ${isWrongSelected ? `<span class="hint-check wrong-icon">${icons.x}</span>` : ''}
+    </div>`;
+  }).join('');
   return `${header}
     <div class="feedback${answered.correct ? '' : ' wrong'}">
       <div class="feedback-icon">${answered.correct ? icons.check : icons.x}</div>
@@ -3793,7 +3801,7 @@ function cadernoMCHTML(q, answered) {
         <p>${q.feedback}</p>
         ${q.example ? `<p>${q.example}</p>` : ''}
         <div class="hints-breakdown">
-          <p class="hints-title">O que cada alternativa descrevia:</p>
+          <p class="hints-title">Resposta de cada item:</p>
           <div class="hints-list">${hintsHTML}</div>
         </div>
       </div>
