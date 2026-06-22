@@ -749,25 +749,33 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 .hints-breakdown {
     margin-top: 18px;
     padding-top: 16px;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 2px solid rgba(0,0,0,0.10);
 }
 
 .hints-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-dark);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 10px !important;
+    letter-spacing: 0.07em;
+    margin-bottom: 12px !important;
+    padding: 6px 10px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 6px;
+    display: inline-block;
 }
 
-.hints-list { display: flex; flex-direction: column; gap: 8px; }
+.hints-list { display: flex; flex-direction: column; gap: 6px; }
 
 .hint-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 13px;
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
 }
 
 .hint-letter {
@@ -1228,9 +1236,9 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 /* Palavra + classe gramatical no breakdown pós-resposta */
 .wh-word {
-    font-size: 13px;
-    font-weight: 700;
-    min-width: 96px;
+    font-size: 15px;
+    font-weight: 800;
+    min-width: 100px;
     color: var(--text-dark);
 }
 
@@ -1238,9 +1246,13 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
 
 .wh-arrow {
     color: var(--text-light);
-    font-size: 13px;
+    font-size: 14px;
     margin: 0 2px;
+    flex-shrink: 0;
 }
+
+.hint-label { font-size: 14px; font-weight: 500; color: var(--text-gray); }
+.hint-label.correct { color: var(--success-dark); font-weight: 700; }
 
 /* ── TELA DE INTRODUÇÃO (lição) ──────────────────────────────── */
 .lesson-screen {
