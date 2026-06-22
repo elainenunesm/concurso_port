@@ -7877,7 +7877,7 @@ function updateStats() {
   const hs = $('headerSubtext');      if (hs) hs.textContent = `${m1answeredCt} de ${m1total} questões respondidas`;
   const mf = $('moduleProgressFill'); if (mf) mf.style.width = progressPct + '%';
   const mt = $('moduleProgressText'); if (mt) mt.textContent = progressPct + '%';
-  const mp = $('moduleProgress');     if (mp) mp.textContent = `${m1answeredCt} de ${m1total} questões`;
+  const mp = $('moduleProgress');     if (mp) mp.textContent = `${m1answeredCt} de ${m1total} questões respondidas`;
 
   const badge = $('moduleBadge');
   const icon  = $('moduleStatusIcon');
@@ -7885,10 +7885,10 @@ function updateStats() {
   const allDone = m1correctCt === m1total && m1total > 0;
   if (allDone) state.m2unlocked = true;
   if (allDone) {
-    if (badge) { badge.className = 'badge'; badge.innerHTML = 'Concluído <i class="fa-solid fa-circle-check"></i>'; }
+    if (badge) { badge.className = 'progress-info-pct done'; badge.textContent = progressPct + '%'; }
     if (icon)  icon.style.display = 'flex';
   } else {
-    if (badge) { badge.className = 'badge in-progress'; badge.innerHTML = 'Em andamento <i class="fa-solid fa-circle-half-stroke"></i>'; }
+    if (badge) { badge.className = 'progress-info-pct'; badge.textContent = progressPct + '%'; }
     if (icon)  icon.style.display = 'none';
   }
   const m2 = $('module2Card');

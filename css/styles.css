@@ -421,10 +421,14 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .header-texts h2 { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
 .header-texts p { font-size: 14px; color: var(--text-gray); line-height: 1.5; max-width: 400px; }
 
-.header-status-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.header-status-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 .badge { background-color: var(--success-light); color: var(--success-dark); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 20px; display: flex; align-items: center; gap: 6px; }
 .badge i { font-size: 14px; }
 .header-status-badge span { font-size: 13px; color: var(--text-gray); }
+.progress-info-block { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+.progress-info-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); }
+.progress-info-pct { font-size: 22px; font-weight: 800; color: var(--primary-main); line-height: 1; }
+.progress-info-pct.done { color: var(--success-green); }
 
 .topics-container { padding: 24px 32px 32px; }
 .topics-title { font-size: 14px; font-weight: 600; color: var(--primary-main); margin-bottom: 24px; }
