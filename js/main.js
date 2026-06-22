@@ -3511,13 +3511,19 @@ function buildWordSelect(q, result, done) {
 
   if (!done) return `${instruction}<div class="sentence-display">${chipsHTML}</div>`;
 
-  const hintsHTML = q.wordClassHints.map(h => `
-    <div class="hint-row">
-      <span class="wh-word${h.isVerb ? ' correct' : ''}">${h.word}</span>
+  const selectedWord = (!result.correct && result.selected != null) ? q.sentence[result.selected] : null;
+
+  const hintsHTML = q.wordClassHints.map(h => {
+    const isSelected = !result.correct && h.word === selectedWord;
+    return `
+    <div class="hint-row${isSelected ? ' hint-row-wrong' : ''}">
+      <span class="wh-word${h.isVerb ? ' correct' : ''}${isSelected ? ' wrong-selected' : ''}">${h.word}</span>
       <span class="wh-arrow">→</span>
-      <span class="hint-label${h.isVerb ? ' correct' : ''}">${h.wordClass}</span>
+      <span class="hint-label${h.isVerb ? ' correct' : ''}${isSelected ? ' wrong-selected' : ''}">${h.wordClass}</span>
       ${h.isVerb ? `<span class="hint-check">${icons.check}</span>` : ''}
-    </div>`).join('');
+      ${isSelected ? `<span class="hint-check wrong-icon">${icons.x}</span>` : ''}
+    </div>`;
+  }).join('');
 
   return `
     ${instruction}
