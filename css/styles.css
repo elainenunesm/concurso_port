@@ -776,10 +776,7 @@ button.answer:not(.disabled):hover .letter { border-color: var(--primary-main); 
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: #f8fafc;
-    border: 1px solid var(--border-color);
+    padding: 4px 2px;
 }
 
 .hint-letter {

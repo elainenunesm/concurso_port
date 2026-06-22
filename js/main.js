@@ -227,7 +227,7 @@ const questions = [
       { letter: 'C', text: 'mudança de estado',    correct: false, hint: 'Mudança implica transformação. Aqui não há mudança descrita, apenas a condição atual de Ana.' },
       { letter: 'D', text: 'fenômeno da natureza', correct: false, hint: 'Fenômenos da natureza são eventos como chover, nevar. Aqui o sujeito é uma pessoa.' },
     ],
-    feedback: '"Está" mostra como Ana se encontra naquele momento — ela não está fazendo nada, apenas se encontra em um estado de animação. Verbos de estado: ser, estar, parecer, permanecer.',
+    feedback: '"Está" mostra como Ana se encontra naquele momento — ela não está fazendo nada, apenas se encontra em um estado de animação.<br><span style="color:var(--text-gray);font-size:0.93em">Verbos de estado: ser, estar, parecer, permanecer.</span>',
     example: 'Compare: "Ana <strong>está</strong> animada." (estado) x "Ana <strong>correu</strong> para abraçar a amiga." (ação).',
   },
 
