@@ -16,7 +16,7 @@ const questions = [
       { letter: 'C', text: 'Palavra que qualifica ou caracteriza o substantivo.',                          correct: false, hint: 'Essa é a definição de adjetivo, não de verbo. Ex: bonito, alto, triste.' },
       { letter: 'D', text: 'Palavra que indica lugar, tempo ou modo.',                                     correct: false, hint: 'Essa é a definição de advérbio, não de verbo. Ex: aqui, ontem, rapidamente.' },
     ],
-    feedback: 'O <strong>verbo</strong> é a palavra que indica: <strong>ação</strong> (correu, estudou), <strong>estado</strong> (está, permanece), <strong>mudança de estado</strong> (ficou, cresceu) ou <strong>fenômeno da natureza</strong> (choveu, amanheceu).',
+    feedback: 'O <strong>verbo</strong> é a palavra que indica:<ul style="margin:8px 0 0 4px;padding-left:18px;line-height:1.8"><li><strong>ação</strong> — correu, estudou</li><li><strong>estado</strong> — está, permanece</li><li><strong>mudança de estado</strong> — ficou, cresceu</li><li><strong>fenômeno da natureza</strong> — choveu, amanheceu</li></ul>',
     example: 'Exemplos de verbos: cantar, ser, ficar, chover. Em cada frase, o verbo é o núcleo que conecta o sujeito ao que acontece.',
   },
 
