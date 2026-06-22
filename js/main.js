@@ -3535,7 +3535,7 @@ function buildWordSelect(q, result, done) {
         <p>${q.feedback}</p>
         ${q.example ? `<p>${q.example}</p>` : ''}
         <div class="hints-breakdown">
-          <p class="hints-title">Classe de cada palavra da frase:</p>
+          <p class="hints-title">Resposta de cada item:</p>
           <div class="hints-list">${hintsHTML}</div>
         </div>
       </div>
@@ -3845,7 +3845,7 @@ function cadernoWordSelectHTML(q, answered) {
         <p>${q.feedback}</p>
         ${q.example ? `<p>${q.example}</p>` : ''}
         <div class="hints-breakdown">
-          <p class="hints-title">Classe de cada palavra da frase:</p>
+          <p class="hints-title">Resposta de cada item:</p>
           <div class="hints-list">${hintsHTML}</div>
         </div>
       </div>
