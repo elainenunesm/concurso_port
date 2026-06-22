@@ -637,6 +637,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .feedback-content h2 { margin: 0 0 8px; font-size: 16px; color: var(--success-dark); font-weight: 700; }
 .feedback-content p { margin: 0 0 10px; font-size: 14px; line-height: 1.55; font-weight: 500; color: var(--text-dark); }
 .feedback-content p:last-child { margin-bottom: 0; }
+.feedback-content ul { list-style: disc; padding-left: 20px; margin: 6px 0 10px; }
+.feedback-content ul li { font-size: 14px; line-height: 1.8; color: var(--text-dark); font-weight: 500; }
 
 .bottom-actions {
     display: flex;
